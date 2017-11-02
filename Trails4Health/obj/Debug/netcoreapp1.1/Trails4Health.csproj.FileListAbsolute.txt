@@ -10,6 +10,7 @@ C:\git\Trails4Health\Trails4Health\Trails4Health\Trails4Health\obj\Debug\netcore
 C:\git\Trails4Health\Trails4Health\Trails4Health\Trails4Health\obj\Debug\netcoreapp1.1\Trails4Health.AssemblyInfo.cs
 C:\git\Trails4Health\Trails4Health\Trails4Health\Trails4Health\obj\Debug\netcoreapp1.1\Trails4Health.dll
 C:\git\Trails4Health\Trails4Health\Trails4Health\Trails4Health\obj\Debug\netcoreapp1.1\Trails4Health.pdb
+<<<<<<< HEAD
 C:\git\Trails4Health\Trails4Health\bin\Debug\netcoreapp1.1\Trails4Health.deps.json
 C:\git\Trails4Health\Trails4Health\bin\Debug\netcoreapp1.1\Trails4Health.runtimeconfig.json
 C:\git\Trails4Health\Trails4Health\bin\Debug\netcoreapp1.1\Trails4Health.runtimeconfig.dev.json
@@ -54,4 +55,8 @@ C:\Git\Programacao para Internet\Trails4Health\Trails4Health\obj\Debug\netcoreap
 C:\Git\Programacao para Internet\Trails4Health\Trails4Health\obj\Debug\netcoreapp1.1\Trails4Health.pdb
 >>>>>>> e0231f6bf6ed4dbaa3ac51de1dbdd762a2be5808
 =======
+<<<<<<< HEAD
 >>>>>>> parent of c6bbe0e... forced commit
+=======
+>>>>>>> parent of b7d45f7... Mudança do Bootstrap
+>>>>>>> 78fa416b944c0692942e3d05337bfbd3fa412c6e
