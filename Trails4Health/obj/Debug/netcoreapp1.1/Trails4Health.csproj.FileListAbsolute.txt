@@ -21,9 +21,12 @@ C:\git\Trails4Health\Trails4Health\obj\Debug\netcoreapp1.1\Trails4Health.Assembl
 C:\git\Trails4Health\Trails4Health\obj\Debug\netcoreapp1.1\Trails4Health.dll
 C:\git\Trails4Health\Trails4Health\obj\Debug\netcoreapp1.1\Trails4Health.pdb
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> parent of b50afd3... Merge branch 'ParedesBranch'
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> 1dfb1709b7bf843867840699c3b85c6edb4ee5b0
 C:\Users\migue\OneDrive\Documentos\EI\projecto\Trails4Health\Trails4Health\bin\Debug\netcoreapp1.1\Trails4Health.deps.json
 C:\Users\migue\OneDrive\Documentos\EI\projecto\Trails4Health\Trails4Health\bin\Debug\netcoreapp1.1\Trails4Health.runtimeconfig.json
 C:\Users\migue\OneDrive\Documentos\EI\projecto\Trails4Health\Trails4Health\bin\Debug\netcoreapp1.1\Trails4Health.runtimeconfig.dev.json
