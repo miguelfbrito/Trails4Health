@@ -1,13 +1,5 @@
 {
   "version": 1,
-<<<<<<< HEAD
-<<<<<<< HEAD
-  "dgSpecHash": "aczuW0WrU1lPa4zrvX8ldnRve60AsZPW9OxhKoZvU4+s9hrZmfWbU/AStJVJkRDTI/SE6ovvRlb1DvWmLf+ssg==",
-=======
-  "dgSpecHash": "QnP3OXKrshlZxbpgcIjWGrjNTYebrT/3/qFoS4nI91kONIKHcXQgMWcj9novw4JXfvHmwsEINfzHTApwwPLOWw==",
->>>>>>> e0231f6bf6ed4dbaa3ac51de1dbdd762a2be5808
-=======
-  "dgSpecHash": "mCapx8tLlLF/7bxZ8RHA5LP/diUbrH97ZJ4nOhX6KkzQ4hmuzH6KOHpInLTJPoS3z8tWTnTmXcWGheBTr11QCQ==",
->>>>>>> parent of b7d45f7... Mudança do Bootstrap
+  "dgSpecHash": "rmqwKfREZUVRKTzJ21kgFvOn9YzFoIw1Ra11Vh28oeemLr6oQW2fhE+ss7xwxKfA/GpJrpE8vV3OFARuw0eoVw==",
   "success": true
 }
