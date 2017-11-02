@@ -2,10 +2,14 @@
   "runtimeOptions": {
     "additionalProbingPaths": [
 <<<<<<< HEAD
+<<<<<<< HEAD
       "C:\\Users\\migue\\.nuget\\packages"
 =======
       "C:\\Users\\ruizi\\.nuget\\packages"
 >>>>>>> e0231f6bf6ed4dbaa3ac51de1dbdd762a2be5808
+=======
+      "C:\\Users\\Miguel Brito\\.nuget\\packages"
+>>>>>>> parent of b7d45f7... Mudança do Bootstrap
     ]
   }
 }
