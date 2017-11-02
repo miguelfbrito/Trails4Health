@@ -9771,10 +9771,14 @@
   },
   "packageFolders": {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "C:\\Users\\migue\\.nuget\\packages\\": {}
 =======
     "C:\\Users\\ruizi\\.nuget\\packages\\": {}
 >>>>>>> e0231f6bf6ed4dbaa3ac51de1dbdd762a2be5808
+=======
+    "C:\\Users\\Miguel Brito\\.nuget\\packages\\": {}
+>>>>>>> parent of c6bbe0e... forced commit
   },
   "project": {
     "version": "1.0.0",
@@ -9783,13 +9787,18 @@
     },
     "restore": {
 <<<<<<< HEAD
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\migue\\OneDrive\\Documentos\\EI\\projecto\\Trails4Health\\Trails4Health\\Trails4Health.csproj",
+=======
+      "projectUniqueName": "C:\\git\\Trails4Health\\Trails4Health\\Trails4Health.csproj",
+>>>>>>> parent of c6bbe0e... forced commit
       "projectName": "Trails4Health",
-      "projectPath": "C:\\Users\\migue\\OneDrive\\Documentos\\EI\\projecto\\Trails4Health\\Trails4Health\\Trails4Health.csproj",
-      "packagesPath": "C:\\Users\\migue\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\migue\\OneDrive\\Documentos\\EI\\projecto\\Trails4Health\\Trails4Health\\obj\\",
+      "projectPath": "C:\\git\\Trails4Health\\Trails4Health\\Trails4Health.csproj",
+      "packagesPath": "C:\\Users\\Miguel Brito\\.nuget\\packages\\",
+      "outputPath": "C:\\git\\Trails4Health\\Trails4Health\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
+<<<<<<< HEAD
         "C:\\Users\\migue\\AppData\\Roaming\\NuGet\\NuGet.Config",
 =======
       "projectUniqueName": "C:\\Git\\Programacao para Internet\\Trails4Health\\Trails4Health\\Trails4Health.csproj",
@@ -9801,6 +9810,9 @@
       "configFilePaths": [
         "C:\\Users\\ruizi\\AppData\\Roaming\\NuGet\\NuGet.Config",
 >>>>>>> e0231f6bf6ed4dbaa3ac51de1dbdd762a2be5808
+=======
+        "C:\\Users\\Miguel Brito\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> parent of c6bbe0e... forced commit
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

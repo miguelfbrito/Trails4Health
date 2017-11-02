@@ -22,6 +22,7 @@ C:\git\Trails4Health\Trails4Health\obj\Debug\netcoreapp1.1\Trails4Health.dll
 C:\git\Trails4Health\Trails4Health\obj\Debug\netcoreapp1.1\Trails4Health.pdb
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> parent of b50afd3... Merge branch 'ParedesBranch'
 =======
 <<<<<<< HEAD
@@ -52,3 +53,5 @@ C:\Git\Programacao para Internet\Trails4Health\Trails4Health\obj\Debug\netcoreap
 C:\Git\Programacao para Internet\Trails4Health\Trails4Health\obj\Debug\netcoreapp1.1\Trails4Health.dll
 C:\Git\Programacao para Internet\Trails4Health\Trails4Health\obj\Debug\netcoreapp1.1\Trails4Health.pdb
 >>>>>>> e0231f6bf6ed4dbaa3ac51de1dbdd762a2be5808
+=======
+>>>>>>> parent of c6bbe0e... forced commit
