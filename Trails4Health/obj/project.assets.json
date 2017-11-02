@@ -9778,11 +9778,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\git\\Trails4Health\\Trails4Health\\Trails4Health\\Trails4Health\\Trails4Health.csproj",
+      "projectUniqueName": "C:\\git\\Trails4Health\\Trails4Health\\Trails4Health.csproj",
       "projectName": "Trails4Health",
-      "projectPath": "C:\\git\\Trails4Health\\Trails4Health\\Trails4Health\\Trails4Health\\Trails4Health.csproj",
+      "projectPath": "C:\\git\\Trails4Health\\Trails4Health\\Trails4Health.csproj",
       "packagesPath": "C:\\Users\\Miguel Brito\\.nuget\\packages\\",
-      "outputPath": "C:\\git\\Trails4Health\\Trails4Health\\Trails4Health\\Trails4Health\\obj\\",
+      "outputPath": "C:\\git\\Trails4Health\\Trails4Health\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Miguel Brito\\AppData\\Roaming\\NuGet\\NuGet.Config",
