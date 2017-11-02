@@ -8,6 +8,7 @@ C:\git\Trails4Health\Trails4Health\Trails4Health\Trails4Health\obj\Debug\netcore
 C:\git\Trails4Health\Trails4Health\Trails4Health\Trails4Health\obj\Debug\netcoreapp1.1\Trails4Health.AssemblyInfo.cs
 C:\git\Trails4Health\Trails4Health\Trails4Health\Trails4Health\obj\Debug\netcoreapp1.1\Trails4Health.dll
 C:\git\Trails4Health\Trails4Health\Trails4Health\Trails4Health\obj\Debug\netcoreapp1.1\Trails4Health.pdb
+<<<<<<< HEAD
 C:\git\Trails4Health\Trails4Health\bin\Debug\netcoreapp1.1\Trails4Health.deps.json
 C:\git\Trails4Health\Trails4Health\bin\Debug\netcoreapp1.1\Trails4Health.runtimeconfig.json
 C:\git\Trails4Health\Trails4Health\bin\Debug\netcoreapp1.1\Trails4Health.runtimeconfig.dev.json
@@ -18,6 +19,8 @@ C:\git\Trails4Health\Trails4Health\obj\Debug\netcoreapp1.1\Trails4Health.csproj.
 C:\git\Trails4Health\Trails4Health\obj\Debug\netcoreapp1.1\Trails4Health.AssemblyInfo.cs
 C:\git\Trails4Health\Trails4Health\obj\Debug\netcoreapp1.1\Trails4Health.dll
 C:\git\Trails4Health\Trails4Health\obj\Debug\netcoreapp1.1\Trails4Health.pdb
+=======
+>>>>>>> ParedesBranch
 C:\Git\Programacao para Internet\Trails4Health\Trails4Health\bin\Debug\netcoreapp1.1\Trails4Health.deps.json
 C:\Git\Programacao para Internet\Trails4Health\Trails4Health\bin\Debug\netcoreapp1.1\Trails4Health.runtimeconfig.json
 C:\Git\Programacao para Internet\Trails4Health\Trails4Health\bin\Debug\netcoreapp1.1\Trails4Health.runtimeconfig.dev.json
