@@ -1,0 +1,5 @@
+Mudança do bootstrap (15m)
+Resolução de problemas com o git (1 h e 30 minutos)
+problemas com merges de branchs
+Alterações da home page (1h)
+Página de login (30m)
