@@ -1,0 +1,5 @@
+- Mudanças do boostrap (15min)
+- Resolução de problemas com o git (1h30)
+	- Problemas com merges de branchs
+- Alterações da home page (1h)
+- Página de login (45min)
