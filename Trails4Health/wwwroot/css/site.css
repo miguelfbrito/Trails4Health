@@ -40,4 +40,10 @@ textarea {
     margin-top: 35px;
 }
 
+.container .row p{
+    text-align: justify;
+}
 
+.container{
+    margin: auto;
+}
