@@ -29,14 +29,18 @@ namespace Trails4Health.Controllers
 
         public IActionResult Login()
         {
-            
-
             return View();
         }
 
         public IActionResult Register()
         {
          
+            return View();
+        }
+
+        public IActionResult TrailsManagement()
+        {
+
             return View();
         }
 
