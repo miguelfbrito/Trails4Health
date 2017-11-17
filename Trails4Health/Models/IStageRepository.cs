@@ -7,6 +7,6 @@ namespace Trails4Health.Models
 {
     public class IStageRepository
     {
-        IEnumerable<Stage> Stage { get; }
+        public IEnumerable<Stage> Stages { get; set; }
     }
 }

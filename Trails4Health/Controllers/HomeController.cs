@@ -27,9 +27,15 @@ namespace Trails4Health.Controllers
             return View();
         }
 
-        public IActionResult Login()
+        public IActionResult Stage()
         {
             
+
+            return View();
+        }
+        public IActionResult Login()
+        {
+
 
             return View();
         }
@@ -49,6 +55,7 @@ namespace Trails4Health.Controllers
         {            
             return View("MemberArea", "~/View/Shared/_Layout_MemberArea.cshtml");
         }
+       
 
     }
 }
