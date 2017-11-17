@@ -278,7 +278,13 @@ a:hover {
     background: url(../images/bannerbg.jpg) no-repeat;
     position: relative;
     min-height: 700px;
+    top: -50px; /* remover maybe*/
 }
+
+    .banner img {
+      
+        width: 100%;
+    }
 
 .main_banner_area {
     padding-top: 150px;
@@ -611,7 +617,7 @@ i, i:hover {
     }
 
 
-#trilhos  {
+#trilhos {
     margin-top: 100px;
     margin-bottom: 100px;
 }
@@ -638,7 +644,7 @@ i, i:hover {
     transition: opacity 0.7s;
 }
 
-.trilho:hover img{
+.trilho:hover img {
     opacity: .4;
     filter: alpha(opacity=100); /* For IE8 and earlier */
 }
@@ -646,7 +652,7 @@ i, i:hover {
 .trilhos-text {
     position: absolute;
     opacity: 0;
-    width: 100%;    
+    width: 100%;
     top: 43%;
     text-align: center;
     transition: opacity 1s;
@@ -657,4 +663,3 @@ i, i:hover {
 .trilho:hover .trilhos-text {
     opacity: 1;
 }
-

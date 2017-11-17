@@ -11,9 +11,9 @@ namespace Trails4Health.Models
         IEnumerable<History> IHistoryRepository.History => new List<History>
         {
 
-            new History {tempoDemorado = 60, dataRealizacao = new DateTime(2017, 10, 20), observacoes = "Trilho agradável, boas paisagens", dificuldade = History.DIFICULDADE_FACIL},
-            new History {tempoDemorado = 120, dataRealizacao = new DateTime(2017, 10, 24), observacoes = "Trilho montanhoso, boas paisagens", dificuldade = History.DIFICULDADE_DIFICIL},
-            new History {tempoDemorado = 90, dataRealizacao = new DateTime(2017, 10, 25), observacoes = "Trilho agradável, boas paisagens", dificuldade = History.DIFICULDADE_INTERMEDIA},
+            new History {IdTourist = 1, IdTrail = 1, IdDifficulty=1,TimeTaken = 60, RealizationDate = new DateTime(2017, 10, 20), Observations = "Trilho agradável, boas paisagens"},
+            new History {IdTourist = 2, IdTrail = 2, IdDifficulty=3,TimeTaken = 120, RealizationDate = new DateTime(2017, 10, 24), Observations = "Trilho montanhoso, boas paisagens"},
+            new History {IdTourist = 3, IdTrail = 3, IdDifficulty=2,TimeTaken = 90, RealizationDate = new DateTime(2017, 10, 25), Observations = "Trilho agradável, boas paisagens"},
         };
 
     }

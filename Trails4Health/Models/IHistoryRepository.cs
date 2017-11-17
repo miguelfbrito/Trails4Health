@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Trails4Health.Models
 {
-    interface IHistoryRepository
+    public interface IHistoryRepository
     {
         IEnumerable<History> History { get; }
     }
