@@ -1,5 +1,39 @@
-﻿
+﻿@model FakeTrailsRepository
 @{
     ViewData["Title"] = "Trails Management";
 }
 
+<h2>Trails</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>AverageDuration</th>
+            <th>DistanceToTravel</th>
+            <th>Start Location</th>
+            <th>End Location</th>
+            <th>RecommendedTime</th>
+            <th>Is_Activated</th>
+            <th>ID_Difficulty</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (Trail t in Model.Trails)
+        {
+            <tr>
+                <td>@t.Name</td>
+                <td>@t.AverageDuration</td>
+                <td>@t.DistanceToTravel</td>
+                <td>@t.Start_Loc</td>
+                <td>@t.End_Loc</td>
+                <td>@t.RecommendedTime</td>
+                <td>@t.Is_Activated</td>
+                <td>@t.ID_Difficulty</td>
+
+
+            </tr>
+
+        }
+    </tbody>
+</table>
