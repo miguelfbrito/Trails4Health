@@ -9,7 +9,7 @@ namespace Trails4Health.Models
     {
  
 
-        public int IDStage { get; set; }
+        public int StageID { get; set; }
         public String StageName { get; set; }
         public String StageStartLoc { get; set; }
         public String StageEndLoc { get; set; }

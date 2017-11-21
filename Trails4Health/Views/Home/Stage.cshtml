@@ -1,4 +1,4 @@
-@model IStageRepository
+@model StagesListViewModel
 @{
     ViewData["Title"] = "Stage";
 }
@@ -9,7 +9,7 @@
 @foreach (Stage s in Model.Stages)
 {
     <div>
-        <h3>@s.idStage</h3>
+        <h3>@s.StageID</h3>
         <h3>@s.StageName</h3>
         <p></p>
         <h4>@s.StageStartLoc</h4>

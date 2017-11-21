@@ -12,11 +12,11 @@ namespace Trails4Health.Models
 
        {
 
-            new Stage {IDStage = 1, StageName = "Etapa adjacente a Lagoa Comprida",
+            new Stage {StageID = 1, StageName = "Etapa adjacente a Lagoa Comprida",
                 StageStartLoc = "Lagoa Comprida", StageEndLoc = "Segunda Lagoa",
                 Distance = 10, Duration = 4 //dist kms duração horas
             },
-            new Stage {IDStage = 1, StageName = "Etapa do Sabugueiro ",
+            new Stage {StageID = 1, StageName = "Etapa do Sabugueiro ",
                 StageStartLoc = "Floresta", StageEndLoc = "Sabugueiro",
                 Distance = 1, Duration = 1 //dist kms duração horas
             }
