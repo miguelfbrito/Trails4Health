@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace Trails4Health.Models
 {
-    public interface IHistoryRepository
+    public interface IHistoricRepository
     {
-        IEnumerable<History> History { get; }
+        IEnumerable<Historic> Historics { get; }
     }
 }

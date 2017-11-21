@@ -7,10 +7,15 @@ namespace Trails4Health.Models
 {
     public class Trail
     {
-        public int IdTrail { get; set; }
-        public int IdTrailStages { get; set; }
-        public int IdDifficulty { get; set; }
-        public int IdVariability { get; set; }
+        public int TrailID { get; set; }
+        public int TrailStagesID { get; set; }
+        public int DifficultyID { get; set; }
+        public int VariabilityID { get; set; }
+        public int Duration { get; set; }
+        public string StartLoc { get; set; }
+        public string EndLoc { get; set; }
+        public int SeasonID { get; set; }
+        public bool IsActivated { get; set; }
         public String Name { get; set; }
         public String AdvisedPeriod { get; set; }
 

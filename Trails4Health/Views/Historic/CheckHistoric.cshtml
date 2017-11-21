@@ -1,0 +1,23 @@
+@model HistoricListViewModel
+
+@{
+    ViewData["Title"] = "Check History";
+}
+
+<h2>History Summary</h2>
+
+<div id="checkhistory">
+    @foreach (Historic h in Model.Historic)
+    {
+        <div id="checkhistory-item">
+            <h3></h3> <!-- ir buscar nome do trilho pelo id-->
+            <p>@h.RealizationDate</p>
+            <p>@h.TimeTaken</p>
+            <p>@h.Observations</p>
+
+            
+        </div>
+
+     
+    }
+</div>

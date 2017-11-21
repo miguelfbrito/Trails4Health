@@ -24,9 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
     <Folder Include="Views\Shared\" />
-    <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
 </Project>

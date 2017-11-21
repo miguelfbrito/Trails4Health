@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace Trails4Health.Models.ViewModels
 {
-    public class HistoryListViewModel
+    public class HistoricListViewModel
     {
-        public IEnumerable<History> history { get; set; }
+        public IEnumerable<Historic> Historic { get; set; }
         public PagingInfo PagingInfo { get; set; }
     }
 }

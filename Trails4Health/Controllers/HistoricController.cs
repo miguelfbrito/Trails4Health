@@ -8,23 +8,23 @@ using Trails4Health.Models.ViewModels;
 
 namespace Trails4Health.Controllers
 {
-    public class HistoryController : Controller
+    public class HistoricController : Controller
     {
 
-        private IHistoryRepository repository;
+        private IHistoricRepository repository;
         public int PageSize = 6;
-        public HistoryController(IHistoryRepository repository)
+        public HistoricController(IHistoricRepository repository)
         {
             this.repository = repository;
         }
 
 
-        public ViewResult List(int page = 1)
+      /*  public ViewResult CheckHistoric(int page = 1)
         {
             return View(
-                new HistoryListViewModel
+                new HistoricListViewModel
                 {
-                    History = repository.History
+                    Historic = repository.Historics
                         .OrderBy(p => p.RealizationDate)
                         .Skip(PageSize * (page - 1))
                         .Take(PageSize),
@@ -32,10 +32,15 @@ namespace Trails4Health.Controllers
                     {
                         CurrentPage = page,
                         ItemsPerPage = PageSize,
-                        TotalItems = repository.History.Count()
+                        TotalItems = repository.Historics.Count()
                     }
                 }
             );
+        }*/
+
+        public ViewResult CheckHistoric()
+        {
+            return View(new HistoricListViewModel { Historic = repository.Historics });
         }
     }
 }
