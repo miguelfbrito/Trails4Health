@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
-namespace Trails4Health.Data
+using Microsoft.EntityFrameworkCore;
+namespace Trails4Health.Models
 {
-    public class ApplicationDbContext
+    public class ApplicationDbContext : DbContext
     {
+        public ApplicationDbContext(DbContextOptions options) : base(options) { }
+        public DbSet<Trail> Trails { get; set; }
     }
 }
