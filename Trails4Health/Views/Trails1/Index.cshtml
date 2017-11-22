@@ -1,0 +1,83 @@
+@model IEnumerable<Trails4Health.Models.Trail>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Duration)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DistanceToTravel)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StartLoc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EndLoc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsActivated)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Difficulty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Season)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Slope)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DistanceToTravel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartLoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndLoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActivated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Difficulty.DifficultyID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Season.SeasonID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Slope.SlopeID)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TrailID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.TrailID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.TrailID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

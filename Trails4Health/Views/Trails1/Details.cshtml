@@ -1,0 +1,72 @@
+@model Trails4Health.Models.Trail
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Trail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Duration)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Duration)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DistanceToTravel)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DistanceToTravel)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StartLoc)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StartLoc)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EndLoc)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EndLoc)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActivated)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsActivated)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Difficulty)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Difficulty.DifficultyID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Season)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Season.SeasonID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Slope)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Slope.SlopeID)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.TrailID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
