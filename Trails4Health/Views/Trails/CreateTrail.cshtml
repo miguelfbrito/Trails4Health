@@ -1,0 +1,58 @@
+﻿@model CreateTrail
+@{
+    ViewData["Title"] = "Create Trail";
+}
+
+
+<form asp-action="CreateTrail" method="post">
+    <div class="panel panel-primary" style="margin-top:6em">
+        <div class="panel-heading">
+            <h3 class="panel-title">Create a Trail</h3><!--Header-->
+        </div>
+
+        <!--Body-->
+
+        <div class="panel-body">
+            <div class="form-group">
+                <label asp-for="Name">Trail Name</label>
+                <input asp-for="Name" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="StartLoc">Start Location</label>
+                <input asp-for="StartLoc" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="EndLoc">End Location</label><!-- o asp for faz a associação a uma determinada propriedade-->
+                <input asp-for="EndLoc" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Season">Season</label>
+                <select asp-for="Season" class="form-control">
+                    <option value="">Select the best season to go through the trail</option>
+                    <option value="spring">Spring</option>
+                    <option value="summer">Summer</option>
+                    <option value="autumn">Autumn</option>
+                    <option value="winter">Winter</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Difficulty">Difficulty</label>
+                <select asp-for="Difficulty" class="form-control">
+                    <option value="">Select the trail's difficulty</option>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                    <option value="veryhard">Very Hard</option>
+                </select>
+            </div>
+            <div asp-validation-summary="All"></div>
+
+
+        </div>
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a asp-action="TrailsManagement" class="btn btn-default">Cancel</a>
+        </div>
+
+</div>
+</form>

@@ -28,6 +28,13 @@ namespace Trails4Health.Controllers
                 
                 );
         }
+        [HttpGet]
+        public ViewResult CreateTrail()
+        {
+            return View();
+        }
+
+
 
     }
 }
