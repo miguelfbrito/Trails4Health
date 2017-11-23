@@ -16,5 +16,7 @@ namespace Trails4Health.Models
         public int Distance { get; set; }
         public int Duration { get; set; }
 
+        public ICollection<Stage_Trail> Stage_Trails { get; set; }
+
     }
 }
