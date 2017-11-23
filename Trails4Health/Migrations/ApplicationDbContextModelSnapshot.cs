@@ -37,6 +37,26 @@ namespace Trails4Health.Migrations
 
                     b.ToTable("Historics");
                 });
+
+            modelBuilder.Entity("Trails4Health.Models.Tourist", b =>
+                {
+                    b.Property<int>("TouristID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("Age");
+
+                    b.Property<string>("CC");
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Phone");
+
+                    b.HasKey("TouristID");
+
+                    b.ToTable("Tourists");
+                });
         }
     }
 }

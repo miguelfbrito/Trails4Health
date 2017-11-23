@@ -112,7 +112,7 @@ $('.nav a').bind('click', function () {
 
 	jQuery(window).scroll(function () {
 	  var top = jQuery(document).scrollTop();
-		var height = 300;
+		var height = 250;
 	  //alert(batas);
 	  
 	  if (top > height) {
@@ -131,6 +131,7 @@ $('.nav a').bind('click', function () {
             $('.scrollup').fadeOut('slow');
         }
     });
+
     $('.scrollup').click(function(){
         $("html, body").animate({ scrollTop: 0 }, 1000);
         return false;

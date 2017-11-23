@@ -65,7 +65,7 @@ PRE LOADER
 }
 
 p {
-    font: normal 16px "Myriad Pro", arial, sans-serif;
+    font: normal 14px "Myriad Pro", arial, sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -210,6 +210,7 @@ a:hover {
 
 /* navbar section */
 .menu-scroll {
+    transition: all .1s ease-in-out;
     padding-top: 0px;
     padding-bottom: 0px;
     position: fixed;
@@ -244,11 +245,11 @@ a:hover {
 .main_menu_bg {
 }
 
-    .main_menu_bg .navbar-default {
-        background-color: transparent;
-        border-color: transparent;
-        transition: .6s;
-    }
+.main_menu_bg .navbar-default {
+    background-color: transparent;
+    border-color: transparent;
+    transition: .5s;
+}
 
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
     color: #bd9e6f;
@@ -672,3 +673,7 @@ i, i:hover {
     opacity: 1;
 }
 
+
+h5 {
+    color: black;
+}

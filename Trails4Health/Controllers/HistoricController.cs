@@ -50,5 +50,10 @@ namespace Trails4Health.Controllers
             return View();
         }
 
+        public ViewResult HistoricInformation()
+        {
+            return View();
+        }
+
     }
 }
