@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Trails4Health.Models;
 
-namespace Trails4Health.Data
+namespace Trails4Health.Models
 {
     public class EFStageRepository : IStageRepository
     {
@@ -14,6 +14,8 @@ namespace Trails4Health.Data
         {
             this.dbContext = dbContext;
         }
-        public IEnumerable<Stage> Products => dbContext.Stages;
+        public IEnumerable<Stage> Stages => dbContext.Stages;
+
+       
     }
 }

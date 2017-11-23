@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace Trails4Health.Models
 {
-    public class IStageRepository
+    public interface IStageRepository
     {
-        public IEnumerable<Stage> Stages { get; }
+        IEnumerable<Stage> Stages { get; }
     }
 }
