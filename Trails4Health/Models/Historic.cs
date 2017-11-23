@@ -13,12 +13,18 @@ namespace Trails4Health.Models
     {
         
         public int HistoricID { get; set; }
-        public int TouristID { get; set; }
-        public int TrailID{ get; set; }
-        public int DifficultyID { get; set; }
         public int TimeTaken { get; set; }
         public String Observations { get; set; }
         public string RealizationDate { get; set; }
+        
+        public Difficulty Difficulty { get; set; }
+        public int DifficultyID { get; set; }
+
+        public Trail Trail { get; set; }
+        public int TrailID { get; set; }
+
+        public Tourist Tourist { get; set; }
+        public int TouristID { get; set; }
 
     }
 }

@@ -8,17 +8,31 @@ namespace Trails4Health.Models
     public class Trail
     {
         public int TrailID { get; set; }
-        public int TrailStagesID { get; set; }
-        public int DifficultyID { get; set; }
-        public int VariabilityID { get; set; }
+        public string Name { get; set; }
         public int Duration { get; set; }
+        public int DistanceToTravel { get; set; }
         public string StartLoc { get; set; }
         public string EndLoc { get; set; }
-        public int SeasonID { get; set; }
         public bool IsActivated { get; set; }
-        public String Name { get; set; }
-        public String AdvisedPeriod { get; set; }
 
+        //Tabela Dificuldade
+        public Difficulty Difficulty { get; set; }
+        public int DifficultyID { get; set; }
 
+        //Tabela Season
+        public Season Season { get; set; }
+        public int SeasonID { get; set; }
+
+        //Tabela Desnível
+        public Slope Slope { get; set; }
+        public int SlopeID { get; set; }
+
+        //Tabela Status_Trail
+        public ICollection<Status_Trail> StatusTrails { get; set; }
+
+        //Tabela Stage_Trail
+        public ICollection<Stage_Trail> StagesTrails { get; set; }
+
+        public ICollection<Historic> Historics { get; set; }
     }
 }
