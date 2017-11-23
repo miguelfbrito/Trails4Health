@@ -15,7 +15,6 @@ namespace Trails4Health.Models
         public string EndLoc { get; set; }
         public bool IsActivated { get; set; }
 
-        public ICollection<Stage_Trail> Stage_Trails { get; set; }
-
+        public ICollection<Stage_Trail> StagesTrails { get; set; }
     }
 }

@@ -13,10 +13,10 @@ namespace Trails4Health.Models
         public string StageName { get; set; }
         public string StageStartLoc { get; set; }
         public string StageEndLoc { get; set; }
+        public string Geolocalization { get; set; }
         public int Distance { get; set; }
         public int Duration { get; set; }
 
-        public ICollection<Stage_Trail> Stage_Trails { get; set; }
-
+        public ICollection<Stage_Trail> StagesTrails { get; set; }
     }
 }
