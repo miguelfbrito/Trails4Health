@@ -14,7 +14,8 @@ namespace Trails4Health.Models
         public string StartLoc { get; set; }
         public string EndLoc { get; set; }
         public bool IsActivated { get; set; }
-        //Tabela Dificuldade
+        
+            //Tabela Dificuldade
         public Difficulty Difficulty { get; set; }
         public int DifficultyID { get; set; }
 

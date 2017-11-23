@@ -13,7 +13,7 @@ namespace Trails4Health.Models
         //};
         public IEnumerable<Trail> Trails => new List<Trail>
         {
-            new Trail {Name="Trilho Serra 1", Duration=120, DistanceToTravel=10,StartLoc="Manteigas",EndLoc="Serra",IsActivated=true}
+            new Trail {Name="Trilho Serra 1", Duration=120, DistanceToTravel=10,StartLoc="Manteigas",EndLoc="Serra"}
         };
     }
 }

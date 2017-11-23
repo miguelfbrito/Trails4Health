@@ -22,16 +22,17 @@ namespace Trails4Health.Models
         {
             //Foreign Keys Trail----------------------------------------------------------------
             //Dificuldade
-            modelBuilder.Entity<Trail>()
-                .HasOne(trail => trail.Difficulty)
-                .WithMany(difficulty => difficulty.Trails)
-                .HasForeignKey(trail => trail.DifficultyID);
+            
 
             //Season
             modelBuilder.Entity<Trail>()
                 .HasOne(trail => trail.Season)
                 .WithMany(season => season.Trails)
                 .HasForeignKey(trail => trail.SeasonID);
+            modelBuilder.Entity<Trail>()
+                .HasOne(trail => trail.Difficulty)
+                .WithMany(difficulty => difficulty.Trails)
+                .HasForeignKey(trail => trail.DifficultyID);
 
             //Desnível
             modelBuilder.Entity<Trail>()
@@ -49,7 +50,9 @@ namespace Trails4Health.Models
             modelBuilder.Entity<Stage_Trail>()
                 .HasOne(st => st.Trail)
                 .WithMany(trail => trail.StagesTrails)
-                .HasForeignKey(st => st.TrailID);            modelBuilder.Entity<Stage_Trail>()
+                .HasForeignKey(st => st.TrailID);
+
+            modelBuilder.Entity<Stage_Trail>()
                 .HasOne(st => st.Stage)
                 .WithMany(stage => stage.StagesTrails)
                 .HasForeignKey(st => st.StageID);
@@ -65,7 +68,9 @@ namespace Trails4Health.Models
             modelBuilder.Entity<Status_Trail>()
                 .HasOne(st => st.Trail)
                 .WithMany(trail => trail.StatusTrails)
-                .HasForeignKey(st => st.TrailID);            modelBuilder.Entity<Status_Trail>()
+                .HasForeignKey(st => st.TrailID);
+
+            modelBuilder.Entity<Status_Trail>()
                 .HasOne(st => st.Status)
                 .WithMany(status => status.StatusTrails)
                 .HasForeignKey(st => st.StatusID);
