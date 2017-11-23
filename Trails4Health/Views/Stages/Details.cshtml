@@ -1,0 +1,54 @@
+@model Trails4Health.Models.Stage
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Stage</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StageName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StageName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StageStartLoc)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StageStartLoc)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StageEndLoc)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StageEndLoc)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Geolocalization)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Geolocalization)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Distance)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Distance)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Duration)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Duration)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.StageId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

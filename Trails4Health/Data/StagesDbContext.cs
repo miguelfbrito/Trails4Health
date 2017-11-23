@@ -32,5 +32,7 @@ DbContextOptions<StagesDbContext> options) : base(options) {
             .HasForeignKey(st => st.TrailId);
         }
 
+        public DbSet<Trails4Health.Models.Stage> Stage { get; set; }
+
     }
 }

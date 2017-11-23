@@ -1,0 +1,71 @@
+@model Trails4Health.Models.Stage
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <h4>Stage</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="StageId" />
+        <div class="form-group">
+            <label asp-for="StageName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="StageName" class="form-control" />
+                <span asp-validation-for="StageName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="StageStartLoc" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="StageStartLoc" class="form-control" />
+                <span asp-validation-for="StageStartLoc" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="StageEndLoc" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="StageEndLoc" class="form-control" />
+                <span asp-validation-for="StageEndLoc" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Geolocalization" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Geolocalization" class="form-control" />
+                <span asp-validation-for="Geolocalization" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Distance" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Distance" class="form-control" />
+                <span asp-validation-for="Distance" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Duration" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Duration" class="form-control" />
+                <span asp-validation-for="Duration" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

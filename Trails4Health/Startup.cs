@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Trails4Health.Models;
 using Microsoft.EntityFrameworkCore;
+using Trails4Health.Data;
 
 namespace Trails4Health
 {
@@ -31,10 +32,10 @@ namespace Trails4Health
         {
             // Add framework services.
 
-            services.AddTransient<IStageRepository, EFStageRepository>();
-            services.AddDbContext<ApplicationDbContext>(options =>
+            
+            services.AddDbContext<StagesDbContext>(options =>
             options.UseSqlServer(
-            Configuration.GetConnectionString("ConnectionStringTrails4Health")));
+            Configuration.GetConnectionString("ConnectionStringTrails")));
             
             services.AddMvc();
         }
@@ -63,7 +64,6 @@ namespace Trails4Health
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-            SeedData.EnsurePopulated(app.ApplicationServices);
-        }
+             }
     }
 }
