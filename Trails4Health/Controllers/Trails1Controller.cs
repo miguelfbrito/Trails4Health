@@ -49,9 +49,9 @@ namespace Trails4Health.Controllers
         // GET: Trails1/Create
         public IActionResult Create()
         {
-            ViewData["DifficultyID"] = new SelectList(_context.Difficulties, "DifficultyID", "DifficultyID");
-            ViewData["SeasonID"] = new SelectList(_context.Seasons, "SeasonID", "SeasonID");
-            ViewData["SlopeID"] = new SelectList(_context.Slopes, "SlopeID", "SlopeID");
+            ViewData["DifficultyID"] = new SelectList(_context.Difficulties, "DifficultyID", "DifficultyLevel");
+            ViewData["SeasonID"] = new SelectList(_context.Seasons, "SeasonID", "SeasonName");
+            ViewData["SlopeID"] = new SelectList(_context.Slopes, "SlopeID", "SlopeType");
             return View();
         }
 
@@ -87,9 +87,9 @@ namespace Trails4Health.Controllers
             {
                 return NotFound();
             }
-            ViewData["DifficultyID"] = new SelectList(_context.Difficulties, "DifficultyID", "DifficultyID", trail.DifficultyID);
-            ViewData["SeasonID"] = new SelectList(_context.Seasons, "SeasonID", "SeasonID", trail.SeasonID);
-            ViewData["SlopeID"] = new SelectList(_context.Slopes, "SlopeID", "SlopeID", trail.SlopeID);
+            ViewData["DifficultyID"] = new SelectList(_context.Difficulties, "DifficultyID", "DifficultyLevel", trail.DifficultyID);
+            ViewData["SeasonID"] = new SelectList(_context.Seasons, "SeasonID", "SeasonName", trail.SeasonID);
+            ViewData["SlopeID"] = new SelectList(_context.Slopes, "SlopeID", "SlopeType", trail.SlopeID);
             return View(trail);
         }
 

@@ -4,74 +4,72 @@
     ViewData["Title"] = "Delete";
 }
 
-<h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Trail</h4>
+<div style="margin-top:40px">
+    <h3>Tem a certeza que pretende Desativar este trilho?</h3>
     <hr />
     <dl class="dl-horizontal">
         <input type="hidden" asp-for="TrailID" />
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            Nome:
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Name)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Duration)
+            Duracao:
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Duration)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.DistanceToTravel)
+            Distancia:
         </dt>
         <dd>
             @Html.DisplayFor(model => model.DistanceToTravel)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.StartLoc)
+            Inicio:
         </dt>
         <dd>
             @Html.DisplayFor(model => model.StartLoc)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.EndLoc)
+            Fim:
         </dt>
         <dd>
             @Html.DisplayFor(model => model.EndLoc)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.IsActivated)
+            Ativo:
         </dt>
         <dd>
             @Html.DisplayFor(model => model.IsActivated)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Difficulty)
+            Dificuldade:
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Difficulty.DifficultyID)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Season)
+            Epoca Aconselhada:
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Season.SeasonID)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Slope)
+            Desnivel:
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Slope.SlopeID)
         </dd>
     </dl>
     
-    <form asp-action="Delete">
+    <form asp-action="Delete" style="margin-left:15px">
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-primary" /> |
-            <a asp-action="Index">Back to List</a>
+            <input type="submit" value="Desativar" class="btn btn-danger" /> 
+            <a asp-action="Index" class="btn btn-primary" >Voltar ao Gestao de Trilhos</a>
         </div>
     </form>
 </div>

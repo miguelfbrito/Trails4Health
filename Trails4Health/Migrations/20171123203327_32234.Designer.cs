@@ -8,9 +8,10 @@ using Trails4Health.Models;
 namespace Trails4Health.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171123203327_32234")]
+    partial class _32234
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.3")
@@ -127,20 +128,17 @@ namespace Trails4Health.Migrations
 
                     b.Property<int>("Duration");
 
-                    b.Property<string>("EndLoc")
-                        .IsRequired();
+                    b.Property<string>("EndLoc");
 
                     b.Property<bool>("IsActivated");
 
-                    b.Property<string>("Name")
-                        .IsRequired();
+                    b.Property<string>("Name");
 
                     b.Property<int>("SeasonID");
 
                     b.Property<int>("SlopeID");
 
-                    b.Property<string>("StartLoc")
-                        .IsRequired();
+                    b.Property<string>("StartLoc");
 
                     b.HasKey("TrailID");
 

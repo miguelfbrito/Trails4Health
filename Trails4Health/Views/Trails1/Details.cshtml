@@ -4,69 +4,68 @@
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>Trail</h4>
+<div style="margin-top:30px">
+    <h4>Detalhes</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            Nome:
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Name)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Duration)
+            Duracao:
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Duration)
+            @Html.DisplayFor(model => model.Duration) Min
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.DistanceToTravel)
+            Distancia
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.DistanceToTravel)
+            @Html.DisplayFor(model => model.DistanceToTravel) Km
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.StartLoc)
+            Inicio:
         </dt>
         <dd>
             @Html.DisplayFor(model => model.StartLoc)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.EndLoc)
+            Fim:
         </dt>
         <dd>
             @Html.DisplayFor(model => model.EndLoc)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.IsActivated)
+            Ativo:
         </dt>
         <dd>
             @Html.DisplayFor(model => model.IsActivated)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Difficulty)
+            Dificuldade:
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Difficulty.DifficultyID)
+            @Html.DisplayFor(model => model.Difficulty.DifficultyLevel)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Season)
+            Epoca Aconselhada:
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Season.SeasonID)
+            @Html.DisplayFor(model => model.Season.SeasonName)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Slope)
+            Desnivel:
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Slope.SlopeID)
+            @Html.DisplayFor(model => model.Slope.SlopeType)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.TrailID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.TrailID" class="btn btn-warning">Editar</a>
+    <a asp-action="Index" class="btn btn-primary">Voltar ao Gestao de Trilhos</a>
 </div>

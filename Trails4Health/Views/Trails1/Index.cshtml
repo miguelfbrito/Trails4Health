@@ -4,38 +4,36 @@
     ViewData["Title"] = "Index";
 }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table table-striped">
+
+<table class="table table-striped" style="margin-top:40px">
     <thead>
         <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Name)
+                    Nome
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Duration)
+                    Duracao
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.DistanceToTravel)
+                    Distancia a Percorrer
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.StartLoc)
+                    Localizacao do Inicio
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.EndLoc)
+                    Localizacao do Fim
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.IsActivated)
+                    Esta Ativo?
                 </th>
             <th>
-                @Html.DisplayNameFor(model => model.Difficulty)
+                Dificuldade
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Season)
+                Estacao do aconselhada
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Slope)
+                Desnivel
             </th>
             <th></th>
         </tr>
@@ -47,10 +45,10 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Duration)
+                @Html.DisplayFor(modelItem => item.Duration) Min
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DistanceToTravel)
+                @Html.DisplayFor(modelItem => item.DistanceToTravel) Km
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.StartLoc)
@@ -62,16 +60,16 @@
                 @Html.DisplayFor(modelItem => item.IsActivated)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Difficulty.DifficultyID)
+                @Html.DisplayFor(modelItem => item.Difficulty.DifficultyLevel)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Season.SeasonID)
+                @Html.DisplayFor(modelItem => item.Season.SeasonName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Slope.SlopeID)
+                @Html.DisplayFor(modelItem => item.Slope.SlopeType)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.TrailID">Edit</a> |
+                <a asp-action="Edit"  asp-route-id="@item.TrailID">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.TrailID">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.TrailID">Delete</a>
             </td>
@@ -79,3 +77,6 @@
 }
     </tbody>
 </table>
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Trail</a>
+</p>
