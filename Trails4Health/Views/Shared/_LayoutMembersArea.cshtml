@@ -1,8 +1,9 @@
-﻿@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+﻿
+@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Trails4Health</title>
     <environment names="Development">
@@ -21,7 +22,7 @@
         <link rel="stylesheet" href="~/css/owl-carousel/owl.theme.css" />
         <link rel="stylesheet" href="~/css/owl-carousel/owl.transitions.css">
 
-        
+
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
         <script type="text/javascript" src="~/js/jquery/jquery.js"></script>
         <script type="text/javascript" src="~/js/script.js"></script>
@@ -36,7 +37,7 @@
         <link rel="stylesheet" href="~/css/style.css" />
         <link rel="stylesheet" href="~/css/responsive.css" />
     </environment>
-    
+
     <environment names="Staging,Production">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
@@ -49,7 +50,7 @@
 
     <div class='preloader'><div class='loaded'>&nbsp;</div></div>
     <header id="home" class="header">
-        <div class="main_menu_bg navbar-fixed-top">
+        <div class="main_menu_bg navbar-fixed-top menu-scroll">
             <div class="container">
                 <div class="row">
                     <div class="nave_menu">
@@ -73,12 +74,9 @@
                                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                                     <ul class="nav navbar-nav navbar-right">
-                                        <li><a href="#home">Home</a></li>
-                                        <li><a href="#sobre">Sobre</a></li>
-                                        <li><a href="#trilhos">Trilhos</a></li>
-                                        <li><a href="#contacto">Contacto</a></li>
-                                        <li><a asp-controller="Home" asp-action="Login">Login</a></li>
-                                        <li><a asp-controller="Home" asp-action="MemberArea">Painel Utilizador</a></li>
+                                        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                                        <li><a asp-controller="Historic" asp-action="CheckHistoric">Hist�rico</a></li>
+                                        <li><a href="#trilhos">Gerir Trilhos</a></li>
 
                                     </ul>
                                 </div><!-- /.navbar-collapse -->
@@ -91,14 +89,18 @@
 
         </div>
     </header> <!--End of header -->
-    <div>
-        @RenderBody()
-        <hr />
-      <!--  <footer style="text-align:center;">
-            <p>&copy; 2017 - Trails4Health</p>
-        </footer>-->
+
+    <div class="container members-area">
+        <div class="row">
+            <div class="col-md-12">
+                @RenderBody()
+                <hr />
+                <!--  <footer style="text-align:center;">
+                    <p>&copy; 2017 - Trails4Health</p>
+                </footer>-->
+            </div>
+        </div>
     </div>
-  
     @RenderSection("Scripts", required: false)
 </body>
 </html>

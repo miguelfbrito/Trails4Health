@@ -6,6 +6,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20171121161102_in11.cs" />
+    <Compile Remove="Migrations\20171121161102_in11.Designer.cs" />
+    <Compile Remove="Migrations\20171121161908_t.cs" />
+    <Compile Remove="Migrations\20171121161908_t.Designer.cs" />
+    <Compile Remove="Migrations\20171121162235_t1.cs" />
+    <Compile Remove="Migrations\20171121162235_t1.Designer.cs" />
+    <Compile Remove="Migrations\20171122001910_kk.cs" />
+    <Compile Remove="Migrations\20171122001910_kk.Designer.cs" />
+    <Compile Remove="Migrations\20171122003301_4121.cs" />
+    <Compile Remove="Migrations\20171122003301_4121.Designer.cs" />
+    <Compile Remove="Migrations\20171122153326_k213.cs" />
+    <Compile Remove="Migrations\20171122153326_k213.Designer.cs" />
+    <Compile Remove="Migrations\20171122154744_5125.cs" />
+    <Compile Remove="Migrations\20171122154744_5125.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.3" />
@@ -21,13 +38,6 @@
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Data\" />
-    <Folder Include="Views\Shared\" />
-    <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,79 @@
+@model HistoricListViewModel
+
+@{
+    ViewData["Title"] = "Check History";
+    Layout = "~/Views/Shared/_LayoutMembersArea.cshtml";
+}
+
+
+<div id="checkhistory">
+    @foreach (Historic h in Model.Historic)
+    {
+        <div class="checkhistory-item">
+            <div class="checkhistory-item-top">
+                
+                <button onclick="location.href='@Url.Action("HistoricInformation", "Historic")'" type="button" style="float:right" class="btn btn-primary btn-xs">
+                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                </button>
+                <button onclick="location.href='@Url.Action("AddInformation", "Historic")'" type="button" style="float:right" class="btn btn-primary btn-xs">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </button>
+
+                <h5>Trilho Serra - Manteigas</h5> <!-- ir buscar nome do trilho pelo id-->
+                <p>25 de Junho de 2017</p>
+                
+            </div>
+
+            <div class="checkhistory-item-container">
+                <table class="table-container">
+                    <tr>
+                        <td>
+                            <img src="~/images/serra.jpg" />
+                        </td>
+                        <td>
+                            <p>@h.TouristID</p>
+                            <p>@h.TrailID</p>
+                            <p>@h.DifficultyID</p>
+                            <p>@h.TimeTaken</p>
+                            <p>@h.Observations</p>
+                            <p>@h.RealizationDate</p>
+                        </td>
+                     
+                    </tr>
+                   
+                </table>
+                
+            </div>
+
+            <!--
+                
+            <p>@h.TouristID</p>
+            <p>@h.TrailID</p>
+            <p>@h.DifficultyID</p>
+            <p>@h.TimeTaken</p>
+            <p>@h.Observations</p>
+            <p>@h.RealizationDate</p>
+
+                    Trilho X-Y  Dia Realizacao
+                    Imagem  Observações
+                    Dificuldade
+
+
+
+
+            public int HistoricID { get; set; }
+            public int TouristID { get; set; }
+            public int TrailID{ get; set; }
+            public int DifficultyID { get; set; }
+            public int TimeTaken { get; set; }
+            public String Observations { get; set; }
+            public string RealizationDate { get; set; }
+
+                    -->
+        </div>
+
+
+    }
+
+
+</div>
