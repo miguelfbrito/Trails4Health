@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Trails4Health.Models
 {
-    public class EFProductRepository : IHistoricRepository {
+    public class EFHistoricRepository : IHistoricRepository {
         private ApplicationDbContext dbContext;
 
-        public EFProductRepository(ApplicationDbContext dbContext)
+        public EFHistoricRepository(ApplicationDbContext dbContext)
         {
             this.dbContext = dbContext;
         }

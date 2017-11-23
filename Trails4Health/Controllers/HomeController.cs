@@ -44,5 +44,10 @@ namespace Trails4Health.Controllers
         {
             return View();
         }
+
+        public IActionResult MemberArea()
+        {
+            return View();
+        }
     }
 }

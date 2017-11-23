@@ -11,9 +11,6 @@ namespace Trails4Health.Models
 
     public class Historic
     {
-        public static int DIFFICULTY_EASY = 1;
-        public static int DIFFICULTY_INTERMEDIATE = 2;
-        public static int DIFFICULTY_HARD = 3;
         
         public int HistoricID { get; set; }
         public int TouristID { get; set; }

@@ -31,7 +31,8 @@ namespace Trails4Health
         {
             // Add framework services.
             services.AddMvc();
-            services.AddTransient<IHistoricRepository, EFProductRepository>();
+            services.AddTransient<IHistoricRepository, EFHistoricRepository>();
+       //     services.AddTransient<ITouristRepository, EFTouristRepository>();
 
             services.AddDbContext<ApplicationDbContext>(
                 options => options.UseSqlServer(

@@ -1,0 +1,68 @@
+
+@{
+    ViewData["Title"] = "AddInformation";
+    Layout = "~/Views/Shared/_LayoutMembersArea.cshtml";
+}
+<form class="form-horizontal">
+    <fieldset>
+        <!-- Text input-->
+
+        
+        <!-- Textarea -->
+        
+        <!-- Multiple Radios (inline) -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="tipo">-----:</label>
+            <div class="col-md-4">
+                <label class="radio-inline" for="tipo-0">
+                    <input type="radio" name="tipo" id="tipo-0" value="interno" checked="checked">
+                    ex1
+                </label>
+                <label class="radio-inline" for="tipo-1">
+                    <input type="radio" name="tipo" id="tipo-1" value="externo">
+                    ex2
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <div class="date-picker">
+                <label class="col-md-4 control-label" for="dateofbirth">Data</label>
+
+                <div class="col-md-4">
+                    <input type="date" name="dateofbirth" id="dateofbirth">
+                </div>
+            </div> 
+        </div>
+        <!-- Select Basic -->
+       
+       
+        <!-- Select Basic -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="grupo_responsavel">Dificuldade</label>
+            <div class="col-md-2">
+                <select id="grupo_responsavel" name="grupo_responsavel" class="form-control">
+                    <option value="1">Fácil</option>
+                    <option value="2">Intermédia</option>
+                    <option value="2">Difícil</option>
+                </select>
+            </div>
+        </div>
+       
+        
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="descricao">Observações:</label>
+            <div class="col-md-4">
+                <textarea class="form-control" id="descricao" name="descricao">Observações sobre a experiência</textarea>
+            </div>
+        </div>
+
+        <!-- Button -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="salvar"></label>
+            <div class="col-md-2">
+                <button id="salvar" name="salvar" class="btn btn-primary">Button</button>
+            </div>
+        </div>
+    </fieldset>
+</form>

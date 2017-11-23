@@ -12,6 +12,7 @@ namespace Trails4Health.Controllers
     {
 
         private IHistoricRepository repository;
+
         public int PageSize = 6;
         public HistoricController(IHistoricRepository repository)
         {
@@ -38,9 +39,16 @@ namespace Trails4Health.Controllers
             );
         }*/
 
+        
         public ViewResult CheckHistoric()
-        {
+        { 
             return View(new HistoricListViewModel { Historic = repository.Historics });
         }
+
+        public ViewResult AddInformation()
+        {
+            return View();
+        }
+
     }
 }

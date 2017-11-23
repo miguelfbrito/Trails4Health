@@ -8,6 +8,7 @@ namespace Trails4Health.Models.ViewModels
     public class HistoricListViewModel
     {
         public IEnumerable<Historic> Historic { get; set; }
+        public IEnumerable<Tourist> Tourist { get; set; }
         public PagingInfo PagingInfo { get; set; }
     }
 }

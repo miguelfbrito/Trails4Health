@@ -10,5 +10,7 @@ namespace Trails4Health.Models
     {
         public ApplicationDbContext(DbContextOptions options) : base(options) { }
         public DbSet<Historic> Historics { get; set; }
+        public DbSet<Tourist> Tourists { get; set; }
     }
 }
+ 
