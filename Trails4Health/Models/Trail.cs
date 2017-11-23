@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,6 +8,7 @@ namespace Trails4Health.Models
 {
     public class Trail
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TrailID { get; set; }
         public string Name { get; set; }
         public int Duration { get; set; }

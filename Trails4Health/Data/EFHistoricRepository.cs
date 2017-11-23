@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Trails4Health.Models
 {
-    public class EFHistoricRepository : IHistoricRepository {
+    public class EFHistoricRepository : IHistoricRepository
+    {
         private ApplicationDbContext dbContext;
 
         public EFHistoricRepository(ApplicationDbContext dbContext)
@@ -15,6 +16,5 @@ namespace Trails4Health.Models
         }
 
         public IEnumerable<Historic> Historics => dbContext.Historics;
-
     }
 }

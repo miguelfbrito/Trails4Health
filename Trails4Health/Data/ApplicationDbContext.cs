@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -20,9 +22,9 @@ namespace Trails4Health.Models
         public DbSet<Stage_Trail> Stages_Trails { get; set; }
         public DbSet<Status_Trail> Status_Trails { get; set; }
 
+   
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
             /*   public int TouristID { get; set; }
         public int TimeTaken { get; set; }
         public String Observations { get; set; }
@@ -35,22 +37,11 @@ namespace Trails4Health.Models
         public int TrailID { get; set; }*/
 
             //Historic
-            modelBuilder.Entity<Historic>()
-                 .HasOne(h => h.Difficulty)
-                 .WithMany(d => d.Historics)
-                 .HasForeignKey(h => h.DifficultyID);
-
-
-            modelBuilder.Entity<Historic>()
-                 .HasOne(h => h.Trail)
-                 .WithMany(t => t.Historics)
-                 .HasForeignKey(h => h.TrailID);
-
-
-            modelBuilder.Entity<Historic>()
-                 .HasOne(h => h.Tourist)
-                 .WithMany(t => t.Historics)
-                 .HasForeignKey(h => h.TouristID);
+            /*
+            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+            {
+                relationship.DeleteBehavior = DeleteBehavior.Restrict;
+            }*/
 
             //Season
             modelBuilder.Entity<Trail>()
@@ -67,6 +58,19 @@ namespace Trails4Health.Models
                 .HasOne(trail => trail.Slope)
                 .WithMany(slope => slope.Trails)
                 .HasForeignKey(trail => trail.SlopeID);
+
+
+
+            // TURISTA
+
+            /*
+               public int TouristID { get; set; }
+        public String Name { get; set; }
+        public int Age { get; set; }
+        public String CC { get; set; }
+        public String Phone { get; set; }
+        public String Email { get; set; }
+*/
 
             //--------------------------------------------------------------------------------
 
@@ -103,6 +107,34 @@ namespace Trails4Health.Models
                 .WithMany(status => status.StatusTrails)
                 .HasForeignKey(st => st.StatusID);
             //-------------------------------------------------------------------------------------------
+
+         //   modelBuilder.Entity<Historic>()
+           //    .HasOne(t => t.Trail).WithMany(h => h.Historics).IsRequired().OnDelete(Microsoft.EntityFrameworkCore.Metadata.DeleteBehavior.Restrict);
+
+            //modelBuilder.Entity<Historic>()
+              // .HasOne(t => t.Tourist).WithMany(h => h.Historics).IsRequired().OnDelete(Microsoft.EntityFrameworkCore.Metadata.DeleteBehavior.Restrict);
+
+                
+
+            modelBuilder.Entity<Historic>().HasKey(h => new { h.TouristID, h.TrailID});
+
+
+            /*modelBuilder.Entity<Historic>()
+               .HasOne(h => h.Difficulty)
+               .WithMany(d => d.Historics)
+               .HasForeignKey(h => h.DifficultyID);
+            ;*/
+
+            modelBuilder.Entity<Historic>()
+                 .HasOne(h => h.Trail)
+                 .WithMany(t => t.Historics)
+                 .HasForeignKey(h => h.TrailID);
+
+            modelBuilder.Entity<Historic>()
+                 .HasOne(h => h.Tourist)
+                 .WithMany(t => t.Historics)
+                 .HasForeignKey(h => h.TouristID);//.OnDelete(Microsoft.EntityFrameworkCore.Metadata.DeleteBehavior.Restrict);
+
 
         }
     }
