@@ -10,7 +10,7 @@
 <br />
 
 
-<form asp-action="Create">
+<form asp-action="AddInformation">
     <div class="form-horizontal">
 
 <!-- TODO: passar data para um date picker-->     
@@ -29,9 +29,6 @@
             -->
 
 
-
-
-
         <div class="form-group">
             <label asp-for="TimeTaken" class="col-md-2 control-label">Duracao:</label>
             <div class="col-md-10">
@@ -48,6 +45,14 @@
             </div>
         </div>
 
+        <!--<div class="form-group">
+            <label asp-for="DifficultyID" class="control-label col-md-2">Dificuldade:</label>
+            <div class="col-md-10">
+                <select asp-for="DifficultyID" class="form-control" asp-items="ViewBag.DifficultyID"></select>
+                <span asp-validation-for="DifficultyID" class="text-danger"></span>
+            </div>
+        </div>-->
+
         <div class="form-group">
             <label asp-for="Observations" class="col-md-2 control-label">Observacoes:</label>
             <div class="col-md-10 observations">
@@ -58,9 +63,10 @@
             </div>
         </div>
 
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Guardar" class="btn btn-success" />
                 <a asp-action="CheckHistoric" class="btn btn btn-primary">Voltar</a>
             </div>
         </div>
