@@ -1,0 +1,20 @@
+@model StagesListViewModel
+@{
+    ViewData["Title"] = "Stage";
+}
+
+
+<h2>Stage List</h2>
+
+@foreach (Stage s in Model.Stages)
+{
+    <div>
+        <h3>@s.StageID</h3>
+        <h3>@s.StageName</h3>
+        <p></p>
+        <h4>@s.StageStartLoc</h4>
+        <h4>@s.StageEndLoc</h4>
+        <h4>@s.Distance</h4>
+        <h4>@s.Duration</h4>
+    </div>
+}

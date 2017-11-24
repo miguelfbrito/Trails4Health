@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Trails4Health.Migrations
 {
-    public partial class Initial : Migration
+    public partial class _125 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -54,16 +54,19 @@ namespace Trails4Health.Migrations
                 name: "Stages",
                 columns: table => new
                 {
-                    StageID = table.Column<int>(nullable: false)
+                    StageId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Distance = table.Column<int>(nullable: false),
                     Duration = table.Column<int>(nullable: false),
-                    Geolocation = table.Column<string>(nullable: true),
-                    StageName = table.Column<string>(nullable: true)
+                    Geolocalization = table.Column<string>(nullable: false),
+                    IsActivated = table.Column<bool>(nullable: false),
+                    StageEndLoc = table.Column<string>(nullable: false),
+                    StageName = table.Column<string>(nullable: false),
+                    StageStartLoc = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Stages", x => x.StageID);
+                    table.PrimaryKey("PK_Stages", x => x.StageId);
                 });
 
             migrationBuilder.CreateTable(
@@ -185,7 +188,7 @@ namespace Trails4Health.Migrations
                         name: "FK_Stages_Trails_Stages_StageID",
                         column: x => x.StageID,
                         principalTable: "Stages",
-                        principalColumn: "StageID",
+                        principalColumn: "StageId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Stages_Trails_Trails_TrailID",

@@ -20,9 +20,10 @@ namespace Trails4Health.Models
         public DbSet<Stage> Stages { get; set; }
         public DbSet<Status> Status { get; set; }
         public DbSet<Stage_Trail> Stages_Trails { get; set; }
-        public DbSet<Status_Trail> Status_Trails { get; set; }
+        public DbSet<Status_Trail> Status_Trails { get; set; }       
+        
 
-   
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             /*   public int TouristID { get; set; }

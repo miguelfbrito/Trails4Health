@@ -10,6 +10,7 @@ namespace Trails4Health.Models
     public class Trail
     {
 
+
         public int TrailID { get; set; }
         [RegularExpression(@"[a-zA-Z0-9\s\\._\\-]{3,}", ErrorMessage = "Nome Invalido")]
         [Required(ErrorMessage = "Please enter the Trail Name")]
@@ -50,4 +51,5 @@ namespace Trails4Health.Models
         public ICollection<Historic> Historics { get; set; }
     }
 }
+
 

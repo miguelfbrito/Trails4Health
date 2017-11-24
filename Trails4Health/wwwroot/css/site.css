@@ -3,6 +3,7 @@
 body {
     margin: 0;
 
+
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -143,4 +144,5 @@ input[type="checkbox"].input-validation-error {
 .text-align-left{
     text-align: left;
 }
+
 

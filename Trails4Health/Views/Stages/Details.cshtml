@@ -1,0 +1,61 @@
+@model Trails4Health.Models.Stage
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutMembersArea.cshtml";
+}
+
+
+
+<div style="margin-top:30px">
+    <h4>Detalhes</h4>
+   
+    <dl class="dl-horizontal">
+        <dt>
+            Nome:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StageName)
+        </dd>
+        <dt>
+            Localizacao de inicio:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StageStartLoc)
+        </dd>
+        <dt>
+            Localizacao de fim:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StageEndLoc)
+        </dd>
+        <dt>
+            Estado da etapa:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsActivated)
+        </dd>
+        <dt>
+           Geolocalizacao:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Geolocalization)
+        </dd>
+        <dt>
+            Distancia:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Distance)
+        </dd>
+        <dt>
+            Duracao:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Duration)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.StageId" class="btn btn-warning">Editar</a> |
+    <a asp-action="Index" class="btn btn-primary">Voltar a etapas</a>
+</div>

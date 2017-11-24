@@ -1,0 +1,64 @@
+@model Trails4Health.Models.Stage
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_LayoutMembersArea.cshtml";
+}
+
+    <div style="margin-top:40px">
+        <h3>Tem a certeza que pretende Desativar esta etapa?</h3>
+    
+    <dl class="dl-horizontal">
+        <input type="hidden" asp-for="StageId" />
+        <dt>
+            Nome:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StageName)
+        </dd>
+        <dt>
+            Localizacao de inicio:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StageStartLoc)
+        </dd>
+        <dt>
+            Localizacao de fim:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StageEndLoc)
+        </dd>
+        <dt>
+            Estado da etapa:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsActivated)
+        </dd>
+        <dt>
+            Geolocalizacao:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Geolocalization)
+        </dd>
+        <dt>
+           Distancia:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Distance)
+        </dd>
+        <dt>
+            Duracao:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Duration)
+        </dd>
+    </dl>
+
+
+
+<form asp-action="Delete">
+    <div class="form-actions no-color">
+        <input type="submit" value="Desativar" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-primary">Voltar a etapas</a>
+    </div>
+</form>
