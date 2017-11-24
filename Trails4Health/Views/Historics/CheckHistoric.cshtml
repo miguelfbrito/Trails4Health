@@ -1,4 +1,4 @@
-@model HistoricListViewModel
+@model IEnumerable<Trails4Health.Models.Historic>
 
 @{
     ViewData["Title"] = "Check History";
@@ -7,20 +7,17 @@
 
 
 <div id="checkhistory">
-    @foreach (Historic h in Model.Historic)
+    @foreach (var item in Model)
     {
         <div class="checkhistory-item">
             <div class="checkhistory-item-top">
                 
-                <button onclick="location.href='@Url.Action("HistoricInformation", "Historic")'" type="button" style="float:right" class="btn btn-primary btn-xs">
-                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                </button>
-                <button onclick="location.href='@Url.Action("AddInformation", "Historic")'" type="button" style="float:right" class="btn btn-primary btn-xs">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                </button>
-
-                <h5>Trilho Serra - Manteigas</h5> <!-- ir buscar nome do trilho pelo id-->
-                <p>25 de Junho de 2017</p>
+       
+                <a style="float:right; margin-left: 5px;" asp-action="HistoricInformation" asp-route-idTourist="@item.TouristID" asp-route-idTrail="@item.TrailID" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                <a style="float:right;" asp-action="AddInformation" asp-route-idTourist="@item.TouristID" asp-route-idTrail="@item.TrailID" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+              
+                <h5>@Html.DisplayFor(modelItem => item.Trail.Name)</h5> <!-- ir buscar nome do trilho pelo id-->
+                <p>@Html.DisplayFor(modelItem => item.RealizationDate)</p>
                 
             </div>
 
@@ -31,11 +28,8 @@
                             <img src="~/images/serra.jpg" />
                         </td>
                         <td>
-                            <p>@h.TouristID</p>
-                            <p>@h.TrailID</p>
-                            <p>@h.TimeTaken</p>
-                            <p>@h.Observations</p>
-                            <p>@h.RealizationDate</p>
+                            <p>Duração: @Html.DisplayFor(modelItem => item.Trail.Duration) min</p>
+                            <p>Observações: @Html.DisplayFor(modelItem => item.Observations)</p>
                         </td>
                      
                     </tr>
@@ -45,12 +39,7 @@
             </div>
 
             <!--
-                
-            <p>@h.TouristID</p>
-            <p>@h.TrailID</p>
-            <p>@h.TimeTaken</p>
-            <p>@h.Observations</p>
-            <p>@h.RealizationDate</p>
+   
 
                     Trilho X-Y  Dia Realizacao
                     Imagem  Observações

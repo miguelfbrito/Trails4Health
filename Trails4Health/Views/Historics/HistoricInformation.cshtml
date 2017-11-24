@@ -1,3 +1,4 @@
+@model Trails4Health.Models.Historic
 
 @{
     ViewData["Title"] = "HistoricInformation";
@@ -8,7 +9,7 @@
     <div class="row">
         <div class="col-md-12">
 
-            <h5>Serra - Manteigas</h5>
+            <h5>@Html.DisplayFor(model => model.Trail.Name)</h5> <!--Trail Name-->
             <br />
 
             <p style="font-weight: bold; font-size: 14px;">Detalhes do Utilizador</p>
@@ -26,20 +27,22 @@
                 <div class="col-md-4">
                     <div class="info-item">
                         <img src="~/images/time.svg" width="85" height="85" />
-                        <p>2h50</p>
+                        <p>@Html.DisplayFor(model => model.TimeTaken)</p> <!--Time Tkane -->
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="info-item">
                         <img src="~/images/difficulty.png" width="85" height="85" />
-                        <p>Intermedia</p>
+                <p> Intermedia</p>
                     </div>
                 </div>
 
                 <div class="col-md-12 text-align-left">
                     <p style="font-weight: bold; font-size: 14px; text-align: left;">Observações</p>
                     <p style="text-align: justify;
-                              text-justify: inter-word;">Belo passeio no meio da natureza. Requer um pouco de esforço físico, mas faz-se muito bem.</p>
+                              text-justify: inter-word;">
+                        @Html.DisplayFor(model => model.Observations)
+                        </p> <!--Observations-->
                 </div>
                 
             </div>
@@ -51,20 +54,20 @@
                 <div class="col-md-4">
                     <div class="info-item">
                         <img src="~/images/distance.png" width="85" height="85" />
-                        <p>10 Km</p>
+                        <p> @Html.DisplayFor(model => model.Trail.DistanceToTravel) Km</p> <!--Distance to travel TRAIl-->
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="info-item">
                         <img src="~/images/time.svg" width="85" height="85" />
-                        <p>2h30</p>
+                        <p>@Html.DisplayFor(model => model.Trail.Duration)</p> <!-- Duracao Trilho-->
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="info-item">
                         <img src="~/images/difficulty.png" width="85" height="85" />
-                        <p>Intermedia</p>
+                        <p>Intermedia</p> <!--Dificuldade     -->
                     </div>
                 </div>
             </div>

@@ -144,3 +144,7 @@ input[type="checkbox"].input-validation-error {
     text-align: left;
 }
 
+.observations input {
+    width: 250px;
+    height: 100px;
+}
