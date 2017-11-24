@@ -16,22 +16,22 @@
                     Duracao
                 </th>
                 <th>
-                    Distancia a Percorrer
+                    Distancia
                 </th>
                 <th>
-                    Localizacao do Inicio
+                    Inicio
                 </th>
                 <th>
-                    Localizacao do Fim
+                    Fim
                 </th>
                 <th>
-                    Esta Ativo?
+                   Ativo?
                 </th>
             <th>
                 Dificuldade
             </th>
             <th>
-                Estacao do aconselhada
+                Epoca aconselhada
             </th>
             <th>
                 Desnivel
@@ -70,14 +70,14 @@
                 @Html.DisplayFor(modelItem => item.Slope.Type)
             </td>
             <td>
-                <a asp-action="Edit"  asp-route-id="@item.TrailID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TrailID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TrailID">Delete</a>
+                <a asp-action="Edit"  asp-route-id="@item.TrailID">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.TrailID">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.TrailID">Desativar</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
 <p>
-    <a asp-action="Create" class="btn btn-primary">Create New Trail</a>
+    <a asp-action="Create" class="btn btn-primary">Criar novo trilho</a>
 </p>
