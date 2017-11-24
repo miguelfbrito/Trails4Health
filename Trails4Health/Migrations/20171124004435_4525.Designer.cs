@@ -8,8 +8,8 @@ using Trails4Health.Data;
 namespace Trails4Health.Migrations
 {
     [DbContext(typeof(StagesDbContext))]
-    [Migration("20171123160840_1546")]
-    partial class _1546
+    [Migration("20171124004435_4525")]
+    partial class _4525
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,13 +26,19 @@ namespace Trails4Health.Migrations
 
                     b.Property<int>("Duration");
 
-                    b.Property<string>("Geolocalization");
+                    b.Property<string>("Geolocalization")
+                        .IsRequired();
 
-                    b.Property<string>("StageEndLoc");
+                    b.Property<bool>("IsActivated");
 
-                    b.Property<string>("StageName");
+                    b.Property<string>("StageEndLoc")
+                        .IsRequired();
 
-                    b.Property<string>("StageStartLoc");
+                    b.Property<string>("StageName")
+                        .IsRequired();
+
+                    b.Property<string>("StageStartLoc")
+                        .IsRequired();
 
                     b.HasKey("StageId");
 

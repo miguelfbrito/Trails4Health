@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Trails4Health.Migrations
 {
-    public partial class _1546 : Migration
+    public partial class _4525 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,10 +17,11 @@ namespace Trails4Health.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Distance = table.Column<int>(nullable: false),
                     Duration = table.Column<int>(nullable: false),
-                    Geolocalization = table.Column<string>(nullable: true),
-                    StageEndLoc = table.Column<string>(nullable: true),
-                    StageName = table.Column<string>(nullable: true),
-                    StageStartLoc = table.Column<string>(nullable: true)
+                    Geolocalization = table.Column<string>(nullable: false),
+                    IsActivated = table.Column<bool>(nullable: false),
+                    StageEndLoc = table.Column<string>(nullable: false),
+                    StageName = table.Column<string>(nullable: false),
+                    StageStartLoc = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {

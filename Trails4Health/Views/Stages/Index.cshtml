@@ -4,31 +4,31 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+
+<table class="table table-striped" style="margin-top:40px">
     <thead>
         <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.StageName)
+                    Nome
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.StageStartLoc)
+                    Localizacao de inicio
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.StageEndLoc)
+                    Localizacao de fim
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Geolocalization)
+                    Estado do Trilho
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Distance)
+                    Geolocalizacao
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Duration)
+                    Distancia
+                </th>
+                <th>
+                    Duracao
                 </th>
             <th></th>
         </tr>
@@ -46,13 +46,16 @@
                 @Html.DisplayFor(modelItem => item.StageEndLoc)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.IsActivated)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Geolocalization)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Distance)
+                @Html.DisplayFor(modelItem => item.Distance) km
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Duration)
+                @Html.DisplayFor(modelItem => item.Duration) Min
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.StageId">Edit</a> |
@@ -63,3 +66,6 @@
 }
     </tbody>
 </table>
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Stage</a>
+</p>

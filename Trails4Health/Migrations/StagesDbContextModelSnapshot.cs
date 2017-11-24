@@ -25,13 +25,19 @@ namespace Trails4Health.Migrations
 
                     b.Property<int>("Duration");
 
-                    b.Property<string>("Geolocalization");
+                    b.Property<string>("Geolocalization")
+                        .IsRequired();
 
-                    b.Property<string>("StageEndLoc");
+                    b.Property<bool>("IsActivated");
 
-                    b.Property<string>("StageName");
+                    b.Property<string>("StageEndLoc")
+                        .IsRequired();
 
-                    b.Property<string>("StageStartLoc");
+                    b.Property<string>("StageName")
+                        .IsRequired();
+
+                    b.Property<string>("StageStartLoc")
+                        .IsRequired();
 
                     b.HasKey("StageId");
 

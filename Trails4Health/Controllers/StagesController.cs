@@ -54,7 +54,7 @@ namespace Trails4Health.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StageId,StageName,StageStartLoc,StageEndLoc,Geolocalization,Distance,Duration")] Stage stage)
+        public async Task<IActionResult> Create([Bind("StageId,StageName,StageStartLoc,StageEndLoc,IsActivated,Geolocalization,Distance,Duration")] Stage stage)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace Trails4Health.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("StageId,StageName,StageStartLoc,StageEndLoc,Geolocalization,Distance,Duration")] Stage stage)
+        public async Task<IActionResult> Edit(int id, [Bind("StageId,StageName,StageStartLoc,StageEndLoc,IsActivated,Geolocalization,Distance,Duration")] Stage stage)
         {
             if (id != stage.StageId)
             {
