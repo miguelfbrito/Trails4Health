@@ -27,8 +27,14 @@ namespace Trails4Health.Controllers
             return View();
         }
 
+        public IActionResult Stage()
+        {
+            return View();
+        }
         public IActionResult Login()
         {
+
+
             return View();
         }
 
@@ -50,8 +56,11 @@ namespace Trails4Health.Controllers
         }
 
         public IActionResult MemberArea()
+
         {
             return View();
         }
+
+        
     }
 }

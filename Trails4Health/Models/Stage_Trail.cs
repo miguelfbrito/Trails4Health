@@ -7,6 +7,7 @@ namespace Trails4Health.Models
 {
     public class Stage_Trail
     {
+
         //FK Trilhos
         public int TrailID { get; set; }
         public Trail Trail { get; set; }
@@ -20,4 +21,5 @@ namespace Trails4Health.Models
 
     }
 }
+
 

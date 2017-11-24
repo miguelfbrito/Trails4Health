@@ -10,16 +10,19 @@ namespace Trails4Health.Models
     public class Trail
     {
 
-        public int TrailID { get; set; }
 
+        public int TrailID { get; set; }
+        [RegularExpression(@"[a-zA-Z0-9\s\\._\\-]{3,}", ErrorMessage = "Nome Invalido")]
         [Required(ErrorMessage = "Please enter the Trail Name")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Please enter the Duration")]
         public int Duration { get; set; }
         [Required(ErrorMessage = "Please enter the Distance")]
         public int DistanceToTravel { get; set; }
+        [RegularExpression(@"[a-zA-Z\s\\._\\-]{3,}", ErrorMessage = "Localizacao de Inicio Invalida")]
         [Required(ErrorMessage = "Please enter the Start Location")]
         public string StartLoc { get; set; }
+        [RegularExpression(@"[a-zA-Z\s\\._\\-]{3,}", ErrorMessage = "Localizacao de Fim Invalida")]
         [Required(ErrorMessage = "Please enter the End Location")]
         public string EndLoc { get; set; }
         public bool IsActivated { get; set; }
@@ -48,4 +51,5 @@ namespace Trails4Health.Models
         public ICollection<Historic> Historics { get; set; }
     }
 }
+
 

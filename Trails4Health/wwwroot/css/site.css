@@ -3,6 +3,7 @@
 body {
     margin: 0;
 
+
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -137,7 +138,7 @@ input[type="checkbox"].input-validation-error {
 
 .historic-information p {
     text-align: center;
-    margin-top: 10px;
+    margin-top: 30px;
 }
 
 .text-align-left{
@@ -148,3 +149,4 @@ input[type="checkbox"].input-validation-error {
     width: 250px;
     height: 100px;
 }
+

@@ -81,18 +81,28 @@ namespace Trails4Health.Migrations
 
             modelBuilder.Entity("Trails4Health.Models.Stage", b =>
                 {
-                    b.Property<int>("StageID")
+                    b.Property<int>("StageId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("Distance");
 
                     b.Property<int>("Duration");
 
-                    b.Property<string>("Geolocation");
+                    b.Property<string>("Geolocalization")
+                        .IsRequired();
 
-                    b.Property<string>("StageName");
+                    b.Property<bool>("IsActivated");
 
-                    b.HasKey("StageID");
+                    b.Property<string>("StageEndLoc")
+                        .IsRequired();
+
+                    b.Property<string>("StageName")
+                        .IsRequired();
+
+                    b.Property<string>("StageStartLoc")
+                        .IsRequired();
+
+                    b.HasKey("StageId");
 
                     b.ToTable("Stages");
                 });
