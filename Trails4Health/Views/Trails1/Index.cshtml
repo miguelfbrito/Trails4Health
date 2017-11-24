@@ -1,0 +1,83 @@
+@model IEnumerable<Trails4Health.Models.Trail>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutMembersArea.cshtml";
+}
+
+
+<table class="table table-striped" style="margin-top:40px">
+    <thead>
+        <tr>
+                <th>
+                    Nome
+                </th>
+                <th>
+                    Duracao
+                </th>
+                <th>
+                    Distancia a Percorrer
+                </th>
+                <th>
+                    Localizacao do Inicio
+                </th>
+                <th>
+                    Localizacao do Fim
+                </th>
+                <th>
+                    Esta Ativo?
+                </th>
+            <th>
+                Dificuldade
+            </th>
+            <th>
+                Estacao do aconselhada
+            </th>
+            <th>
+                Desnivel
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duration) Min
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DistanceToTravel) Km
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartLoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndLoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActivated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Difficulty.Level)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Season.SeasonName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Slope.Type)
+            </td>
+            <td>
+                <a asp-action="Edit"  asp-route-id="@item.TrailID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.TrailID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.TrailID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Trail</a>
+</p>

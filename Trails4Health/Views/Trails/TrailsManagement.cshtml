@@ -1,0 +1,53 @@
+﻿@model TrailsListViewModel
+@{
+    ViewData["Title"] = "Trails Management";
+}
+
+<table class="table table-striped" style="margin-top:100px;">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>AverageDuration</th>
+            <th>DistanceToTravel</th>
+            <th>Start Location</th>
+            <th>End Location</th>
+            <th>RecommendedTime</th>
+            <th>Is_Activated</th>
+            <th>ID_Difficulty</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (Trail t in Model.Trails)
+        {
+            <tr>
+                <td>@t.TrailID</td>
+                <td>@t.Name</td>
+                <td>@t.Duration</td>
+                <td>@t.DistanceToTravel</td>
+                <td>@t.StartLoc</td>
+                <td>@t.EndLoc</td>
+                <td>@t.SeasonID</td>
+                <td>@t.IsActivated</td>
+                <td>@t.DifficultyID</td>
+                <td class="text-center">
+                    <form asp-action="Delete" method="post">
+                        <a asp-action="Edit" class="btn btn-sm btn-warning"
+                           asp-route-productId="@t.TrailID">
+                            Edit
+                        </a>
+                        <input type="hidden" name="ProductID" value="@t.TrailID" />
+                        <button type="submit" class="btn btn-danger btn-sm">
+                            Delete
+                        </button>
+                    </form>
+                </td>
+
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+<a asp-action="CreateTrail" class="btn btn-primary">Create Trail</a>

@@ -17,3 +17,4 @@ namespace Trails4Health.Models
         public Status Status { get; set; }
     }
 }
+

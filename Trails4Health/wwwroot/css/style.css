@@ -139,17 +139,17 @@ a:hover {
 .btn {
     border: 1px solid #fff;
     display: inline-block;
-    min-width: 160px;
+    min-width: 70px;
     padding: .9em;
-    height: 50px;
+    height: 40px;
     text-align: center;
     color: #fff;
     font-style: normal;
     text-transform: uppercase;
     letter-spacing: 1px;
     margin: 0;
-    font-size: 16px;
-    font-weight: 300;
+    font-size: 12px;
+    font-weight: 200;
 }
 
     .btn:hover {
@@ -676,4 +676,24 @@ i, i:hover {
 
 h5 {
     color: black;
+}
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+.field-validation-error {
+    color: red;
+}
+
+.field-validation-valid {
+    color: none;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: darkred;
+}
+
+.validation-summary-valid {
+    display: none;
 }

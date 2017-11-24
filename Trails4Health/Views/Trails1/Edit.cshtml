@@ -1,0 +1,93 @@
+@model Trails4Health.Models.Trail
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutMembersArea.cshtml";
+}
+
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="TrailID" />
+        <div class="form-group">
+            <label asp-for="Name" class="col-md-2 control-label">Nome:</label>
+            <div class="col-md-10">
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Duration" class="col-md-2 control-label">Duracao(Min):</label>
+            <div class="col-md-10">
+                <input asp-for="Duration" class="form-control" />
+                <span asp-validation-for="Duration" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DistanceToTravel" class="col-md-2 control-label">Distancia(Km):</label>
+            <div class="col-md-10">
+                <input asp-for="DistanceToTravel" class="form-control" />
+                <span asp-validation-for="DistanceToTravel" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="StartLoc" class="col-md-2 control-label">Inicio:</label>
+            <div class="col-md-10">
+                <input asp-for="StartLoc" class="form-control" />
+                <span asp-validation-for="StartLoc" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="EndLoc" class="col-md-2 control-label">Fim:</label>
+            <div class="col-md-10">
+                <input asp-for="EndLoc" class="form-control" />
+                <span asp-validation-for="EndLoc" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <input asp-for="IsActivated" />
+                    <label asp-for="IsActivated">Ativo</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DifficultyID" class="control-label col-md-2">Dificuldade:</label>
+            <div class="col-md-10">
+                <select asp-for="DifficultyID" class="form-control" asp-items="ViewBag.DifficultyID"></select>
+                <span asp-validation-for="DifficultyID" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="SeasonID" class="control-label col-md-2">Epoca Aconselhada:</label>
+            <div class="col-md-10">
+                <select asp-for="SeasonID" class="form-control" asp-items="ViewBag.SeasonID"></select>
+                <span asp-validation-for="SeasonID" class="text-danger"></span> 
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="SlopeID" class="control-label col-md-2">Desnivel:</label>
+            <div class="col-md-10">
+                <select asp-for="SlopeID" class="form-control" asp-items="ViewBag.SlopeID"></select>
+                <span asp-validation-for="SlopeID" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-warning" />
+                <a asp-action="Index" class="btn btn-primary">Voltar ao Gestao de Trilhos </a>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

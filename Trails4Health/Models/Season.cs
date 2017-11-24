@@ -12,3 +12,4 @@ namespace Trails4Health.Models
         public ICollection<Trail> Trails { get; set; }
     }
 }
+

@@ -17,3 +17,4 @@ namespace Trails4Health.Models
         public ICollection<Stage_Trail> StagesTrails { get; set; }
     }
 }
+

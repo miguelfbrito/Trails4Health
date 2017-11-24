@@ -8,8 +8,9 @@ namespace Trails4Health.Models
     public class Slope
     {
         public int SlopeID { get; set; }
-        public string SlopeType { get; set; }
-        public string SlopeComment { get; set; }
+        public string Type { get; set; }
+        public string Comment { get; set; }
         public ICollection<Trail> Trails { get; set; }
     }
 }
+

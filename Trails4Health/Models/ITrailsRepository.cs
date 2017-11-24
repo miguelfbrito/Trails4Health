@@ -10,3 +10,4 @@ namespace Trails4Health.Models
         IEnumerable<Trail> Trails { get; }
     }
 }
+

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+
 using Trails4Health.Models;
 
 namespace Trails4Health
@@ -34,6 +35,7 @@ namespace Trails4Health
           //  services.AddTransient<ITrailsRepository, EFTrailsRepository>();
         //    services.AddTransient<ITouristRepository, EFTouristRepository>();
     services.AddTransient<IHistoricRepository, EFHistoricRepository>();
+	services.AddTransient<ITrailsRepository, EFTrailsRepository>();
             //     services.AddTransient<ITouristRepository, EFTouristRepository>();
 
             services.AddDbContext<ApplicationDbContext>(
@@ -41,6 +43,7 @@ namespace Trails4Health
                     Configuration.GetConnectionString("ConnectionStringTrails4Health")
                 )
             );
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

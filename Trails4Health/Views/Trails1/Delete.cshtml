@@ -1,0 +1,76 @@
+@model Trails4Health.Models.Trail
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_LayoutMembersArea.cshtml";
+}
+
+
+<div style="margin-top:40px">
+    <h3>Tem a certeza que pretende Desativar este trilho?</h3>
+    <hr />
+    <dl class="dl-horizontal">
+        <input type="hidden" asp-for="TrailID" />
+        <dt>
+            Nome:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            Duracao:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Duration)
+        </dd>
+        <dt>
+            Distancia:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DistanceToTravel)
+        </dd>
+        <dt>
+            Inicio:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StartLoc)
+        </dd>
+        <dt>
+            Fim:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EndLoc)
+        </dd>
+        <dt>
+            Ativo:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsActivated)
+        </dd>
+        <dt>
+            Dificuldade:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Difficulty.DifficultyID)
+        </dd>
+        <dt>
+            Epoca Aconselhada:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Season.SeasonID)
+        </dd>
+        <dt>
+            Desnivel:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Slope.SlopeID)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete" style="margin-left:15px">
+        <div class="form-actions no-color">
+            <input type="submit" value="Desativar" class="btn btn-danger" /> 
+            <a asp-action="Index" class="btn btn-primary" >Voltar ao Gestao de Trilhos</a>
+        </div>
+    </form>
+</div>

@@ -12,5 +12,6 @@ namespace Trails4Health.Models
         public string Comment { get; set; }
         public ICollection<Trail> Trails { get; set; }
         public ICollection<Historic> Historics { get; set; }
+
     }
 }
