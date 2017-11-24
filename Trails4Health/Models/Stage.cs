@@ -26,7 +26,6 @@ namespace Trails4Health.Models
         [Required(ErrorMessage = "Por favor escreva a localizacao de fim")]
         public string StageEndLoc { get; set; }
 
-        [Required(ErrorMessage = "Por favor indique o estado da etapa")]
         public bool IsActivated { get; set; }
 
         [RegularExpression(@"[a-zA-Z0-9\\._\\-]{3,}", ErrorMessage = "Geolocalizacao errada")]
