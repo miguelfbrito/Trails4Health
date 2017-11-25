@@ -20,14 +20,14 @@
                 <div class="col-md-4">
                     <div class="info-item">
                         <img src="~/images/feedback.png" width="85" height="85" />
-                        <p>Agradável</p>
+                        <p>Agradavel</p>
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="info-item">
                         <img src="~/images/time.svg" width="85" height="85" />
-                        <p>@Html.DisplayFor(model => model.TimeTaken)</p> <!--Time Tkane -->
+                        <p>@Html.DisplayFor(model => model.TimeTaken) min</p> <!--Time Tkane -->
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="col-md-12 text-align-left">
-                    <p style="font-weight: bold; font-size: 14px; text-align: left;">Observações</p>
+                    <p style="font-weight: bold; font-size: 14px; text-align: left;">Observacoes</p>
                     <p style="text-align: justify;
                               text-justify: inter-word;">
                         @Html.DisplayFor(model => model.Observations)
@@ -47,7 +47,9 @@
                 
             </div>
             
-            
+          <div style="margin-top: 300px;">
+
+          </div>
             <p style="font-weight: bold; font-size: 14px;">Detalhes do Trilho</p>
             <div class="historic-information">
 
@@ -61,7 +63,7 @@
                 <div class="col-md-4">
                     <div class="info-item">
                         <img src="~/images/time.svg" width="85" height="85" />
-                        <p>@Html.DisplayFor(model => model.Trail.Duration)</p> <!-- Duracao Trilho-->
+                        <p>@Html.DisplayFor(model => model.Trail.Duration) min</p> <!-- Duracao Trilho-->
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -82,8 +84,8 @@
                             <th>Nome</th>
                             <th>Local Inicio</th>
                             <th>Local Fim</th>
-                            <th>Distância (km)</th>
-                            <th>Duração (min)</th>
+                            <th>Distancia (km)</th>
+                            <th>Duracao (min)</th>
                         </tr>
                     </thead>
                     <tbody>
