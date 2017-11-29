@@ -18,7 +18,9 @@ namespace Trails4Health.Models
 
         [Required(ErrorMessage = "Please enter the date.")]
         public string RealizationDate { get; set; }
-        
+
+        public int HistoricID;
+
         public Difficulty Difficulty  { get; set; }
         public int? DifficultyID { get; set; }
 
