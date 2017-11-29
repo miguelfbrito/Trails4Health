@@ -14,29 +14,29 @@ namespace Trails4Health.Models
 
         public int StageId { get; set; }
 
-        [RegularExpression(@"[a-zA-Z0-9\\._\\-\\ ]{3,}",ErrorMessage ="Nome de etapa Errado")]
+        [RegularExpression(@"[a-zA-Z0-9\\._\\-\\ ]{3,}",ErrorMessage ="Nome de etapa Errado, caracteres especiais nao permitidos")]
         [Required(ErrorMessage = "Por favor escreva o nome da Etapa")]
         public string StageName { get; set; }
 
-        [RegularExpression(@"[a-zA-Z\\._\\-]{3,}", ErrorMessage = "Nome de inicio Errado")]
+        [RegularExpression(@"[a-zA-Z\\._\\-\\ ]{3,}", ErrorMessage = "Nome de inicio Errado, numeros e caracteres especiais nao permitidos")]
         [Required(ErrorMessage = "Por favor escreva a localizacao de inicio")]
         public string StageStartLoc { get; set; }
 
-        [RegularExpression(@"[a-zA-Z\\._\\-]{3,}", ErrorMessage = "Nome de fim Errado")]
+        [RegularExpression(@"[a-zA-Z\\._\\-\\ ]{3,}", ErrorMessage = "Nome de fim Errado, numeros e caracteres especiais nao permitidos")]
         [Required(ErrorMessage = "Por favor escreva a localizacao de fim")]
         public string StageEndLoc { get; set; }
 
         public bool IsActivated { get; set; }
 
-        [RegularExpression(@"[a-zA-Z0-9\\._\\-]{3,}", ErrorMessage = "Geolocalizacao errada")]
+        [RegularExpression(@"[a-zA-Z0-9\\._\\-\\ ]{3,}", ErrorMessage = "Geolocalizacao errada, caracteres especiais nao permitidos")]
         [Required(ErrorMessage = "Por favor indique a geolocalizacao")]
         public string Geolocalization { get; set; }
 
-        [RegularExpression(@"[0-9\\._\\-]{1,}", ErrorMessage = "Distancia")]
+        [RegularExpression(@"[\d]{1,}", ErrorMessage = "Distancia errada, letras e caracteres especiais nao permitidos")]
         [Required(ErrorMessage = "Por favor indique a distancia")]
         public int Distance { get; set; }
 
-        [RegularExpression(@"[0-9\\._\\-]{1,}", ErrorMessage = "Duracao")]
+        [RegularExpression(@"[\d]{1,}", ErrorMessage = "Duracao errada, letras e caracteres especiais nao permitidoso")]
         [Required(ErrorMessage = "Por favor indique a duracao")]
         public int Duration { get; set; }
 

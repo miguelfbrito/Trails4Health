@@ -13,17 +13,19 @@ namespace Trails4Health.Models
 
         public int TrailID { get; set; }
         [StringLength(50, MinimumLength = 3, ErrorMessage = "Nome Invalido")]
-        [RegularExpression(@"[a-zA-Z0-9\s\\._\\-]{3,}", ErrorMessage = "Nome Invalido")]
+        [RegularExpression(@"[a-zA-Z0-9\s\\._\\-\\ ]{3,}", ErrorMessage = "Nome Invalido, caracteres especiais nao permitidos")]
         [Required(ErrorMessage = "Please enter the Trail Name")]
         public string Name { get; set; }
+        [RegularExpression(@"[\d]{1,}", ErrorMessage = "Duracao errada, letras e caracteres especiais nao permitidoso")]
         [Required(ErrorMessage = "Please enter the Duration")]
         public int Duration { get; set; }
+        [RegularExpression(@"[\d]{1,}", ErrorMessage = "Distancia errada, letras e caracteres especiais nao permitidos")]
         [Required(ErrorMessage = "Please enter the Distance")]
         public int DistanceToTravel { get; set; }
-        [RegularExpression(@"[a-zA-Z\s\\._\\-]{3,}", ErrorMessage = "Localizacao de Inicio Invalida")]
+        [RegularExpression(@"[a-zA-Z\s\\._\\-\\ ]{3,}", ErrorMessage = "Localizacao de Inicio Invalida,  numeros e caracteres especiais nao permitidos")]
         [Required(ErrorMessage = "Please enter the Start Location")]
         public string StartLoc { get; set; }
-        [RegularExpression(@"[a-zA-Z\s\\._\\-]{3,}", ErrorMessage = "Localizacao de Fim Invalida")]
+        [RegularExpression(@"[a-zA-Z\s\\._\\-\\ ]{3,}", ErrorMessage = "Localizacao de Fim Invalida,  numeros e caracteres especiais nao permitidos")]
         [Required(ErrorMessage = "Please enter the End Location")]
         public string EndLoc { get; set; }
         public bool IsActivated { get; set; }
