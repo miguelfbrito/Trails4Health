@@ -54,12 +54,12 @@ namespace Trails4Health.Models
                 new Stage { StageName = "Etapa Grande", Geolocalization = "G(13)", StageStartLoc = "Guarda", StageEndLoc = "Floresta", IsActivated = true, Distance = 5, Duration = 60 },
                 new Stage { StageName = "Etapa Curta", Geolocalization = "G(15)", StageStartLoc = "Seia", StageEndLoc = "Torre", IsActivated = false, Distance = 10, Duration = 120 }
                 );
-            dbContext.Historics.AddRange(
-          new Historic { TrailID = 1, TouristID = 1, TimeTaken = 120, Observations = "Excelente tarde bem passada na Serra, comprovo o que dizem sobre este belo local, foi uma boa e longa caminhada. Local bem conservado. Fiz o percurso completo mas valeu a pena. ", RealizationDate = "21/10/2017" },
-          new Historic { TrailID = 2, TouristID = 1, TimeTaken = 75, Observations = "Excelente tarde bem passada na Serra, comprovo o que dizem sobre este belo local, foi uma boa e longa caminhada. Local bem conservado. Fiz o percurso completo mas valeu a pena.", RealizationDate = "22/10/2017" },
-          new Historic { TrailID = 3, TouristID = 1, TimeTaken = 180, Observations = "Excelente tarde bem passada na Serra, comprovo o que dizem sobre este belo local, foi uma boa e longa caminhada. Local bem conservado. Fiz o percurso completo mas valeu a pena.", RealizationDate = "23/10/2017" },
-          new Historic { TrailID = 4, TouristID = 1, TimeTaken = 200, Observations = "Excelente tarde bem passada na Serra, comprovo o que dizem sobre este belo local, foi uma boa e longa caminhada. Local bem conservado. Fiz o percurso completo mas valeu a pena.", RealizationDate = "24/10/2017" }
-       );
+       //     dbContext.Historics.AddRange(
+       //   new Historic { TrailID = 1, TouristID = 1, TimeTaken = 120, Observations = "Excelente tarde bem passada na Serra, comprovo o que dizem sobre este belo local, foi uma boa e longa caminhada. Local bem conservado. Fiz o percurso completo mas valeu a pena. ", RealizationDate = "21/10/2017" },
+       //   new Historic { TrailID = 2, TouristID = 1, TimeTaken = 75, Observations = "Excelente tarde bem passada na Serra, comprovo o que dizem sobre este belo local, foi uma boa e longa caminhada. Local bem conservado. Fiz o percurso completo mas valeu a pena.", RealizationDate = "22/10/2017" },
+       //   new Historic { TrailID = 3, TouristID = 1, TimeTaken = 180, Observations = "Excelente tarde bem passada na Serra, comprovo o que dizem sobre este belo local, foi uma boa e longa caminhada. Local bem conservado. Fiz o percurso completo mas valeu a pena.", RealizationDate = "23/10/2017" },
+       //   new Historic { TrailID = 4, TouristID = 1, TimeTaken = 200, Observations = "Excelente tarde bem passada na Serra, comprovo o que dizem sobre este belo local, foi uma boa e longa caminhada. Local bem conservado. Fiz o percurso completo mas valeu a pena.", RealizationDate = "24/10/2017" }
+       //);
 
         }
     }

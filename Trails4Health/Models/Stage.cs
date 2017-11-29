@@ -14,7 +14,7 @@ namespace Trails4Health.Models
 
         public int StageId { get; set; }
 
-        [RegularExpression(@"[a-zA-Z0-9\\._\\-\\ ]{3,}",ErrorMessage ="Nome de etapa Errado, caracteres especiais nao permitidos")]
+        [RegularExpression(@"[a-zA-Z0-9\\._\\-\\ ]{3,}", ErrorMessage = "Nome de etapa Errado, caracteres especiais nao permitidos")]
         [Required(ErrorMessage = "Por favor escreva o nome da Etapa")]
         public string StageName { get; set; }
 
@@ -43,4 +43,3 @@ namespace Trails4Health.Models
         public ICollection<Stage_Trail> StagesTrails { get; set; }
     }
 }
-

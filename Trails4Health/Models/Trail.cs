@@ -29,8 +29,8 @@ namespace Trails4Health.Models
         [Required(ErrorMessage = "Please enter the End Location")]
         public string EndLoc { get; set; }
         public bool IsActivated { get; set; }
-        
-            //Tabela Dificuldade
+
+        //Tabela Dificuldade
         public Difficulty Difficulty { get; set; }
         public int DifficultyID { get; set; }
 
@@ -54,5 +54,3 @@ namespace Trails4Health.Models
         public ICollection<Historic> Historics { get; set; }
     }
 }
-
-
