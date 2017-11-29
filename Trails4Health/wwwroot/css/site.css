@@ -61,19 +61,19 @@ input[type="checkbox"].input-validation-error {
     margin: 20px;
 }
 
-.table-container td img {
-    margin-right: 20px;
-    width: 250px;
-    height: auto;
-    min-width: 100px;
-}
+    .table-container td img {
+        margin-right: 20px;
+        width: 250px;
+        height: auto;
+        min-width: 100px;
+    }
 
 .checkhistory-item h3, p {
     color: black;
 }
 
 .checkhistory-item-top {
-    box-shadow: 0 5px 16px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 16px rgba(0,0,0,0.4);
     border: 2px solid white;
     background-color: black;
     margin: -7px;
@@ -86,10 +86,10 @@ input[type="checkbox"].input-validation-error {
 }
 
 
-.checkhistory-item-top button {
-    margin-right: 5px;
-    max-width: 15px;
-}
+    .checkhistory-item-top button {
+        margin-right: 5px;
+        max-width: 15px;
+    }
 
 
 [type="date"] {
@@ -149,3 +149,4 @@ input[type="checkbox"].input-validation-error {
     width: 250px;
     height: 100px;
 }
+

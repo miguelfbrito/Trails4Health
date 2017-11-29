@@ -10,7 +10,7 @@
 <br />
 
 
-<form asp-action="AddInformation">
+<form asp-action="Create">
     <div class="form-horizontal">
 
 <!-- TODO: passar data para um date picker-->     
@@ -29,8 +29,11 @@
             -->
 
 
+
+
+
         <div class="form-group">
-            <label asp-for="TimeTaken" class="col-md-2 control-label">Duracao:</label>
+            <label asp-for="TimeTaken" class="col-md-2 control-label">Duração:</label>
             <div class="col-md-10">
                 <input asp-for="TimeTaken" class="form-control" />
                 <span asp-validation-for="TimeTaken" class="text-danger"></span>
@@ -45,16 +48,8 @@
             </div>
         </div>
 
-        <!--<div class="form-group">
-            <label asp-for="DifficultyID" class="control-label col-md-2">Dificuldade:</label>
-            <div class="col-md-10">
-                <select asp-for="DifficultyID" class="form-control" asp-items="ViewBag.DifficultyID"></select>
-                <span asp-validation-for="DifficultyID" class="text-danger"></span>
-            </div>
-        </div>-->
-
         <div class="form-group">
-            <label asp-for="Observations" class="col-md-2 control-label">Observacoes:</label>
+            <label asp-for="Observations" class="col-md-2 control-label">Observações:</label>
             <div class="col-md-10 observations">
              <!--   <input asp-for="Observations" class="form-control" />-->
                 <textarea asp-for"Observations" class="form-control" placeholder="Remember, be nice!" cols="30" rows="10"></textarea>
@@ -63,10 +58,9 @@
             </div>
         </div>
 
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Guardar" class="btn btn-success" />
+                <input type="submit" value="Save" class="btn btn-primary" />
                 <a asp-action="CheckHistoric" class="btn btn btn-primary">Voltar</a>
             </div>
         </div>

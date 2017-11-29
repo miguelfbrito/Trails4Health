@@ -618,19 +618,13 @@ i, i:hover {
         text-decoration: none;
     }
 
-
-#trilhos {
-    margin-top: 100px;
-    margin-bottom: 100px;
-}
-
 #contacto {
     padding-top: 75px;
     min-height: 500px;
 }
 
 #trilhos {
-    padding-top: 35px;
+    padding-top: 75px;
 }
 
 

@@ -12,8 +12,7 @@ namespace Trails4Health.Models
 
 
         public int TrailID { get; set; }
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Nome Invalido")]
-        [RegularExpression(@"[a-zA-Z0-9\s\\._\\-]{3,}", ErrorMessage = "Nome Invalido")]
+       [StringLength(50, MinimumLength = 3, ErrorMessage = "Nome Invalido")]
         [Required(ErrorMessage = "Please enter the Trail Name")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Please enter the Duration")]
