@@ -16,7 +16,7 @@
                 <a style="float:right; margin-left: 5px;" asp-action="HistoricInformation" asp-route-idTourist="@item.TouristID" asp-route-idTrail="@item.TrailID" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
                 <a style="float:right;" asp-action="AddInformation" asp-route-idTourist="@item.TouristID" asp-route-idTrail="@item.TrailID" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
               
-                <h5 style=" font-weight: normal !important;">@Html.DisplayFor(modelItem => item.Trail.Name)</h5> <!-- ir buscar nome do trilho pelo id-->
+                <h5>@Html.DisplayFor(modelItem => item.Trail.Name)</h5> <!-- ir buscar nome do trilho pelo id-->
                 <p>@Html.DisplayFor(modelItem => item.RealizationDate)</p>
                 
             </div>
@@ -25,11 +25,11 @@
                 <table class="table-container">
                     <tr>
                         <td>
-                            <img src="~/images/serra.jpg" style=" border:1px solid #021a40;" />
+                            <img src="~/images/serra.jpg" />
                         </td>
                         <td>
-                            <p>Duracao: @Html.DisplayFor(modelItem => item.Trail.Duration) min</p>
-                            <p>Observacoes: @Html.DisplayFor(modelItem => item.Observations)</p>
+                            <p>Duração: @Html.DisplayFor(modelItem => item.Trail.Duration) min</p>
+                            <p>Observações: @Html.DisplayFor(modelItem => item.Observations)</p>
                         </td>
                      
                     </tr>

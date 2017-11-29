@@ -91,11 +91,11 @@ namespace Trails4Health.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            ViewData["TouristID"] = new SelectList(_context.Tourists, "TouristID", "TouristID", historic.TouristID);
-            ViewData["TrailID"] = new SelectList(_context.Trails, "TrailID", "TrailID", historic.TrailID);
+           // ViewData["TouristID"] = new SelectList(_context.Tourists, "TouristID", "TouristID", historic.TouristID);
+            //ViewData["TrailID"] = new SelectList(_context.Trails, "TrailID", "TrailID", historic.TrailID);
             return View(historic);
         }
-        /*
+
         // GET: Historics/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -201,7 +201,7 @@ namespace Trails4Health.Controllers
             }
 
             return View(historic);
-        }*/
+        }
 
         // POST: Historics/Delete/5
         [HttpPost, ActionName("Delete")]
