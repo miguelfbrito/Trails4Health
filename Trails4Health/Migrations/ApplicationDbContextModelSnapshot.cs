@@ -186,7 +186,8 @@ namespace Trails4Health.Migrations
                     b.Property<bool>("IsActivated");
 
                     b.Property<string>("Name")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(30);
 
                     b.Property<int>("SeasonID");
 
@@ -208,7 +209,7 @@ namespace Trails4Health.Migrations
 
             modelBuilder.Entity("Trails4Health.Models.Historic", b =>
                 {
-                    b.HasOne("Trails4Health.Models.Difficulty")
+                    b.HasOne("Trails4Health.Models.Difficulty", "Difficulty")
                         .WithMany("Historics")
                         .HasForeignKey("DifficultyID");
 

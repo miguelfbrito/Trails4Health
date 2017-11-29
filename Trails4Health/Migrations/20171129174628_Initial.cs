@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Trails4Health.Migrations
 {
-    public partial class init : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -110,7 +110,7 @@ namespace Trails4Health.Migrations
                     Duration = table.Column<int>(nullable: false),
                     EndLoc = table.Column<string>(nullable: false),
                     IsActivated = table.Column<bool>(nullable: false),
-                    Name = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(maxLength: 30, nullable: false),
                     SeasonID = table.Column<int>(nullable: false),
                     SlopeID = table.Column<int>(nullable: false),
                     StartLoc = table.Column<string>(nullable: false)

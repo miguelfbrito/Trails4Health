@@ -8,8 +8,8 @@ using Trails4Health.Models;
 namespace Trails4Health.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20171124041642_init")]
-    partial class init
+    [Migration("20171129174628_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -187,7 +187,8 @@ namespace Trails4Health.Migrations
                     b.Property<bool>("IsActivated");
 
                     b.Property<string>("Name")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(30);
 
                     b.Property<int>("SeasonID");
 
@@ -209,7 +210,7 @@ namespace Trails4Health.Migrations
 
             modelBuilder.Entity("Trails4Health.Models.Historic", b =>
                 {
-                    b.HasOne("Trails4Health.Models.Difficulty")
+                    b.HasOne("Trails4Health.Models.Difficulty", "Difficulty")
                         .WithMany("Historics")
                         .HasForeignKey("DifficultyID");
 
