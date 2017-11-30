@@ -40,6 +40,13 @@
             </div>
         </div>
         <div class="form-group">
+            <label asp-for="DifficultyID" class="control-label col-md-2">Dificuldade:</label>
+            <div class="col-md-10">
+                <select asp-for="DifficultyID" class="form-control" asp-items="ViewBag.DifficultyID"></select>
+                <span asp-validation-for="DifficultyID" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
             <label asp-for="Geolocalization" class="col-md-2 control-label">Geolocalizacao:</label>
             <div class="col-md-10">
                 <input asp-for="Geolocalization" class="form-control" />

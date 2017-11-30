@@ -31,8 +31,8 @@ namespace Trails4Health.Models
         public bool IsActivated { get; set; }
 
         //Tabela Dificuldade
-        public Difficulty Difficulty { get; set; }
-        public int DifficultyID { get; set; }
+        public string Difficulty { get; set; }
+        //public int DifficultyID { get; set; }
 
         //Tabela Season
 

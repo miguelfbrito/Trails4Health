@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
-
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Trails4Health.Models
 {
@@ -39,6 +39,11 @@ namespace Trails4Health.Models
         [RegularExpression(@"[\d]{1,}", ErrorMessage = "Duracao errada, letras e caracteres especiais nao permitidoso")]
         [Required(ErrorMessage = "Por favor indique a duracao")]
         public int Duration { get; set; }
+
+
+        //Tabela Dificuldade        
+        public Difficulty Difficulty { get; set; }
+        public int DifficultyID { get; set; }
 
         public ICollection<Stage_Trail> StagesTrails { get; set; }
     }

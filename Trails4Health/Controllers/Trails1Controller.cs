@@ -68,7 +68,7 @@ namespace Trails4Health.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewData["DifficultyID"] = new SelectList(_context.Difficulties, "DifficultyID", "DifficultyID", trail.DifficultyID);
+        //    ViewData["DifficultyID"] = new SelectList(_context.Difficulties, "DifficultyID", "DifficultyID", trail.DifficultyID);
             ViewData["SeasonID"] = new SelectList(_context.Seasons, "SeasonID", "SeasonID", trail.SeasonID);
             ViewData["SlopeID"] = new SelectList(_context.Slopes, "SlopeID", "SlopeID", trail.SlopeID);
             return View(trail);
@@ -87,7 +87,7 @@ namespace Trails4Health.Controllers
             {
                 return NotFound();
             }
-            ViewData["DifficultyID"] = new SelectList(_context.Difficulties, "DifficultyID", "Level", trail.DifficultyID);
+     //       ViewData["DifficultyID"] = new SelectList(_context.Difficulties, "DifficultyID", "Level", trail./DifficultyID);
             ViewData["SeasonID"] = new SelectList(_context.Seasons, "SeasonID", "SeasonName", trail.SeasonID);
             ViewData["SlopeID"] = new SelectList(_context.Slopes, "SlopeID", "Type", trail.SlopeID);
             return View(trail);
@@ -125,7 +125,7 @@ namespace Trails4Health.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            ViewData["DifficultyID"] = new SelectList(_context.Difficulties, "DifficultyID", "DifficultyID", trail.DifficultyID);
+     //       ViewData["DifficultyID"] = new SelectList(_context.Difficulties, "DifficultyID", "DifficultyID", trail.DifficultyID);
             ViewData["SeasonID"] = new SelectList(_context.Seasons, "SeasonID", "SeasonID", trail.SeasonID);
             ViewData["SlopeID"] = new SelectList(_context.Slopes, "SlopeID", "SlopeID", trail.SlopeID);
             return View(trail);

@@ -8,9 +8,10 @@ using Trails4Health.Models;
 namespace Trails4Health.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171130142537_34")]
+    partial class _34
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.3")
@@ -87,8 +88,6 @@ namespace Trails4Health.Migrations
                     b.Property<int>("StageId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("DifficultyID");
-
                     b.Property<int>("Distance");
 
                     b.Property<int>("Duration");
@@ -108,8 +107,6 @@ namespace Trails4Health.Migrations
                         .IsRequired();
 
                     b.HasKey("StageId");
-
-                    b.HasIndex("DifficultyID");
 
                     b.ToTable("Stages");
                 });
@@ -181,9 +178,7 @@ namespace Trails4Health.Migrations
                     b.Property<int>("TrailID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Difficulty");
-
-                    b.Property<int?>("DifficultyID");
+                    b.Property<int>("DifficultyID");
 
                     b.Property<int>("DistanceToTravel");
 
@@ -233,14 +228,6 @@ namespace Trails4Health.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Trails4Health.Models.Stage", b =>
-                {
-                    b.HasOne("Trails4Health.Models.Difficulty", "Difficulty")
-                        .WithMany("Stages")
-                        .HasForeignKey("DifficultyID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("Trails4Health.Models.Stage_Trail", b =>
                 {
                     b.HasOne("Trails4Health.Models.Stage", "Stage")
@@ -269,9 +256,10 @@ namespace Trails4Health.Migrations
 
             modelBuilder.Entity("Trails4Health.Models.Trail", b =>
                 {
-                    b.HasOne("Trails4Health.Models.Difficulty")
+                    b.HasOne("Trails4Health.Models.Difficulty", "Difficulty")
                         .WithMany("Trails")
-                        .HasForeignKey("DifficultyID");
+                        .HasForeignKey("DifficultyID")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Trails4Health.Models.Season", "Season")
                         .WithMany("Trails")

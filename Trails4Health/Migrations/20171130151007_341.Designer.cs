@@ -8,9 +8,10 @@ using Trails4Health.Models;
 namespace Trails4Health.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171130151007_341")]
+    partial class _341
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.3")
@@ -181,9 +182,7 @@ namespace Trails4Health.Migrations
                     b.Property<int>("TrailID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Difficulty");
-
-                    b.Property<int?>("DifficultyID");
+                    b.Property<int>("DifficultyID");
 
                     b.Property<int>("DistanceToTravel");
 
@@ -224,64 +223,55 @@ namespace Trails4Health.Migrations
 
                     b.HasOne("Trails4Health.Models.Tourist", "Tourist")
                         .WithMany("Historics")
-                        .HasForeignKey("TouristID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("TouristID");
 
                     b.HasOne("Trails4Health.Models.Trail", "Trail")
                         .WithMany("Historics")
-                        .HasForeignKey("TrailID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("TrailID");
                 });
 
             modelBuilder.Entity("Trails4Health.Models.Stage", b =>
                 {
                     b.HasOne("Trails4Health.Models.Difficulty", "Difficulty")
                         .WithMany("Stages")
-                        .HasForeignKey("DifficultyID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("DifficultyID");
                 });
 
             modelBuilder.Entity("Trails4Health.Models.Stage_Trail", b =>
                 {
                     b.HasOne("Trails4Health.Models.Stage", "Stage")
                         .WithMany("StagesTrails")
-                        .HasForeignKey("StageID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("StageID");
 
                     b.HasOne("Trails4Health.Models.Trail", "Trail")
                         .WithMany("StagesTrails")
-                        .HasForeignKey("TrailID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("TrailID");
                 });
 
             modelBuilder.Entity("Trails4Health.Models.Status_Trail", b =>
                 {
                     b.HasOne("Trails4Health.Models.Status", "Status")
                         .WithMany("StatusTrails")
-                        .HasForeignKey("StatusID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("StatusID");
 
                     b.HasOne("Trails4Health.Models.Trail", "Trail")
                         .WithMany("StatusTrails")
-                        .HasForeignKey("TrailID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("TrailID");
                 });
 
             modelBuilder.Entity("Trails4Health.Models.Trail", b =>
                 {
-                    b.HasOne("Trails4Health.Models.Difficulty")
+                    b.HasOne("Trails4Health.Models.Difficulty", "Difficulty")
                         .WithMany("Trails")
                         .HasForeignKey("DifficultyID");
 
                     b.HasOne("Trails4Health.Models.Season", "Season")
                         .WithMany("Trails")
-                        .HasForeignKey("SeasonID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("SeasonID");
 
                     b.HasOne("Trails4Health.Models.Slope", "Slope")
                         .WithMany("Trails")
-                        .HasForeignKey("SlopeID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("SlopeID");
                 });
         }
     }

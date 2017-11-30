@@ -24,7 +24,7 @@
                 </th>
                 <th>
                     Geolocalizacao
-                </th>
+                </th>                
                 <th>
                     Distancia
                 </th>
@@ -50,6 +50,9 @@
                 @Html.DisplayFor(modelItem => item.IsActivated)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Difficulty.Level)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Geolocalization)
             </td>
             <td>
@@ -59,14 +62,14 @@
                 @Html.DisplayFor(modelItem => item.Duration) Min
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.StageId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.StageId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.StageId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.StageId">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.StageId">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.StageId">Desativar</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
 <p>
-    <a asp-action="Create" class="btn btn-primary">Create New Stage</a>
+    <a asp-action="Create" class="btn btn-primary">Criar Nova Etapa</a>
 </p>

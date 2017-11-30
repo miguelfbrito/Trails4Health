@@ -21,6 +21,7 @@ namespace Trails4Health.Controllers
         // GET: Stages
         public async Task<IActionResult> Index()
         {
+            var applicationDbContext = _context.Stages.Include(t => t.Difficulty);
             return View(await _context.Stages.ToListAsync());
         }
 
@@ -33,6 +34,7 @@ namespace Trails4Health.Controllers
             }
 
             var stage = await _context.Stages
+                .Include(t => t.Difficulty)
                 .SingleOrDefaultAsync(m => m.StageId == id);
             if (stage == null)
             {
@@ -45,6 +47,7 @@ namespace Trails4Health.Controllers
         // GET: Stages/Create
         public IActionResult Create()
         {
+            ViewData["DifficultyID"] = new SelectList(_context.Difficulties, "DifficultyID", "Level");
             return View();
         }
 
@@ -53,7 +56,7 @@ namespace Trails4Health.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StageId,StageName,StageStartLoc,StageEndLoc,IsActivated,Geolocalization,Distance,Duration")] Stage stage)
+        public async Task<IActionResult> Create([Bind("StageId,StageName,StageStartLoc,StageEndLoc,IsActivated,DifficultyID,Geolocalization,Distance,Duration")] Stage stage)
         {
             if (ModelState.IsValid)
             {
@@ -61,6 +64,7 @@ namespace Trails4Health.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            ViewData["DifficultyID"] = new SelectList(_context.Difficulties, "DifficultyID", "DifficultyID", stage.DifficultyID);
             return View(stage);
         }
 
@@ -77,6 +81,7 @@ namespace Trails4Health.Controllers
             {
                 return NotFound();
             }
+            ViewData["DifficultyID"] = new SelectList(_context.Difficulties, "DifficultyID", "Level", stage.DifficultyID);
             return View(stage);
         }
 
@@ -85,7 +90,7 @@ namespace Trails4Health.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("StageId,StageName,StageStartLoc,StageEndLoc,IsActivated,Geolocalization,Distance,Duration")] Stage stage)
+        public async Task<IActionResult> Edit(int id, [Bind("StageId,StageName,StageStartLoc,StageEndLoc,IsActivated,DifficultyID,Geolocalization,Distance,Duration")] Stage stage)
         {
             if (id != stage.StageId)
             {
@@ -112,6 +117,7 @@ namespace Trails4Health.Controllers
                 }
                 return RedirectToAction("Index");
             }
+            ViewData["DifficultyID"] = new SelectList(_context.Difficulties, "DifficultyID", "DifficultyID", stage.DifficultyID);
             return View(stage);
         }
 
@@ -124,6 +130,7 @@ namespace Trails4Health.Controllers
             }
 
             var stage = await _context.Stages
+                .Include(t => t.Difficulty)
                 .SingleOrDefaultAsync(m => m.StageId == id);
             if (stage == null)
             {
