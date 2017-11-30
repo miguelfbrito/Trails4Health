@@ -96,7 +96,7 @@ namespace Trails4Health.Models
 
             //Primary Key Status_Trail
             modelBuilder.Entity<Status_Trail>()
-                .HasKey(st => new { st.StatusID, st.TrailID });
+                .HasKey(st => new { st.StatusTrailID });
             //Foreign Keys Status_Trail
             modelBuilder.Entity<Status_Trail>()
                 .HasOne(st => st.Trail)

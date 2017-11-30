@@ -1,18 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
-namespace Trails4Health.Models
+namespace Trails4Health.Models.ViewModels
 {
-    public class Trail
+    public class ViewModelTrail
     {
-
-
-        public int TrailID { get; set; }
-
         [StringLength(30, MinimumLength = 3, ErrorMessage = "Nome Invalido - Menos de 3 caracteres ou mais de 30.")]
         [RegularExpression(@"[a-zA-Z0-9\s\\._\\-]{3,}", ErrorMessage = "Nome Inválido - Contém caracteres inválidos")]
         [Required(ErrorMessage = "Por favor introduza o nome do trilho")]
@@ -31,30 +26,11 @@ namespace Trails4Health.Models
         [RegularExpression(@"[a-zA-Z\s\\._\\-]{3,}", ErrorMessage = "Localizacao de Fim Inválida - Contém caracteres inválidos")]
         [Required(ErrorMessage = "Por favor introduza a localização final do trilho")]
         public string EndLoc { get; set; }
-        
-            //Tabela Dificuldade
-        public Difficulty Difficulty { get; set; }
         public int DifficultyID { get; set; }
-
-        //Tabela Season
-
-        public Season Season { get; set; }
-
         public int SeasonID { get; set; }
-
-        //Tabela Desnível
-        public Slope Slope { get; set; }
         public int SlopeID { get; set; }
-
-        //Tabela Status_Trail
-        public ICollection<Status_Trail> StatusTrails { get; set; }
+        public int StatusID { get; set; }
 
 
-        //Tabela Stage_Trail
-        public ICollection<Stage_Trail> StagesTrails { get; set; }
-
-        public ICollection<Historic> Historics { get; set; }
     }
 }
-
-

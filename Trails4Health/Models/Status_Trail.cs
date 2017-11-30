@@ -7,6 +7,7 @@ namespace Trails4Health.Models
 {
     public class Status_Trail
     {
+        public int StatusTrailID { get; set; }
 
         //FK Trilhos
         public int TrailID { get; set; }

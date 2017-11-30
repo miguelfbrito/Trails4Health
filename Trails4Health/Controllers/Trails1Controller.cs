@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Trails4Health.Models;
+using Trails4Health.Models.ViewModels;
 
 namespace Trails4Health.Controllers
 {
@@ -52,6 +53,7 @@ namespace Trails4Health.Controllers
             ViewData["DifficultyID"] = new SelectList(_context.Difficulties, "DifficultyID", "Level");
             ViewData["SeasonID"] = new SelectList(_context.Seasons, "SeasonID", "SeasonName");
             ViewData["SlopeID"] = new SelectList(_context.Slopes, "SlopeID", "Type");
+            ViewData["StatusID"] = new SelectList(_context.Status, "StatusID", "StatusName");
             return View();
         }
 
@@ -60,18 +62,37 @@ namespace Trails4Health.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TrailID,Name,Duration,DistanceToTravel,StartLoc,EndLoc,IsActivated,DifficultyID,SeasonID,SlopeID")] Trail trail)
+        public async Task<IActionResult> Create([Bind("TrailID,Name,Duration,DistanceToTravel,StartLoc,EndLoc,IsActivated,DifficultyID,SeasonID,SlopeID")] ViewModelTrail VMTrail)
         {
             if (ModelState.IsValid)
             {
+                Trail trail = new Trail
+                {
+                    Name = VMTrail.Name,
+                    Duration = VMTrail.Duration,
+                    DistanceToTravel = VMTrail.DistanceToTravel,
+                    StartLoc = VMTrail.StartLoc,
+                    EndLoc = VMTrail.EndLoc,
+                    DifficultyID = VMTrail.DifficultyID,
+                    SeasonID = VMTrail.SeasonID,
+                    SlopeID = VMTrail.SlopeID
+                };
                 _context.Add(trail);
+
+                Status_Trail statusTrail = new Status_Trail
+                {
+                    Trail = trail,
+                    StatusID= VMTrail.StatusID
+                };
+
+                _context.Add(statusTrail);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewData["DifficultyID"] = new SelectList(_context.Difficulties, "DifficultyID", "DifficultyID", trail.DifficultyID);
-            ViewData["SeasonID"] = new SelectList(_context.Seasons, "SeasonID", "SeasonID", trail.SeasonID);
-            ViewData["SlopeID"] = new SelectList(_context.Slopes, "SlopeID", "SlopeID", trail.SlopeID);
-            return View(trail);
+            ViewData["DifficultyID"] = new SelectList(_context.Difficulties, "DifficultyID", "DifficultyID", VMTrail.DifficultyID);
+            ViewData["SeasonID"] = new SelectList(_context.Seasons, "SeasonID", "SeasonID", VMTrail.SeasonID);
+            ViewData["SlopeID"] = new SelectList(_context.Slopes, "SlopeID", "SlopeID", VMTrail.SlopeID);
+            return View(VMTrail);
         }
 
         // GET: Trails1/Edit/5
