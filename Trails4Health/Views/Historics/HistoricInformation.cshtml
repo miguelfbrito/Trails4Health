@@ -27,13 +27,13 @@
                 <div class="col-md-4">
                     <div class="info-item">
                         <img src="~/images/time.svg" width="85" height="85" />
-                        <p>@Html.DisplayFor(model => model.TimeTaken)</p> <!--Time Tkane -->
+                        <p>@Html.DisplayFor(model => model.TimeTaken) vs. @Html.DisplayFor(model => model.Trail.Duration) </p> <!--Time Tkane -->
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="info-item">
                         <img src="~/images/difficulty.png" width="85" height="85" />
-                <p> Intermedia</p>
+                <p> @Html.DisplayFor(model => model.Difficulty.Level) vs. @Html.DisplayFor(model => model.Trail.Difficulty.Level)  </p>
                     </div>
                 </div>
 
@@ -48,30 +48,8 @@
             </div>
             
             
-            <p style="font-weight: bold; font-size: 14px;">Detalhes do Trilho</p>
-            <div class="historic-information">
-
-                <div class="col-md-4">
-                    <div class="info-item">
-                        <img src="~/images/distance.png" width="85" height="85" />
-                        <p> @Html.DisplayFor(model => model.Trail.DistanceToTravel) Km</p> <!--Distance to travel TRAIl-->
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="info-item">
-                        <img src="~/images/time.svg" width="85" height="85" />
-                        <p>@Html.DisplayFor(model => model.Trail.Duration)</p> <!-- Duracao Trilho-->
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="info-item">
-                        <img src="~/images/difficulty.png" width="85" height="85" />
-                        <p>Intermedia</p> <!--Dificuldade     -->
-                    </div>
-                </div>
-            </div>
-            
+      
+          
             <div class="historic-information-stages">
                 <p style="font-weight: bold; font-size: 14px;">Etapas do Trilho</p>
                 <br />

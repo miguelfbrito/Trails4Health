@@ -117,14 +117,7 @@ namespace Trails4Health.Models
 
                 
 
-            modelBuilder.Entity<Historic>().HasKey(h => new { h.TouristID, h.TrailID});
-
-
-            /*modelBuilder.Entity<Historic>()
-               .HasOne(h => h.Difficulty)
-               .WithMany(d => d.Historics)
-               .HasForeignKey(h => h.DifficultyID);
-            ;*/
+           modelBuilder.Entity<Historic>().HasKey(h => h.HistoricID);
 
             modelBuilder.Entity<Historic>()
                  .HasOne(h => h.Trail)
@@ -134,8 +127,12 @@ namespace Trails4Health.Models
             modelBuilder.Entity<Historic>()
                  .HasOne(h => h.Tourist)
                  .WithMany(t => t.Historics)
-                 .HasForeignKey(h => h.TouristID);//.OnDelete(Microsoft.EntityFrameworkCore.Metadata.DeleteBehavior.Restrict);
+                 .HasForeignKey(h => h.TouristID);
 
+            modelBuilder.Entity<Historic>()
+                .HasOne(h => h.Difficulty)
+                .WithMany(t => t.Historics)
+                .HasForeignKey(h => h.DifficultyID);
 
         }
     }

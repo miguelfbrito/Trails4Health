@@ -32,9 +32,8 @@ namespace Trails4Health.Migrations
 
             modelBuilder.Entity("Trails4Health.Models.Historic", b =>
                 {
-                    b.Property<int>("TouristID");
-
-                    b.Property<int>("TrailID");
+                    b.Property<int>("HistoricID")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int?>("DifficultyID");
 
@@ -44,9 +43,15 @@ namespace Trails4Health.Migrations
 
                     b.Property<int>("TimeTaken");
 
-                    b.HasKey("TouristID", "TrailID");
+                    b.Property<int>("TouristID");
+
+                    b.Property<int>("TrailID");
+
+                    b.HasKey("HistoricID");
 
                     b.HasIndex("DifficultyID");
+
+                    b.HasIndex("TouristID");
 
                     b.HasIndex("TrailID");
 
@@ -186,7 +191,8 @@ namespace Trails4Health.Migrations
                     b.Property<bool>("IsActivated");
 
                     b.Property<string>("Name")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(50);
 
                     b.Property<int>("SeasonID");
 
@@ -208,7 +214,7 @@ namespace Trails4Health.Migrations
 
             modelBuilder.Entity("Trails4Health.Models.Historic", b =>
                 {
-                    b.HasOne("Trails4Health.Models.Difficulty")
+                    b.HasOne("Trails4Health.Models.Difficulty", "Difficulty")
                         .WithMany("Historics")
                         .HasForeignKey("DifficultyID");
 

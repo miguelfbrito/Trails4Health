@@ -8,11 +8,14 @@ namespace Trails4Health.Models
 
     public class Historic
     {
-        
+
+        public int HistoricID { get; set; }
+
         public int TimeTaken { get; set; }
         public String Observations { get; set; }
         public string RealizationDate { get; set; }
-        public int HistoricID;
+
+        
 
         public Difficulty Difficulty  { get; set; }
         public int? DifficultyID { get; set; }
