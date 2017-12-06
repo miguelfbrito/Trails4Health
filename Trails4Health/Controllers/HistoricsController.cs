@@ -25,9 +25,9 @@ namespace Trails4Health.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
-        public async Task<IActionResult> HistoricInformation(int? idTourist, int? idTrail)
+        public async Task<IActionResult> HistoricInformation(int? id)
         {
-            if (idTourist == null || idTrail == null)
+            if (id == null)
             {
                 return NotFound();
             }
@@ -35,7 +35,7 @@ namespace Trails4Health.Controllers
             var historic = await _context.Historics
                 .Include(h => h.Tourist)
                 .Include(h => h.Trail)
-                .SingleAsync(m => m.TouristID == idTourist && m.TrailID == idTrail);
+                .SingleAsync(m => m.HistoricID == id);
             if (historic == null)
             {
                 return NotFound();

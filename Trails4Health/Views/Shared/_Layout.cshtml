@@ -79,11 +79,13 @@
                                         <li><a href="#contacto">Contacto</a></li>
                                         <li><a asp-controller="Home" asp-action="Login">Login</a></li>
                                         <li><a asp-controller="Home" asp-action="MemberArea">Painel Utilizador</a></li>
-
+					
 
 
 
                                     </ul>
+
+				@await Html.PartialAsync("_LoginPartial")
                                 </div><!-- /.navbar-collapse -->
                             </div><!-- /.container-fluid -->
                         </nav>
