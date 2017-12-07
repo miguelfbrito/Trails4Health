@@ -49,10 +49,12 @@ namespace Trails4Health.Models
                 .HasOne(trail => trail.Season)
                 .WithMany(season => season.Trails)
                 .HasForeignKey(trail => trail.SeasonID);
-            modelBuilder.Entity<Trail>()
-                .HasOne(trail => trail.Difficulty)
-                .WithMany(difficulty => difficulty.Trails)
-                .HasForeignKey(trail => trail.DifficultyID);
+
+            //Difficulty
+            modelBuilder.Entity<Stage>()
+                .HasOne(stage => stage.Difficulty)
+                .WithMany(difficulty => difficulty.Stages)
+                .HasForeignKey(stage => stage.DifficultyID);
 
             //Desnível
             modelBuilder.Entity<Trail>()

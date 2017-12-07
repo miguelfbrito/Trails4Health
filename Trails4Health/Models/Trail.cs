@@ -32,9 +32,7 @@ namespace Trails4Health.Models
         [Required(ErrorMessage = "Por favor introduza a localização final do trilho")]
         public string EndLoc { get; set; }
         
-            //Tabela Dificuldade
-        public Difficulty Difficulty { get; set; }
-        public int DifficultyID { get; set; }
+          
 
         //Tabela Season
 

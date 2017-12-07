@@ -22,7 +22,7 @@ namespace Trails4Health.Controllers
         // GET: Trails1
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Trails.Include(t => t.Difficulty).Include(t => t.Season).Include(t => t.Slope);
+            var applicationDbContext = _context.Trails.Include(t => t.Season).Include(t => t.Slope);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -35,7 +35,6 @@ namespace Trails4Health.Controllers
             }
 
             var trail = await _context.Trails
-                .Include(t => t.Difficulty)
                 .Include(t => t.Season)
                 .Include(t => t.Slope)
                 .SingleOrDefaultAsync(m => m.TrailID == id);
@@ -50,7 +49,6 @@ namespace Trails4Health.Controllers
         // GET: Trails1/Create
         public IActionResult Create()
         {
-            ViewData["DifficultyID"] = new SelectList(_context.Difficulties, "DifficultyID", "Level");
             ViewData["SeasonID"] = new SelectList(_context.Seasons, "SeasonID", "SeasonName");
             ViewData["SlopeID"] = new SelectList(_context.Slopes, "SlopeID", "Type");
             ViewData["StatusID"] = new SelectList(_context.Status, "StatusID", "StatusName");
@@ -62,7 +60,7 @@ namespace Trails4Health.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TrailID,Name,Duration,DistanceToTravel,StartLoc,EndLoc,IsActivated,DifficultyID,SeasonID,SlopeID")] ViewModelTrail VMTrail)
+        public async Task<IActionResult> Create([Bind("TrailID,Name,Duration,DistanceToTravel,StartLoc,EndLoc,IsActivated,SeasonID,SlopeID")] ViewModelTrail VMTrail)
         {
             if (ModelState.IsValid)
             {
@@ -73,7 +71,6 @@ namespace Trails4Health.Controllers
                     DistanceToTravel = VMTrail.DistanceToTravel,
                     StartLoc = VMTrail.StartLoc,
                     EndLoc = VMTrail.EndLoc,
-                    DifficultyID = VMTrail.DifficultyID,
                     SeasonID = VMTrail.SeasonID,
                     SlopeID = VMTrail.SlopeID
                 };
@@ -89,7 +86,6 @@ namespace Trails4Health.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewData["DifficultyID"] = new SelectList(_context.Difficulties, "DifficultyID", "DifficultyID", VMTrail.DifficultyID);
             ViewData["SeasonID"] = new SelectList(_context.Seasons, "SeasonID", "SeasonID", VMTrail.SeasonID);
             ViewData["SlopeID"] = new SelectList(_context.Slopes, "SlopeID", "SlopeID", VMTrail.SlopeID);
             return View(VMTrail);
@@ -108,7 +104,6 @@ namespace Trails4Health.Controllers
             {
                 return NotFound();
             }
-            ViewData["DifficultyID"] = new SelectList(_context.Difficulties, "DifficultyID", "Level", trail.DifficultyID);
             ViewData["SeasonID"] = new SelectList(_context.Seasons, "SeasonID", "SeasonName", trail.SeasonID);
             ViewData["SlopeID"] = new SelectList(_context.Slopes, "SlopeID", "Type", trail.SlopeID);
             return View(trail);
@@ -119,7 +114,7 @@ namespace Trails4Health.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TrailID,Name,Duration,DistanceToTravel,StartLoc,EndLoc,IsActivated,DifficultyID,SeasonID,SlopeID")] Trail trail)
+        public async Task<IActionResult> Edit(int id, [Bind("TrailID,Name,Duration,DistanceToTravel,StartLoc,EndLoc,IsActivated,SeasonID,SlopeID")] Trail trail)
         {
             if (id != trail.TrailID)
             {
@@ -146,7 +141,6 @@ namespace Trails4Health.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            ViewData["DifficultyID"] = new SelectList(_context.Difficulties, "DifficultyID", "DifficultyID", trail.DifficultyID);
             ViewData["SeasonID"] = new SelectList(_context.Seasons, "SeasonID", "SeasonID", trail.SeasonID);
             ViewData["SlopeID"] = new SelectList(_context.Slopes, "SlopeID", "SlopeID", trail.SlopeID);
             return View(trail);
@@ -161,7 +155,6 @@ namespace Trails4Health.Controllers
             }
 
             var trail = await _context.Trails
-                .Include(t => t.Difficulty)
                 .Include(t => t.Season)
                 .Include(t => t.Slope)
                 .SingleOrDefaultAsync(m => m.TrailID == id);

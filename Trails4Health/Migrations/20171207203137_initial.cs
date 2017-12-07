@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Trails4Health.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -51,25 +51,6 @@ namespace Trails4Health.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Stages",
-                columns: table => new
-                {
-                    StageId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Distance = table.Column<int>(nullable: false),
-                    Duration = table.Column<int>(nullable: false),
-                    Geolocalization = table.Column<string>(nullable: false),
-                    IsActivated = table.Column<bool>(nullable: false),
-                    StageEndLoc = table.Column<string>(nullable: false),
-                    StageName = table.Column<string>(nullable: false),
-                    StageStartLoc = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Stages", x => x.StageId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Status",
                 columns: table => new
                 {
@@ -100,12 +81,37 @@ namespace Trails4Health.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Stages",
+                columns: table => new
+                {
+                    StageId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    DifficultyID = table.Column<int>(nullable: false),
+                    Distance = table.Column<int>(nullable: false),
+                    Duration = table.Column<int>(nullable: false),
+                    Geolocalization = table.Column<string>(nullable: false),
+                    IsActivated = table.Column<bool>(nullable: false),
+                    StageEndLoc = table.Column<string>(nullable: false),
+                    StageName = table.Column<string>(nullable: false),
+                    StageStartLoc = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Stages", x => x.StageId);
+                    table.ForeignKey(
+                        name: "FK_Stages_Difficulties_DifficultyID",
+                        column: x => x.DifficultyID,
+                        principalTable: "Difficulties",
+                        principalColumn: "DifficultyID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Trails",
                 columns: table => new
                 {
                     TrailID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    DifficultyID = table.Column<int>(nullable: false),
                     DistanceToTravel = table.Column<int>(nullable: false),
                     Duration = table.Column<int>(nullable: false),
                     EndLoc = table.Column<string>(maxLength: 30, nullable: false),
@@ -117,12 +123,6 @@ namespace Trails4Health.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Trails", x => x.TrailID);
-                    table.ForeignKey(
-                        name: "FK_Trails_Difficulties_DifficultyID",
-                        column: x => x.DifficultyID,
-                        principalTable: "Difficulties",
-                        principalColumn: "DifficultyID",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Trails_Seasons_SeasonID",
                         column: x => x.SeasonID,
@@ -234,6 +234,11 @@ namespace Trails4Health.Migrations
                 column: "TrailID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Stages_DifficultyID",
+                table: "Stages",
+                column: "DifficultyID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Stages_Trails_TrailID",
                 table: "Stages_Trails",
                 column: "TrailID");
@@ -247,11 +252,6 @@ namespace Trails4Health.Migrations
                 name: "IX_Status_Trails_TrailID",
                 table: "Status_Trails",
                 column: "TrailID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Trails_DifficultyID",
-                table: "Trails",
-                column: "DifficultyID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Trails_SeasonID",
