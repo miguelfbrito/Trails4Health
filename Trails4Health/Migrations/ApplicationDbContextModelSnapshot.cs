@@ -138,11 +138,16 @@ namespace Trails4Health.Migrations
 
             modelBuilder.Entity("Trails4Health.Models.Status_Trail", b =>
                 {
+                    b.Property<int>("StatusTrailID")
+                        .ValueGeneratedOnAdd();
+
                     b.Property<int>("StatusID");
 
                     b.Property<int>("TrailID");
 
-                    b.HasKey("StatusID", "TrailID");
+                    b.HasKey("StatusTrailID");
+
+                    b.HasIndex("StatusID");
 
                     b.HasIndex("TrailID");
 
@@ -181,9 +186,8 @@ namespace Trails4Health.Migrations
                     b.Property<int>("Duration");
 
                     b.Property<string>("EndLoc")
-                        .IsRequired();
-
-                    b.Property<bool>("IsActivated");
+                        .IsRequired()
+                        .HasMaxLength(30);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -194,7 +198,8 @@ namespace Trails4Health.Migrations
                     b.Property<int>("SlopeID");
 
                     b.Property<string>("StartLoc")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(30);
 
                     b.HasKey("TrailID");
 

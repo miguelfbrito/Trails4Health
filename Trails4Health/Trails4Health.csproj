@@ -31,7 +31,6 @@
     <Folder Include="Controllers\" />
 
     <Folder Include="Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Historic\" />
     <Folder Include="Views\Shared\" />
 

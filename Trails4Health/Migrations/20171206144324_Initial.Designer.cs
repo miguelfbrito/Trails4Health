@@ -8,7 +8,7 @@ using Trails4Health.Models;
 namespace Trails4Health.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20171129174628_Initial")]
+    [Migration("20171206144324_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -139,11 +139,16 @@ namespace Trails4Health.Migrations
 
             modelBuilder.Entity("Trails4Health.Models.Status_Trail", b =>
                 {
+                    b.Property<int>("StatusTrailID")
+                        .ValueGeneratedOnAdd();
+
                     b.Property<int>("StatusID");
 
                     b.Property<int>("TrailID");
 
-                    b.HasKey("StatusID", "TrailID");
+                    b.HasKey("StatusTrailID");
+
+                    b.HasIndex("StatusID");
 
                     b.HasIndex("TrailID");
 
@@ -182,9 +187,8 @@ namespace Trails4Health.Migrations
                     b.Property<int>("Duration");
 
                     b.Property<string>("EndLoc")
-                        .IsRequired();
-
-                    b.Property<bool>("IsActivated");
+                        .IsRequired()
+                        .HasMaxLength(30);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -195,7 +199,8 @@ namespace Trails4Health.Migrations
                     b.Property<int>("SlopeID");
 
                     b.Property<string>("StartLoc")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(30);
 
                     b.HasKey("TrailID");
 

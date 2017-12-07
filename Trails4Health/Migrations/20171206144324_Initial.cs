@@ -108,12 +108,11 @@ namespace Trails4Health.Migrations
                     DifficultyID = table.Column<int>(nullable: false),
                     DistanceToTravel = table.Column<int>(nullable: false),
                     Duration = table.Column<int>(nullable: false),
-                    EndLoc = table.Column<string>(nullable: false),
-                    IsActivated = table.Column<bool>(nullable: false),
+                    EndLoc = table.Column<string>(maxLength: 30, nullable: false),
                     Name = table.Column<string>(maxLength: 30, nullable: false),
                     SeasonID = table.Column<int>(nullable: false),
                     SlopeID = table.Column<int>(nullable: false),
-                    StartLoc = table.Column<string>(nullable: false)
+                    StartLoc = table.Column<string>(maxLength: 30, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -202,12 +201,14 @@ namespace Trails4Health.Migrations
                 name: "Status_Trails",
                 columns: table => new
                 {
+                    StatusTrailID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     StatusID = table.Column<int>(nullable: false),
                     TrailID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Status_Trails", x => new { x.StatusID, x.TrailID });
+                    table.PrimaryKey("PK_Status_Trails", x => x.StatusTrailID);
                     table.ForeignKey(
                         name: "FK_Status_Trails_Status_StatusID",
                         column: x => x.StatusID,
@@ -236,6 +237,11 @@ namespace Trails4Health.Migrations
                 name: "IX_Stages_Trails_TrailID",
                 table: "Stages_Trails",
                 column: "TrailID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Status_Trails_StatusID",
+                table: "Status_Trails",
+                column: "StatusID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Status_Trails_TrailID",

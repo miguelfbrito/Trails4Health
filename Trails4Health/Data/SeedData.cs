@@ -24,6 +24,13 @@ namespace Trails4Health.Models
                 new Difficulty { Level = "Dificil", Comment = "Trilho para aqueles que querem aumentar o nivel de dificuldade dos seus percursos" },
                 new Difficulty { Level = "Muito Dificil", Comment = "Trilho recomendado a profissionais de desporto fisico" }
             );
+
+            dbContext.Status.AddRange(
+                new Status {StatusName= "Aberto" },
+                new Status { StatusName = "Fechado" }
+
+            );
+
             dbContext.Seasons.AddRange(
                 new Season { SeasonName = "Primavera" },
                  new Season { SeasonName = "Verao" },
