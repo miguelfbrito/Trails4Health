@@ -9,11 +9,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Trails4Health.Data;
 using Trails4Health.Models;
 using Trails4Health.Services;
 
-using Trails4Health.Models;
 
 namespace Trails4Health
 {
@@ -42,8 +40,8 @@ namespace Trails4Health
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ApplicationDbContext>(options => 
+                options.UseSqlServer(Configuration.GetConnectionString("ConnectionStringTrails4Health")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -58,7 +56,7 @@ namespace Trails4Health
 
             services.AddDbContext<ApplicationDbContext>(
                 options => options.UseSqlServer(
-                    Configuration.GetConnectionString("ConnectionStringTrails4Health")
+                    Configuration.GetConnectionString("Trails4HealthLogins")
                 )
             );
 
