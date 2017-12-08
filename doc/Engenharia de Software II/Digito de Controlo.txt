@@ -1,0 +1,17 @@
+﻿Digito de Controlo para ID 
+
+Formato do ID : Y1Y2Y3X
+
+Y1,Y2,Y3 -> Digitos do ID
+X -> Digito de controlo do ID
+
+Fórmula de cálculo de digito de controlo
+X = (Y1*7 + Y2*8 + Y3*9) % 11
+
+Se o cálculo do digito de controlo der o mesmo valor que o digito de controlo do ID em questão, o ID é válido, caso contrário o ID é inválido.
+
+Ex.: "3425"
+X = (3*7 + 4*8 + 2*9) % 11 = 5  (5 == 5) -> ID válido.
+
+Ex.: "1423"
+X = (1*7 + 4*8 + 2*9) % 11 = 2  (2 != 3) -> ID inválido.
