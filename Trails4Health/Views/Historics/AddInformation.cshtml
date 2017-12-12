@@ -9,12 +9,12 @@
 
 <br />
 
-
-<form asp-action="Create">
+<form asp-action="AddInformation">
     <div class="form-horizontal">
-
-<!-- TODO: passar data para um date picker-->     
-
+        <input type="hidden" asp-for="HistoricID" />
+        <input type="hidden" asp-for="TrailID" />
+        <input type="hidden" asp-for="TouristID" />
+        <!-- TODO: passar data para um date picker-->
         <!--
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group ">
@@ -28,10 +28,6 @@
         </div>
             -->
 
-
-
-
-
         <div class="form-group">
             <label asp-for="TimeTaken" class="col-md-2 control-label">Duração:</label>
             <div class="col-md-10">
@@ -39,7 +35,7 @@
                 <span asp-validation-for="TimeTaken" class="text-danger"></span>
             </div>
         </div>
-       
+
         <div class="form-group">
             <label asp-for="RealizationDate" class="col-md-2 control-label">Data:</label>
             <div class="col-md-10">
@@ -51,7 +47,7 @@
         <div class="form-group">
             <label asp-for="Observations" class="col-md-2 control-label">Observações:</label>
             <div class="col-md-10 observations">
-             <!--   <input asp-for="Observations" class="form-control" />-->
+                <!--   <input asp-for="Observations" class="form-control" />-->
                 <textarea asp-for"Observations" class="form-control" placeholder="Remember, be nice!" cols="30" rows="10"></textarea>
                 <span asp-validation-for="Observations" class="text-danger"></span>
 
@@ -70,3 +66,6 @@
 </form>
 
 
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
