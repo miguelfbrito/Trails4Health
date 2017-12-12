@@ -13,7 +13,7 @@ namespace Trails4Health.Models
 
         public int TimeTaken { get; set; }
         public string Observations { get; set; }
-        public string RealizationDate { get; set; }
+        public DateTime RealizationDate { get; set; }
 
         
 
