@@ -1,4 +1,4 @@
-@model Trails4Health.Models.Trail
+@model Trails4Health.Models.ViewModels.ViewModelTrailsDetails
 
 @{
     ViewData["Title"] = "Details";
@@ -14,47 +14,61 @@
             Nome:
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.trail.Name)
         </dd>
         <dt>
             Duracao:
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Duration) Min
+            @Html.DisplayFor(model => model.trail.Duration) Min
         </dd>
         <dt>
             Distancia
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.DistanceToTravel) Km
+            @Html.DisplayFor(model => model.trail.DistanceToTravel) Km
         </dd>
         <dt>
             Inicio:
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.StartLoc)
+            @Html.DisplayFor(model => model.trail.StartLoc)
         </dd>
         <dt>
             Fim:
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.EndLoc)
+            @Html.DisplayFor(model => model.trail.EndLoc)
         </dd>
         <dt>
             Epoca Aconselhada:
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Season.SeasonName)
+            @Html.DisplayFor(model => model.trail.SeasonID)
         </dd>
         <dt>
             Desnivel:
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Slope.Type)
+            @Html.DisplayFor(model => model.trail.SlopeID)
+        </dd>
+    </dl>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Estado:
+        </dt>
+
+        <dd>
+            @foreach (var item in Model.status_trail)
+            {
+                item.Status.StatusName
+            }
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.TrailID" class="btn btn-warning">Editar</a>
+    <a asp-action="Edit" asp-route-id="@Model.trail.TrailID" class="btn btn-warning">Editar</a>
     <a asp-action="Index" class="btn btn-primary">Voltar ao Gestao de Trilhos</a>
 </div>

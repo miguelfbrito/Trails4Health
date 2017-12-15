@@ -43,6 +43,9 @@ namespace Trails4Health.Controllers
                 return NotFound();
             }
 
+
+
+
             return View(trail);
         }
 
@@ -86,8 +89,8 @@ namespace Trails4Health.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewData["SeasonID"] = new SelectList(_context.Seasons, "SeasonID", "SeasonID", VMTrail.SeasonID);
-            ViewData["SlopeID"] = new SelectList(_context.Slopes, "SlopeID", "SlopeID", VMTrail.SlopeID);
+            ViewData["SeasonID"] = new SelectList(_context.Seasons, "SeasonID", "SeasonName", VMTrail.SeasonID);
+            ViewData["SlopeID"] = new SelectList(_context.Slopes, "SlopeID", "Type", VMTrail.SlopeID);
             return View(VMTrail);
         }
 
@@ -141,8 +144,8 @@ namespace Trails4Health.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            ViewData["SeasonID"] = new SelectList(_context.Seasons, "SeasonID", "SeasonID", trail.SeasonID);
-            ViewData["SlopeID"] = new SelectList(_context.Slopes, "SlopeID", "SlopeID", trail.SlopeID);
+            ViewData["SeasonID"] = new SelectList(_context.Seasons, "SeasonID", "SeasonName", trail.SeasonID);
+            ViewData["SlopeID"] = new SelectList(_context.Slopes, "SlopeID", "Type", trail.SlopeID);
             return View(trail);
         }
 

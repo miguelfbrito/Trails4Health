@@ -26,7 +26,6 @@ namespace Trails4Health.Models.ViewModels
         [RegularExpression(@"[a-zA-Z\s\\._\\-]{3,}", ErrorMessage = "Localizacao de Fim Inválida - Contém caracteres inválidos")]
         [Required(ErrorMessage = "Por favor introduza a localização final do trilho")]
         public string EndLoc { get; set; }
-        public int DifficultyID { get; set; }
         public int SeasonID { get; set; }
         public int SlopeID { get; set; }
         public int StatusID { get; set; }
