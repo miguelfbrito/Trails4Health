@@ -12,7 +12,7 @@
             <h5>@Html.DisplayFor(model => model.Trail.Name)</h5> <!--Trail Name-->
             <br />
 
-            <p style="font-weight: bold; font-size: 14px;">Detalhes do Utilizador</p>
+            <p style="font-weight: bold; font-size: 14px;">Detalhes</p>
             
 
             <div class="historic-information">
@@ -33,7 +33,7 @@
                 <div class="col-md-4">
                     <div class="info-item">
                         <img src="~/images/difficulty.png" width="85" height="85" />
-                <p> @Html.DisplayFor(model => model.Difficulty.Comment) vs. @Html.DisplayFor(model => model.Difficulty.Level)  </p>
+                        <p> @Html.DisplayFor(model => model.Trail.Difficulty.Level) vs. @Html.DisplayFor(model => model.Difficulty.Level)  </p>
                     </div>
                 </div>
 
@@ -46,12 +46,10 @@
                 </div>
                 
             </div>
-            
-            
-      
-          
+            <div style="margin-top: 250px;"></div>
+            <p style="font-weight: bold; font-size: 14px; float:left;">Etapas do Trilho</p>
             <div class="historic-information-stages">
-                <p style="font-weight: bold; font-size: 14px;">Etapas do Trilho</p>
+                
                 <br />
                 <table class="table table-hover" id="dev-table">
                     <thead>

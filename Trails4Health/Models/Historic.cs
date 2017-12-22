@@ -12,8 +12,8 @@ namespace Trails4Health.Models
         public int HistoricID { get; set; }
 
         public int TimeTaken { get; set; }
-        public String Observations { get; set; }
-        public string RealizationDate { get; set; }
+        public string Observations { get; set; }
+        public DateTime RealizationDate { get; set; }
 
         
 
