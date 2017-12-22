@@ -49,7 +49,7 @@ namespace Trails4Health.Controllers
         // GET: Trails1/Create
         public IActionResult Create()
         {
-            ViewData["DifficultyID"] = new SelectList(_context.Difficulties, "DifficultyID", "Level");
+          //  ViewData["DifficultyID"] = new SelectList(_context.Difficulties, "DifficultyID", "Level");
             ViewData["SeasonID"] = new SelectList(_context.Seasons, "SeasonID", "SeasonName");
             ViewData["SlopeID"] = new SelectList(_context.Slopes, "SlopeID", "Type");
             return View();
@@ -60,7 +60,7 @@ namespace Trails4Health.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TrailID,Name,Duration,DistanceToTravel,StartLoc,EndLoc,IsActivated,DifficultyID,SeasonID,SlopeID")] Trail trail)
+        public async Task<IActionResult> Create([Bind("TrailID,Name,Duration,DistanceToTravel,StartLoc,EndLoc,IsActivated,SeasonID,SlopeID")] Trail trail)
         {
             if (ModelState.IsValid)
             {
