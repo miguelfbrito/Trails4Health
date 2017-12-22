@@ -98,7 +98,7 @@ namespace Trails4Health.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TrailID,Name,Duration,DistanceToTravel,StartLoc,EndLoc,IsActivated,DifficultyID,SeasonID,SlopeID")] Trail trail)
+        public async Task<IActionResult> Edit(int id, [Bind("TrailID,Name,Duration,DistanceToTravel,StartLoc,EndLoc,IsActivated,SeasonID,SlopeID")] Trail trail)
         {
             if (id != trail.TrailID)
             {
