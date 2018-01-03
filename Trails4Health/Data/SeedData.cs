@@ -62,7 +62,16 @@ namespace Trails4Health.Models
             }
 
             dbContext.SaveChanges();
+
+
+            if (!dbContext.Stages_Trails.Any())
+            {
+                EnsureStagesTrailsPopulated(dbContext);
+            }
+
+            dbContext.SaveChanges();
         }
+
 
         private static void EnsureDifficultiesPopulated(ApplicationDbContext dbContext)
         {
@@ -134,6 +143,16 @@ namespace Trails4Health.Models
                 new Stage { StageName = "Etapa Grande", Geolocalization = "G(13)", StageStartLoc = "Guarda", StageEndLoc = "Floresta", IsActivated = true, Distance = 5, Duration = 60 },
                 new Stage { StageName = "Etapa Curta", Geolocalization = "G(15)", StageStartLoc = "Seia", StageEndLoc = "Torre", IsActivated = false, Distance = 10, Duration = 120 }
                 );
+        }
+
+
+        private static void EnsureStagesTrailsPopulated(ApplicationDbContext dbContext)
+        {
+            dbContext.Stages_Trails.AddRange(
+                new Stage_Trail { TrailID = 1, StageID = 1, Activated = true, StageOrder = 1, Difficulty = 5 },
+                new Stage_Trail { TrailID = 1, StageID = 2, Activated = true, StageOrder = 2, Difficulty = 7},
+                 new Stage_Trail { TrailID = 1, StageID = 3, Activated = true, StageOrder = 3, Difficulty = 10 }
+            );
         }
 
         private static void EnsureHistoricsPopulated(ApplicationDbContext dbContext)
