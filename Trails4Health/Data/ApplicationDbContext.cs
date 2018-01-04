@@ -20,7 +20,7 @@ namespace Trails4Health.Models
         public DbSet<Stage> Stages { get; set; }
         public DbSet<Status> Status { get; set; }
         public DbSet<Stage_Trail> Stages_Trails { get; set; }
-        public DbSet<Status_Trail> Status_Trails { get; set; }       
+        public DbSet<StatusTrails> StatusTrails { get; set; }       
         
 
 
@@ -97,15 +97,15 @@ namespace Trails4Health.Models
             //Status_Trail-------------------------------------------------------------------------
 
             //Primary Key Status_Trail
-            modelBuilder.Entity<Status_Trail>()
+            modelBuilder.Entity<StatusTrails>()
                 .HasKey(st => new { st.StatusTrailID });
             //Foreign Keys Status_Trail
-            modelBuilder.Entity<Status_Trail>()
+            modelBuilder.Entity<StatusTrails>()
                 .HasOne(st => st.Trail)
                 .WithMany(trail => trail.StatusTrails)
                 .HasForeignKey(st => st.TrailID);
 
-            modelBuilder.Entity<Status_Trail>()
+            modelBuilder.Entity<StatusTrails>()
                 .HasOne(st => st.Status)
                 .WithMany(status => status.StatusTrails)
                 .HasForeignKey(st => st.StatusID);

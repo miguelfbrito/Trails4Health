@@ -140,10 +140,16 @@ namespace Trails4Health.Migrations
                     b.ToTable("Status");
                 });
 
-            modelBuilder.Entity("Trails4Health.Models.Status_Trail", b =>
+            modelBuilder.Entity("Trails4Health.Models.StatusTrails", b =>
                 {
                     b.Property<int>("StatusTrailID")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("EndDate");
+
+                    b.Property<string>("Reason");
+
+                    b.Property<string>("StartDate");
 
                     b.Property<int>("StatusID");
 
@@ -155,7 +161,7 @@ namespace Trails4Health.Migrations
 
                     b.HasIndex("TrailID");
 
-                    b.ToTable("Status_Trails");
+                    b.ToTable("StatusTrails");
                 });
 
             modelBuilder.Entity("Trails4Health.Models.Tourist", b =>
@@ -250,7 +256,7 @@ namespace Trails4Health.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Trails4Health.Models.Status_Trail", b =>
+            modelBuilder.Entity("Trails4Health.Models.StatusTrails", b =>
                 {
                     b.HasOne("Trails4Health.Models.Status", "Status")
                         .WithMany("StatusTrails")

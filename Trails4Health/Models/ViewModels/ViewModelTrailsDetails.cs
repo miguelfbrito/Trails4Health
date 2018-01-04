@@ -8,6 +8,6 @@ namespace Trails4Health.Models.ViewModels
     public class ViewModelTrailsDetails
     {
         public Trail trail;
-        public IQueryable<Status_Trail> status_trail;
+        public IQueryable<StatusTrails> status_trail;
     }
 }

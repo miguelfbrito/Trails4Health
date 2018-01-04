@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Trails4Health.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -198,25 +198,28 @@ namespace Trails4Health.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Status_Trails",
+                name: "StatusTrails",
                 columns: table => new
                 {
                     StatusTrailID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    EndDate = table.Column<string>(nullable: true),
+                    Reason = table.Column<string>(nullable: true),
+                    StartDate = table.Column<string>(nullable: true),
                     StatusID = table.Column<int>(nullable: false),
                     TrailID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Status_Trails", x => x.StatusTrailID);
+                    table.PrimaryKey("PK_StatusTrails", x => x.StatusTrailID);
                     table.ForeignKey(
-                        name: "FK_Status_Trails_Status_StatusID",
+                        name: "FK_StatusTrails_Status_StatusID",
                         column: x => x.StatusID,
                         principalTable: "Status",
                         principalColumn: "StatusID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Status_Trails_Trails_TrailID",
+                        name: "FK_StatusTrails_Trails_TrailID",
                         column: x => x.TrailID,
                         principalTable: "Trails",
                         principalColumn: "TrailID",
@@ -244,13 +247,13 @@ namespace Trails4Health.Migrations
                 column: "TrailID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Status_Trails_StatusID",
-                table: "Status_Trails",
+                name: "IX_StatusTrails_StatusID",
+                table: "StatusTrails",
                 column: "StatusID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Status_Trails_TrailID",
-                table: "Status_Trails",
+                name: "IX_StatusTrails_TrailID",
+                table: "StatusTrails",
                 column: "TrailID");
 
             migrationBuilder.CreateIndex(
@@ -273,7 +276,7 @@ namespace Trails4Health.Migrations
                 name: "Stages_Trails");
 
             migrationBuilder.DropTable(
-                name: "Status_Trails");
+                name: "StatusTrails");
 
             migrationBuilder.DropTable(
                 name: "Tourists");

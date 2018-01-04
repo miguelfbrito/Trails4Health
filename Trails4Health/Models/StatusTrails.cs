@@ -5,17 +5,27 @@ using System.Threading.Tasks;
 
 namespace Trails4Health.Models
 {
-    public class Status_Trail
+    public class StatusTrails
     {
         public int StatusTrailID { get; set; }
 
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
+
+        public string Reason { get; set; }
+
+
+
         //FK Trilhos
-        public int TrailID { get; set; }
+
         public Trail Trail { get; set; }
+        public int TrailID { get; set; }
+        
 
         //FK Status
-        public int StatusID { get; set; }
         public Status Status { get; set; }
+        public int StatusID { get; set; }
+        
     }
 }
 

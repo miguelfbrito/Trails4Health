@@ -79,7 +79,7 @@ namespace Trails4Health.Controllers
                 };
                 _context.Add(trail);
 
-                Status_Trail statusTrail = new Status_Trail
+                StatusTrails statusTrail = new StatusTrails
                 {
                     Trail = trail,
                     StatusID= VMTrail.StatusID

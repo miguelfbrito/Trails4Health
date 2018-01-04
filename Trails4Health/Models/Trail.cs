@@ -45,7 +45,7 @@ namespace Trails4Health.Models
         public int SlopeID { get; set; }
 
         //Tabela Status_Trail
-        public ICollection<Status_Trail> StatusTrails { get; set; }
+        public ICollection<StatusTrails> StatusTrails { get; set; }
 
 
         //Tabela Stage_Trail
