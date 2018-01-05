@@ -12,8 +12,8 @@
             <h5>@Html.DisplayFor(model => model.Historic.Trail.Name)</h5> <!--Trail Name-->
             <br />
 
-            <p style="font-weight: bold; font-size: 14px;">Detalhes</p>
-            
+            <p style="font-weight: bold; font-size: 14px;">Detalhes (Trilho vs Utilizador)</p>
+
 
             <div class="historic-information">
 
@@ -42,47 +42,59 @@
                     <p style="text-align: justify;
                               text-justify: inter-word;">
                         @Html.DisplayFor(model => model.Historic.Observations)
-                        </p> <!--Observations-->
+                    </p> <!--Observations-->
                 </div>
-                
+
             </div>
             <div style="margin-top: 250px;"></div>
             <p style="font-weight: bold; font-size: 14px; float:left;">Etapas do Trilho</p>
             <div class="historic-information-stages">
-                
-                <br />
-                <table class="table table-hover" id="dev-table">
-                    <thead>
-                       
-                        <tr>
-                            <th></th>
-                            <th>Nome</th>
-                            <th>Local Inicio</th>
-                            <th>Local Fim</th>
-                            <th>Distância (km)</th>
-                            <th>Duração (min)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        
 
-                        @foreach (var item in Model.Stages_Trail)
-                        {
+                <br />
+
+                @if (Model.Stages_Trail.Count() == 0)
+                {
+                    <p></p>
+                    <p>Não existem etapas associadas a este trilho.</p>
+                }
+                else
+                {
+
+
+                    <table class="table table-hover" id="dev-table">
+                        <thead>
+
                             <tr>
-                                <td></td>
-                                <td>Etapa A</td>
-                                <td>A @item.Stage.StageStartLoc</td>
-                                <td>B @item.Stage.StageEndLoc</td>
-                                <td>30</td>
-                                <td>120</td>
+                                <th></th>
+                                <th>Nome</th>
+                                <th>Local Inicio</th>
+                                <th>Local Fim</th>
+                                <th>Distância (km)</th>
+                                <th>Duração (min)</th>
                             </tr>
-                        }
-                           
-                         
-                     
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+
+
+                            @foreach (var item in Model.Stages_Trail)
+                            {
+                                <tr>
+                                    <td></td>
+                                    <td>Etapa A</td>
+                                    <td>A @item.Stage.StageStartLoc</td>
+                                    <td>B @item.Stage.StageEndLoc</td>
+                                    <td>30</td>
+                                    <td>120</td>
+                                </tr>
+                            }
+
+
+
+                        </tbody>
+                    </table>
+                }
             </div>
+
 
 
 
