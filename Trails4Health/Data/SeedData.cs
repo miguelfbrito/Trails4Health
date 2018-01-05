@@ -149,10 +149,12 @@ namespace Trails4Health.Models
         private static void EnsureStagesTrailsPopulated(ApplicationDbContext dbContext)
         {
             dbContext.Stages_Trails.AddRange(
-                new Stage_Trail { TrailID = 1, StageID = 1, Activated = true, StageOrder = 1, Difficulty = 5 },
-                new Stage_Trail { TrailID = 1, StageID = 2, Activated = true, StageOrder = 2, Difficulty = 7},
-                 new Stage_Trail { TrailID = 1, StageID = 3, Activated = true, StageOrder = 3, Difficulty = 10 }
-            );
+                new Stage_Trail { TrailID = 1, StageID = 1, Activated = true, StageOrder = 1, StageDifficulty = 5 },
+                new Stage_Trail { TrailID = 1, StageID = 2, Activated = true, StageOrder = 2, StageDifficulty = 7},
+                new Stage_Trail { TrailID = 3, StageID = 1, Activated = true, StageOrder = 1, StageDifficulty = 3 },
+                 new Stage_Trail { TrailID = 3, StageID = 2, Activated = true, StageOrder = 2, StageDifficulty = 4 }
+
+                );
         }
 
         private static void EnsureHistoricsPopulated(ApplicationDbContext dbContext)

@@ -12,7 +12,6 @@ using Microsoft.Extensions.Logging;
 using Trails4Health.Models;
 using Trails4Health.Services;
 
-
 namespace Trails4Health
 {
     public class Startup

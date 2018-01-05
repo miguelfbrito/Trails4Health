@@ -1,4 +1,4 @@
-@model Trails4Health.Models.Historic
+@model Trails4Health.Models.ViewModels.HistoricInformationViewModel
 
 @{
     ViewData["Title"] = "HistoricInformation";
@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-12">
 
-            <h5>@Html.DisplayFor(model => model.Trail.Name)</h5> <!--Trail Name-->
+            <h5>@Html.DisplayFor(model => model.Historic.Trail.Name)</h5> <!--Trail Name-->
             <br />
 
             <p style="font-weight: bold; font-size: 14px;">Detalhes</p>
@@ -27,13 +27,13 @@
                 <div class="col-md-4">
                     <div class="info-item">
                         <img src="~/images/time.svg" width="85" height="85" />
-                        <p>@Html.DisplayFor(model => model.TimeTaken) vs. @Html.DisplayFor(model => model.Trail.Duration) </p> <!--Time Tkane -->
+                        <p>@Html.DisplayFor(model => model.Historic.TimeTaken) vs. @Html.DisplayFor(model => model.Historic.Trail.Duration) </p> <!--Time Tkane -->
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="info-item">
                         <img src="~/images/difficulty.png" width="85" height="85" />
-                        <p> @Html.DisplayFor(model => model.Trail.Difficulty.Level) vs. @Html.DisplayFor(model => model.Difficulty.Level)  </p>
+                        <p> @Html.DisplayFor(model => model.Historic.Trail.Difficulty.Level) vs. @Html.DisplayFor(model => model.Historic.Difficulty.Level)  </p>
                     </div>
                 </div>
 
@@ -41,7 +41,7 @@
                     <p style="font-weight: bold; font-size: 14px; text-align: left;">Observações</p>
                     <p style="text-align: justify;
                               text-justify: inter-word;">
-                        @Html.DisplayFor(model => model.Observations)
+                        @Html.DisplayFor(model => model.Historic.Observations)
                         </p> <!--Observations-->
                 </div>
                 
@@ -53,6 +53,7 @@
                 <br />
                 <table class="table table-hover" id="dev-table">
                     <thead>
+                       
                         <tr>
                             <th></th>
                             <th>Nome</th>
@@ -63,23 +64,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Etapa A</td>
-                            <td>A</td>
-                            <td>B</td>
-                            <td>30</td>
-                            <td>120</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Etapa B</td>
-                            <td>B</td>
-                            <td>C</td>
-                            <td>15</td>
-                            <td>180</td>
-                        </tr>
+                        
 
+                        @foreach (var item in Model.Stages_Trail)
+                        {
+                            <tr>
+                                <td></td>
+                                <td>Etapa A</td>
+                                <td>A @item.Stage.StageStartLoc</td>
+                                <td>B @item.Stage.StageEndLoc</td>
+                                <td>30</td>
+                                <td>120</td>
+                            </tr>
+                        }
+                           
+                         
+                     
                     </tbody>
                 </table>
             </div>

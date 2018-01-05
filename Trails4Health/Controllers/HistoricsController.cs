@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Trails4Health.Models;
+using Trails4Health.Models.ViewModels;
 
 namespace Trails4Health.Controllers
 {
@@ -32,18 +33,39 @@ namespace Trails4Health.Controllers
                 return NotFound();
             }
 
+            HistoricInformationViewModel hivm = new HistoricInformationViewModel();
+
+         
+
+
             var historic = await _context.Historics
                 .Include(h => h.Tourist)
                 .Include(h => h.Trail)
                 .Include(h => h.Difficulty)
                 .Include(h => h.Trail.Difficulty)
+                .Include(h => h.Trail.StagesTrails)
                 .SingleAsync(m => m.HistoricID == id);
+
+            hivm.Historic = historic;
+
+            int historicTrailID = historic.TrailID;
+
+            var stages_trail = await _context.Stages_Trails
+            .Include(h => h.Stage)
+            .Where(m => m.TrailID == historic.TrailID)
+            .OrderByDescending(h => h.StageOrder)
+            .ToListAsync();
+
+
+
+            hivm.Stages_Trail = stages_trail;
+
             if (historic == null)
             {
                 return NotFound();
             }
 
-            return View(historic);
+            return View(hivm);
         }
 
         // GET: Stages/Edit/5

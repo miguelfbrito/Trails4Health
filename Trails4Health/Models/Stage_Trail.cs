@@ -18,7 +18,7 @@ namespace Trails4Health.Models
 
         public int StageOrder { get; set; }
         public bool Activated { get; set; }
-        public double Difficulty { get; set; }
+        public double StageDifficulty { get; set; }
     }
 }
 
