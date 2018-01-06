@@ -22,13 +22,14 @@ namespace Trails4Health.Controllers
         // GET: Trails1
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Trails.Include(t => t.Season).Include(t => t.Slope);
+            var applicationDbContext = _context.Trails.Include(t => t.Season).Include(t => t.Slope).Include(t =>t.StatusTrails);
             return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Trails1/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            List<StatusTrails> statustrails = new List<StatusTrails>();
             if (id == null)
             {
                 return NotFound();
@@ -37,6 +38,7 @@ namespace Trails4Health.Controllers
             var trail = await _context.Trails
                 .Include(t => t.Season)
                 .Include(t => t.Slope)
+                .Include(t=>t.StatusTrails)
                 .SingleOrDefaultAsync(m => m.TrailID == id);
             if (trail == null)
             {

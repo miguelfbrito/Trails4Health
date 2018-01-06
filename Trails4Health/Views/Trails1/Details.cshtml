@@ -59,15 +59,22 @@
         <dt>
             Estado:
         </dt>
-
-        <dd>
-            @foreach (var item in Model.status_trail)
-            {
-                item.Status.StatusName
-            }
-        </dd>
     </dl>
 </div>
+<table>
+    <tr>
+        <th>Estado</th>
+    </tr>
+    @foreach (var status in Model.status_trail)
+    {
+    <tr>
+        <td>@status.StatusID</td>
+    </tr>
+    }
+
+</table>
+
+
 <div>
     <a asp-action="Edit" asp-route-id="@Model.trail.TrailID" class="btn btn-warning">Editar</a>
     <a asp-action="Index" class="btn btn-primary">Voltar ao Gestao de Trilhos</a>
