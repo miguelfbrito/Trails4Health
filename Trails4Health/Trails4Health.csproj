@@ -7,6 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\NovaPasta1\**" />
+    <Compile Remove="Views\NovaPasta\**" />
+    <Content Remove="Views\NovaPasta1\**" />
+    <Content Remove="Views\NovaPasta\**" />
+    <EmbeddedResource Remove="Views\NovaPasta1\**" />
+    <EmbeddedResource Remove="Views\NovaPasta\**" />
+    <None Remove="Views\NovaPasta1\**" />
+    <None Remove="Views\NovaPasta\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="1.1.2" />
@@ -33,8 +44,6 @@
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Views\Shared\" />
-
-    <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
 </Project>

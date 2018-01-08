@@ -9,7 +9,7 @@ namespace Trails4Health.Models.AccountViewModels
     public class RegisterViewModel
     {
         [Required]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Email inválido")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
@@ -21,7 +21,11 @@ namespace Trails4Health.Models.AccountViewModels
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "As palaras-passe não correspondem")]
         public string ConfirmPassword { get; set; }
+
+        [Required(ErrorMessage = "Tem de seleccionar o tipo de utilizador")]
+        public string TipoUtilizador { get; set; }
+
     }
 }

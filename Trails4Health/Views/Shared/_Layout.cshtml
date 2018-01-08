@@ -1,4 +1,10 @@
 ﻿@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+@using Microsoft.AspNetCore.Identity
+@using Trails4Health.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +27,7 @@
         <link rel="stylesheet" href="~/css/owl-carousel/owl.theme.css" />
         <link rel="stylesheet" href="~/css/owl-carousel/owl.transitions.css">
 
-        
+
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
         <script type="text/javascript" src="~/js/jquery/jquery.js"></script>
         <script type="text/javascript" src="~/js/script.js"></script>
@@ -36,7 +42,7 @@
         <link rel="stylesheet" href="~/css/style.css" />
         <link rel="stylesheet" href="~/css/responsive.css" />
     </environment>
-    
+
     <environment names="Staging,Production">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
@@ -77,15 +83,24 @@
                                         <li><a href="#sobre">Sobre</a></li>
                                         <li><a href="#trilhos">Trilhos</a></li>
                                         <li><a href="#contacto">Contacto</a></li>
-                                        <li><a asp-controller="Home" asp-action="Login">Login</a></li>
-                                        <li><a asp-controller="Home" asp-action="MemberArea">Painel Utilizador</a></li>
-					
+                                        @if (SignInManager.IsSignedIn(User))
+                                        {
+                                        <!--    <li><a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Hello @UserManager.GetUserName(User)!</a></li>-->
+                                            <li><a asp-controller="Home" asp-action="MemberArea">Painel Utilizador</a></li>
+                                            <li><a asp-controller="Account" asp-action="Logout" id="logoutForm"><img src="~/images/logout.png" widht="18" height="18"/></a></li>
+
+                                        }
+                                        else
+                                        {
+                                            <li><a asp-controller="Account" asp-action="Login">Login</a></li>
+                                            
+                                        }
 
 
 
                                     </ul>
 
-				@await Html.PartialAsync("_LoginPartial")
+                                   <!-- @@await Html.PartialAsync("_LoginPartial") -->
                                 </div><!-- /.navbar-collapse -->
                             </div><!-- /.container-fluid -->
                         </nav>
@@ -99,11 +114,11 @@
     <div>
         @RenderBody()
         <hr />
-      <!--  <footer style="text-align:center;">
-            <p>&copy; 2017 - Trails4Health</p>
-        </footer>-->
+        <!--  <footer style="text-align:center;">
+              <p>&copy; 2017 - Trails4Health</p>
+          </footer>-->
     </div>
-  
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>
