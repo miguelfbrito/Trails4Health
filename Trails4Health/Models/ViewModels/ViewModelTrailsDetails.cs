@@ -7,7 +7,7 @@ namespace Trails4Health.Models.ViewModels
 {
     public class ViewModelTrailsDetails
     {
-        public Trail trail;
-        public IQueryable<StatusTrails> status_trail;
+        public Trail trail { get; set; }
+        public IEnumerable<StatusTrails> statustrails { get; set; }
     }
 }

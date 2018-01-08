@@ -16,39 +16,43 @@ namespace Trails4Health.Controllers
 
         public Trails1Controller(ApplicationDbContext context)
         {
-            _context = context;    
+            _context = context;
         }
 
         // GET: Trails1
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Trails.Include(t => t.Season).Include(t => t.Slope).Include(t =>t.StatusTrails);
+            var applicationDbContext = _context.Trails.Include(t => t.Season).Include(t => t.Slope).Include(t => t.StatusTrails);
             return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Trails1/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            List<StatusTrails> statustrails = new List<StatusTrails>();
             if (id == null)
             {
                 return NotFound();
             }
 
+            ViewModelTrailsDetails vmtd = new ViewModelTrailsDetails();
+
             var trail = await _context.Trails
                 .Include(t => t.Season)
                 .Include(t => t.Slope)
-                .Include(t=>t.StatusTrails)
                 .SingleOrDefaultAsync(m => m.TrailID == id);
+
+            vmtd.trail = trail;
+            var statustrails = await _context.StatusTrails.
+                Include(t => t.Status).
+               Where(m => m.TrailID == trail.TrailID).
+               ToListAsync();
+            vmtd.statustrails = statustrails;
+
             if (trail == null)
             {
                 return NotFound();
             }
-
-
-
-
-            return View(trail);
+            return View(vmtd);
         }
 
         // GET: Trails1/Create
@@ -84,7 +88,7 @@ namespace Trails4Health.Controllers
                 StatusTrails statusTrail = new StatusTrails
                 {
                     Trail = trail,
-                    StatusID= VMTrail.StatusID
+                    StatusID = VMTrail.StatusID
                 };
 
                 _context.Add(statusTrail);

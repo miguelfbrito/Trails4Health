@@ -1,5 +1,6 @@
 @model Trails4Health.Models.ViewModels.ViewModelTrailsDetails
 
+
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_LayoutMembersArea.cshtml";
@@ -44,37 +45,45 @@
             Epoca Aconselhada:
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.trail.SeasonID)
+            @Html.DisplayFor(model => model.trail.Season.SeasonName)
         </dd>
         <dt>
             Desnivel:
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.trail.SlopeID)
+            @Html.DisplayFor(model => model.trail.Slope.Type)
         </dd>
     </dl>
 
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            Estado:
-        </dt>
-    </dl>
 </div>
-<table>
-    <tr>
-        <th>Estado</th>
-    </tr>
-    @foreach (var status in Model.status_trail)
-    {
-    <tr>
-        <td>@status.StatusID</td>
-    </tr>
-    }
+<div>
+    <h6>Historico de Estados do Trilho</h6>
+    <br />  
+    <table width="400">
+        <thead>
+            <tr>
+                <th>Estado</th>
+                <th>Data de Inicio</th>
+                <th>Data de Fim</th>
+                <th>Causa</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var status in Model.statustrails)
+            {
+                <tr>
+                    <td>@status.Status.StatusName</td>
+                    <td>@status.StartDate</td>
+                    <td>@status.EndDate</td>
+                    <td>@status.Reason</td>
+            </tr>
+            }
 
-</table>
-
-
+        </tbody>
+    </table>
+</div>
+<br />
 <div>
     <a asp-action="Edit" asp-route-id="@Model.trail.TrailID" class="btn btn-warning">Editar</a>
     <a asp-action="Index" class="btn btn-primary">Voltar ao Gestao de Trilhos</a>

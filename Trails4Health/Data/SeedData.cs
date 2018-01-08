@@ -62,17 +62,17 @@ namespace Trails4Health.Models
             //     new Stage { StageName = "Etapa Curta", Geolocalization = "G(15)", StageStartLoc = "Seia", StageEndLoc = "Torre", IsActivated = false, Distance = 10, Duration = 120, DifficultyID = 2 }
             //     );
 
-            dbContext.StatusTrails.AddRange(
-               new StatusTrails { TrailID = 1, StatusID = 1, StartDate = "12/02/2017", EndDate = "14/02/2017", Reason="Derrocada" }
-               );
+            //dbContext.StatusTrails.AddRange(
+            //   new StatusTrails { TrailID = 1, StatusID = 1, StartDate = "12/02/2017", EndDate = "14/02/2017", Reason = "Derrocada" }
+            //   );
 
 
-            //     dbContext.Historics.AddRange(
-            //   new Historic { TrailID = 1, TouristID = 1, TimeTaken = 120, Observations = "No observations", RealizationDate = "21/10/2017" },
-            //   new Historic { TrailID = 2, TouristID = 1, TimeTaken = 75, Observations = "No observations", RealizationDate = "22/10/2017" },
-            //   new Historic { TrailID = 3, TouristID = 1, TimeTaken = 180, Observations = "No observations", RealizationDate = "23/10/2017" },
-            //   new Historic { TrailID = 4, TouristID = 1, TimeTaken = 200, Observations = "No observations", RealizationDate = "24/10/2017" }
-            //);
+            dbContext.Historics.AddRange(
+          new Historic { TrailID = 1, TouristID = 1, TimeTaken = 120, Observations = "No observations", RealizationDate = "21/10/2017" },
+          new Historic { TrailID = 2, TouristID = 1, TimeTaken = 75, Observations = "No observations", RealizationDate = "22/10/2017" },
+          new Historic { TrailID = 3, TouristID = 1, TimeTaken = 180, Observations = "No observations", RealizationDate = "23/10/2017" },
+          new Historic { TrailID = 4, TouristID = 1, TimeTaken = 200, Observations = "No observations", RealizationDate = "24/10/2017" }
+       );
 
         }
     }
