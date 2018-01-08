@@ -12,6 +12,7 @@ using Microsoft.Extensions.Options;
 using Trails4Health.Models;
 using Trails4Health.Models.AccountViewModels;
 using Trails4Health.Services;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Trails4Health.Controllers
 {
