@@ -150,3 +150,6 @@ input[type="checkbox"].input-validation-error {
     height: 100px;
 }
 
+#logoutBtn:focus {
+    outline: none !important;
+}
