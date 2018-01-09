@@ -15,7 +15,8 @@ namespace Trails4Health.Models
             }
             dbContext.SaveChanges();
         }
-
+       
+       
         private static void EnsureTrailsPopulated(ApplicationDbContext dbContext)
         {
             // dbContext.Difficulties.AddRange(
@@ -63,10 +64,9 @@ namespace Trails4Health.Models
             //     );
 
             //dbContext.StatusTrails.AddRange(
-            //   new StatusTrails { TrailID = 1, StatusID = 1, StartDate = "12/02/2017", EndDate = "14/02/2017", Reason = "Derrocada" }
-            //   );
-
-
+            //   new StatusTrails { TrailID = 1, StatusID = 1, StartDate = new DateTime(2017, 05, 11), EndDate = new DateTime(2017, 05, 12), Reason = "Derrocada" },
+            //   new StatusTrails { TrailID = 1, StatusID = 2, StartDate = new DateTime(2017, 05, 12), Reason = "Trilho Recomposto" }
+            //  );
             dbContext.Historics.AddRange(
           new Historic { TrailID = 1, TouristID = 1, TimeTaken = 120, Observations = "No observations", RealizationDate = "21/10/2017" },
           new Historic { TrailID = 2, TouristID = 1, TimeTaken = 75, Observations = "No observations", RealizationDate = "22/10/2017" },

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,11 +10,13 @@ namespace Trails4Health.Models
     {
         public int StatusTrailID { get; set; }
 
-        public string StartDate { get; set; }
-        public string EndDate { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime StartDate { get; set; }
+
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime EndDate { get; set; }   
 
         public string Reason { get; set; }
-
 
 
         //FK Trilhos
@@ -28,4 +31,5 @@ namespace Trails4Health.Models
         
     }
 }
+
 

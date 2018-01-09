@@ -1,4 +1,4 @@
-@model Trails4Health.Models.Trail
+@model Trails4Health.Models.ViewModels.ViewModelTrail
 
 @{
     ViewData["Title"] = "Create";
@@ -55,6 +55,12 @@
             <label asp-for="SlopeID" class="col-md-2 control-label">Declive:</label>
             <div class="col-md-10">
                 <select asp-for="SlopeID" class ="form-control" asp-items="ViewBag.SlopeID"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="StatusID" class="col-md-2 control-label">Estado:</label>
+            <div class="col-md-10">
+                <select asp-for="StatusID" class="form-control" asp-items="ViewBag.StatusID"></select>
             </div>
         </div>
         <div class="form-group">

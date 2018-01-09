@@ -60,7 +60,7 @@
 <div>
     <h6>Historico de Estados do Trilho</h6>
     <br />  
-    <table width="400">
+    <table width="600">
         <thead>
             <tr>
                 <th>Estado</th>
@@ -74,8 +74,15 @@
             {
                 <tr>
                     <td>@status.Status.StatusName</td>
-                    <td>@status.StartDate</td>
-                    <td>@status.EndDate</td>
+                    <td>@status.StartDate.ToString("dd/MM/yyyy")</td>
+                    @if (status.EndDate != DateTime.MinValue)
+                    {
+                    <td>@status.EndDate.ToString("dd/MM/yyyy")</td>
+                    }
+                    else
+                    {
+                    <td>Estado Por Alterar</td>
+                    }
                     <td>@status.Reason</td>
             </tr>
             }
