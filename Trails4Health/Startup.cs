@@ -13,6 +13,7 @@ using Trails4Health.Models;
 using Trails4Health.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
+using Trails4Health.Data;
 
 namespace Trails4Health
 {
@@ -43,28 +44,45 @@ namespace Trails4Health
         public void ConfigureServices(IServiceCollection services)
         {
 
-            // Add framework services.
-            services.AddDbContext<ApplicationDbContext>(options => 
-                options.UseSqlServer(Configuration.GetConnectionString("ConnectionStringTrails4Health")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
-
-            services.AddMvc();
-          //  services.AddTransient<ITrailsRepository, EFTrailsRepository>();
-        //    services.AddTransient<ITouristRepository, EFTouristRepository>();
-    services.AddTransient<IHistoricRepository, EFHistoricRepository>();
-	services.AddTransient<ITrailsRepository, EFTrailsRepository>();
-            //     services.AddTransient<ITouristRepository, EFTouristRepository>();
-
-            services.AddDbContext<ApplicationDbContext>(
+            services.AddDbContext<UsersDbContext>(
                 options => options.UseSqlServer(
-                    Configuration.GetConnectionString("Trails4HealthLogins")
+                    Configuration.GetConnectionString("Trails4HealthUsers")
                 )
             );
 
-	// Add application services.
+          
+           
+
+            // Add framework services.
+            services.AddDbContext<ApplicationDbContext>(options => 
+                options.UseSqlServer(Configuration.GetConnectionString("Trails4HealthApp")));
+
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<UsersDbContext>().AddDefaultTokenProviders();
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Password settings
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 8;
+                // Add other passsword settings if needed ...
+
+                // Lockout settings
+                options.Lockout.MaxFailedAccessAttempts = 10;
+                // Add other lockout settings if needed ...
+
+                // Add other user settings if needed ...
+                //options.User.RequireUniqueEmail = true;
+            });
+
+            //      services.AddTransient<ITrailsRepository, EFTrailsRepository>();
+            //      services.AddTransient<ITouristRepository, EFTouristRepository>();
+            //      services.AddTransient<IHistoricRepository, EFHistoricRepository>();
+            //      services.AddTransient<ITrailsRepository, EFTrailsRepository>();
+            //      services.AddTransient<ITouristRepository, EFTouristRepository>();
+
+            // Add application services.
+            services.AddMvc();
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
 

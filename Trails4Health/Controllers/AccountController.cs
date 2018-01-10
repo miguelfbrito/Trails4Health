@@ -276,6 +276,30 @@ namespace Trails4Health.Controllers
             };
             return View(model);
         }
+        /*
+       [HttpPost]
+
+      public ActionResult MemberArea(Tourist model)
+
+       {
+
+           HttpPostedFileBase file = Request.Files["ProfilePicture"];
+
+           ContentRepository service = new ContentRepository();
+
+           int i = service.UploadImageInDataBase(file, model);
+
+           if (i == 1)
+
+           {
+
+               return RedirectToAction("Index");
+
+           }
+
+           return View(model);
+
+       }*/
 
         [HttpGet]
         public IActionResult ChangePassword()

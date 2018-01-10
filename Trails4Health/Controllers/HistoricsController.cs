@@ -25,7 +25,8 @@ namespace Trails4Health.Controllers
         // GET: Historics
         public async Task<IActionResult> CheckHistoric()
         {
-            var applicationDbContext = _context.Historics.Include(h => h.Tourist).Include(h => h.Trail).OrderByDescending(h => h.RealizationDate);
+
+            var applicationDbContext = _context.Historics.Include(h => h.Tourist).Include(h => h.Trail).Where(h => h.Tourist.Email == User.Identity.Name).OrderByDescending(h => h.RealizationDate);
             return View(await applicationDbContext.ToListAsync());
         }
 

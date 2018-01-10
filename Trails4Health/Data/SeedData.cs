@@ -12,64 +12,69 @@ namespace Trails4Health.Models
             ApplicationDbContext dbContext = (ApplicationDbContext)appServices.GetService(typeof(ApplicationDbContext));
 
 
-            if (!dbContext.Seasons.Any())
+            if (dbContext.Database.EnsureCreated())
             {
-                EnsureSeasonsPopulated(dbContext);
+
+
+                if (!dbContext.Seasons.Any())
+                {
+                    EnsureSeasonsPopulated(dbContext);
+                }
+
+                dbContext.SaveChanges();
+
+                if (!dbContext.Difficulties.Any())
+                {
+                    EnsureDifficultiesPopulated(dbContext);
+                }
+
+                dbContext.SaveChanges();
+
+                if (!dbContext.Slopes.Any())
+                {
+                    EnsureSlopesPopulated(dbContext);
+                }
+
+                dbContext.SaveChanges();
+
+
+
+                if (!dbContext.Trails.Any())
+                {
+                    EnsureTrailsPopulated(dbContext);
+                }
+
+                dbContext.SaveChanges();
+
+                if (!dbContext.Tourists.Any())
+                {
+                    EnsureTouristsPopulated(dbContext);
+                }
+
+                dbContext.SaveChanges();
+
+                if (!dbContext.Stages.Any())
+                {
+                    EnsureStagesPopulated(dbContext);
+                }
+
+                dbContext.SaveChanges();
+
+                if (!dbContext.Historics.Any())
+                {
+                    EnsureHistoricsPopulated(dbContext);
+                }
+
+                dbContext.SaveChanges();
+
+
+                if (!dbContext.Stages_Trails.Any())
+                {
+                    EnsureStagesTrailsPopulated(dbContext);
+                }
+
+                dbContext.SaveChanges();
             }
-
-            dbContext.SaveChanges();
-
-            if (!dbContext.Difficulties.Any())
-            {
-                EnsureDifficultiesPopulated(dbContext);
-            }
-
-            dbContext.SaveChanges();
-
-            if (!dbContext.Slopes.Any())
-            {
-                EnsureSlopesPopulated(dbContext);
-            }
-
-            dbContext.SaveChanges();
-
-
-
-            if (!dbContext.Trails.Any())
-            {
-                EnsureTrailsPopulated(dbContext);
-            }
-
-            dbContext.SaveChanges();
-
-            if (!dbContext.Tourists.Any())
-            {
-                EnsureTouristsPopulated(dbContext);
-            }
-
-            dbContext.SaveChanges();
-
-            if (!dbContext.Stages.Any())
-            {
-                EnsureStagesPopulated(dbContext);
-            }
-
-            dbContext.SaveChanges();
-
-            if (!dbContext.Historics.Any())
-            {
-                EnsureHistoricsPopulated(dbContext);
-            }
-
-            dbContext.SaveChanges();
-
-
-            if (!dbContext.Stages_Trails.Any())
-            {
-                EnsureStagesTrailsPopulated(dbContext);
-            }
-
-            dbContext.SaveChanges();
         }
 
 
@@ -125,14 +130,15 @@ namespace Trails4Health.Models
               new Tourist { Name = "João Silva", Age = 25, CC = "14255115", Phone = "926263545", Email = " joaoooo@gmail.com " },
                new Tourist { Name = "Carlos Alberto", Age = 25, CC = "14255123", Phone = "926263245", Email = " carloooos@gmail.com " },
                 new Tourist { Name = "Rute Marreco", Age = 25, CC = "14255131", Phone = "926263145", Email = " ruuuuute@gmail.com " },
-                    new Tourist
-                    {
-                        Name = "Carlos Ferreira",
-                        Age = 25,
-                        CC = "14255123",
-                        Phone = "926263245",
-                        Email = " carloooos@gmail.com "
-                    }
+                new Tourist
+                {
+                    Name = "Carlos Ferreira",
+                    Age = 25,
+                    CC = "14255123",
+                    Phone = "926263245",
+                    Email = " carloooos@gmail.com "
+                },
+            new Tourist { Name = "Miguel", Age = 25, CC = "14255131", Phone = "926433145", Email = "miguel@gmail.com" }
           );
         }
 
@@ -150,7 +156,7 @@ namespace Trails4Health.Models
         {
             dbContext.Stages_Trails.AddRange(
                 new Stage_Trail { TrailID = 1, StageID = 1, Activated = true, StageOrder = 1, StageDifficulty = 5 },
-                new Stage_Trail { TrailID = 1, StageID = 2, Activated = true, StageOrder = 2, StageDifficulty = 7},
+                new Stage_Trail { TrailID = 1, StageID = 2, Activated = true, StageOrder = 2, StageDifficulty = 7 },
                 new Stage_Trail { TrailID = 3, StageID = 1, Activated = true, StageOrder = 1, StageDifficulty = 3 },
                  new Stage_Trail { TrailID = 3, StageID = 2, Activated = true, StageOrder = 2, StageDifficulty = 4 }
 
@@ -159,12 +165,14 @@ namespace Trails4Health.Models
 
         private static void EnsureHistoricsPopulated(ApplicationDbContext dbContext)
         {
-                    dbContext.Historics.AddRange(
-            new Historic { TrailID = 1, TouristID = 1, TimeTaken = 120, DifficultyID=1, Observations = "No observations", RealizationDate = new DateTime(2017,10,17)},
-            new Historic { TrailID = 2, TouristID = 2, TimeTaken = 75, DifficultyID = 2, Observations = "No observations", RealizationDate = new DateTime(2017, 10, 19) },
-            new Historic { TrailID = 3, TouristID = 3, TimeTaken = 180, DifficultyID = 3, Observations = "No observations", RealizationDate = new DateTime(2017, 11, 17) },
-            new Historic { TrailID = 4, TouristID = 4, TimeTaken = 200, DifficultyID = 2, Observations = "No observations", RealizationDate = new DateTime(2017, 12, 9) }
-         );
+            dbContext.Historics.AddRange(
+    new Historic { TrailID = 1, TouristID = 1, TimeTaken = 120, DifficultyID = 1, Observations = "No observations", RealizationDate = new DateTime(2017, 10, 17) },
+    new Historic { TrailID = 2, TouristID = 2, TimeTaken = 75, DifficultyID = 2, Observations = "No observations", RealizationDate = new DateTime(2017, 10, 19) },
+    new Historic { TrailID = 3, TouristID = 3, TimeTaken = 180, DifficultyID = 3, Observations = "No observations", RealizationDate = new DateTime(2017, 11, 17) },
+    new Historic { TrailID = 4, TouristID = 4, TimeTaken = 200, DifficultyID = 2, Observations = "No observations", RealizationDate = new DateTime(2017, 12, 9) },
+     new Historic { TrailID = 1, TouristID = 5, TimeTaken = 133, DifficultyID = 2, Observations = "No observations", RealizationDate = new DateTime(2018, 01, 8) },
+       new Historic { TrailID = 2, TouristID = 5, TimeTaken = 133, DifficultyID = 2, Observations = "No observations", RealizationDate = new DateTime(2017, 01, 9) }
+ );
         }
 
 

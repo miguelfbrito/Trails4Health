@@ -186,7 +186,7 @@ a:hover {
     -webkit-transition: all 500ms ease-in-out 0s;
     -moz-transition: all 500ms ease-in-out 0s;
     -ms-transition: all 500ms ease-in-out 0s;
-    -0-transition: all 500ms ease-in-out 0s;
+    -o-transition: all 500ms ease-in-out 0s;
     transition: all 500ms ease-in-out 0s;
     width: 45px;
     position: absolute;

@@ -13,7 +13,7 @@
                     <div class="col-lg-2">
                        <img src="~/images/no_image.jpg" width="155" height="155" />
                         <form asp-controller="Account" asp-action="AddPicture" method="post"> 
-                            <input type="file" id="selectedFile" style="display: none;" />
+                            <input type="file" name="ProfilePicture" id="selectedFile" style="display: none;" />
                             <input type="button" value="Selecionar imagem" onclick="document.getElementById('selectedFile').click();" />
                         </form>
                     </div>

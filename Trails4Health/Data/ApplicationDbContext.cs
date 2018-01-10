@@ -11,7 +11,16 @@ namespace Trails4Health.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext(DbContextOptions options) : base(options) { }
+
+        private readonly string _connString = "Server=(localdb)\\mssqllocaldb;Database=Trails4HealthsApp;Trusted_Connection=True;";
+
+        public ApplicationDbContext() { }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(_connString);
+        }
+
+            public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
         public DbSet<Historic> Historics { get; set; }
         public DbSet<Tourist> Tourists { get; set; }
         public DbSet<Trail> Trails { get; set; }
@@ -27,6 +36,8 @@ namespace Trails4Health.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            base.OnModelCreating(modelBuilder);
             /*   public int TouristID { get; set; }
         public int TimeTaken { get; set; }
         public String Observations { get; set; }
@@ -44,7 +55,7 @@ namespace Trails4Health.Models
             {
                 relationship.DeleteBehavior = DeleteBehavior.Restrict;
             }*/
-            base.OnModelCreating(modelBuilder);
+
 
             //Season
             modelBuilder.Entity<Trail>()
