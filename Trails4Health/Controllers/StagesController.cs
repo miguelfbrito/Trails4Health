@@ -9,6 +9,7 @@ using Trails4Health.Models;
 
 namespace Trails4Health.Controllers
 {
+    [RequireHttps]
     public class StagesController : Controller
     {
         private readonly ApplicationDbContext _context;

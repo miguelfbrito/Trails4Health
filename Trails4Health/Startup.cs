@@ -11,9 +11,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Trails4Health.Models;
 using Trails4Health.Services;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace Trails4Health
 {
+
+    //https://localhost:51544/
     public class Startup
     {
         public Startup(IHostingEnvironment env)
@@ -38,6 +42,7 @@ namespace Trails4Health
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             // Add framework services.
             services.AddDbContext<ApplicationDbContext>(options => 
                 options.UseSqlServer(Configuration.GetConnectionString("ConnectionStringTrails4Health")));
@@ -82,11 +87,20 @@ namespace Trails4Health
                 app.UseExceptionHandler("/Home/Error");
             }
 
+
+
             app.UseStaticFiles();
 
             app.UseIdentity();
 
             // Add external authentication middleware below. To configure them please see https://go.microsoft.com/fwlink/?LinkID=532715
+
+
+            app.UseGoogleAuthentication(new GoogleOptions()
+            {
+                ClientId = Configuration["Authentication:Google:ClientId"],
+                ClientSecret = Configuration["Authentication:Google:ClientSecret"]
+            });
 
             app.UseMvc(routes =>
             {
@@ -95,10 +109,50 @@ namespace Trails4Health
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-
+            // Google Authentication
+       
 
             SeedData.EnsurePopulated(app.ApplicationServices);
         }
 
+    }
+}
+
+namespace UserSecrets
+{
+    public class Startup
+    {
+        string _testSecret = null;
+        public Startup(IHostingEnvironment env)
+        {
+            var builder = new ConfigurationBuilder();
+
+            if (env.IsDevelopment())
+            {
+                builder.AddUserSecrets<Startup>();
+            }
+
+            Configuration = builder.Build();
+        }
+
+        public IConfigurationRoot Configuration { get; }
+
+        public void ConfigureServices(IServiceCollection services)
+        {
+            _testSecret = Configuration["web"];
+        }
+
+        public void Configure(IApplicationBuilder app)
+        {
+            var result = string.IsNullOrEmpty(_testSecret) ? "Null" : "Not Null";
+            app.Run(async (context) =>
+            {
+                await context.Response.WriteAsync($"Secret is {result}");
+            });
+
+            //Google Authentication
+           
+
+        }
     }
 }

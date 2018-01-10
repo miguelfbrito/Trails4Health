@@ -18,6 +18,7 @@ using Trails4Health.Models.ManageViewModels;
 
 namespace Trails4Health.Controllers
 {
+    [RequireHttps]
     [Authorize]
     public class AccountController : Controller
     {

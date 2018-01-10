@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Trails4Health.Controllers
 {
-
+    [RequireHttps]
     [Authorize]
     public class HistoricsController : Controller
     {

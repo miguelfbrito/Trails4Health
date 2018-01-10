@@ -8,6 +8,7 @@ using Trails4Health.Models.ViewModels;
 
 namespace Trails4Health.Controllers
 {
+
     public class HistoricController : Controller
     {
 

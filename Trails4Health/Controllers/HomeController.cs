@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Trails4Health.Controllers
 {
+    [RequireHttps]
     public class HomeController : Controller
     {
         public IActionResult Index()
