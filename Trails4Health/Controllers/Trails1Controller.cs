@@ -55,6 +55,9 @@ namespace Trails4Health.Controllers
             return View(vmtd);
         }
 
+
+
+
         // GET: Trails1/Create
         public IActionResult Create()
         {
@@ -63,6 +66,7 @@ namespace Trails4Health.Controllers
             ViewData["StatusID"] = new SelectList(_context.Status, "StatusID", "StatusName");
             return View();
         }
+
 
         // POST: Trails1/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -88,7 +92,9 @@ namespace Trails4Health.Controllers
                 StatusTrails statusTrail = new StatusTrails
                 {
                     Trail = trail,
-                    StatusID = VMTrail.StatusID
+                    StatusID = VMTrail.StatusID,
+                    StartDate = DateTime.Now
+
                 };
 
                 _context.Add(statusTrail);
@@ -100,8 +106,52 @@ namespace Trails4Health.Controllers
             return View(VMTrail);
         }
 
-        // GET: Trails1/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        //GET: Trails1/EditTrailStatus
+        public async Task<ActionResult>EditTrailStatus(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var trail = await _context.Trails.SingleOrDefaultAsync(m => m.TrailID == id);
+
+            if (trail == null)
+            {
+                return NotFound();
+            }
+
+            ViewData["StatusID"] = new SelectList(_context.Status, "StatusID", "StatusName");
+
+            return View();
+        }
+
+        //POST: Trails1/EditTrailStatus
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditTrailStatus(int id, [Bind("StatusID","StartDate","EndDate")] StatusTrails statustrails)
+        {
+            if (ModelState.IsValid)
+            {
+                StatusTrails StatusTrail = new StatusTrails
+                {
+                    StatusID = statustrails.StatusID,
+                    TrailID = id,
+                    StartDate = statustrails.StartDate,
+                    EndDate = statustrails.EndDate,
+                    Reason = statustrails.Reason
+                };
+                _context.Add(StatusTrail);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            ViewData["StatusID"] = new SelectList(_context.Status, "StatusID", "StatusName");
+            return View();
+        }
+            
+
+            // GET: Trails1/Edit/5
+            public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
