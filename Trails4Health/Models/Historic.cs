@@ -19,8 +19,6 @@ namespace Trails4Health.Models
         [StringLength(2000, MinimumLength = 10, ErrorMessage = "Tamanho limitado entre 10 e 2000 caracteres.")]
         public string Observations { get; set; }
 
-        string currentDate = DateTime.Now.ToString("dd/MM/yyyy");
-
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         [CheckDateRange()]
         public DateTime RealizationDate { get; set; }
@@ -50,7 +48,6 @@ public class CheckDateRangeAttribute : ValidationAttribute
         DateTime d = (DateTime)value;
         if (d <= DateTime.Now && d >= dataInicioPlataforma )
         {
-            ToString();
             return ValidationResult.Success;
         }
 

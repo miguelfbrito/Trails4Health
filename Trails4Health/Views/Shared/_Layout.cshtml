@@ -86,7 +86,7 @@
                                         @if (SignInManager.IsSignedIn(User))
                                         {
                                         <!--    <li><a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Hello @UserManager.GetUserName(User)!</a></li>-->
-                                            <li><a asp-controller="Home" asp-action="MemberArea">Painel Utilizador</a></li>
+                                            <li><a asp-controller="Account" asp-action="MemberArea">Painel Utilizador</a></li>
                                             <li>
                                                 <form asp-controller="Account" asp-action="Logout" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal" style="padding-top:13px;">
                                                     <input type="image"  id="logoutBtn" src="~/images/logout.png" widht="20" height="20" />

@@ -13,6 +13,8 @@ using Trails4Health.Models;
 using Trails4Health.Models.AccountViewModels;
 using Trails4Health.Services;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using static Trails4Health.Controllers.ManageController;
+using Trails4Health.Models.ManageViewModels;
 
 namespace Trails4Health.Controllers
 {
@@ -61,6 +63,53 @@ namespace Trails4Health.Controllers
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            if (ModelState.IsValid)
+            {
+                // This doesn't count login failures towards account lockout
+                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
+                if (result.Succeeded)
+                {
+                    _logger.LogInformation(1, "User logged in.");
+                    return RedirectToLocal(returnUrl);
+                }
+                if (result.RequiresTwoFactor)
+                {
+                    return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                }
+                if (result.IsLockedOut)
+                {
+                    _logger.LogWarning(2, "User account locked out.");
+                    return View("Lockout");
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    return View(model);
+                }
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> Login_Original(string returnUrl = null)
+        {
+            // Clear the existing external cookie to ensure a clean login process
+            await HttpContext.Authentication.SignOutAsync(_externalCookieScheme);
+
+            ViewData["ReturnUrl"] = returnUrl;
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login_Original(LoginViewModel model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
@@ -197,6 +246,65 @@ namespace Trails4Health.Controllers
                 var email = info.Principal.FindFirstValue(ClaimTypes.Email);
                 return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = email });
             }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> MemberArea(ManageMessageId? message = null)
+        {
+            ViewData["StatusMessage"] =
+                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
+                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
+                : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
+                : message == ManageMessageId.Error ? "An error has occurred."
+                : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
+                : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
+                : "";
+
+            var user = await GetCurrentUserAsync();
+            if (user == null)
+            {
+                return View("Error");
+            }
+            var model = new IndexViewModel
+            {
+                HasPassword = await _userManager.HasPasswordAsync(user),
+                PhoneNumber = await _userManager.GetPhoneNumberAsync(user),
+                TwoFactor = await _userManager.GetTwoFactorEnabledAsync(user),
+                Logins = await _userManager.GetLoginsAsync(user),
+                BrowserRemembered = await _signInManager.IsTwoFactorClientRememberedAsync(user)
+            };
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        // POST: /Manage/ChangePassword
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var user = await GetCurrentUserAsync();
+            if (user != null)
+            {
+                var result = await _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
+                if (result.Succeeded)
+                {
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    _logger.LogInformation(3, "User changed their password successfully.");
+                    return RedirectToAction(nameof(MemberArea), new { Message = ManageMessageId.ChangePasswordSuccess });
+                }
+                AddErrors(result);
+                return View(model);
+            }
+            return RedirectToAction(nameof(MemberArea), new { Message = ManageMessageId.Error });
         }
 
         //
@@ -450,6 +558,13 @@ namespace Trails4Health.Controllers
         {
             return View();
         }
+
+
+        private Task<ApplicationUser> GetCurrentUserAsync()
+        {
+            return _userManager.GetUserAsync(HttpContext.User);
+        }
+
 
         #region Helpers
 

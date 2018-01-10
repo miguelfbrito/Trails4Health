@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Trails4Health.Models;
 using Trails4Health.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Trails4Health.Controllers
 {
+
+    [Authorize]
     public class HistoricsController : Controller
     {
         private readonly ApplicationDbContext _context;

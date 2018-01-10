@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Trails4Health.Controllers
 {
@@ -55,11 +56,7 @@ namespace Trails4Health.Controllers
             return View();
         }
 
-        public IActionResult MemberArea()
-
-        {
-            return View();
-        }
+      
 
         
     }
