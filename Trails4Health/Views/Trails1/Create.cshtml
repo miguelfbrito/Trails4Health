@@ -60,7 +60,8 @@
         <div class="form-group">
             <label asp-for="IsActivated" class="col-md-2 control-label">Esta Ativo?:</label>
             <div class="col-md-10">
-                <select asp-for="IsActivated" class="form-control" asp-items="ViewBag.IsActivated"></select>
+                <input asp-for="IsActivated" class="form-control" />
+                <span asp-validation-for="IsActivated" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
