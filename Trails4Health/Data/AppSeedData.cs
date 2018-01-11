@@ -5,76 +5,72 @@ using System.Threading.Tasks;
 
 namespace Trails4Health.Models
 {
-    public class SeedData
+    public class AppSeedData
     {
         public static void EnsurePopulated(IServiceProvider appServices)
         {
             ApplicationDbContext dbContext = (ApplicationDbContext)appServices.GetService(typeof(ApplicationDbContext));
 
 
-            if (dbContext.Database.EnsureCreated())
+
+            if (!dbContext.Seasons.Any())
             {
-
-
-                if (!dbContext.Seasons.Any())
-                {
-                    EnsureSeasonsPopulated(dbContext);
-                }
-
-                dbContext.SaveChanges();
-
-                if (!dbContext.Difficulties.Any())
-                {
-                    EnsureDifficultiesPopulated(dbContext);
-                }
-
-                dbContext.SaveChanges();
-
-                if (!dbContext.Slopes.Any())
-                {
-                    EnsureSlopesPopulated(dbContext);
-                }
-
-                dbContext.SaveChanges();
-
-
-
-                if (!dbContext.Trails.Any())
-                {
-                    EnsureTrailsPopulated(dbContext);
-                }
-
-                dbContext.SaveChanges();
-
-                if (!dbContext.Tourists.Any())
-                {
-                    EnsureTouristsPopulated(dbContext);
-                }
-
-                dbContext.SaveChanges();
-
-                if (!dbContext.Stages.Any())
-                {
-                    EnsureStagesPopulated(dbContext);
-                }
-
-                dbContext.SaveChanges();
-
-                if (!dbContext.Historics.Any())
-                {
-                    EnsureHistoricsPopulated(dbContext);
-                }
-
-                dbContext.SaveChanges();
-
-
-                if (!dbContext.Stages_Trails.Any())
-                {
-                    EnsureStagesTrailsPopulated(dbContext);
-                }
-
-                dbContext.SaveChanges();
+                EnsureSeasonsPopulated(dbContext);
             }
+
+            dbContext.SaveChanges();
+
+            if (!dbContext.Difficulties.Any())
+            {
+                EnsureDifficultiesPopulated(dbContext);
+            }
+
+            dbContext.SaveChanges();
+
+            if (!dbContext.Slopes.Any())
+            {
+                EnsureSlopesPopulated(dbContext);
+            }
+
+            dbContext.SaveChanges();
+
+
+
+            if (!dbContext.Trails.Any())
+            {
+                EnsureTrailsPopulated(dbContext);
+            }
+
+            dbContext.SaveChanges();
+
+            if (!dbContext.Tourists.Any())
+            {
+                EnsureTouristsPopulated(dbContext);
+            }
+
+            dbContext.SaveChanges();
+
+            if (!dbContext.Stages.Any())
+            {
+                EnsureStagesPopulated(dbContext);
+            }
+
+            dbContext.SaveChanges();
+
+            if (!dbContext.Historics.Any())
+            {
+                EnsureHistoricsPopulated(dbContext);
+            }
+
+            dbContext.SaveChanges();
+
+
+            if (!dbContext.Stages_Trails.Any())
+            {
+                EnsureStagesTrailsPopulated(dbContext);
+            }
+
+            dbContext.SaveChanges();
         }
 
 

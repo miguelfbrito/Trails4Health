@@ -7,66 +7,79 @@
 
 
 <div id="checkhistory">
-    @if(Model.Count() == 0)
+
+    @if (User.IsInRole("Turista"))
+    {
+        <p> Role Turista</p>
+    }
+    else
+    {
+        <p> Nao se encontra em nenhuma role </p>
+    }
+
+
+    @if (Model.Count() == 0)
     {
         <p>Não realizou nenhum percurso.</p>
 
-    } else { 
-
-    @foreach (var item in Model)
-    {
-        <div class="checkhistory-item">
-            <div class="checkhistory-item-top">
-                
-       
-                <a style="float:right; margin-left: 5px;" asp-action="HistoricInformation" asp-route-id="@item.HistoricID" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-                <a style="float:right;" asp-action="AddInformation" asp-route-id="@item.HistoricID" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
-              
-                <h5 style="font-weight:normal !important">@Html.DisplayFor(modelItem => item.Trail.Name)</h5> <!-- ir buscar nome do trilho pelo id-->
-                <p>@Html.DisplayFor(modelItem => item.RealizationDate)</p>
-                
-            </div>
-
-            <div class="checkhistory-item-container">
-                <table class="table-container">
-                    <tr>
-                        <td>
-                            <img src="~/images/serra.jpg" style=" border:1px solid #021a40;" />
-                        </td>
-                        <td>
-                            <p>Duração: @Html.DisplayFor(modelItem => item.TimeTaken) min</p>
-                            <p>Observações: @Html.DisplayFor(modelItem => item.Observations)</p>
-                        </td>
-                     
-                    </tr>
-                   
-                </table>
-                
-            </div>
-
-            <!--
-   
-
-                    Trilho X-Y  Dia Realizacao
-                    Imagem  Observações
-                    Dificuldade
-
-
-
-
-            public int HistoricID { get; set; }
-            public int TouristID { get; set; }
-            public int TrailID{ get; set; }
-            public int DifficultyID { get; set; }
-            public int TimeTaken { get; set; }
-            public String Observations { get; set; }
-            public string RealizationDate { get; set; }
-
-                    -->
-        </div>
-
-
     }
+    else
+    {
+
+        @foreach (var item in Model)
+        {
+            <div class="checkhistory-item">
+                <div class="checkhistory-item-top">
+
+
+                    <a style="float:right; margin-left: 5px;" asp-action="HistoricInformation" asp-route-id="@item.HistoricID" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                    <a style="float:right;" asp-action="AddInformation" asp-route-id="@item.HistoricID" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+
+                    <h5 style="font-weight:normal !important">@Html.DisplayFor(modelItem => item.Trail.Name)</h5> <!-- ir buscar nome do trilho pelo id-->
+                    <p>@Html.DisplayFor(modelItem => item.RealizationDate)</p>
+
+                </div>
+
+                <div class="checkhistory-item-container">
+                    <table class="table-container">
+                        <tr>
+                            <td>
+                                <img src="~/images/serra.jpg" style=" border:1px solid #021a40;" />
+                            </td>
+                            <td>
+                                <p>Duração: @Html.DisplayFor(modelItem => item.TimeTaken) min</p>
+                                <p>Observações: @Html.DisplayFor(modelItem => item.Observations)</p>
+                            </td>
+
+                        </tr>
+
+                    </table>
+
+                </div>
+
+                <!--
+
+
+                        Trilho X-Y  Dia Realizacao
+                        Imagem  Observações
+                        Dificuldade
+
+
+
+
+                public int HistoricID { get; set; }
+                public int TouristID { get; set; }
+                public int TrailID{ get; set; }
+                public int DifficultyID { get; set; }
+                public int TimeTaken { get; set; }
+                public String Observations { get; set; }
+                public string RealizationDate { get; set; }
+
+                        -->
+            </div>
+
+
+        }
     }
 
 </div>

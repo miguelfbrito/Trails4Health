@@ -8,94 +8,96 @@
 
 
 
-            <section id="sobre" class="abouts">
-                <div class="container">
-                    <div class="col-lg-2">
-                       <img src="~/images/no_image.jpg" width="155" height="155" />
-                        <form asp-controller="Account" asp-action="AddPicture" method="post"> 
-                            <input type="file" name="ProfilePicture" id="selectedFile" style="display: none;" />
-                            <input type="button" value="Selecionar imagem" onclick="document.getElementById('selectedFile').click();" />
-                        </form>
-                    </div>
-                    <div class="col-lg-10">
-                        <dl class="dl-horizontal">
-                            <dt>Password:</dt>
-                            <dd>
-                                @if (Model.HasPassword)
-            {
-                                    <a asp-controller="Account" asp-action="ChangePassword" class="btn-bracketed">Change</a>
-                                }
-                                else
-                                {
-                                    <a asp-controller="Manage" asp-action="SetPassword" class="btn-bracketed">Create</a>
-                                }
-                            </dd>
-                            <dt>External Logins:</dt>
-                            <dd>
-
-                                @Model.Logins.Count <a asp-controller="Manage" asp-action="ManageLogins" class="btn-bracketed">Manage</a>
-                            </dd>
-                            <dt>Phone Number:</dt>
-                            <dd>
-                                <p>
-                                    Phone Numbers can be used as a second factor of verification in two-factor authentication.
-                                    See <a href="https://go.microsoft.com/fwlink/?LinkID=532713">this article</a>
-                                    for details on setting up this ASP.NET application to support two-factor authentication using SMS.
-                                </p>
-                                @*@(Model.PhoneNumber ?? "None")
-                @if (Model.PhoneNumber != null)
-                {
-                    <br />
-                    <a asp-controller="Manage" asp-action="AddPhoneNumber" class="btn-bracketed">Change</a>
-                    <form asp-controller="Manage" asp-action="RemovePhoneNumber" method="post">
-                        [<button type="submit" class="btn-link">Remove</button>]
-                    </form>
-                }
-                else
-                {
-                    <a asp-controller="Manage" asp-action="AddPhoneNumber" class="btn-bracketed">Add</a>
-                }*@
-                            </dd>
-
-                            <dt>Two-Factor Authentication:</dt>
-                            <dd>
-                                <p>
-                                    There are no two-factor authentication providers configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532713">this article</a>
-                                    for setting up this application to support two-factor authentication.
-                                </p>
-                                @*@if (Model.TwoFactor)
-                {
-                    <form asp-controller="Manage" asp-action="DisableTwoFactorAuthentication" method="post" class="form-horizontal">
-                        Enabled <button type="submit" class="btn-link btn-bracketed">Disable</button>
-                    </form>
-                }
-                else
-                {
-                    <form asp-controller="Manage" asp-action="EnableTwoFactorAuthentication" method="post" class="form-horizontal">
-                        <button type="submit" class="btn-link btn-bracketed">Enable</button> Disabled
-                    </form>
-                }*@
-                            </dd>
-                        </dl>
-                    </div>
-                 </div>
-            </section><!-- End of Abouts Section -->
-
-
-
-        <footer id="footer" class="footer">
-            <div class="container">
-                <div class="row wow zoomIn" data-wow-duration="2s">
-
-                </div>
-            </div>
-        </footer>
-
-
-        <!-- STRAT SCROLL TO TOP -->
-
-        <div class="scrollup">
-            <a href="#"><i class="fa fa-chevron-up"></i></a>
+<section id="sobre" class="abouts">
+    <div class="container">
+        <div class="col-lg-2">
+            <img src="~/images/no_image.jpg" width="155" height="155" />
+            <form asp-controller="Account" asp-action="AddPicture" method="post">
+                <input type="file" name="ProfilePicture" id="selectedFile" style="display: none;" />
+                <input type="button" value="Selecionar imagem" onclick="document.getElementById('selectedFile').click();" />
+            </form>
         </div>
- 
+        <div class="col-lg-10">
+            <dl class="dl-horizontal">
+                <dt>Password:</dt>
+                <dd>
+                    @if (Model.HasPassword)
+            {
+                        <a asp-controller="Account" asp-action="ChangePassword" class="btn-bracketed">Change</a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Manage" asp-action="SetPassword" class="btn-bracketed">Create</a>
+                    }
+                </dd>
+                <dt>External Logins:</dt>
+                <dd>
+
+                    @Model.Logins.Count <a asp-controller="Manage" asp-action="ManageLogins" class="btn-bracketed">Manage</a>
+                </dd>
+                <dt>Phone Number:</dt>
+                <dd>
+                    <p>
+                        Phone Numbers can be used as a second factor of verification in two-factor authentication.
+                        See <a href="https://go.microsoft.com/fwlink/?LinkID=532713">this article</a>
+                        for details on setting up this ASP.NET application to support two-factor authentication using SMS.
+                    </p>
+                    @*@(Model.PhoneNumber ?? "None")
+                        @if (Model.PhoneNumber != null)
+                        {
+                            <br />
+                            <a asp-controller="Manage" asp-action="AddPhoneNumber" class="btn-bracketed">Change</a>
+                            <form asp-controller="Manage" asp-action="RemovePhoneNumber" method="post">
+                                [<button type="submit" class="btn-link">Remove</button>]
+                            </form>
+                        }
+                        else
+                        {
+                            <a asp-controller="Manage" asp-action="AddPhoneNumber" class="btn-bracketed">Add</a>
+                        }*@
+                </dd>
+
+                <dt>Two-Factor Authentication:</dt>
+                <dd>
+                    <p>
+                        There are no two-factor authentication providers configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532713">this article</a>
+                        for setting up this application to support two-factor authentication.
+                    </p>
+                    @*@if (Model.TwoFactor)
+                        {
+                            <form asp-controller="Manage" asp-action="DisableTwoFactorAuthentication" method="post" class="form-horizontal">
+                                Enabled <button type="submit" class="btn-link btn-bracketed">Disable</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <form asp-controller="Manage" asp-action="EnableTwoFactorAuthentication" method="post" class="form-horizontal">
+                                <button type="submit" class="btn-link btn-bracketed">Enable</button> Disabled
+                            </form>
+                        }*@
+                </dd>
+                <dt>Dados Pessoais:</dt>
+                <dd><a asp-controller="Account" asp-action="EditProfile" class="btn-bracketed">Editar Perfil</a></dd>
+            </dl>
+        </div>
+    </div>
+</section><!-- End of Abouts Section -->
+
+
+
+<footer id="footer" class="footer">
+    <div class="container">
+        <div class="row wow zoomIn" data-wow-duration="2s">
+
+        </div>
+    </div>
+</footer>
+
+
+<!-- STRAT SCROLL TO TOP -->
+
+<div class="scrollup">
+    <a href="#"><i class="fa fa-chevron-up"></i></a>
+</div>
+
 

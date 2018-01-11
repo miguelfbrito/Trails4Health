@@ -16,6 +16,7 @@ namespace Trails4Health.Models
         public String CC { get; set; }
         public String Phone { get; set; }
         public String Email { get; set; }
+        public String TipoUtilizador { get; set; }
 
         public ICollection<Historic> Historics { get; set; }
     }

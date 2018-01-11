@@ -128,9 +128,8 @@ namespace Trails4Health
             });
 
             // Google Authentication
-       
 
-            SeedData.EnsurePopulated(app.ApplicationServices);
+            AppSeedData.EnsurePopulated(app.ApplicationServices);
         }
 
     }

@@ -15,13 +15,19 @@ using Trails4Health.Services;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using static Trails4Health.Controllers.ManageController;
 using Trails4Health.Models.ManageViewModels;
+using Trails4Health.Data;
 
 namespace Trails4Health.Controllers
 {
+
+
+
     [RequireHttps]
     [Authorize]
     public class AccountController : Controller
     {
+        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly ApplicationDbContext _dbcontext;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
@@ -32,10 +38,13 @@ namespace Trails4Health.Controllers
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
+             RoleManager<IdentityRole> roleManager,
             IOptions<IdentityCookieOptions> identityCookieOptions,
             IEmailSender emailSender,
             ISmsSender smsSender,
-            ILoggerFactory loggerFactory)
+            ILoggerFactory loggerFactory,
+            ApplicationDbContext dbContext
+            )
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -43,6 +52,10 @@ namespace Trails4Health.Controllers
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<AccountController>();
+            _dbcontext = dbContext;
+
+         //   UsersSeedData.EnsurePopulatedAsync(userManager, roleManager).Wait();
+
         }
 
         //
@@ -158,12 +171,22 @@ namespace Trails4Health.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
+        public async Task<IActionResult> Register([Bind("Email,TipoUtilizador")] Tourist tourist, RegisterViewModel model, string returnUrl = null)
         {
+
+
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+
+
+               /* if (tourist.TipoUtilizador == "Turista")
+                {
+
+                    
+                }*/
+
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -175,6 +198,12 @@ namespace Trails4Health.Controllers
                     //    $"Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a>");
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation(3, "User created a new account with password.");
+
+                    await _userManager.AddToRoleAsync(user, "Turista");
+
+                    _dbcontext.Add(tourist);
+                    await _dbcontext.SaveChangesAsync();
+
                     return RedirectToLocal(returnUrl);
                 }
                 AddErrors(result);
