@@ -16,6 +16,7 @@ namespace Trails4Health.Models.ViewModels
         public int SeasonID { get; set; }
         public int SlopeID { get; set; }
         public int StatusID { get; set; }
+        public bool IsActivated { get; set; }
 
 
     }

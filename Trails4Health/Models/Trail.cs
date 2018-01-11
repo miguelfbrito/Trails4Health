@@ -31,8 +31,8 @@ namespace Trails4Health.Models
         [RegularExpression(@"[a-zA-Z\s\\._\\-]{3,}", ErrorMessage = "Localizacao de Fim Inválida - Contém caracteres inválidos")]
         [Required(ErrorMessage = "Por favor introduza a localização final do trilho")]
         public string EndLoc { get; set; }
-        
-          
+
+        public bool IsActivated { get; set; }
 
         //Tabela Season
 

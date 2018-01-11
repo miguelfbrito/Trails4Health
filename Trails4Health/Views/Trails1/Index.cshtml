@@ -32,7 +32,7 @@
                 Desnivel
             </th>
             <th>
-                Estado:
+                Esta Ativo?
             </th>
         </tr>
     </thead>
@@ -60,11 +60,20 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Slope.Type)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActivated)
+            </td>
 
             <td>
                 <a asp-action="Edit"  asp-route-id="@item.TrailID">Editar</a> |
                 <a asp-action="Details" asp-route-id="@item.TrailID">Detalhes</a> |
-                <a asp-action="Delete" asp-route-id="@item.TrailID">Desativar</a> |
+                @if (item.IsActivated == true) {
+                <a asp-action="Delete" asp-route-id="@item.TrailID">Desativar</a>
+                }
+                else
+                {
+                    <a asp-action="Delete" asp-route-id="@item.TrailID">Ativar</a>
+                }|
                 <a asp-action="EditTrailStatus" asp-route-id="@item.TrailID">Editar Estado</a>
             </td>
         </tr>

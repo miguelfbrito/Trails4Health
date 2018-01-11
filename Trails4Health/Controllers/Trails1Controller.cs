@@ -73,7 +73,7 @@ namespace Trails4Health.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TrailID,Name,Duration,DistanceToTravel,StartLoc,EndLoc,IsActivated,SeasonID,SlopeID,StatusID")] ViewModelTrail VMTrail)
+        public async Task<IActionResult> Create([Bind("TrailID,Name,Duration,DistanceToTravel,StartLoc,EndLoc,IsActivated,SeasonID,SlopeID,IsActivated,StatusID")] ViewModelTrail VMTrail)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,8 @@ namespace Trails4Health.Controllers
                     StartLoc = VMTrail.StartLoc,
                     EndLoc = VMTrail.EndLoc,
                     SeasonID = VMTrail.SeasonID,
-                    SlopeID = VMTrail.SlopeID
+                    SlopeID = VMTrail.SlopeID,
+                    IsActivated = VMTrail.IsActivated
                 };
                 _context.Add(trail);
 
@@ -231,7 +232,14 @@ namespace Trails4Health.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var trail = await _context.Trails.SingleOrDefaultAsync(m => m.TrailID == id);
-            _context.Trails.Remove(trail);
+            if (trail.IsActivated == true)
+            {
+                trail.IsActivated = false;
+            }
+            else
+            {
+                trail.IsActivated = true;
+            }
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }

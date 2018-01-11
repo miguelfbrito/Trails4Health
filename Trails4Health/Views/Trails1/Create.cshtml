@@ -58,6 +58,12 @@
             </div>
         </div>
         <div class="form-group">
+            <label asp-for="IsActivated" class="col-md-2 control-label">Esta Ativo?:</label>
+            <div class="col-md-10">
+                <select asp-for="IsActivated" class="form-control" asp-items="ViewBag.IsActivated"></select>
+            </div>
+        </div>
+        <div class="form-group">
             <label asp-for="StatusID" class="col-md-2 control-label">Estado:</label>
             <div class="col-md-10">
                 <select asp-for="StatusID" class="form-control" asp-items="ViewBag.StatusID"></select>
