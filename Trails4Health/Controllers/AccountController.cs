@@ -16,12 +16,10 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using static Trails4Health.Controllers.ManageController;
 using Trails4Health.Models.ManageViewModels;
 using Trails4Health.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Trails4Health.Controllers
 {
-
-
-
     [RequireHttps]
     [Authorize]
     public class AccountController : Controller
@@ -218,6 +216,48 @@ namespace Trails4Health.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+     
+        public IActionResult EditProfile()
+        {
+
+            var touristContext = _dbcontext.Tourists.SingleOrDefault(tourist => tourist.Email == User.Identity.Name);
+          
+            if (touristContext == null)
+            {
+                return NotFound();
+            }
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditProfile([Bind("TouristID, Phone, CC, DateOfBirth")] Tourist tourist)
+        {
+
+            System.Diagnostics.Debug.WriteLine("DEBUG TOURIST: " + tourist.Email);
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _dbcontext.Update(tourist);
+                    await _dbcontext.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!TouristExists())
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction("MembersArea");
+            }
+            return View(tourist);
         }
 
         //
@@ -618,6 +658,11 @@ namespace Trails4Health.Controllers
         public IActionResult AccessDenied()
         {
             return View();
+        }
+
+        private bool TouristExists()
+        {
+            return _dbcontext.Trails.Any(e => e.Name == User.Identity.Name);
         }
 
 
