@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Trails4Health.Models;
 
@@ -10,18 +7,15 @@ namespace Trails4Health.Data
 {
     public class UsersSeedData
     {
+
         public static async Task EnsurePopulatedAsync(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             const string adminName = "Admin";
             const string adminPass = "Secret123$";
-
-            const string touristName = "Carlos Alberto";
-            const string touristPass = adminPass;
-
-            const string teacherName = "João Paulo";
+            const string teacherName = "professor";
             const string teacherPass = adminPass;
-
-            // Role Creation
+            const string turistaName = "turista";
+            const string turistaPass = adminPass;
 
             if (!await roleManager.RoleExistsAsync("Administrador"))
             {
@@ -33,13 +27,13 @@ namespace Trails4Health.Data
                 await roleManager.CreateAsync(new IdentityRole("Turista"));
             }
 
-            if(!await roleManager.RoleExistsAsync("Professor"))
+            if (!await roleManager.RoleExistsAsync("Professor"))
             {
                 await roleManager.CreateAsync(new IdentityRole("Professor"));
             }
-           
 
             ApplicationUser admin = await userManager.FindByNameAsync(adminName);
+
             if (admin == null)
             {
                 admin = new ApplicationUser { UserName = adminName };
@@ -51,29 +45,28 @@ namespace Trails4Health.Data
                 await userManager.AddToRoleAsync(admin, "Administrador");
             }
 
-            ApplicationUser tourist = await userManager.FindByNameAsync(touristName);
-            if (tourist == null)
+            ApplicationUser turista = await userManager.FindByNameAsync(turistaName);
+            if (turista == null)
             {
-                tourist = new ApplicationUser { UserName = touristName };
-                await userManager.CreateAsync(tourist, touristPass);
+                turista = new ApplicationUser { UserName = turistaName };
+                await userManager.CreateAsync(turista, turistaPass);
             }
 
-            if (!await userManager.IsInRoleAsync(tourist, "Turista"))
+            if (!await userManager.IsInRoleAsync(turista, "Turista"))
             {
-                await userManager.AddToRoleAsync(tourist, "Turista");
+                await userManager.AddToRoleAsync(turista, "Turista");
             }
 
-
-            ApplicationUser teacher = await userManager.FindByNameAsync(touristName);
-            if (teacher == null)
+            ApplicationUser professor = await userManager.FindByNameAsync(teacherName);
+            if (professor == null)
             {
-                teacher = new ApplicationUser { UserName = teacherName };
-                await userManager.CreateAsync(teacher, teacherPass);
+                professor = new ApplicationUser { UserName = teacherName };
+                await userManager.CreateAsync(professor, teacherPass);
             }
 
-            if (!await userManager.IsInRoleAsync(teacher, "Professor"))
+            if (!await userManager.IsInRoleAsync(professor, "Professor"))
             {
-                await userManager.AddToRoleAsync(teacher, "Professor");
+                await userManager.AddToRoleAsync(professor, "Professor");
             }
         }
     }
