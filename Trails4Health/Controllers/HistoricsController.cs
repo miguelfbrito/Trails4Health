@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Trails4Health.Controllers
 {
     [RequireHttps]
-    [Authorize]
+    [Authorize(Roles = "Turista, Professor")]
     public class HistoricsController : Controller
     {
         private readonly ApplicationDbContext _context;

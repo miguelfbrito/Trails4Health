@@ -181,11 +181,7 @@ namespace Trails4Health.Controllers
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
 
 
-               /* if (tourist.TipoUtilizador == "Turista")
-                {
 
-                    
-                }*/
 
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -196,7 +192,18 @@ namespace Trails4Health.Controllers
                     //var callbackUrl = Url.Action(nameof(ConfirmEmail), "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
                     //await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
                     //    $"Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a>");
-                    await _userManager.AddToRoleAsync(user, "Turista");
+
+                    if (tourist.TipoUtilizador == "Turista")
+                    {
+                        await _userManager.AddToRoleAsync(user, "TURISTA");
+                    } else if (tourist.TipoUtilizador == "Professor")
+                    {
+                        await _userManager.AddToRoleAsync(user, "PROFESSOR");
+                    }
+
+                    System.Diagnostics.Debug.WriteLine(tourist.TipoUtilizador.ToString());
+
+
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation(3, "User created a new account with password.");

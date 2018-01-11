@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Trails4Health.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Trails4Health.Controllers
 {
+    [Authorize(Roles = "Professor")]
     [RequireHttps]
     public class Trails1Controller : Controller
     {

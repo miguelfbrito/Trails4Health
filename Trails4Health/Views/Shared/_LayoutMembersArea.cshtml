@@ -75,11 +75,19 @@
 
                                     <ul class="nav navbar-nav navbar-right">
                                         <li><a asp-controller="Home" asp-action="Index">Home</a></li>
-                                        <li><a asp-controller="Historics" asp-action="CheckHistoric">Hist�rico</a></li>
 
-                                        <li><a asp-controller="Trails1" asp-action="Index">Gerir Trilhos</a></li>
-                                        <li><a asp-controller="Stages" asp-action="Index">Gerir Etapas</a></li>
+                                        @if (User.IsInRole("Turista"))
+                                        {
+                                            <li><a asp-controller="Historics" asp-action="CheckHistoric">Hist�rico</a></li>
+                                        }
 
+
+                                        @if (User.IsInRole("Professor"))
+                                        {
+                                            <li><a asp-controller="Historics" asp-action="CheckHistoric">Hist�rico</a></li>
+                                            <li><a asp-controller="Trails1" asp-action="Index">Gerir Trilhos</a></li>
+                                            <li><a asp-controller="Stages" asp-action="Index">Gerir Etapas</a></li>
+                                        }
                                     </ul>
                                 </div><!-- /.navbar-collapse -->
                             </div><!-- /.container-fluid -->

@@ -7,16 +7,7 @@
 
 
 <div id="checkhistory">
-
-    @if (User.IsInRole("Turista"))
-    {
-        <p> Role Turista</p>
-    }
-    else
-    {
-        <p> Nao se encontra em nenhuma role </p>
-    }
-
+        
     @if (Model.Count() == 0)
     {
         <p>Não realizou nenhum percurso.</p>
