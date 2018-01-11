@@ -130,17 +130,35 @@ namespace Trails4Health.Controllers
         //POST: Trails1/EditTrailStatus
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditTrailStatus(int id, [Bind("StatusID","StartDate","EndDate")] StatusTrails statustrails)
+        public async Task<IActionResult> EditTrailStatus(int id, [Bind("StatusID","StartDate","EndDate","Reason")] StatusTrails newStatus)
         {
             if (ModelState.IsValid)
             {
+                //var lastStatusTrail =  _context.StatusTrails.
+                //Include(lastStatus => lastStatus.Trail).
+                //Where(lastStatus => lastStatus.TrailID == newStatus.TrailID && lastStatus.EndDate==DateTime.MinValue).
+                //ToList().Take(1);
+
+                var lastStatusTrail = await _context.StatusTrails
+                .Include(lastStatus => lastStatus.Trail)
+                .SingleOrDefaultAsync(lastStatus => lastStatus.TrailID == id && lastStatus.EndDate==DateTime.MinValue);
+
+                lastStatusTrail.EndDate = newStatus.StartDate;
+
+                //if (lastStatusTrail.Count() > 0)
+                //{
+                //    lastStatusTrail.First().EndDate = newStatus.StartDate;
+                //}
+
+
+
                 StatusTrails StatusTrail = new StatusTrails
                 {
-                    StatusID = statustrails.StatusID,
+                    StatusID = newStatus.StatusID,
                     TrailID = id,
-                    StartDate = statustrails.StartDate,
-                    EndDate = statustrails.EndDate,
-                    Reason = statustrails.Reason
+                    StartDate = newStatus.StartDate,
+                    EndDate = newStatus.EndDate,
+                    Reason = newStatus.Reason
                 };
                 _context.Add(StatusTrail);
                 await _context.SaveChangesAsync();
