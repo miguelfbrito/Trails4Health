@@ -20,7 +20,7 @@ namespace Trails4Health.Models
         public string Observations { get; set; }
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        [CheckDateRange()]
+        [CheckDateRange(FirstDate = "01/01/2017", EndDate = "NOW")]
         public DateTime RealizationDate { get; set; }
 
   
@@ -42,15 +42,22 @@ namespace Trails4Health.Models
 
 public class CheckDateRangeAttribute : ValidationAttribute
 {
-    public DateTime FirstDate { get; set; }
-    public DateTime EndDate { get; set; }
-
+    public String FirstDate { get; set; }
+    public String EndDate { get; set; }
+    protected DateTime begginingDate;
+    protected DateTime endingDate;
 
     protected override ValidationResult IsValid(object value, ValidationContext validationContext)
     {
-        DateTime dataInicioPlataforma = DateTime.Parse("01/01/2017");
+        DateTime dataB = DateTime.Parse(FirstDate);
+        DateTime dataE = DateTime.Parse(EndDate);
+
+        if(EndDate == "NOW"){
+            dataE = DateTime.Now;
+        }
+
         DateTime d = (DateTime)value;
-        if (d <= DateTime.Now && d >= dataInicioPlataforma )
+        if (d <= dataE && d >= dataB)
         {
             return ValidationResult.Success;
         }
