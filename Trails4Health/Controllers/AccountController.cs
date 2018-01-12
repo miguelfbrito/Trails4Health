@@ -171,30 +171,19 @@ namespace Trails4Health.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register([Bind("Email,TipoUtilizador")] Tourist tourist, RegisterViewModel model, string returnUrl = null)
         {
-
-
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-
-
-
-
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=532713
-                    // Send an email with this link
-                    //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    //var callbackUrl = Url.Action(nameof(ConfirmEmail), "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
-                    //await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
-                    //    $"Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a>");
 
                     if (tourist.TipoUtilizador == "Turista")
                     {
                         await _userManager.AddToRoleAsync(user, "TURISTA");
-                    } else if (tourist.TipoUtilizador == "Professor")
+                    }
+                    else if (tourist.TipoUtilizador == "Professor")
                     {
                         await _userManager.AddToRoleAsync(user, "PROFESSOR");
                     }
@@ -218,15 +207,15 @@ namespace Trails4Health.Controllers
             return View(model);
         }
 
-     
+
         public async Task<IActionResult> EditProfile()
         {
 
             var touristContext = await _dbcontext.Tourists.SingleOrDefaultAsync(tourist => tourist.Email == User.Identity.Name);
 
             System.Diagnostics.Debug.WriteLine("TOURIST EMAIL: " + touristContext.Email.ToString());
-         //   System.Diagnostics.Debug.WriteLine("TOURIST TYPE OF USER : " + touristContext.TipoUtilizador.ToString());
-          // System.Diagnostics.Debug.WriteLine("TOURIST PHONE: " + touristContext.Phone.ToString());
+            //   System.Diagnostics.Debug.WriteLine("TOURIST TYPE OF USER : " + touristContext.TipoUtilizador.ToString());
+            // System.Diagnostics.Debug.WriteLine("TOURIST PHONE: " + touristContext.Phone.ToString());
 
 
             if (touristContext == null)
@@ -243,7 +232,7 @@ namespace Trails4Health.Controllers
 
             //tourist = _dbcontext.Tourists.SingleOrDefault(currentTourist => currentTourist.Email == User.Identity.Name);
 
-       
+
 
             //System.Diagnostics.Debug.WriteLine("DEBUG TOURIST: " + tourist.Email);
             if (User.Identity.Name != tourist.Email)
@@ -449,9 +438,18 @@ namespace Trails4Health.Controllers
                 }
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await _userManager.CreateAsync(user);
+
+                
+
                 if (result.Succeeded)
                 {
                     result = await _userManager.AddLoginAsync(user, info);
+
+                    await _userManager.AddToRoleAsync(user, "TURISTA");
+                    var tourist = await _dbcontext.Tourists.SingleOrDefaultAsync(currentTourist => currentTourist.Email == user.Email);
+                    _dbcontext.Add(tourist);
+                    await _dbcontext.SaveChangesAsync();
+
                     if (result.Succeeded)
                     {
                         await _signInManager.SignInAsync(user, isPersistent: false);

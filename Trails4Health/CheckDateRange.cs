@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 
 namespace Trails4Health
 {
-
     public class CheckDateRange : ValidationAttribute
     {
         public String FirstDate { get; set; }
         public String EndDate { get; set; }
-        protected DateTime begginingDate;
-        protected DateTime endingDate;
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
