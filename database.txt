@@ -1,0 +1,5 @@
+dotnet restore
+dotnet ef migrations add initial2 --context UsersDbContext
+dotnet ef migrations add initial2 --context ApplicationDbContext
+dotnet ef database update --context UsersDbContext
+dotnet ef database update --context ApplicationDbContext

@@ -1,4 +1,3 @@
-
 @using System.Collections.Generic
 @using Microsoft.AspNetCore.Http
 @using Microsoft.AspNetCore.Http.Authentication
@@ -7,21 +6,19 @@
 
 @{
     ViewData["Title"] = "Login";
-	Layout = "~/Views/Shared/_LayoutMembersArea.cshtml";
+    Layout = "~/Views/Shared/_LayoutMembersArea.cshtml";
 }
 
 <!-- Login Original -->
 
 
-<div class="container;" >
+<div class="container;">
     <div class="row">
-        <h4>Login</h4>
-        <hr>
         <div class="col-lg-4">
         </div>
         <div class="col-lg-4">
 
-            <form asp-controller="Account" asp-action="Login"  method="post" asp-route-returnurl="@ViewData["ReturnUrl"]">
+            <form asp-controller="Account" asp-action="Login" method="post" asp-route-returnurl="@ViewData["ReturnUrl"]">
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
                     <input asp-for="Email" type="text" class="form-control" placeholder="Email">
@@ -29,7 +26,7 @@
                 </div>
 
                 <div class="form-group">
-                    <input  asp-for="Password" type="password" class="form-control" placeholder="********">
+                    <input asp-for="Password" type="password" class="form-control" placeholder="********">
                     <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
 
@@ -40,8 +37,8 @@
                 <div class="form-group">
                     <input type="submit" class="btn btn-success" value="Login">
                     <a asp-area="" asp-controller="Account" asp-action="Register">
-                        <input  type="button" class="btn btn-success" style="margin-left:10px; width:100px;" value="Register">
-                    </a> 
+                        <input type="button" class="btn btn-success" style="margin-left:10px; width:100px;" value="Register">
+                    </a>
                 </div>
 
                 <div>
@@ -75,9 +72,8 @@
             </form>
         </div>
 
-            <div class="col-md-4">
-               
+        <div class="col-md-4">
+
         </div>
     </div>
 </div>
-
