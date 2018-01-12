@@ -34,6 +34,8 @@ namespace Trails4Health.Models
 
         public bool IsActivated { get; set; }
 
+        public byte[] TrailImage { get; set; }
+
         //Tabela Season
 
         public Season Season { get; set; }
@@ -43,6 +45,7 @@ namespace Trails4Health.Models
         //Tabela Desnível
         public Slope Slope { get; set; }
         public int SlopeID { get; set; }
+
 
         //Tabela Status_Trail
         public ICollection<StatusTrails> StatusTrails { get; set; }

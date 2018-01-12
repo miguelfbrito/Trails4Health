@@ -59,6 +59,14 @@
         <dd>
             @Html.DisplayFor(model => model.trail.IsActivated)
         </dd>
+        <dd>
+            @{
+                var base64 = Convert.ToBase64String(Model.trail.TrailImage);
+                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+            }
+        </dd>
+
+<img src="@imgSrc" />
     </dl>
 
     <hr />

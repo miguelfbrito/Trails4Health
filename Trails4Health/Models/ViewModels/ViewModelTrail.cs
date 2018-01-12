@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 
 namespace Trails4Health.Models.ViewModels
 {
@@ -17,6 +18,8 @@ namespace Trails4Health.Models.ViewModels
         public int SlopeID { get; set; }
         public int StatusID { get; set; }
         public bool IsActivated { get; set; }
+        public string ImagePath { get; set; }
+        public IFormFile ImageFile { get;set; }
 
 
     }

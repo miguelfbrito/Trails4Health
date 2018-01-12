@@ -6,7 +6,7 @@
 }
 
 
-<form asp-action="Create">
+<form method="post" asp-action="Create"  enctype="multipart/form-data" >
     <div class="form-horizontal">
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -70,6 +70,14 @@
                 <select asp-for="StatusID" class="form-control" asp-items="ViewBag.StatusID"></select>
             </div>
         </div>
+        <div class="form-group">
+            <label asp-for="ImageFile" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input type="file" name="ImageFile" class="form-control" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+        </div>
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Criar" class="btn btn-success" />

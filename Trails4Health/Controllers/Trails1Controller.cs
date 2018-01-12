@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Trails4Health.Models;
 using Trails4Health.Models.ViewModels;
+using System.IO;
+using System.Net.Http.Headers;
+using System.Threading;
 
 namespace Trails4Health.Controllers
 {
@@ -57,7 +60,6 @@ namespace Trails4Health.Controllers
 
 
 
-
         // GET: Trails1/Create
         public IActionResult Create()
         {
@@ -72,11 +74,16 @@ namespace Trails4Health.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TrailID,Name,Duration,DistanceToTravel,StartLoc,EndLoc,IsActivated,SeasonID,SlopeID,IsActivated,StatusID")] ViewModelTrail VMTrail)
+        public async Task<IActionResult> Create([Bind("TrailID,Name,Duration,DistanceToTravel,StartLoc,EndLoc,IsActivated,SeasonID,SlopeID,IsActivated,StatusID,ImageFile")] ViewModelTrail VMTrail)
         {
+
+           // ViewData["ReturnUrl"] = returnUrl;
+
             if (ModelState.IsValid)
             {
+
+
+
                 Trail trail = new Trail
                 {
                     Name = VMTrail.Name,
@@ -88,7 +95,13 @@ namespace Trails4Health.Controllers
                     SlopeID = VMTrail.SlopeID,
                     IsActivated = VMTrail.IsActivated
                 };
-                _context.Add(trail);
+
+                using (var memoryStream = new MemoryStream())
+                {
+                    await VMTrail.ImageFile.CopyToAsync(memoryStream);
+                    trail.TrailImage = memoryStream.ToArray();
+                }
+
 
                 StatusTrails statusTrail = new StatusTrails
                 {
@@ -134,10 +147,6 @@ namespace Trails4Health.Controllers
         {
             if (ModelState.IsValid)
             {
-                //var lastStatusTrail =  _context.StatusTrails.
-                //Include(lastStatus => lastStatus.Trail).
-                //Where(lastStatus => lastStatus.TrailID == newStatus.TrailID && lastStatus.EndDate==DateTime.MinValue).
-                //ToList().Take(1);
 
                 var lastStatusTrail = await _context.StatusTrails
                 .Include(lastStatus => lastStatus.Trail)
