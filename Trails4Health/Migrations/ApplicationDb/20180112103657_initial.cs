@@ -141,8 +141,8 @@ namespace Trails4Health.Migrations.ApplicationDb
                 {
                     TouristID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Age = table.Column<int>(nullable: false),
                     CC = table.Column<string>(nullable: true),
+                    DateOfBirth = table.Column<DateTime>(nullable: false),
                     Email = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     Phone = table.Column<string>(nullable: true),

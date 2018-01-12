@@ -42,6 +42,10 @@ namespace Trails4Health.Models
 
 public class CheckDateRangeAttribute : ValidationAttribute
 {
+    public DateTime FirstDate { get; set; }
+    public DateTime EndDate { get; set; }
+
+
     protected override ValidationResult IsValid(object value, ValidationContext validationContext)
     {
         DateTime dataInicioPlataforma = DateTime.Parse("01/01/2017");

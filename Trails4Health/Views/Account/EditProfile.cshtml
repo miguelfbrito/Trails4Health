@@ -11,7 +11,15 @@
         <h4>Editar Perfil</h4>
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <input type="hidden" asp-for="TouristID" />
+        <input type="hidden" asp-for="TouristID" />
+        <input type="hidden" asp-for="Email" />
+        <div class="form-group">
+            <label asp-for="Name" class="col-md-2 control-label">Nome:</label>
+            <div class="col-md-10">
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
         <div class="form-group">
             <label asp-for="Phone" class="col-md-2 control-label">Telemóvel:</label>
             <div class="col-md-10">
@@ -33,11 +41,11 @@
                 <span asp-validation-for="DateOfBirth" class="text-danger"></span>
             </div>
         </div>
-       
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Alterar" class="btn btn-primary" />
-                <a asp-action="Index" class="btn btn-primary">Cancelar</a>
+                <a asp-action="MemberArea" class="btn btn-primary">Cancelar</a>
             </div>
         </div>
     </div>

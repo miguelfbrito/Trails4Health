@@ -8,7 +8,7 @@ using Trails4Health.Models;
 namespace Trails4Health.Migrations.ApplicationDb
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180111165925_initial")]
+    [Migration("20180112103657_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -320,9 +320,9 @@ namespace Trails4Health.Migrations.ApplicationDb
                     b.Property<int>("TouristID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("Age");
-
                     b.Property<string>("CC");
+
+                    b.Property<DateTime>("DateOfBirth");
 
                     b.Property<string>("Email");
 

@@ -319,9 +319,9 @@ namespace Trails4Health.Migrations.ApplicationDb
                     b.Property<int>("TouristID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("Age");
-
                     b.Property<string>("CC");
+
+                    b.Property<DateTime>("DateOfBirth");
 
                     b.Property<string>("Email");
 

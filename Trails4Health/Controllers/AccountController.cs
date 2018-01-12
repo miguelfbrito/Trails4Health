@@ -219,35 +219,56 @@ namespace Trails4Health.Controllers
         }
 
      
-        public IActionResult EditProfile()
+        public async Task<IActionResult> EditProfile()
         {
 
-            var touristContext = _dbcontext.Tourists.SingleOrDefault(tourist => tourist.Email == User.Identity.Name);
-          
+            var touristContext = await _dbcontext.Tourists.SingleOrDefaultAsync(tourist => tourist.Email == User.Identity.Name);
+
+            System.Diagnostics.Debug.WriteLine("TOURIST EMAIL: " + touristContext.Email.ToString());
+         //   System.Diagnostics.Debug.WriteLine("TOURIST TYPE OF USER : " + touristContext.TipoUtilizador.ToString());
+          // System.Diagnostics.Debug.WriteLine("TOURIST PHONE: " + touristContext.Phone.ToString());
+
+
             if (touristContext == null)
             {
                 return NotFound();
             }
-            return View();
+            return View(touristContext);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditProfile([Bind("TouristID, Phone, CC, DateOfBirth")] Tourist tourist)
+        public async Task<IActionResult> EditProfile([Bind("TouristID,Email,Name,Phone,CC,DateOfBirth")] Tourist tourist)
         {
 
-            System.Diagnostics.Debug.WriteLine("DEBUG TOURIST: " + tourist.Email);
+            //tourist = _dbcontext.Tourists.SingleOrDefault(currentTourist => currentTourist.Email == User.Identity.Name);
+
+       
+
+            //System.Diagnostics.Debug.WriteLine("DEBUG TOURIST: " + tourist.Email);
+            if (User.Identity.Name != tourist.Email)
+            {
+                System.Diagnostics.Debug.WriteLine("USER IDENTITY NAME: " + User.Identity.Name.ToString());
+                System.Diagnostics.Debug.WriteLine("TOURIST NAME : " + tourist.Email.ToString());
+                System.Diagnostics.Debug.WriteLine("TOURIST NOT FOUND");
+                return NotFound();
+            }
+            System.Diagnostics.Debug.WriteLine("TOURIST FOUND");
+
             if (ModelState.IsValid)
             {
                 try
                 {
                     _dbcontext.Update(tourist);
                     await _dbcontext.SaveChangesAsync();
+                    System.Diagnostics.Debug.WriteLine("UPDATING TOURIST..");
                 }
                 catch (DbUpdateConcurrencyException)
                 {
+                    System.Diagnostics.Debug.WriteLine("TOURIST CATCH");
                     if (!TouristExists())
                     {
+                        System.Diagnostics.Debug.WriteLine("TOURIST NOT FOUND ON EXISTS CHECK");
                         return NotFound();
                     }
                     else
@@ -255,8 +276,11 @@ namespace Trails4Health.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("MembersArea");
+
+                System.Diagnostics.Debug.WriteLine("FINISHING FUNCTION");
+                return RedirectToAction("MemberArea", "Account");
             }
+            System.Diagnostics.Debug.WriteLine("SOMETHING FAILED UPDATING TOURIST");
             return View(tourist);
         }
 
