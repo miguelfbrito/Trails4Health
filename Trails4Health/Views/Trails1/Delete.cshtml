@@ -42,6 +42,18 @@
             @Html.DisplayFor(model => model.EndLoc)
         </dd>
         <dt>
+            Ativo:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsActivated)
+        </dd>
+        <dt>
+            Dificuldade:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Difficulty.DifficultyID)
+        </dd>
+        <dt>
             Epoca Aconselhada:
         </dt>
         <dd>
@@ -53,22 +65,11 @@
         <dd>
             @Html.DisplayFor(model => model.Slope.SlopeID)
         </dd>
-        <dt>
-            Esta Ativo?:
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.IsActivated)
-        </dd>
     </dl>
     
     <form asp-action="Delete" style="margin-left:15px">
         <div class="form-actions no-color">
-            @if (Model.IsActivated == true) { 
-            <input type="submit" value="Desativar" class="btn btn-danger" />
-            }
-            else{
-            <input type="submit" value="Ativar" class="btn btn-danger" />
-            }
+            <input type="submit" value="Desativar" class="btn btn-danger" /> 
             <a asp-action="Index" class="btn btn-primary" >Voltar ao Gestao de Trilhos</a>
         </div>
     </form>

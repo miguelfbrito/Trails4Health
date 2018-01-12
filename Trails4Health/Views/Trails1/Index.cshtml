@@ -1,6 +1,5 @@
 @model IEnumerable<Trails4Health.Models.Trail>
 
-
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutMembersArea.cshtml";
@@ -25,15 +24,19 @@
                 <th>
                     Fim
                 </th>
+                <th>
+                   Ativo?
+                </th>
+            <th>
+                Dificuldade
+            </th>
             <th>
                 Epoca aconselhada
             </th>
             <th>
                 Desnivel
             </th>
-            <th>
-                Esta Ativo?
-            </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -55,26 +58,21 @@
                 @Html.DisplayFor(modelItem => item.EndLoc)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.IsActivated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Difficulty.Level)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Season.SeasonName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Slope.Type)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IsActivated)
-            </td>
-
-            <td>
                 <a asp-action="Edit"  asp-route-id="@item.TrailID">Editar</a> |
                 <a asp-action="Details" asp-route-id="@item.TrailID">Detalhes</a> |
-                @if (item.IsActivated == true) {
                 <a asp-action="Delete" asp-route-id="@item.TrailID">Desativar</a>
-                }
-                else
-                {
-                    <a asp-action="Delete" asp-route-id="@item.TrailID">Ativar</a>
-                }|
-                <a asp-action="EditTrailStatus" asp-route-id="@item.TrailID">Editar Estado</a>
             </td>
         </tr>
 }

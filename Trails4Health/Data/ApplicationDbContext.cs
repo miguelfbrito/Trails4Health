@@ -30,7 +30,7 @@ namespace Trails4Health.Models
         public DbSet<Stage> Stages { get; set; }
         public DbSet<Status> Status { get; set; }
         public DbSet<Stage_Trail> Stages_Trails { get; set; }
-        public DbSet<StatusTrails> StatusTrails { get; set; }       
+        public DbSet<Status_Trail> Status_Trails { get; set; }       
         
 
 
@@ -62,12 +62,10 @@ namespace Trails4Health.Models
                 .HasOne(trail => trail.Season)
                 .WithMany(season => season.Trails)
                 .HasForeignKey(trail => trail.SeasonID);
-
-            //Difficulty
-            modelBuilder.Entity<Stage>()
-                .HasOne(stage => stage.Difficulty)
-                .WithMany(difficulty => difficulty.Stages)
-                .HasForeignKey(stage => stage.DifficultyID);
+            modelBuilder.Entity<Trail>()
+                .HasOne(trail => trail.Difficulty)
+                .WithMany(difficulty => difficulty.Trails)
+                .HasForeignKey(trail => trail.DifficultyID);
 
             //Desnível
             modelBuilder.Entity<Trail>()
@@ -110,15 +108,15 @@ namespace Trails4Health.Models
             //Status_Trail-------------------------------------------------------------------------
 
             //Primary Key Status_Trail
-            modelBuilder.Entity<StatusTrails>()
-                .HasKey(st => new { st.StatusTrailID });
+            modelBuilder.Entity<Status_Trail>()
+                .HasKey(st => new { st.StatusID, st.TrailID });
             //Foreign Keys Status_Trail
-            modelBuilder.Entity<StatusTrails>()
+            modelBuilder.Entity<Status_Trail>()
                 .HasOne(st => st.Trail)
                 .WithMany(trail => trail.StatusTrails)
                 .HasForeignKey(st => st.TrailID);
 
-            modelBuilder.Entity<StatusTrails>()
+            modelBuilder.Entity<Status_Trail>()
                 .HasOne(st => st.Status)
                 .WithMany(status => status.StatusTrails)
                 .HasForeignKey(st => st.StatusID);
