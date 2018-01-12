@@ -6,17 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Trails4Health.Models;
-using Microsoft.AspNetCore.Authorization;
 using Trails4Health.Models.ViewModels;
 using System.IO;
 using System.Net.Http.Headers;
 using System.Threading;
 
-
 namespace Trails4Health.Controllers
 {
-    [Authorize(Roles = "Professor")]
-    [RequireHttps]
     public class Trails1Controller : Controller
     {
         private readonly ApplicationDbContext _context;

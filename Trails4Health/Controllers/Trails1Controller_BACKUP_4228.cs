@@ -6,12 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Trails4Health.Models;
+<<<<<<< HEAD
 using Microsoft.AspNetCore.Authorization;
+=======
 using Trails4Health.Models.ViewModels;
 using System.IO;
 using System.Net.Http.Headers;
 using System.Threading;
-
+>>>>>>> CorreçõesPósAvaliação-RuiParedes
 
 namespace Trails4Health.Controllers
 {

@@ -1,4 +1,4 @@
-@model Trails4Health.Models.Trail
+@model Trails4Health.Models.ViewModels.ViewModelTrail
 
 @{
     ViewData["Title"] = "Create";
@@ -6,7 +6,7 @@
 }
 
 
-<form asp-action="Create">
+<form method="post" asp-action="Create"  enctype="multipart/form-data" >
     <div class="form-horizontal">
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -46,20 +46,6 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <div class="checkbox">
-                    <input asp-for="IsActivated" />
-                    <label asp-for="IsActivated">Ativo</label>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="DifficultyID" class="col-md-2 control-label">Dificuldade:</label>
-            <div class="col-md-10">
-                <select asp-for="DifficultyID" class ="form-control" asp-items="ViewBag.DifficultyID"></select>
-            </div>
-        </div>
-        <div class="form-group">
             <label asp-for="SeasonID" class="col-md-2 control-label">Epoca Aconselhada:</label>
             <div class="col-md-10">
                 <select asp-for="SeasonID" class ="form-control" asp-items="ViewBag.SeasonID"></select>
@@ -71,6 +57,27 @@
                 <select asp-for="SlopeID" class ="form-control" asp-items="ViewBag.SlopeID"></select>
             </div>
         </div>
+        <div class="form-group">
+            <label asp-for="IsActivated" class="col-md-2 control-label">Esta Ativo?:</label>
+            <div class="col-md-10">
+                <input asp-for="IsActivated" class="form-control" />
+                <span asp-validation-for="IsActivated" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="StatusID" class="col-md-2 control-label">Estado:</label>
+            <div class="col-md-10">
+                <select asp-for="StatusID" class="form-control" asp-items="ViewBag.StatusID"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ImageFile" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input type="file" name="ImageFile" class="form-control" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+        </div>
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Criar" class="btn btn-success" />

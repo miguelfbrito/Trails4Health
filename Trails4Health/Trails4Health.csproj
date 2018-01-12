@@ -18,6 +18,8 @@
     <EmbeddedResource Remove="Views\NovaPasta\**" />
     <None Remove="Views\NovaPasta1\**" />
     <None Remove="Views\NovaPasta\**" />
+    <Compile Remove="Data\PublisherInfoRepository.cs" />
+    <Compile Remove="Models\IFormFile.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -49,6 +51,7 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
+    <Folder Include="Views\Historic\" />
     <Folder Include="Views\Shared\" />
   </ItemGroup>
 

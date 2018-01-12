@@ -41,6 +41,10 @@ namespace Trails4Health.Models
         public int Duration { get; set; }
 
         public ICollection<Stage_Trail> StagesTrails { get; set; }
+
+        //Tabela Dificuldade
+        public Difficulty Difficulty { get; set; }
+        public int DifficultyID { get; set; }
     }
 }
 
