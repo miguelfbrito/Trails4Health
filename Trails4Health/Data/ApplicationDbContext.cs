@@ -20,7 +20,7 @@ namespace Trails4Health.Models
             optionsBuilder.UseSqlServer(_connString);
         }
 
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+            public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
         public DbSet<Historic> Historics { get; set; }
         public DbSet<Tourist> Tourists { get; set; }
         public DbSet<Trail> Trails { get; set; }
