@@ -69,7 +69,7 @@ namespace Trails4Health.Models
             //   new StatusTrails { TrailID = 1, StatusID = 2, StartDate = new DateTime(2017, 05, 12), Reason = "Trilho Recomposto" }
             //  );
             dbContext.Historics.AddRange(
-          new Historic { TrailID = 1, TouristID = 1, TimeTaken = 120, Observations = "No observations", RealizationDate = "21/10/2017" },
+          new Historic { TrailID = 1, TouristID = 1, TimeTaken = 120, Observations = "No observations", RealizationDate = "22/10/2017" },
           new Historic { TrailID = 2, TouristID = 1, TimeTaken = 75, Observations = "No observations", RealizationDate = "22/10/2017" },
           new Historic { TrailID = 3, TouristID = 1, TimeTaken = 180, Observations = "No observations", RealizationDate = "23/10/2017" },
           new Historic { TrailID = 4, TouristID = 1, TimeTaken = 200, Observations = "No observations", RealizationDate = "24/10/2017" }
