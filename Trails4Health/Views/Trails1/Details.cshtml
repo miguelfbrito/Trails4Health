@@ -8,73 +8,81 @@
 
 
 <div style="margin-top:30px">
-    <h4>Detalhes</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            Nome:
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.trail.Name)
-        </dd>
-        <dt>
-            Duracao:
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.trail.Duration) Min
-        </dd>
-        <dt>
-            Distancia
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.trail.DistanceToTravel) Km
-        </dd>
-        <dt>
-            Inicio:
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.trail.StartLoc)
-        </dd>
-        <dt>
-            Fim:
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.trail.EndLoc)
-        </dd>
-        <dt>
-            Epoca Aconselhada:
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.trail.Season.SeasonName)
-        </dd>
-        <dt>
-            Desnivel:
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.trail.Slope.Type)
-        </dd>
-        <dt>
-            Esta Ativo?:
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.trail.IsActivated)
-        </dd>
-        @if (Model.trail.TrailImage != null)
-        {
-            <dd>
-                @{
-                    var base64 = Convert.ToBase64String(Model.trail.TrailImage);
-                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+
+    <div class="container">
+        <div class="row">
+            <div class="coolContainer">
+                <h4 style="float:left">@Html.DisplayFor(model => model.trail.Name) </h4>
+                @if (Model.trail.IsActivated == true)
+    {
+            <h4  style="float:left;color:chartreuse"> - Ativo</h4>
                 }
-            </dd>
+                else
+                {
+            <h4 style="float:left;color:darkred"> - Desativo</h4>
 
-            <img src="@imgSrc" />
-                    }
-    </dl>
-
+                }
+            </div>
+        </div>
+    </div>
 
     <hr />
+    @if (Model.trail.TrailImage != null)
+    {
+        <div style="float:left">
+            @{
+                var base64 = Convert.ToBase64String(Model.trail.TrailImage);
+                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+            }
+        </div>
+
+        <img src="@imgSrc" style="width:400px; height:200px;" />
+    }
+
+    <div style="float:left">
+        <dl class="dl-horizontal">
+            <dt>
+                Duracao:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.trail.Duration) Min
+            </dd>
+            <dt>
+                Distancia
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.trail.DistanceToTravel) Km
+            </dd>
+            <dt>
+                Inicio:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.trail.StartLoc)
+            </dd>
+            <dt>
+                Fim:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.trail.EndLoc)
+            </dd>
+            <dt>
+                Epoca Aconselhada:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.trail.Season.SeasonName)
+            </dd>
+            <dt>
+                Desnivel:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.trail.Slope.Type)
+            </dd>
+        </dl>
+    </div>
+
+
 </div>
+<hr />
 <div>
     <h6>Historico de Estados do Trilho</h6>
     <br />

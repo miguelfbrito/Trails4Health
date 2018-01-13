@@ -1,0 +1,115 @@
+@model Trails4Health.Models.ViewModels.ViewModelTrailsDetails
+
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutMembersArea.cshtml";
+}
+
+
+<div style="margin-top:30px">
+    <h4>Detalhes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Nome:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.trail.Name)
+        </dd>
+        <dt>
+            Duracao:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.trail.Duration) Min
+        </dd>
+        <dt>
+            Distancia
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.trail.DistanceToTravel) Km
+        </dd>
+        <dt>
+            Inicio:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.trail.StartLoc)
+        </dd>
+        <dt>
+            Fim:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.trail.EndLoc)
+        </dd>
+        <dt>
+            Epoca Aconselhada:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.trail.Season.SeasonName)
+        </dd>
+        <dt>
+            Desnivel:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.trail.Slope.Type)
+        </dd>
+        <dt>
+            Esta Ativo?:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.trail.IsActivated)
+        </dd>
+        @if (Model.trail.TrailImage != null)
+        {
+            <dd>
+                @{
+                    var base64 = Convert.ToBase64String(Model.trail.TrailImage);
+                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                }
+            </dd>
+
+            <img src="@imgSrc" alt="" style="width:500px; height:300px;"/>
+                    }
+    </dl>
+
+
+    <hr />
+</div>
+<div>
+    <h6>Historico de Estados do Trilho</h6>
+    <br />
+    <table width="600">
+        <thead>
+            <tr>
+                <th>Estado</th>
+                <th>Data de Inicio</th>
+                <th>Data de Fim</th>
+                <th>Causa</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var status in Model.statustrails)
+            {
+                <tr>
+                    <td>@status.Status.StatusName</td>
+                    <td>@status.StartDate.ToString("dd/MM/yyyy")</td>
+                    @if (status.EndDate != DateTime.MinValue)
+                    {
+                        <td>@status.EndDate.ToString("dd/MM/yyyy")</td>
+                    }
+                    else
+                    {
+                        <td>Estado Por Alterar</td>
+                    }
+                    <td>@status.Reason</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+<br />
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.trail.TrailID" class="btn btn-warning">Editar</a>
+    <a asp-action="Index" class="btn btn-primary">Voltar ao Gestao de Trilhos</a>
+</div>
