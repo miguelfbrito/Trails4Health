@@ -71,6 +71,20 @@ namespace Trails4Health.Models
             }
 
             dbContext.SaveChanges();
+
+            if (!dbContext.Status.Any())
+            {
+                EnsureStatusPopulated(dbContext);
+            }
+
+            dbContext.SaveChanges();
+
+            if (!dbContext.StatusTrails.Any())
+            {
+                EnsureStatusTrailsPopulated(dbContext);
+            }
+
+            dbContext.SaveChanges();
         }
 
 
@@ -142,8 +156,8 @@ namespace Trails4Health.Models
         {
 
             dbContext.Stages.AddRange(
-                new Stage { StageName = "Etapa Grande", Geolocalization = "G(13)", StageStartLoc = "Guarda", StageEndLoc = "Floresta", IsActivated = true, Distance = 5, Duration = 60 },
-                new Stage { StageName = "Etapa Curta", Geolocalization = "G(15)", StageStartLoc = "Seia", StageEndLoc = "Torre", IsActivated = false, Distance = 10, Duration = 120 }
+                new Stage { StageName = "Etapa Grande", Geolocalization = "G(13)", StageStartLoc = "Guarda", StageEndLoc = "Floresta", IsActivated = true, Distance = 5, Duration = 60, DifficultyID=1 },
+                new Stage { StageName = "Etapa Curta", Geolocalization = "G(15)", StageStartLoc = "Seia", StageEndLoc = "Torre", IsActivated = false, Distance = 10, Duration = 120, DifficultyID = 2 }
                 );
         }
 
@@ -167,8 +181,25 @@ namespace Trails4Health.Models
     new Historic { TrailID = 3, TouristID = 3, TimeTaken = 180, DifficultyID = 3, Observations = "No observations", RealizationDate = new DateTime(2017, 11, 17) },
     new Historic { TrailID = 4, TouristID = 4, TimeTaken = 200, DifficultyID = 2, Observations = "No observations", RealizationDate = new DateTime(2017, 12, 9) },
      new Historic { TrailID = 1, TouristID = 5, TimeTaken = 133, DifficultyID = 2, Observations = "No observations", RealizationDate = new DateTime(2018, 01, 8) },
-       new Historic { TrailID = 2, TouristID = 5, TimeTaken = 133, DifficultyID = 2, Observations = "No observations", RealizationDate = new DateTime(2017, 01, 9) }
- );
+     new Historic { TrailID = 2, TouristID = 5, TimeTaken = 133, DifficultyID = 2, Observations = "No observations", RealizationDate = new DateTime(2017, 01, 9) }
+     );
+        }
+
+        private static void EnsureStatusPopulated(ApplicationDbContext dbContext)
+        {
+            dbContext.Status.AddRange(
+                new Status { StatusName = "Aberto" },
+                new Status { StatusName = "Fechado" }
+                );
+        }
+
+
+        private static void EnsureStatusTrailsPopulated(ApplicationDbContext dbContext)
+        {
+            dbContext.StatusTrails.AddRange(
+    new StatusTrails { TrailID = 1, StatusID = 1, StartDate = new DateTime(2017, 05, 11), EndDate = new DateTime(2017, 05, 12), Reason = "Derrocada" },
+    new StatusTrails { TrailID = 1, StatusID = 2, StartDate = new DateTime(2017, 05, 12), Reason = "Trilho Recomposto" }
+     );
         }
 
 

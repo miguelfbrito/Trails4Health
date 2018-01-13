@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Trails4Health.Models
 {
-    public class Status_Trails
+    public class StatusTrails
     {
         public int StatusTrailID { get; set; }
 
