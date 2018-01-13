@@ -71,31 +71,13 @@ namespace Trails4Health.Models
                 await userManager.AddToRoleAsync(professor, "Professor");
             }
 
-            Tourist t1 = new Tourist { Name = "João Silva", DateOfBirth = new DateTime(1991, 11, 10), CC = "14255115", Phone = "926263545", Email = "joao@gmail.com" };
-            Tourist t2 = new Tourist { Name = "Carlos Alberto", DateOfBirth = new DateTime(1986, 10, 23), CC = "14255123", Phone = "926263245", Email = "carlos@gmail.com" };
+            Tourist t1 = new Tourist { Name = "João Silva", DateOfBirth = new DateTime(1991, 11, 10), CC = "14255115", Phone = "926263545", Email = "joao@gmail.com", TipoUtilizador = "Professor" };
+            Tourist t2 = new Tourist { Name = "Carlos Alberto", DateOfBirth = new DateTime(1986, 10, 23), CC = "14255123", Phone = "926263245", Email = "carlos@gmail.com", TipoUtilizador = "Professor" };
 
-            if (t1 == null)
-            {
-                NotFound("Tourist NULL");
-            }
+            System.Diagnostics.Debug.WriteLine("TOURIST T2: " + t2.Name.ToString() + " , " + t2.Email.ToString());
 
-            if (userManager == null)
-            {
-                NotFound("userManager NULL");
-            }
-
-
-            if (dbContext == null)
-            {
-                NotFound("dbContext NULL");
-            }
-
-            var user = new ApplicationUser { UserName = t1.Email, Email = t1.Email };
-            var result = userManager.CreateAsync(user, "Teste12!");
-            await userManager.AddToRoleAsync(user, "Turista");
-            dbContext.Add(t1);
-            await dbContext.SaveChangesAsync();
-
+            await PopulateAccount(t1, userManager, dbContext);
+            await PopulateAccount(t2, userManager, dbContext);
 
         }
 
@@ -104,10 +86,19 @@ namespace Trails4Health.Models
             throw new NotImplementedException();
         }
 
-        /* public static async Task PopulateAccount(Tourist t1, UserManager<ApplicationUser> userManager, UsersDbContext dbContext)
+         public static async Task PopulateAccount(Tourist t1, UserManager<ApplicationUser> userManager, UsersDbContext dbContext)
          {
 
-         }*/
+            var user = new ApplicationUser { UserName = t1.Email, Email = t1.Email };
+            var result = userManager.CreateAsync(user, "Teste12!");
+            if (result.IsCompleted)
+            {
+                await userManager.AddToRoleAsync(user, t1.TipoUtilizador);
+                dbContext.Add(t1);
+                await dbContext.SaveChangesAsync();
+
+            }
+        }
 
     }
 

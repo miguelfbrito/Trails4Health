@@ -124,18 +124,19 @@ namespace Trails4Health.Models
         private static void EnsureTouristsPopulated(ApplicationDbContext dbContext)
         {
             dbContext.Tourists.AddRange(
-              new Tourist { Name = "João Silva", DateOfBirth = new DateTime(1991, 11, 10), CC = "14255115", Phone = "926263545", Email = "joao@gmail.com" },
-               new Tourist { Name = "Carlos Alberto", DateOfBirth = new DateTime(1986, 10, 23), CC = "14255123", Phone = "926263245", Email = "carlos@gmail.com" },
-                new Tourist { Name = "Rute Marreco", DateOfBirth = new DateTime(1994, 6, 24), CC = "14255131", Phone = "926263145", Email = "rute@gmail.com" },
+              new Tourist { Name = "João Silva", DateOfBirth = new DateTime(1991, 11, 10), CC = "14255115", Phone = "926263545", Email = "joao@gmail.com", TipoUtilizador = "Professor" },
+               new Tourist { Name = "Carlos Alberto", DateOfBirth = new DateTime(1986, 10, 23), CC = "14255123", Phone = "926263245", Email = "carlos@gmail.com", TipoUtilizador = "Professor" },
+                new Tourist { Name = "Rute Marreco", DateOfBirth = new DateTime(1994, 6, 24), CC = "14255131", Phone = "926263145", Email = "rute@gmail.com", TipoUtilizador = "Turista" },
                 new Tourist
                 {
                     Name = "Carlos Ferreira",
                     DateOfBirth = new DateTime(1977, 3, 6),
                     CC = "14255123",
                     Phone = "926263245",
-                    Email = "carlosferreira@gmail.com"
+                    Email = "carlosferreira@gmail.com",
+                    TipoUtilizador = "Turista"
                 },
-            new Tourist { Name = "Miguel", DateOfBirth = new DateTime(1983, 11, 23), CC = "14255131", Phone = "926433145", Email = "miguel@gmail.com" }
+            new Tourist { Name = "Miguel", DateOfBirth = new DateTime(1983, 11, 23), CC = "14255131", Phone = "926433145", Email = "miguel@gmail.com", TipoUtilizador = "Turista" }
           );
 
         }

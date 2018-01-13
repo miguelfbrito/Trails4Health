@@ -185,11 +185,12 @@ namespace Trails4Health.Controllers
 
                     if (tourist.TipoUtilizador == "Turista")
                     {
-                        await _userManager.AddToRoleAsync(user, "TURISTA");
+                        await _userManager.AddToRoleAsync(user, "Turista");
                     }
-                    else if (tourist.TipoUtilizador == "Professor")
+
+                    if (tourist.TipoUtilizador == "Professor")
                     {
-                        await _userManager.AddToRoleAsync(user, "PROFESSOR");
+                        await _userManager.AddToRoleAsync(user, "Professor");
                     }
 
                     System.Diagnostics.Debug.WriteLine(tourist.TipoUtilizador.ToString());
