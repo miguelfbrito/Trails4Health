@@ -76,8 +76,6 @@
                                     <ul class="nav navbar-nav navbar-right">
                                         <li><a asp-controller="Home" asp-action="Index">Home</a></li>
 
-                                        <li>@User.Identity.Name</li>
-
                                         @if (User.IsInRole("Turista"))
                                         {
                                             <li><a asp-controller="Historics" asp-action="CheckHistoric">Hist�rico</a></li>
