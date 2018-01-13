@@ -1,14 +1,15 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using System;
 using System.Threading.Tasks;
-using Trails4Health.Models;
+using Trails4Health.Data;
 
-namespace Trails4Health.Data
+namespace Trails4Health.Models
 {
     public class UsersSeedData
     {
 
-        public static async Task EnsurePopulatedAsync(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
+        public static async Task EnsurePopulatedAsync(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, UsersDbContext dbContext)
         {
             const string adminName = "Admin";
             const string adminPass = "Secret123$";
@@ -16,6 +17,7 @@ namespace Trails4Health.Data
             const string teacherPass = adminPass;
             const string turistaName = "turista";
             const string turistaPass = adminPass;
+
 
             if (!await roleManager.RoleExistsAsync("Administrador"))
             {
@@ -68,6 +70,46 @@ namespace Trails4Health.Data
             {
                 await userManager.AddToRoleAsync(professor, "Professor");
             }
+
+            Tourist t1 = new Tourist { Name = "João Silva", DateOfBirth = new DateTime(1991, 11, 10), CC = "14255115", Phone = "926263545", Email = "joao@gmail.com" };
+            Tourist t2 = new Tourist { Name = "Carlos Alberto", DateOfBirth = new DateTime(1986, 10, 23), CC = "14255123", Phone = "926263245", Email = "carlos@gmail.com" };
+
+            if (t1 == null)
+            {
+                NotFound("Tourist NULL");
+            }
+
+            if (userManager == null)
+            {
+                NotFound("userManager NULL");
+            }
+
+
+            if (dbContext == null)
+            {
+                NotFound("dbContext NULL");
+            }
+
+            var user = new ApplicationUser { UserName = t1.Email, Email = t1.Email };
+            var result = userManager.CreateAsync(user, "Teste12!");
+            await userManager.AddToRoleAsync(user, "Turista");
+            dbContext.Add(t1);
+            await dbContext.SaveChangesAsync();
+
+
         }
+
+        private static object NotFound(string v)
+        {
+            throw new NotImplementedException();
+        }
+
+        /* public static async Task PopulateAccount(Tourist t1, UserManager<ApplicationUser> userManager, UsersDbContext dbContext)
+         {
+
+         }*/
+
     }
+
+
 }

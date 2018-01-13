@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Trails4Health.Data;
 
 namespace Trails4Health.Models
 {
@@ -10,7 +11,7 @@ namespace Trails4Health.Models
         public static void EnsurePopulated(IServiceProvider appServices)
         {
             ApplicationDbContext dbContext = (ApplicationDbContext)appServices.GetService(typeof(ApplicationDbContext));
-
+            UsersDbContext usersDbContext = (UsersDbContext)appServices.GetService(typeof(UsersDbContext));
 
 
             if (!dbContext.Seasons.Any())
@@ -123,19 +124,20 @@ namespace Trails4Health.Models
         private static void EnsureTouristsPopulated(ApplicationDbContext dbContext)
         {
             dbContext.Tourists.AddRange(
-              new Tourist { Name = "João Silva", DateOfBirth = new DateTime(1991, 11, 10), CC = "14255115", Phone = "926263545", Email = "joaoooo@gmail.com" },
-               new Tourist { Name = "Carlos Alberto", DateOfBirth = new DateTime(1986, 10, 23), CC = "14255123", Phone = "926263245", Email = "carloooos1@gmail.com" },
-                new Tourist { Name = "Rute Marreco", DateOfBirth = new DateTime(1994, 6, 24), CC = "14255131", Phone = "926263145", Email = "ruuuuute@gmail.com" },
+              new Tourist { Name = "João Silva", DateOfBirth = new DateTime(1991, 11, 10), CC = "14255115", Phone = "926263545", Email = "joao@gmail.com" },
+               new Tourist { Name = "Carlos Alberto", DateOfBirth = new DateTime(1986, 10, 23), CC = "14255123", Phone = "926263245", Email = "carlos@gmail.com" },
+                new Tourist { Name = "Rute Marreco", DateOfBirth = new DateTime(1994, 6, 24), CC = "14255131", Phone = "926263145", Email = "rute@gmail.com" },
                 new Tourist
                 {
                     Name = "Carlos Ferreira",
                     DateOfBirth = new DateTime(1977, 3, 6),
                     CC = "14255123",
                     Phone = "926263245",
-                    Email = "carloooos@gmail.com"
+                    Email = "carlosferreira@gmail.com"
                 },
             new Tourist { Name = "Miguel", DateOfBirth = new DateTime(1983, 11, 23), CC = "14255131", Phone = "926433145", Email = "miguel@gmail.com" }
           );
+
         }
 
         private static void EnsureStagesPopulated(ApplicationDbContext dbContext)

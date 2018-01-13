@@ -26,6 +26,7 @@ namespace Trails4Health.Controllers
     {
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ApplicationDbContext _dbcontext;
+        private readonly UsersDbContext _usersDbContext;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
@@ -34,6 +35,7 @@ namespace Trails4Health.Controllers
         private readonly string _externalCookieScheme;
 
         public AccountController(
+            UsersDbContext usersDbContext,
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
              RoleManager<IdentityRole> roleManager,
@@ -44,6 +46,8 @@ namespace Trails4Health.Controllers
             ApplicationDbContext dbContext
             )
         {
+            _usersDbContext = usersDbContext;
+            _roleManager = roleManager;
             _userManager = userManager;
             _signInManager = signInManager;
             _externalCookieScheme = identityCookieOptions.Value.ExternalCookieAuthenticationScheme;
@@ -52,7 +56,7 @@ namespace Trails4Health.Controllers
             _logger = loggerFactory.CreateLogger<AccountController>();
             _dbcontext = dbContext;
 
-            UsersSeedData.EnsurePopulatedAsync(userManager, roleManager).Wait();
+            UsersSeedData.EnsurePopulatedAsync(userManager, roleManager, _usersDbContext).Wait();
 
         }
 
