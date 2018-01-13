@@ -39,9 +39,6 @@ namespace Trails4Health.Controllers
 
             HistoricInformationViewModel hivm = new HistoricInformationViewModel();
 
-         
-
-
             var historic = await _context.Historics
                 .Include(h => h.Tourist)
                 .Include(h => h.Trail)

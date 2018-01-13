@@ -23,11 +23,11 @@
                 <dd>
                     @if (Model.HasPassword)
             {
-                        <a asp-controller="Account" asp-action="ChangePassword" class="btn-bracketed">Change</a>
+                        <a asp-controller="Account" asp-action="ChangePassword" class="btn-bracketed">Alterar</a>
                     }
                     else
                     {
-                        <a asp-controller="Manage" asp-action="SetPassword" class="btn-bracketed">Create</a>
+                        <a asp-controller="Manage" asp-action="SetPassword" class="btn-bracketed">Criar</a>
                     }
                 </dd>
                 <dt>External Logins:</dt>
@@ -35,8 +35,8 @@
 
                     @Model.Logins.Count <a asp-controller="Manage" asp-action="ManageLogins" class="btn-bracketed">Manage</a>
                 </dd>
-                <dt>Phone Number:</dt>
-                <dd>
+                <!--  <dt>Phone Number:</dt>
+              <dd>
                     <p>
                         Phone Numbers can be used as a second factor of verification in two-factor authentication.
                         See <a href="https://go.microsoft.com/fwlink/?LinkID=532713">this article</a>
@@ -75,9 +75,10 @@
                                 <button type="submit" class="btn-link btn-bracketed">Enable</button> Disabled
                             </form>
                         }*@
-                </dd>
+                </dd>-->
                 <dt>Dados Pessoais:</dt>
                 <dd><a asp-controller="Account" asp-action="EditProfile" class="btn-bracketed">Editar Perfil</a></dd>
+
             </dl>
         </div>
     </div>

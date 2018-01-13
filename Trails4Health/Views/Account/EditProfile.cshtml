@@ -1,4 +1,4 @@
-@model Trails4Health.Models.Trail
+@model Trails4Health.Models.Tourist
 
 @{
     ViewData["Title"] = "Edit";
@@ -6,11 +6,13 @@
 }
 
 
-<form asp-action="Edit">
+<form asp-action="EditProfile">
     <div class="form-horizontal">
+        <h4>Editar Perfil</h4>
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <input type="hidden" asp-for="TrailID" />
+        <input type="hidden" asp-for="TouristID" />
+        <input type="hidden" asp-for="Email" />
         <div class="form-group">
             <label asp-for="Name" class="col-md-2 control-label">Nome:</label>
             <div class="col-md-10">
@@ -19,66 +21,31 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Duration" class="col-md-2 control-label">Duracao(Min):</label>
+            <label asp-for="Phone" class="col-md-2 control-label">Telemóvel:</label>
             <div class="col-md-10">
-                <input asp-for="Duration" class="form-control" />
-                <span asp-validation-for="Duration" class="text-danger"></span>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="DistanceToTravel" class="col-md-2 control-label">Distancia(Km):</label>
+            <label asp-for="CC" class="col-md-2 control-label">Cartão Cidadão/BI:</label>
             <div class="col-md-10">
-                <input asp-for="DistanceToTravel" class="form-control" />
-                <span asp-validation-for="DistanceToTravel" class="text-danger"></span>
+                <input asp-for="CC" class="form-control" />
+                <span asp-validation-for="CC" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="StartLoc" class="col-md-2 control-label">Inicio:</label>
+            <label asp-for="DateOfBirth" class="col-md-2 control-label">Data:</label>
             <div class="col-md-10">
-                <input asp-for="StartLoc" class="form-control" />
-                <span asp-validation-for="StartLoc" class="text-danger"></span>
+                <input asp-for="DateOfBirth" type="date" class="form-control" />
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
             </div>
         </div>
-        <div class="form-group">
-            <label asp-for="EndLoc" class="col-md-2 control-label">Fim:</label>
-            <div class="col-md-10">
-                <input asp-for="EndLoc" class="form-control" />
-                <span asp-validation-for="EndLoc" class="text-danger"></span>
-            </div>
-        </div>
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <div class="checkbox">
-                    <input asp-for="IsActivated" />
-                    <label asp-for="IsActivated">Ativo</label>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="DifficultyID" class="control-label col-md-2">Dificuldade:</label>
-            <div class="col-md-10">
-                <select asp-for="DifficultyID" class="form-control" asp-items="ViewBag.DifficultyID"></select>
-                <span asp-validation-for="DifficultyID" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="SeasonID" class="control-label col-md-2">Epoca Aconselhada:</label>
-            <div class="col-md-10">
-                <select asp-for="SeasonID" class="form-control" asp-items="ViewBag.SeasonID"></select>
-                <span asp-validation-for="SeasonID" class="text-danger"></span> 
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="SlopeID" class="control-label col-md-2">Desnivel:</label>
-            <div class="col-md-10">
-                <select asp-for="SlopeID" class="form-control" asp-items="ViewBag.SlopeID"></select>
-                <span asp-validation-for="SlopeID" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Guardar" class="btn btn-warning" />
-                <a asp-action="Index" class="btn btn-primary">Voltar ao Gestao de Trilhos </a>
+                <input type="submit" value="Alterar" class="btn btn-primary" />
+                <a asp-action="MemberArea" class="btn btn-primary">Cancelar</a>
             </div>
         </div>
     </div>

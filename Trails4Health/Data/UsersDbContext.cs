@@ -11,7 +11,7 @@ namespace Trails4Health.Data
     public class UsersDbContext : IdentityDbContext<ApplicationUser>
     {
     
-        private readonly string _connString = "Server=(localdb)\\mssqllocaldb;Database=Trails4HealthUsers;Trusted_Connection=True;";
+        private readonly string _connString = "Server=(localdb)\\mssqllocaldb;Database=Trails4HealthUsers;Trusted_Connection=True;MultipleActiveResultSets=True";
 
         public UsersDbContext() { }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -16,18 +16,17 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using static Trails4Health.Controllers.ManageController;
 using Trails4Health.Models.ManageViewModels;
 using Trails4Health.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Trails4Health.Controllers
 {
-
-
-
     [RequireHttps]
     [Authorize]
     public class AccountController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ApplicationDbContext _dbcontext;
+        private readonly UsersDbContext _usersDbContext;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
@@ -36,6 +35,7 @@ namespace Trails4Health.Controllers
         private readonly string _externalCookieScheme;
 
         public AccountController(
+            UsersDbContext usersDbContext,
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
              RoleManager<IdentityRole> roleManager,
@@ -46,6 +46,8 @@ namespace Trails4Health.Controllers
             ApplicationDbContext dbContext
             )
         {
+            _usersDbContext = usersDbContext;
+            _roleManager = roleManager;
             _userManager = userManager;
             _signInManager = signInManager;
             _externalCookieScheme = identityCookieOptions.Value.ExternalCookieAuthenticationScheme;
@@ -54,7 +56,7 @@ namespace Trails4Health.Controllers
             _logger = loggerFactory.CreateLogger<AccountController>();
             _dbcontext = dbContext;
 
-            UsersSeedData.EnsurePopulatedAsync(userManager, roleManager).Wait();
+            UsersSeedData.EnsurePopulatedAsync(userManager, roleManager, _usersDbContext).Wait();
 
         }
 
@@ -173,32 +175,22 @@ namespace Trails4Health.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register([Bind("Email,TipoUtilizador")] Tourist tourist, RegisterViewModel model, string returnUrl = null)
         {
-
-
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-
-
-
-
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=532713
-                    // Send an email with this link
-                    //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    //var callbackUrl = Url.Action(nameof(ConfirmEmail), "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
-                    //await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
-                    //    $"Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a>");
 
                     if (tourist.TipoUtilizador == "Turista")
                     {
-                        await _userManager.AddToRoleAsync(user, "TURISTA");
-                    } else if (tourist.TipoUtilizador == "Professor")
+                        await _userManager.AddToRoleAsync(user, "Turista");
+                    }
+
+                    if (tourist.TipoUtilizador == "Professor")
                     {
-                        await _userManager.AddToRoleAsync(user, "PROFESSOR");
+                        await _userManager.AddToRoleAsync(user, "Professor");
                     }
 
                     System.Diagnostics.Debug.WriteLine(tourist.TipoUtilizador.ToString());
@@ -218,6 +210,72 @@ namespace Trails4Health.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+
+        public async Task<IActionResult> EditProfile()
+        {
+
+            var touristContext = await _dbcontext.Tourists.SingleOrDefaultAsync(tourist => tourist.Email == User.Identity.Name);
+
+            System.Diagnostics.Debug.WriteLine("TOURIST EMAIL: " + touristContext.Email.ToString());
+            //   System.Diagnostics.Debug.WriteLine("TOURIST TYPE OF USER : " + touristContext.TipoUtilizador.ToString());
+            // System.Diagnostics.Debug.WriteLine("TOURIST PHONE: " + touristContext.Phone.ToString());
+
+
+            if (touristContext == null)
+            {
+                return NotFound();
+            }
+            return View(touristContext);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditProfile([Bind("TouristID,Email,Name,Phone,CC,DateOfBirth")] Tourist tourist)
+        {
+
+            //tourist = _dbcontext.Tourists.SingleOrDefault(currentTourist => currentTourist.Email == User.Identity.Name);
+
+
+
+            //System.Diagnostics.Debug.WriteLine("DEBUG TOURIST: " + tourist.Email);
+            if (User.Identity.Name != tourist.Email)
+            {
+                System.Diagnostics.Debug.WriteLine("USER IDENTITY NAME: " + User.Identity.Name.ToString());
+                System.Diagnostics.Debug.WriteLine("TOURIST NAME : " + tourist.Email.ToString());
+                System.Diagnostics.Debug.WriteLine("TOURIST NOT FOUND");
+                return NotFound();
+            }
+            System.Diagnostics.Debug.WriteLine("TOURIST FOUND");
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _dbcontext.Update(tourist);
+                    await _dbcontext.SaveChangesAsync();
+                    System.Diagnostics.Debug.WriteLine("UPDATING TOURIST..");
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    System.Diagnostics.Debug.WriteLine("TOURIST CATCH");
+                    if (!TouristExists())
+                    {
+                        System.Diagnostics.Debug.WriteLine("TOURIST NOT FOUND ON EXISTS CHECK");
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+
+                System.Diagnostics.Debug.WriteLine("FINISHING FUNCTION");
+                return RedirectToAction("MemberArea", "Account");
+            }
+            System.Diagnostics.Debug.WriteLine("SOMETHING FAILED UPDATING TOURIST");
+            return View(tourist);
         }
 
         //
@@ -385,9 +443,18 @@ namespace Trails4Health.Controllers
                 }
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await _userManager.CreateAsync(user);
+
+                
+
                 if (result.Succeeded)
                 {
                     result = await _userManager.AddLoginAsync(user, info);
+
+                    await _userManager.AddToRoleAsync(user, "TURISTA");
+                    var tourist = await _dbcontext.Tourists.SingleOrDefaultAsync(currentTourist => currentTourist.Email == user.Email);
+                    _dbcontext.Add(tourist);
+                    await _dbcontext.SaveChangesAsync();
+
                     if (result.Succeeded)
                     {
                         await _signInManager.SignInAsync(user, isPersistent: false);
@@ -618,6 +685,11 @@ namespace Trails4Health.Controllers
         public IActionResult AccessDenied()
         {
             return View();
+        }
+
+        private bool TouristExists()
+        {
+            return _dbcontext.Trails.Any(e => e.Name == User.Identity.Name);
         }
 
 

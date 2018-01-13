@@ -1,14 +1,15 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using System;
 using System.Threading.Tasks;
-using Trails4Health.Models;
+using Trails4Health.Data;
 
-namespace Trails4Health.Data
+namespace Trails4Health.Models
 {
     public class UsersSeedData
     {
 
-        public static async Task EnsurePopulatedAsync(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
+        public static async Task EnsurePopulatedAsync(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, UsersDbContext dbContext)
         {
             const string adminName = "Admin";
             const string adminPass = "Secret123$";
@@ -16,6 +17,7 @@ namespace Trails4Health.Data
             const string teacherPass = adminPass;
             const string turistaName = "turista";
             const string turistaPass = adminPass;
+
 
             if (!await roleManager.RoleExistsAsync("Administrador"))
             {
@@ -68,6 +70,37 @@ namespace Trails4Health.Data
             {
                 await userManager.AddToRoleAsync(professor, "Professor");
             }
+
+            Tourist t1 = new Tourist { Name = "João Silva", DateOfBirth = new DateTime(1991, 11, 10), CC = "14255115", Phone = "926263545", Email = "joao@gmail.com", TipoUtilizador = "Professor" };
+            Tourist t2 = new Tourist { Name = "Carlos Alberto", DateOfBirth = new DateTime(1986, 10, 23), CC = "14255123", Phone = "926263245", Email = "carlos@gmail.com", TipoUtilizador = "Professor" };
+
+            System.Diagnostics.Debug.WriteLine("TOURIST T2: " + t2.Name.ToString() + " , " + t2.Email.ToString());
+
+            await PopulateAccount(t1, userManager, dbContext);
+            await PopulateAccount(t2, userManager, dbContext);
+
         }
+
+        private static object NotFound(string v)
+        {
+            throw new NotImplementedException();
+        }
+
+         public static async Task PopulateAccount(Tourist t1, UserManager<ApplicationUser> userManager, UsersDbContext dbContext)
+         {
+
+            var user = new ApplicationUser { UserName = t1.Email, Email = t1.Email };
+            var result = userManager.CreateAsync(user, "Teste12!");
+            if (result.IsCompleted)
+            {
+                await userManager.AddToRoleAsync(user, t1.TipoUtilizador);
+                dbContext.Add(t1);
+                await dbContext.SaveChangesAsync();
+
+            }
+        }
+
     }
+
+
 }
