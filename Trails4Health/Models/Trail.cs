@@ -48,7 +48,7 @@ namespace Trails4Health.Models
 
 
         //Tabela Status_Trail
-        public ICollection<StatusTrails> StatusTrails { get; set; }
+        public ICollection<Status_Trails> StatusTrails { get; set; }
 
 
         //Tabela Stage_Trail

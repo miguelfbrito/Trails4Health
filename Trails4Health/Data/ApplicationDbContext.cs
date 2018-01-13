@@ -30,7 +30,7 @@ namespace Trails4Health.Models
         public DbSet<Stage> Stages { get; set; }
         public DbSet<Status> Status { get; set; }
         public DbSet<Stage_Trail> Stages_Trails { get; set; }
-        public DbSet<StatusTrails> StatusTrails { get; set; }       
+        public DbSet<Status_Trails> Status_Trails { get; set; }       
         
 
 
@@ -38,32 +38,15 @@ namespace Trails4Health.Models
         {
 
             base.OnModelCreating(modelBuilder);
-            /*   public int TouristID { get; set; }
-        public int TimeTaken { get; set; }
-        public String Observations { get; set; }
-        public string RealizationDate { get; set; }
-        
-        public Difficulty Difficulty { get; set; }
-        public int DifficultyID { get; set; }
 
-        public Trail Trail { get; set; }
-        public int TrailID { get; set; }*/
-
-            //Historic
-            /*
-            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
-            {
-                relationship.DeleteBehavior = DeleteBehavior.Restrict;
-            }*/
-
-
-            //Season
+            //Season x
             modelBuilder.Entity<Trail>()
                 .HasOne(trail => trail.Season)
                 .WithMany(season => season.Trails)
                 .HasForeignKey(trail => trail.SeasonID);
 
             //Difficulty
+
             modelBuilder.Entity<Stage>()
                 .HasOne(stage => stage.Difficulty)
                 .WithMany(difficulty => difficulty.Stages)
@@ -74,7 +57,6 @@ namespace Trails4Health.Models
                 .HasOne(trail => trail.Slope)
                 .WithMany(slope => slope.Trails)
                 .HasForeignKey(trail => trail.SlopeID);
-
 
 
             // TURISTA
@@ -110,15 +92,15 @@ namespace Trails4Health.Models
             //Status_Trail-------------------------------------------------------------------------
 
             //Primary Key Status_Trail
-            modelBuilder.Entity<StatusTrails>()
+            modelBuilder.Entity<Status_Trails>()
                 .HasKey(st => new { st.StatusTrailID });
             //Foreign Keys Status_Trail
-            modelBuilder.Entity<StatusTrails>()
+            modelBuilder.Entity<Status_Trails>()
                 .HasOne(st => st.Trail)
                 .WithMany(trail => trail.StatusTrails)
                 .HasForeignKey(st => st.TrailID);
 
-            modelBuilder.Entity<StatusTrails>()
+            modelBuilder.Entity<Status_Trails>()
                 .HasOne(st => st.Status)
                 .WithMany(status => status.StatusTrails)
                 .HasForeignKey(st => st.StatusID);

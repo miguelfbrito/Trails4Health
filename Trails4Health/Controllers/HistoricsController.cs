@@ -46,7 +46,7 @@ namespace Trails4Health.Controllers
                 .Include(h => h.Tourist)
                 .Include(h => h.Trail)
                 .Include(h => h.Difficulty)
-                .Include(h => h.Trail.Difficulty)
+              //  .Include(h => h.Trail.Difficulty)
                 .Include(h => h.Trail.StagesTrails)
                 .SingleAsync(m => m.HistoricID == id);
 

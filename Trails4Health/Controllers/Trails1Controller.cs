@@ -49,7 +49,7 @@ namespace Trails4Health.Controllers
                 .SingleOrDefaultAsync(m => m.TrailID == id);
 
             vmtd.trail = trail;
-            var statustrails = await _context.StatusTrails.
+            var statustrails = await _context.Status_Trails.
                 Include(t => t.Status).
                Where(m => m.TrailID == trail.TrailID).
                ToListAsync();
@@ -107,7 +107,7 @@ namespace Trails4Health.Controllers
                 }
 
 
-                StatusTrails statusTrail = new StatusTrails
+                Status_Trails statusTrail = new Status_Trails
                 {
                     Trail = trail,
                     StatusID = VMTrail.StatusID,
@@ -147,12 +147,12 @@ namespace Trails4Health.Controllers
         //POST: Trails1/EditTrailStatus
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditTrailStatus(int id, [Bind("StatusID","StartDate","EndDate","Reason")] StatusTrails newStatus)
+        public async Task<IActionResult> EditTrailStatus(int id, [Bind("StatusID","StartDate","EndDate","Reason")] Status_Trails newStatus)
         {
             if (ModelState.IsValid)
             {
 
-                var lastStatusTrail = await _context.StatusTrails
+                var lastStatusTrail = await _context.Status_Trails
                 .Include(lastStatus => lastStatus.Trail)
                 .SingleOrDefaultAsync(lastStatus => lastStatus.TrailID == id && lastStatus.EndDate==DateTime.MinValue);
 
@@ -165,7 +165,7 @@ namespace Trails4Health.Controllers
 
 
 
-                StatusTrails StatusTrail = new StatusTrails
+                Status_Trails StatusTrail = new Status_Trails
                 {
                     StatusID = newStatus.StatusID,
                     TrailID = id,

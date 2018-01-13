@@ -8,6 +8,6 @@ namespace Trails4Health.Models.ViewModels
     public class ViewModelTrailsDetails
     {
         public Trail trail { get; set; }
-        public IEnumerable<StatusTrails> statustrails { get; set; }
+        public IEnumerable<Status_Trails> statustrails { get; set; }
     }
 }
