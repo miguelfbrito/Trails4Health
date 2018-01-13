@@ -71,6 +71,21 @@ namespace Trails4Health.Models
             }
 
             dbContext.SaveChanges();
+
+            if (!dbContext.Status.Any())
+            {
+                EnsureStatusPopulated(dbContext);
+            }
+
+            dbContext.SaveChanges();
+
+            if (!dbContext.StatusTrails.Any())
+            {
+                EnsureStatusTrailsPopulated(dbContext);
+            }
+
+            dbContext.SaveChanges();
+
         }
 
 
@@ -97,6 +112,22 @@ namespace Trails4Health.Models
                 );
         }
 
+        private static void EnsureStatusPopulated(ApplicationDbContext dbContext)
+        {
+            dbContext.Status.AddRange(
+                new Status { StatusName = "Aberto" },
+                new Status { StatusName = "Fechado" }
+                );
+        }
+
+        private static void EnsureStatusTrailsPopulated(ApplicationDbContext dbContext)
+        {
+            dbContext.StatusTrails.AddRange(
+    new StatusTrails { TrailID = 1, StatusID = 1, StartDate = new DateTime(2017, 05, 11), EndDate = new DateTime(2017, 05, 12), Reason = "Derrocada" },
+    new StatusTrails { TrailID = 1, StatusID = 2, StartDate = new DateTime(2017, 05, 12), Reason = "Trilho Recomposto" }
+);
+        }
+
         private static void EnsureSlopesPopulated(ApplicationDbContext dbContext)
         {
 
@@ -113,11 +144,12 @@ namespace Trails4Health.Models
         private static void EnsureTrailsPopulated(ApplicationDbContext dbContext)
         {
             dbContext.Trails.AddRange(
-               new Trail { Name = "Trilho Serra 1", IsActivated = true, Duration = 120, DistanceToTravel = 10, StartLoc = "Manteigas", EndLoc = "Serra", DifficultyID = 1, SeasonID = 1, SlopeID = 1 },
-                new Trail { Name = "Trilho Serra 2", IsActivated = true, Duration = 130, DistanceToTravel = 20, StartLoc = "Guarda", EndLoc = "Serra", DifficultyID = 2, SeasonID = 3, SlopeID = 2 },
-                 new Trail { Name = "Trilho Serra 3", IsActivated = true, Duration = 140, DistanceToTravel = 20, StartLoc = "Manteigas", EndLoc = "Guarda", DifficultyID = 4, SeasonID = 1, SlopeID = 4 },
-                  new Trail { Name = "Trilho Serra 4", IsActivated = true, Duration = 200, DistanceToTravel = 50, StartLoc = "Guarda", EndLoc = "Gouveia", DifficultyID = 3, SeasonID = 4, SlopeID = 3 }
+               new Trail { Name = "Trilho Serra 1", IsActivated = true, Duration = 120, DistanceToTravel = 10, StartLoc = "Manteigas", EndLoc = "Serra", SeasonID = 1, SlopeID = 1, },
+                new Trail { Name = "Trilho Serra 2", IsActivated = true, Duration = 130, DistanceToTravel = 20, StartLoc = "Guarda", EndLoc = "Serra", SeasonID = 3, SlopeID = 2 },
+                 new Trail { Name = "Trilho Serra 3", IsActivated = true, Duration = 140, DistanceToTravel = 20, StartLoc = "Manteigas", EndLoc = "Guarda", SeasonID = 1, SlopeID = 4 },
+                  new Trail { Name = "Trilho Serra 4", IsActivated = true, Duration = 200, DistanceToTravel = 50, StartLoc = "Guarda", EndLoc = "Gouveia", SeasonID = 4, SlopeID = 3 }
                );
+
         }
 
         private static void EnsureTouristsPopulated(ApplicationDbContext dbContext)
@@ -142,9 +174,9 @@ namespace Trails4Health.Models
         {
 
             dbContext.Stages.AddRange(
-                new Stage { StageName = "Etapa Grande", Geolocalization = "G(13)", StageStartLoc = "Guarda", StageEndLoc = "Floresta", IsActivated = true, Distance = 5, Duration = 60 },
-                new Stage { StageName = "Etapa Curta", Geolocalization = "G(15)", StageStartLoc = "Seia", StageEndLoc = "Torre", IsActivated = false, Distance = 10, Duration = 120 }
-                );
+                new Stage { StageName = "Etapa Grande", Geolocalization = "G(13)", StageStartLoc = "Guarda", StageEndLoc = "Floresta", IsActivated = true, Distance = 5, Duration = 60, DifficultyID = 1 },
+                 new Stage { StageName = "Etapa Curta", Geolocalization = "G(15)", StageStartLoc = "Seia", StageEndLoc = "Torre", IsActivated = false, Distance = 10, Duration = 120, DifficultyID = 2 }
+                 );
         }
 
 

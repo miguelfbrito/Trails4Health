@@ -10,7 +10,7 @@ namespace Trails4Health.Models
         public int DifficultyID { get; set; }
         public string Level { get; set; }
         public string Comment { get; set; }
-        public ICollection<Trail> Trails { get; set; }
+        public ICollection<Stage> Stages { get; set; }
         public ICollection<Historic> Historics { get; set; }
 
     }

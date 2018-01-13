@@ -20,7 +20,7 @@ namespace Trails4Health.Models
             optionsBuilder.UseSqlServer(_connString);
         }
 
-            public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
         public DbSet<Historic> Historics { get; set; }
         public DbSet<Tourist> Tourists { get; set; }
         public DbSet<Trail> Trails { get; set; }
@@ -30,7 +30,7 @@ namespace Trails4Health.Models
         public DbSet<Stage> Stages { get; set; }
         public DbSet<Status> Status { get; set; }
         public DbSet<Stage_Trail> Stages_Trails { get; set; }
-        public DbSet<Status_Trail> Status_Trails { get; set; }       
+        public DbSet<StatusTrails> StatusTrails { get; set; }       
         
 
 
@@ -38,34 +38,18 @@ namespace Trails4Health.Models
         {
 
             base.OnModelCreating(modelBuilder);
-            /*   public int TouristID { get; set; }
-        public int TimeTaken { get; set; }
-        public String Observations { get; set; }
-        public string RealizationDate { get; set; }
-        
-        public Difficulty Difficulty { get; set; }
-        public int DifficultyID { get; set; }
-
-        public Trail Trail { get; set; }
-        public int TrailID { get; set; }*/
-
-            //Historic
-            /*
-            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
-            {
-                relationship.DeleteBehavior = DeleteBehavior.Restrict;
-            }*/
-
 
             //Season
             modelBuilder.Entity<Trail>()
                 .HasOne(trail => trail.Season)
                 .WithMany(season => season.Trails)
                 .HasForeignKey(trail => trail.SeasonID);
-            modelBuilder.Entity<Trail>()
-                .HasOne(trail => trail.Difficulty)
-                .WithMany(difficulty => difficulty.Trails)
-                .HasForeignKey(trail => trail.DifficultyID);
+
+            //Difficulty
+            modelBuilder.Entity<Stage>()
+                .HasOne(stage => stage.Difficulty)
+                .WithMany(difficulty => difficulty.Stages)
+                .HasForeignKey(stage => stage.DifficultyID);
 
             //Desnível
             modelBuilder.Entity<Trail>()
@@ -76,15 +60,6 @@ namespace Trails4Health.Models
 
 
             // TURISTA
-
-            /*
-               public int TouristID { get; set; }
-        public String Name { get; set; }
-        public int Age { get; set; }
-        public String CC { get; set; }
-        public String Phone { get; set; }
-        public String Email { get; set; }
-*/
 
             //--------------------------------------------------------------------------------
 
@@ -108,15 +83,15 @@ namespace Trails4Health.Models
             //Status_Trail-------------------------------------------------------------------------
 
             //Primary Key Status_Trail
-            modelBuilder.Entity<Status_Trail>()
-                .HasKey(st => new { st.StatusID, st.TrailID });
+            modelBuilder.Entity<StatusTrails>()
+                .HasKey(st => new { st.StatusTrailID });
             //Foreign Keys Status_Trail
-            modelBuilder.Entity<Status_Trail>()
+            modelBuilder.Entity<StatusTrails>()
                 .HasOne(st => st.Trail)
                 .WithMany(trail => trail.StatusTrails)
                 .HasForeignKey(st => st.TrailID);
 
-            modelBuilder.Entity<Status_Trail>()
+            modelBuilder.Entity<StatusTrails>()
                 .HasOne(st => st.Status)
                 .WithMany(status => status.StatusTrails)
                 .HasForeignKey(st => st.StatusID);

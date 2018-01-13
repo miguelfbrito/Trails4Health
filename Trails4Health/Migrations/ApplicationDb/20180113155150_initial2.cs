@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Trails4Health.Migrations.ApplicationDb
 {
-    public partial class initial : Migration
+    public partial class initial2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -101,25 +101,6 @@ namespace Trails4Health.Migrations.ApplicationDb
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Slopes", x => x.SlopeID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Stages",
-                columns: table => new
-                {
-                    StageId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Distance = table.Column<int>(nullable: false),
-                    Duration = table.Column<int>(nullable: false),
-                    Geolocalization = table.Column<string>(nullable: false),
-                    IsActivated = table.Column<bool>(nullable: false),
-                    StageEndLoc = table.Column<string>(nullable: false),
-                    StageName = table.Column<string>(nullable: false),
-                    StageStartLoc = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Stages", x => x.StageId);
                 });
 
             migrationBuilder.CreateTable(
@@ -240,30 +221,50 @@ namespace Trails4Health.Migrations.ApplicationDb
                 });
 
             migrationBuilder.CreateTable(
+                name: "Stages",
+                columns: table => new
+                {
+                    StageId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    DifficultyID = table.Column<int>(nullable: false),
+                    Distance = table.Column<int>(nullable: false),
+                    Duration = table.Column<int>(nullable: false),
+                    Geolocalization = table.Column<string>(nullable: false),
+                    IsActivated = table.Column<bool>(nullable: false),
+                    StageEndLoc = table.Column<string>(nullable: false),
+                    StageName = table.Column<string>(nullable: false),
+                    StageStartLoc = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Stages", x => x.StageId);
+                    table.ForeignKey(
+                        name: "FK_Stages_Difficulties_DifficultyID",
+                        column: x => x.DifficultyID,
+                        principalTable: "Difficulties",
+                        principalColumn: "DifficultyID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Trails",
                 columns: table => new
                 {
                     TrailID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    DifficultyID = table.Column<int>(nullable: false),
                     DistanceToTravel = table.Column<int>(nullable: false),
                     Duration = table.Column<int>(nullable: false),
-                    EndLoc = table.Column<string>(nullable: false),
+                    EndLoc = table.Column<string>(maxLength: 30, nullable: false),
                     IsActivated = table.Column<bool>(nullable: false),
-                    Name = table.Column<string>(maxLength: 50, nullable: false),
+                    Name = table.Column<string>(maxLength: 30, nullable: false),
                     SeasonID = table.Column<int>(nullable: false),
                     SlopeID = table.Column<int>(nullable: false),
-                    StartLoc = table.Column<string>(nullable: false)
+                    StartLoc = table.Column<string>(maxLength: 30, nullable: false),
+                    TrailImage = table.Column<byte[]>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Trails", x => x.TrailID);
-                    table.ForeignKey(
-                        name: "FK_Trails_Difficulties_DifficultyID",
-                        column: x => x.DifficultyID,
-                        principalTable: "Difficulties",
-                        principalColumn: "DifficultyID",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Trails_Seasons_SeasonID",
                         column: x => x.SeasonID,
@@ -342,23 +343,28 @@ namespace Trails4Health.Migrations.ApplicationDb
                 });
 
             migrationBuilder.CreateTable(
-                name: "Status_Trails",
+                name: "StatusTrails",
                 columns: table => new
                 {
+                    StatusTrailID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    EndDate = table.Column<DateTime>(nullable: false),
+                    Reason = table.Column<string>(nullable: true),
+                    StartDate = table.Column<DateTime>(nullable: false),
                     StatusID = table.Column<int>(nullable: false),
                     TrailID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Status_Trails", x => new { x.StatusID, x.TrailID });
+                    table.PrimaryKey("PK_StatusTrails", x => x.StatusTrailID);
                     table.ForeignKey(
-                        name: "FK_Status_Trails_Status_StatusID",
+                        name: "FK_StatusTrails_Status_StatusID",
                         column: x => x.StatusID,
                         principalTable: "Status",
                         principalColumn: "StatusID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Status_Trails_Trails_TrailID",
+                        name: "FK_StatusTrails_Trails_TrailID",
                         column: x => x.TrailID,
                         principalTable: "Trails",
                         principalColumn: "TrailID",
@@ -418,19 +424,24 @@ namespace Trails4Health.Migrations.ApplicationDb
                 column: "TrailID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Stages_DifficultyID",
+                table: "Stages",
+                column: "DifficultyID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Stages_Trails_TrailID",
                 table: "Stages_Trails",
                 column: "TrailID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Status_Trails_TrailID",
-                table: "Status_Trails",
-                column: "TrailID");
+                name: "IX_StatusTrails_StatusID",
+                table: "StatusTrails",
+                column: "StatusID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Trails_DifficultyID",
-                table: "Trails",
-                column: "DifficultyID");
+                name: "IX_StatusTrails_TrailID",
+                table: "StatusTrails",
+                column: "TrailID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Trails_SeasonID",
@@ -467,7 +478,7 @@ namespace Trails4Health.Migrations.ApplicationDb
                 name: "Stages_Trails");
 
             migrationBuilder.DropTable(
-                name: "Status_Trails");
+                name: "StatusTrails");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
