@@ -145,7 +145,7 @@ namespace Trails4Health.Models
         private static void EnsureTrailsPopulated(ApplicationDbContext dbContext)
         {
             dbContext.Trails.AddRange(
-               new Trail { Name = "Trilho Serra 1", IsActivated = true, Duration = 120, DistanceToTravel = 10, StartLoc = "Manteigas", EndLoc = "Serra", SeasonID = 1, SlopeID = 1, },
+               new Trail { Name = "Trilho Serra 1", IsActivated = true, Duration = 120, DistanceToTravel = 10, StartLoc = "Manteigas", EndLoc = "Serra", SeasonID = 1, SlopeID = 1, Description="dfahasedfhasdfhasdfhaershadfherfdherfhadfhaehaerhaefh" },
                 new Trail { Name = "Trilho Serra 2", IsActivated = true, Duration = 130, DistanceToTravel = 20, StartLoc = "Guarda", EndLoc = "Serra", SeasonID = 3, SlopeID = 2 },
                  new Trail { Name = "Trilho Serra 3", IsActivated = true, Duration = 140, DistanceToTravel = 20, StartLoc = "Manteigas", EndLoc = "Guarda", SeasonID = 1, SlopeID = 4 },
                   new Trail { Name = "Trilho Serra 4", IsActivated = true, Duration = 200, DistanceToTravel = 50, StartLoc = "Guarda", EndLoc = "Gouveia", SeasonID = 4, SlopeID = 3 }

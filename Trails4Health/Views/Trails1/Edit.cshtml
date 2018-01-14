@@ -10,7 +10,7 @@
     <div class="form-horizontal">
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <input type="hidden" asp-for="TrailID" />
+        <input type="hidden" asp-for="TrailID" />
         <div class="form-group">
             <label asp-for="Name" class="col-md-2 control-label">Nome:</label>
             <div class="col-md-10">
@@ -51,7 +51,7 @@
             <label asp-for="SeasonID" class="control-label col-md-2">Epoca Aconselhada:</label>
             <div class="col-md-10">
                 <select asp-for="SeasonID" class="form-control" asp-items="ViewBag.SeasonID"></select>
-                <span asp-validation-for="SeasonID" class="text-danger"></span> 
+                <span asp-validation-for="SeasonID" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
@@ -61,6 +61,17 @@
                 <span asp-validation-for="SlopeID" class="text-danger"></span>
             </div>
         </div>
+
+        <div class="form-group">
+            <label asp-for="Description" class="col-md-2 control-label">Descricao:</label>
+            <div class="col-md-10">
+                <textarea rows="4" cols="50" asp-for="Description" class="form-control"> Descrição do trilho</textarea>
+
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Guardar" class="btn btn-warning" />

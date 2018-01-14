@@ -48,13 +48,13 @@
         <div class="form-group">
             <label asp-for="SeasonID" class="col-md-2 control-label">Epoca Aconselhada:</label>
             <div class="col-md-10">
-                <select asp-for="SeasonID" class ="form-control" asp-items="ViewBag.SeasonID"></select>
+                <select asp-for="SeasonID" class="form-control" asp-items="ViewBag.SeasonID"></select>
             </div>
         </div>
         <div class="form-group">
             <label asp-for="SlopeID" class="col-md-2 control-label">Declive:</label>
             <div class="col-md-10">
-                <select asp-for="SlopeID" class ="form-control" asp-items="ViewBag.SlopeID"></select>
+                <select asp-for="SlopeID" class="form-control" asp-items="ViewBag.SlopeID"></select>
             </div>
         </div>
         <div class="form-group">
@@ -75,6 +75,15 @@
             <div class="col-md-10">
                 <input type="file" name="ImageFile" class="form-control" />
                 <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Description" class="col-md-2 control-label">Descricao:</label>
+            <div class="col-md-10">
+                <textarea rows="4" cols="50" asp-for="Description" class="form-control"> Descrição do trilho</textarea>
+                
+                <span asp-validation-for="Description" class="text-danger"></span>
             </div>
         </div>
 

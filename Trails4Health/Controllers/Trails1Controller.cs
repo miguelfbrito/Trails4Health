@@ -78,7 +78,7 @@ namespace Trails4Health.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("TrailID,Name,Duration,DistanceToTravel,StartLoc,EndLoc,IsActivated,SeasonID,SlopeID,IsActivated,StatusID,ImageFile")] ViewModelTrail VMTrail)
+        public async Task<IActionResult> Create([Bind("TrailID,Name,Duration,DistanceToTravel,StartLoc,EndLoc,IsActivated,SeasonID,SlopeID,IsActivated,StatusID,ImageFile, Description")] ViewModelTrail VMTrail)
         {
 
            // ViewData["ReturnUrl"] = returnUrl;
@@ -96,7 +96,8 @@ namespace Trails4Health.Controllers
                     EndLoc = VMTrail.EndLoc,
                     SeasonID = VMTrail.SeasonID,
                     SlopeID = VMTrail.SlopeID,
-                    IsActivated = VMTrail.IsActivated
+                    IsActivated = VMTrail.IsActivated,
+                    Description = VMTrail.Description
                 };
 
                 using (var memoryStream = new MemoryStream())
@@ -204,7 +205,7 @@ namespace Trails4Health.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TrailID,Name,Duration,DistanceToTravel,StartLoc,EndLoc,IsActivated,SeasonID,SlopeID")] Trail trail)
+        public async Task<IActionResult> Edit(int id, [Bind("TrailID,Name,Duration,DistanceToTravel,StartLoc,EndLoc,IsActivated,SeasonID,SlopeID,Description")] Trail trail)
         {
             if (id != trail.TrailID)
             {

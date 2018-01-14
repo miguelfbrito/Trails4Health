@@ -20,6 +20,7 @@ namespace Trails4Health.Models.ViewModels
         public bool IsActivated { get; set; }
         public string ImagePath { get; set; }
         public IFormFile ImageFile { get;set; }
+        public string Description { get; set; }
 
 
     }
