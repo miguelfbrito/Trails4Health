@@ -32,6 +32,8 @@ namespace Trails4Health.Models
         [Required(ErrorMessage = "Por favor introduza a localização final do trilho")]
         public string EndLoc { get; set; }
 
+        public string Description { get; set; }
+
         public bool IsActivated { get; set; }
 
         public byte[] TrailImage { get; set; }

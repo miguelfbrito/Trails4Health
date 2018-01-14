@@ -38,25 +38,25 @@ namespace Trails4Health.Controllers
                 return NotFound();
             }
 
-            ViewModelTrailsDetails vmtd = new ViewModelTrailsDetails();
+            ViewModelTrailInfo vmti = new ViewModelTrailInfo();
 
             var trail = await _context.Trails
                 .Include(t => t.Season)
                 .Include(t => t.Slope)
                 .SingleOrDefaultAsync(m => m.TrailID == id);
 
-            vmtd.trail = trail;
+            vmti.trail = trail;
             var statustrails = await _context.StatusTrails.
                 Include(t => t.Status).
                Where(m => m.TrailID == trail.TrailID).
                ToListAsync();
-            vmtd.statustrails = statustrails;
+            vmti.statustrails = statustrails;
 
             if (trail == null)
             {
                 return NotFound();
             }
-            return View(vmtd);
+            return View(vmti);
         }
 
         public IActionResult About()
