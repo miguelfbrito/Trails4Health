@@ -4,6 +4,7 @@ using System.Linq;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 
 namespace Trails4Health.Models
 {
@@ -27,6 +28,8 @@ namespace Trails4Health.Models
         [EmailAddress]
         public String Email { get; set; }
         public String TipoUtilizador { get; set; }
+
+        public byte[] Image { get; set; }
 
         public ICollection<Historic> Historics { get; set; }
     }

@@ -87,7 +87,6 @@ namespace Trails4Health.Controllers
             {
 
 
-
                 Trail trail = new Trail
                 {
                     Name = VMTrail.Name,

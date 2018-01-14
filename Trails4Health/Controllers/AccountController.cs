@@ -17,6 +17,9 @@ using static Trails4Health.Controllers.ManageController;
 using Trails4Health.Models.ManageViewModels;
 using Trails4Health.Data;
 using Microsoft.EntityFrameworkCore;
+using System.IO;
+using Microsoft.AspNetCore.Http;
+using Trails4Health.Models.ViewModels;
 
 namespace Trails4Health.Controllers
 {
@@ -232,8 +235,6 @@ namespace Trails4Health.Controllers
 
             //tourist = _dbcontext.Tourists.SingleOrDefault(currentTourist => currentTourist.Email == User.Identity.Name);
 
-
-
             //System.Diagnostics.Debug.WriteLine("DEBUG TOURIST: " + tourist.Email);
             if (User.Identity.Name != tourist.Email)
             {
@@ -248,16 +249,26 @@ namespace Trails4Health.Controllers
             {
                 try
                 {
+
+                    /*
+                     
+                using (var memoryStream = new MemoryStream())
+                {
+                    await VMTrail.ImageFile.CopyToAsync(memoryStream);
+                    trail.TrailImage = memoryStream.ToArray();
+                }
+                     
+                     
+                     */
+
+
                     _dbcontext.Update(tourist);
                     await _dbcontext.SaveChangesAsync();
-                    System.Diagnostics.Debug.WriteLine("UPDATING TOURIST..");
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    System.Diagnostics.Debug.WriteLine("TOURIST CATCH");
                     if (!TouristExists())
                     {
-                        System.Diagnostics.Debug.WriteLine("TOURIST NOT FOUND ON EXISTS CHECK");
                         return NotFound();
                     }
                     else
@@ -266,10 +277,8 @@ namespace Trails4Health.Controllers
                     }
                 }
 
-                System.Diagnostics.Debug.WriteLine("FINISHING FUNCTION");
                 return RedirectToAction("MemberArea", "Account");
             }
-            System.Diagnostics.Debug.WriteLine("SOMETHING FAILED UPDATING TOURIST");
             return View(tourist);
         }
 
@@ -335,6 +344,7 @@ namespace Trails4Health.Controllers
                 ViewData["LoginProvider"] = info.LoginProvider;
                 var email = info.Principal.FindFirstValue(ClaimTypes.Email);
                 return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = email });
+                //return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl });
             }
         }
 
@@ -439,16 +449,17 @@ namespace Trails4Health.Controllers
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await _userManager.CreateAsync(user);
 
-                
+
 
                 if (result.Succeeded)
                 {
                     result = await _userManager.AddLoginAsync(user, info);
 
-                    await _userManager.AddToRoleAsync(user, "TURISTA");
-                    var tourist = await _dbcontext.Tourists.SingleOrDefaultAsync(currentTourist => currentTourist.Email == user.Email);
+                    await _userManager.AddToRoleAsync(user, "Turista");
+                    Tourist tourist = new Tourist { Email = model.Email };
+                    //   var tourist = await _dbcontext.Tourists.SingleOrDefaultAsync(currentTourist => currentTourist.Email == user.Email);
                     _dbcontext.Add(tourist);
-                    await _dbcontext.SaveChangesAsync();
+                    //    await _dbcontext.SaveChangesAsync();
 
                     if (result.Succeeded)
                     {

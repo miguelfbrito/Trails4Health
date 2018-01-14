@@ -1,12 +1,12 @@
-﻿
+
 @inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta http-equiv="Content-Type" content="text/html"; charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Trails4Health</title>
-    <environment names="Development">
+    <!----><environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/css/font-awesome/css/font-awesome.min.css" />
@@ -25,7 +25,7 @@
 
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
         <script type="text/javascript" src="~/js/jquery/jquery.js"></script>
-        <script type="text/javascript" src="~/js/script.js"></script>
+        <script type="text/javascript" src="~/js/script.js"></script> 
         <script type="text/javascript" src="~/js/bootstrap/bootstrap.min.js"></script>
         <script type="text/javascript" src="~/js/fancybox/jquery.fancybox.pack.js"></script>
         <script type="text/javascript" src="~/js/nivo-lightbox/nivo-lightbox.min.js"></script>
@@ -38,12 +38,6 @@
         <link rel="stylesheet" href="~/css/responsive.css" />
     </environment>
 
-    <environment names="Staging,Production">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-    </environment>
     @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
 <body>
@@ -78,13 +72,13 @@
 
                                         @if (User.IsInRole("Turista"))
                                         {
-                                            <li><a asp-controller="Historics" asp-action="CheckHistoric">Hist�rico</a></li>
+                                            <li><a asp-controller="Historics" asp-action="CheckHistoric">Histórico</a></li>
                                         }
 
 
                                         @if (User.IsInRole("Professor"))
                                         {
-                                            <li><a asp-controller="Historics" asp-action="CheckHistoric">Hist�rico</a></li>
+                                            <li><a asp-controller="Historics" asp-action="CheckHistoric">Histórico</a></li>
                                             <li><a asp-controller="Trails1" asp-action="Index">Gerir Trilhos</a></li>
                                             <li><a asp-controller="Stages" asp-action="Index">Gerir Etapas</a></li>
                                         }

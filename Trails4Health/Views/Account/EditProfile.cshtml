@@ -5,7 +5,6 @@
     Layout = "~/Views/Shared/_LayoutMembersArea.cshtml";
 }
 
-
 <form asp-action="EditProfile">
     <div class="form-horizontal">
         <h4>Editar Perfil</h4>
@@ -34,10 +33,20 @@
                 <span asp-validation-for="CC" class="text-danger"></span>
             </div>
         </div>
+
+
+
         <div class="form-group">
             <label asp-for="DateOfBirth" class="col-md-2 control-label">Data de Nascimento:</label>
             <div class="col-md-10">
-                <input asp-for="DateOfBirth" type="date" class="form-control" value="@Model.DateOfBirth.ToString("yyyy-MM-dd")"/>
+                <input asp-for="DateOfBirth" type="date" class="form-control" value="@{
+
+                    if(@Model.DateOfBirth.HasValue)
+                    {
+                        @Model.DateOfBirth.Value.ToString("yyyy-MM-dd")
+                    }
+
+                }" />
                 <span asp-validation-for="DateOfBirth" class="text-danger"></span>
             </div>
         </div>

@@ -20,13 +20,16 @@
                 <div class="col-md-4">
                     <div class="info-item">
                         <img src="~/images/feedback.png" width="85" height="85" />
-                        <p>Agrad·vel</p>
+                        <p>Agrad√°vel</p>
                     </div>
                 </div>
 
+                <script>
+                    $('#popoverData').popover();
+                </script>
                 <div class="col-md-4">
                     <div class="info-item">
-                        <img src="~/images/time.svg" width="85" height="85" />
+                        <img id="popoverData" data-content="Popover with data-trigger" rel="popover" data-placement="bottom" data-original-title="Title" data-trigger="hover" src="~/images/time.svg" width="85" height="85"  />
                         <p>@Html.DisplayFor(model => model.Historic.TimeTaken) vs. @Html.DisplayFor(model => model.Historic.Trail.Duration) </p> <!--Time Tkane -->
                     </div>
                 </div>
@@ -38,7 +41,7 @@
                 </div>
 
                 <div class="col-md-12 text-align-left">
-                    <p style="font-weight: bold; font-size: 14px; text-align: left;">ObservaÁıes</p>
+                    <p style="font-weight: bold; font-size: 14px; text-align: left;">Observa√ß√µes</p>
                     <p style="text-align: justify;
                               text-justify: inter-word;">
                         @Html.DisplayFor(model => model.Historic.Observations)
@@ -55,7 +58,7 @@
                 @if (Model.Stages_Trail.Count() == 0)
                 {
                     <p></p>
-                    <p>N„o existem etapas associadas a este trilho.</p>
+                    <p>N√£o existem etapas associadas a este trilho.</p>
                 }
                 else
                 {
@@ -69,8 +72,8 @@
                                 <th>Nome</th>
                                 <th>Local Inicio</th>
                                 <th>Local Fim</th>
-                                <th>Dist‚ncia (km)</th>
-                                <th>DuraÁ„o (min)</th>
+                                <th>Dist√¢ncia (km)</th>
+                                <th>Dura√ß√£o (min)</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -72,8 +72,11 @@ namespace Trails4Health.Models
             }
 
 
-            await PopulateAccount("joao@gmail.com", userManager, UsersdbContext);
-            await PopulateAccount("carlos@gmail.com", userManager, UsersdbContext);
+            await PopulateAccount("joao@gmail.com", "Professor", userManager, UsersdbContext);
+            await PopulateAccount("carlos@gmail.com", "Professor", userManager, UsersdbContext);
+            await PopulateAccount("rute@gmail.com", "Professor", userManager, UsersdbContext);
+            await PopulateAccount("miguel@gmail.com","Turista",  userManager, UsersdbContext);
+            await PopulateAccount("carlos@gmail.com", "Turista", userManager, UsersdbContext);
 
 
         }
@@ -83,7 +86,7 @@ namespace Trails4Health.Models
             throw new NotImplementedException();
         }
 
-        public static async Task PopulateAccount(String email, UserManager<ApplicationUser> userManager, UsersDbContext usersDbContext)
+        public static async Task PopulateAccount(String email, String tipoUtilizador, UserManager<ApplicationUser> userManager, UsersDbContext usersDbContext)
         {
 
             var user = new ApplicationUser { UserName = email, Email = email };
@@ -91,7 +94,7 @@ namespace Trails4Health.Models
 
             if (result.Succeeded)
             {
-                await userManager.AddToRoleAsync(user,"Professor");
+                await userManager.AddToRoleAsync(user, tipoUtilizador);
          //       usersDbContext.Add(user);
            //     await usersDbContext.SaveChangesAsync();
             }
