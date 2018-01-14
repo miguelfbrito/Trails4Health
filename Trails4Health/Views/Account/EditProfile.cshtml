@@ -35,13 +35,12 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="DateOfBirth" class="col-md-2 control-label">Data:</label>
+            <label asp-for="DateOfBirth" class="col-md-2 control-label">Data de Nascimento:</label>
             <div class="col-md-10">
-                <input asp-for="DateOfBirth" type="date" class="form-control" />
+                <input asp-for="DateOfBirth" type="date" class="form-control" value="@Model.DateOfBirth.ToString("yyyy-MM-dd")"/>
                 <span asp-validation-for="DateOfBirth" class="text-danger"></span>
             </div>
         </div>
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Alterar" class="btn btn-primary" />

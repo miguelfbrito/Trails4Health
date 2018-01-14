@@ -78,6 +78,8 @@ namespace Trails4Health.Controllers
             }
 
             var historic = await _context.Historics.SingleOrDefaultAsync(m => m.HistoricID == id);
+
+
             if (historic == null)
             {
                 return NotFound();

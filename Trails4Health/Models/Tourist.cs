@@ -15,8 +15,9 @@ namespace Trails4Health.Models
         public String Name { get; set; }
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-      //  [CheckDateRange(FirstDate = "01/01/1900", EndDate = "01/01/2012" )]
-        public DateTime? DateOfBirth { get; set; }
+        // TODO : reativar e corrigir o conflito
+        //  [CheckDateRange(FirstDate = "01/01/1900", EndDate = "01/01/2012" )]
+        public DateTime? DateOfBirth { get; set; } 
 
         public String CC { get; set; }
 

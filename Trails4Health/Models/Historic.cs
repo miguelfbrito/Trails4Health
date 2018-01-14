@@ -19,7 +19,7 @@ namespace Trails4Health.Models
         [StringLength(2000, MinimumLength = 10, ErrorMessage = "Tamanho limitado entre 10 e 2000 caracteres.")]
         public string Observations { get; set; }
 
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+       [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         [CheckDateRange(FirstDate = "01/01/2017", EndDate = "NOW")]
         public DateTime? RealizationDate { get; set; }
 
