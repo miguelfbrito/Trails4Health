@@ -28,7 +28,7 @@
         <div class="form-group">
             <label asp-for="RealizationDate" class="col-md-2 control-label">Data:</label>
             <div class="col-md-10">
-                <input asp-for="RealizationDate" type="date" class="form-control" />
+                <input asp-for="RealizationDate" type="date" class="form-control" value="@Model.RealizationDate.Value.ToString("yyyy-MM-dd")"/>
                 <span asp-validation-for="RealizationDate" class="text-danger"></span>
             </div>
         </div>

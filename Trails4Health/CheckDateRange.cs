@@ -13,13 +13,16 @@ namespace Trails4Health
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            DateTime dataB = DateTime.Parse(FirstDate);
-            DateTime dataE = DateTime.Parse(EndDate);
+            DateTime dataB = DateTime.ParseExact(FirstDate, "dd/MM/yyyy", null);
 
             if (EndDate == "NOW")
             {
-                dataE = DateTime.Now;
+                EndDate = DateTime.Now.ToString("dd/MM/yyyy");
             }
+
+            DateTime dataE = DateTime.ParseExact(EndDate, "dd/MM/yyyy", null);
+
+           
 
             DateTime d = (DateTime)value;
             if (d <= dataE && d >= dataB)

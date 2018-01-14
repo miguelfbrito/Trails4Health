@@ -218,11 +218,6 @@ namespace Trails4Health.Controllers
 
             var touristContext = await _dbcontext.Tourists.SingleOrDefaultAsync(tourist => tourist.Email == User.Identity.Name);
 
-            System.Diagnostics.Debug.WriteLine("TOURIST EMAIL: " + touristContext.Email.ToString());
-            //   System.Diagnostics.Debug.WriteLine("TOURIST TYPE OF USER : " + touristContext.TipoUtilizador.ToString());
-            // System.Diagnostics.Debug.WriteLine("TOURIST PHONE: " + touristContext.Phone.ToString());
-
-
             if (touristContext == null)
             {
                 return NotFound();
