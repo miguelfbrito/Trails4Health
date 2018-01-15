@@ -273,3 +273,6 @@ input[type="checkbox"].input-validation-error {
         height: 5px;
     }
 
+div .dl-horizontal dt {
+    text-align: left;
+}

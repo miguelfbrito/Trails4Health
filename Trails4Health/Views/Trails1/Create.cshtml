@@ -48,13 +48,17 @@
         <div class="form-group">
             <label asp-for="SeasonID" class="col-md-2 control-label">Epoca Aconselhada:</label>
             <div class="col-md-10">
-                <select asp-for="SeasonID" class="form-control" asp-items="ViewBag.SeasonID"></select>
+                <select asp-for="SeasonID" class="form-control" asp-items="ViewBag.SeasonID">
+                    <option>Escolha a epoca aconselhada</option>
+                </select>
             </div>
         </div>
         <div class="form-group">
             <label asp-for="SlopeID" class="col-md-2 control-label">Declive:</label>
             <div class="col-md-10">
-                <select asp-for="SlopeID" class="form-control" asp-items="ViewBag.SlopeID"></select>
+                <select asp-for="SlopeID" class="form-control" asp-items="ViewBag.SlopeID">
+                    <option>Escolha o tipo de inclinação</option>
+                </select>
             </div>
         </div>
         <div class="form-group">
@@ -67,7 +71,9 @@
         <div class="form-group">
             <label asp-for="StatusID" class="col-md-2 control-label">Estado:</label>
             <div class="col-md-10">
-                <select asp-for="StatusID" class="form-control" asp-items="ViewBag.StatusID"></select>
+                <select asp-for="StatusID" class="form-control" asp-items="ViewBag.StatusID">
+                    <option>Escolha o estado do trilho</option>
+                </select>
             </div>
         </div>
         <div class="form-group">
