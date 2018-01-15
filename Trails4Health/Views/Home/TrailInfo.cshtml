@@ -7,6 +7,7 @@
 }
 
 
+
 @*<div style="margin-top:30px">
 
         <div class="row">
@@ -40,7 +41,7 @@
                     <img src="@imgSrc" style="width:500px; height:300px; margin-top:20px;" />
                             }
                 <div style="margin-top:15px">
-                    <p style="font-size:15px;"><b>Informação do Trilho</b></p>
+                    <p style="font-size:15px;"><b>InformaÃ§Ã£o do Trilho</b></p>
                     <p style="text-align:justify;width:500px">@Html.DisplayFor(model => model.trail.Description)</p>
                 </div>
                 <div>
@@ -49,7 +50,7 @@
             </div>
 
             <div class="col-lg-6" style="margin-top:100px">
-                <h6>Informações</h6>
+                <h6>InformaÃ§Ãµes</h6>
                 <dl class="dl-horizontal" style="margin-top:20px;">
                     <dt>
                         Duracao:
@@ -168,6 +169,7 @@
     <div class="row">
 
         <div class="col-md-8">
+            <div>
             @if (Model.trail.TrailImage != null)
             {
                 <div>
@@ -179,13 +181,46 @@
 
                 <img src="@imgSrc" style="max-width:650px;height:auto" />
                         }
+          </div>
+            <div style="padding-top:20px">
+                <h4 class="my-4">HistÃ³rico de Estados do Trilho</h4>
+                <table width="600" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Estado</th>
+                            <th>Data de Inicio</th>
+                            <th>Data de Fim</th>
+                            <th>Causa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var status in Model.statustrails)
+                        {
+                            <tr>
+                                <td>@status.Status.StatusName</td>
+                                <td>@status.StartDate.ToString("dd/MM/yyyy")</td>
+                                @if (status.EndDate != DateTime.MinValue)
+                                {
+                                    <td>@status.EndDate.ToString("dd/MM/yyyy")</td>
+                                }
+                                else
+                                {
+                                    <td>Estado Por Alterar</td>
+                                }
+                                <td>@status.Reason</td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <div class="col-md-4">
-            <h3 class="my-3">Descrição</h3>
-            <p style="text-align:justify;">@Html.DisplayFor(model => model.trail.Description)</p>
+            <h3 class="my-3">DescriÃ§Ã£o</h3>
+            <p style="text-align:justify;padding-top:10px">@Html.DisplayFor(model => model.trail.Description)</p>
             <h3 class="my-3">Detalhes</h3>
-            <dl class="dl-horizontal" style="margin-top:20px;">
+            <dl class="dl-horizontal" style="margin-top:10px;">
                 <dt>
                     Duracao:
                 </dt>
@@ -226,37 +261,7 @@
         </div>
 
     </div>
-    <!-- /.row -->
-    <!-- Related Projects Row -->
-    <h3 class="my-4">Related Projects</h3>
 
-    <div class="row">
 
-        <div class="col-md-3 col-sm-6 mb-4">
-            <a href="#">
-                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-            </a>
-        </div>
-
-        <div class="col-md-3 col-sm-6 mb-4">
-            <a href="#">
-                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-            </a>
-        </div>
-
-        <div class="col-md-3 col-sm-6 mb-4">
-            <a href="#">
-                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-            </a>
-        </div>
-
-        <div class="col-md-3 col-sm-6 mb-4">
-            <a href="#">
-                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-            </a>
-        </div>
-
-    </div>
-    <!-- /.row -->
 
 </div>
