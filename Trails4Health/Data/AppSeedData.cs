@@ -9,14 +9,14 @@ namespace Trails4Health.Models
     public class AppSeedData
     {
 
-       
+
 
         public static void EnsurePopulated(IServiceProvider appServices)
         {
             ApplicationDbContext dbContext = (ApplicationDbContext)appServices.GetService(typeof(ApplicationDbContext));
             UsersDbContext usersDbContext = (UsersDbContext)appServices.GetService(typeof(UsersDbContext));
 
-          
+
 
 
             if (!dbContext.Seasons.Any())
@@ -130,7 +130,8 @@ namespace Trails4Health.Models
         {
             dbContext.StatusTrails.AddRange(
     new StatusTrails { TrailID = 1, StatusID = 1, StartDate = new DateTime(2017, 05, 11), EndDate = new DateTime(2017, 05, 12), Reason = "Derrocada" },
-    new StatusTrails { TrailID = 1, StatusID = 2, StartDate = new DateTime(2017, 05, 12), Reason = "Trilho Recomposto" }
+    new StatusTrails { TrailID = 1, StatusID = 2, StartDate = new DateTime(2017, 05, 12), Reason = "Trilho Recomposto" },
+    new StatusTrails { TrailID = 2, StatusID = 1, StartDate = new DateTime(2017, 05, 11), EndDate = new DateTime(2017, 05, 12), Reason = "-" }
 );
         }
 
@@ -156,10 +157,87 @@ namespace Trails4Health.Models
 
 
             dbContext.Trails.AddRange(
-               new Trail { Name = "Trilho Serra 1", IsActivated = true, Duration = 120, DistanceToTravel = 10, StartLoc = "Manteigas", EndLoc = "Serra", SeasonID = 1, SlopeID = 1, Description="dfahasedfhasdfhasdfhaershadfherfdherfhadfhaehaerhaefh" },
-                new Trail { Name = "Trilho Serra 2", IsActivated = true, Duration = 130, DistanceToTravel = 20, StartLoc = "Guarda", EndLoc = "Serra", SeasonID = 3, SlopeID = 2, TrailImage = System.Convert.FromBase64String(image1) },
-                 new Trail { Name = "Trilho Serra 3", IsActivated = true, Duration = 140, DistanceToTravel = 20, StartLoc = "Manteigas", EndLoc = "Guarda", SeasonID = 1, SlopeID = 4 },
-                  new Trail { Name = "Trilho Serra 4", IsActivated = true, Duration = 200, DistanceToTravel = 50, StartLoc = "Guarda", EndLoc = "Gouveia", SeasonID = 4, SlopeID = 3 }
+               new Trail
+               {
+                   Name = "Trilho Serra 1",
+                   IsActivated = true,
+                   Duration = 120,
+                   DistanceToTravel = 10,
+                   StartLoc = "Manteigas",
+                   EndLoc = "Serra",
+                   SeasonID = 1,
+                   SlopeID = 1,
+                   Description = "O trilho Rossim - Loriga vai desde o Vale do Rossim até à Loriga,numa extensão de 80 quilómetros, por onde passará pelos mais diversos tipos de fauna e flora, onde habitam numerosas espécies animas e vegetais cuja conservação a nível europeu se considera prioritária. Poderá observar desde silenes, a lagartixas-da-montanha e Covões Cimeiro." + '\n' +
+
+"Durante o percurso poderá também observar várias caracteristicas que demostram o acontecimento de fenómenos como erosão e marcas de glaciares pré-históricas, levando estes locais a ser bastante visitados devido à sua beleza cénica, didática e científica." + '\n' +
+
+"Sempre que possível, aproveite as zonas balneares para poder relaxar, e centros urbanos e rurais para reabastecer de utensílios necessários à caminhada." + '\n' +
+
+"O percurso encontra-se dividido em várias etapas. Deve verificar e os detalhes do percurso de forma a verificar se é um trilho que deseja realizar de acordo com as suas condições físicas, interesse e disponibilidade. Existem ainda locais próprios para pernoitar." + '\n' +
+
+"É responsabilidade de todos, contribuir para a proteção, bem como assegurar a biodiversidade através da conservação deste habitat natural."
+               },
+               new Trail
+               {
+                   Name = "Trilho Serra 2",
+                   IsActivated = true,
+                   Duration = 130,
+                   DistanceToTravel = 20,
+                   StartLoc = "Guarda",
+                   EndLoc = "Serra",
+                   SeasonID = 3,
+                   SlopeID = 2,
+                   TrailImage = System.Convert.FromBase64String(image1),
+                   Description = "O trilho Rossim - Loriga vai desde o Vale do Rossim até à Loriga,numa extensão de 80 quilómetros, por onde passará pelos mais diversos tipos de fauna e flora, onde habitam numerosas espécies animas e vegetais cuja conservação a nível europeu se considera prioritária. Poderá observar desde silenes, a lagartixas-da-montanha e Covões Cimeiro." + '\n' +
+
+"Durante o percurso poderá também observar várias caracteristicas que demostram o acontecimento de fenómenos como erosão e marcas de glaciares pré-históricas, levando estes locais a ser bastante visitados devido à sua beleza cénica, didática e científica." + '\n' +
+
+"Sempre que possível, aproveite as zonas balneares para poder relaxar, e centros urbanos e rurais para reabastecer de utensílios necessários à caminhada." + '\n' +
+
+"O percurso encontra-se dividido em várias etapas. Deve verificar e os detalhes do percurso de forma a verificar se é um trilho que deseja realizar de acordo com as suas condições físicas, interesse e disponibilidade. Existem ainda locais próprios para pernoitar." + '\n' +
+
+"É responsabilidade de todos, contribuir para a proteção, bem como assegurar a biodiversidade através da conservação deste habitat natural."
+               },
+                 new Trail
+                 {
+                     Name = "Trilho Serra 3",
+                     IsActivated = true,
+                     Duration = 140,
+                     DistanceToTravel = 20,
+                     StartLoc = "Manteigas",
+                     EndLoc = "Guarda",
+                     SeasonID = 1,
+                     SlopeID = 4,
+                     Description = "O trilho Rossim - Loriga vai desde o Vale do Rossim até à Loriga,numa extensão de 80 quilómetros, por onde passará pelos mais diversos tipos de fauna e flora, onde habitam numerosas espécies animas e vegetais cuja conservação a nível europeu se considera prioritária. Poderá observar desde silenes, a lagartixas-da-montanha e Covões Cimeiro." + '\n' +
+
+"Durante o percurso poderá também observar várias caracteristicas que demostram o acontecimento de fenómenos como erosão e marcas de glaciares pré-históricas, levando estes locais a ser bastante visitados devido à sua beleza cénica, didática e científica." + '\n' +
+
+"Sempre que possível, aproveite as zonas balneares para poder relaxar, e centros urbanos e rurais para reabastecer de utensílios necessários à caminhada." + '\n' +
+
+"O percurso encontra-se dividido em várias etapas. Deve verificar e os detalhes do percurso de forma a verificar se é um trilho que deseja realizar de acordo com as suas condições físicas, interesse e disponibilidade. Existem ainda locais próprios para pernoitar." + '\n' +
+
+"É responsabilidade de todos, contribuir para a proteção, bem como assegurar a biodiversidade através da conservação deste habitat natural."
+                 },
+                  new Trail
+                  {
+                      Name = "Trilho Serra 4",
+                      IsActivated = true,
+                      Duration = 200,
+                      DistanceToTravel = 50,
+                      StartLoc = "Guarda",
+                      EndLoc = "Gouveia",
+                      SeasonID = 4,
+                      SlopeID = 3,
+                      Description = "O trilho Rossim - Loriga vai desde o Vale do Rossim até à Loriga,numa extensão de 80 quilómetros, por onde passará pelos mais diversos tipos de fauna e flora, onde habitam numerosas espécies animas e vegetais cuja conservação a nível europeu se considera prioritária. Poderá observar desde silenes, a lagartixas-da-montanha e Covões Cimeiro." + '\n' +
+
+"Durante o percurso poderá também observar várias caracteristicas que demostram o acontecimento de fenómenos como erosão e marcas de glaciares pré-históricas, levando estes locais a ser bastante visitados devido à sua beleza cénica, didática e científica." + '\n' +
+
+"Sempre que possível, aproveite as zonas balneares para poder relaxar, e centros urbanos e rurais para reabastecer de utensílios necessários à caminhada." + '\n' +
+
+"O percurso encontra-se dividido em várias etapas. Deve verificar e os detalhes do percurso de forma a verificar se é um trilho que deseja realizar de acordo com as suas condições físicas, interesse e disponibilidade. Existem ainda locais próprios para pernoitar." + '\n' +
+
+"É responsabilidade de todos, contribuir para a proteção, bem como assegurar a biodiversidade através da conservação deste habitat natural."
+                  }
                );
 
         }
