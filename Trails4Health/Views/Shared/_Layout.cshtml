@@ -27,7 +27,6 @@
         <link rel="stylesheet" href="~/css/owl-carousel/owl.theme.css" />
         <link rel="stylesheet" href="~/css/owl-carousel/owl.transitions.css">
 
-
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
         <script type="text/javascript" src="~/js/jquery/jquery.js"></script>
         <script type="text/javascript" src="~/js/script.js"></script>
@@ -79,14 +78,14 @@
                                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                                     <ul class="nav navbar-nav navbar-right">
-                                        <li><a href="#home">Home</a></li>
-                                        <li><a href="#sobre">Sobre</a></li>
-                                        <li><a href="#trilhos">Trilhos</a></li>
-                                        <li><a href="#contacto">Contacto</a></li>
+                                        <li><a href="#home"><b>Home</b></a></li>
+                                        <li><a href="#sobre"><b>Sobre</b></a></li>
+                                        <li><a href="#trilhos"><b>Trilhos</b></a></li>
+                                        <li><a href="#contacto"><b>Contacto</b></a></li>
                                         @if (SignInManager.IsSignedIn(User))
                                         {
                                         <!--    <li><a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Hello @UserManager.GetUserName(User)!</a></li>-->
-                                            <li><a asp-controller="Account" asp-action="MemberArea">Painel Utilizador</a></li>
+                                            <li><a asp-controller="Account" asp-action="MemberArea"><b>Painel de Utilizador</b></a></li>
                                             <li>
                                                 <form asp-controller="Account" asp-action="Logout" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal" style="padding-top:13px;">
                                                     <input type="image"  id="logoutBtn" src="~/images/logout.png" widht="20" height="20" />
@@ -99,7 +98,7 @@
                                         }
                                         else
                                         {
-                                            <li><a asp-controller="Account" asp-action="Login">Login</a></li>
+                                            <li><a asp-controller="Account" asp-action="Login"><b>Login</b></a></li>
                                             
                                         }
 

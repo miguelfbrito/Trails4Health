@@ -65,7 +65,11 @@ PRE LOADER
 }
 
 p {
-    font: normal 14px "Myriad Pro", arial, sans-serif;
+    font: normal 14px "Lato", arial, sans-serif;
+}
+
+a {
+    font-family: "Lato", sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -76,7 +80,7 @@ h1 {
     font-size: 48px;
     line-height: 50px;
     font-weight: 600;
-    font-family: "Myriad Pro", sans-serif;
+    font-family: "Lato", sans-serif;
     text-transform: uppercase;
 }
 
@@ -84,7 +88,7 @@ h2 {
     font-size: 40px;
     line-height: 38px;
     font-weight: 600;
-    font-family: "Myriad Pro", sans-serif;
+    font-family: "Lato", sans-serif;
     margin: 0;
 }
 
@@ -92,7 +96,7 @@ h3 {
     font-size: 30px;
     line-height: 32px;
     font-weight: 600;
-    font-family: "Myriad Pro", sans-serif;
+    font-family: "Lato", sans-serif;
     text-transform: uppercase;
     margin: 0;
 }
@@ -102,7 +106,7 @@ h4 {
     font-size: 24px;
     line-height: 26px;
     font-weight: 600;
-    font-family: "Myriad Pro", sans-serif;
+    font-family: "Lato", sans-serif;
     text-transform: uppercase;
 }
 
@@ -110,7 +114,7 @@ h5 {
     font-size: 20px;
     line-height: 22px;
     font-weight: 600;
-    font-family: "Myriad Pro", sans-serif;
+    font-family: "Lato", sans-serif;
     text-transform: uppercase;
     margin: 0;
     text-decoration: none;
@@ -120,7 +124,7 @@ h6 {
     font-size: 18px;
     line-height: 20px;
     font-weight: 600;
-    font-family: "Myriad Pro", sans-serif;
+    font-family: "Lato", sans-serif;
     text-transform: uppercase;
     margin: 0;
     text-decoration: none;
