@@ -174,14 +174,14 @@
                                             stringShort = item.Description;
 
 
-                                            if(s.Length > 500)
+                                            if(s.Length > 375)
                                             {
-                                                stringShort = s.Substring(0, 500);
+                                                stringShort = s.Substring(0, 375);
                                                 System.Diagnostics.Debug.WriteLine("STRINGG: " + stringShort);
                                             } else
                                             {
-                                                stringShort = s;
-                                                s = s + " (...) ";
+                                              
+                                                stringShort = stringShort + " (...)";
                                             }
                                         }
                                         else
@@ -191,7 +191,6 @@
                                         }
 
                                     }
-                                  
                                     @stringShort
                                 </p>
                             </div>
