@@ -35,27 +35,56 @@
 <section id="sobre" class="abouts">
     <div class="container">
         <div class="row">
-            <div class="abouts_content">
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="single_abouts_img text-center wow fadeInLeft" data-wow-duration="1s">
-                        <img src="~/images/serra.jpg" alt="" style="width:500px; height:300px;" />
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="single_abouts_text wow fadeInRight" data-wow-duration="1s">
-                        <h4>Grupo 1</h4>
-                        <p>Rui Paredes nº1011670</p>
-                        <p>Miguel Brito nº1011695</p>
-                        <p>Miguel Pereira nº1011607</p>
-                        <br />
-                        <h5>Casos de uso a implementar no projeto:</h5>
-                        <p>Gerir trilho (rota) CRUD</p>
-                        <p>Etapas e geolocalização</p>
-                        <p>Inserir (data, duração, dificuldades) trilho realizado/utilizador</p>
-                        <p>Consultar histórico dos trilhos realizados</p>
-                    </div>
-                </div>
-            </div>
+            <div class="box first">
+                <div class="row box-about wow zoomIn" style="animation-duration:0.8s;">
+                    <div class="col-md-4 col-sm-6">
+                        <div class="center">
+                            <i class="icon-md icon-color1"><img src="~/images/icons/hiking.png" style="width:auto; height:55px; padding-top:10px;padding-left:2px;" /></i>
+                            <h4>Caminhadas</h4>
+                            <p>Desfrute do melhor da natureza, encha os pulmões de ar puro, enquanto delicia os sentidos de forma tão especial </p>
+                        </div>
+                    </div><!--/.col-md-4-->
+                    <div class="col-md-4 col-sm-6">
+                        <div class="center">
+                            <i class="icon-md icon-color2"><img src="~/images/icons/photo-camera.png" style="width:auto; height:55px; padding-top:10px;padding-left:2px;" /></i>
+                            <h4>Paisagens</h4>
+                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.</p>
+                        </div>
+                    </div><!--/.col-md-4-->
+                    <div class="col-md-4 col-sm-6">
+                        <div class="center">
+                            <i class="icon-md icon-color3"><img src="~/images/icons/plant.png" style="width:auto; height:55px; padding-top:10px;padding-left:2px;" /></i>
+                            <h4>Biodiversidade</h4>
+                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.</p>
+                        </div>
+                    </div><!--/.col-md-4-->
+
+                </div><!--/.row-->
+                <div class="row box-about wow zoomIn">
+                    <div class="col-md-4 col-sm-6">
+                        <div class="center">
+                            <i class="icon-md icon-color1"><img src="~/images/icons/hiking.png" style="width:auto; height:55px; padding-top:10px;padding-left:2px;" /></i>
+                            <h4>Caminhadas</h4>
+                            <p>Desfrute do melhor da natureza, encha os pulmões de ar puro, enquanto delicia os sentidos de forma tão especial </p>
+                        </div>
+                    </div><!--/.col-md-4-->
+                    <div class="col-md-4 col-sm-6">
+                        <div class="center">
+                            <i class="icon-md icon-color2"><img src="~/images/icons/photo-camera.png" style="width:auto; height:55px; padding-top:10px;padding-left:2px;" /></i>
+                            <h4>Paisagens</h4>
+                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.</p>
+                        </div>
+                    </div><!--/.col-md-4-->
+                    <div class="col-md-4 col-sm-6">
+                        <div class="center">
+                            <i class="icon-md icon-color3"><img src="~/images/icons/plant.png" style="width:auto; height:55px; padding-top:10px;padding-left:2px;" /></i>
+                            <h4>Biodiversidade</h4>
+                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.</p>
+                        </div>
+                    </div><!--/.col-md-4-->
+
+                </div><!--/.row-->
+            </div><!--/.box-->
         </div>
     </div>
 </section><!-- End of Abouts Section -->
@@ -118,14 +147,14 @@
     </section> End of Features Section*@
 
 <section id="trilhos" class="features">
-    <div class="container">
+    <div class="container" style="margin-top:-100px;">
         <div class="container-fluid">
             <div class="title-arch">Title<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pulvinar ex pulvinar est laoreet ullamcorper.</p></div>
             @foreach (var item in Model)
             {
                 if (item.TrailImage != null)
                 {
-                  
+
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 project wow animated animated4 fadeInLeft" id="project-@item.TrailID">
                         <div class="project-hover">
                             <h2>@item.Name</h2>
@@ -136,15 +165,15 @@
                                 var base64 = Convert.ToBase64String(item.TrailImage);
                                 var imgSrc = String.Format("{0}data:image/png;base64,{1}{2}", "\"url('", base64, "')\";");
                                 System.Diagnostics.Debug.WriteLine(@imgSrc);
-                     }
+                            }
 
                             <script>document.getElementById("project-@item.TrailID").style.backgroundImage = @Html.Raw(@imgSrc)</script>
-                          <a asp-action="TrailInfo" asp-route-id="@item.TrailID"> Detalhes</a>
-                        
+                            <a asp-action="TrailInfo" asp-route-id="@item.TrailID"> Detalhes</a>
+
                         </div>
                     </div>
-                }
-              }
+                                    }
+                                }
             <div class="clearfix"></div>
         </div>
 
@@ -194,6 +223,7 @@
             <p>miguelfbrito11@gmail.com</p>
             <p>miguelrp13@gmail.com</p>
         </div><!-- End of container -->
+    </div>
 </section>
 
 

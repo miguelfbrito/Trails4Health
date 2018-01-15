@@ -279,8 +279,8 @@ a:hover {
 .banner {
     background: url(../images/bannerbg.jpg) no-repeat;
     position: relative;
-    min-height: 700px;
-    top: -50px; /* remover maybe*/
+    min-height: 100vh;
+     /* remover maybe*/
 }
 
     .banner img {
