@@ -7,7 +7,7 @@
 }
 
 
-<div style="margin-top:30px">
+@*<div style="margin-top:30px">
 
     <div class="row">
         <div class="col-lg-6" >
@@ -130,5 +130,132 @@
 
 
 
+
+</div>*@
+
+
+
+
+
+<div class="container">
+
+    <!-- Portfolio Item Heading -->
+    <h1 class="my-4">
+        @Html.DisplayFor(model => model.trail.Name)
+        @foreach (var status in Model.statustrails)
+            {
+                    @if (status.EndDate == DateTime.MinValue)
+                {
+                    if (status.Status.StatusName == "Aberto")
+                    {
+                            <small style="color:chartreuse"> @status.Status.StatusName
+                            </small>
+                        }
+                        else
+                        {
+                            <small style="color:darkred">
+                                 @status.Status.StatusName
+                            </small>
+
+                        }
+                    }
+        }
+
+</h1>
+
+    <!-- Portfolio Item Row -->
+    <div class="row">
+
+        <div class="col-md-8">
+            @if (Model.trail.TrailImage != null)
+            {
+                <div>
+                    @{
+                        var base64 = Convert.ToBase64String(Model.trail.TrailImage);
+                        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                    }
+                </div>
+
+                <img src="@imgSrc" style="max-width:650px;height:auto" />
+                        }
+        </div>
+
+        <div class="col-md-4">
+            <h3 class="my-3">Descrição</h3>
+            <p>@Html.DisplayFor(model => model.trail.Description)</p>
+            <h3 class="my-3">Detalhes</h3>
+            <dl class="dl-horizontal" style="margin-top:20px;">
+                <dt >
+                    Duracao:
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.trail.Duration) Min
+                </dd>
+                <dt>
+                    Distancia
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.trail.DistanceToTravel) Km
+                </dd>
+                <dt>
+                    Inicio:
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.trail.StartLoc)
+                </dd>
+                <dt>
+                    Fim:
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.trail.EndLoc)
+                </dd>
+                <dt>
+                    Epoca Aconselhada:
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.trail.Season.SeasonName)
+                </dd>
+                <dt>
+                    Desnivel:
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.trail.Slope.Type)
+                </dd>
+            </dl>
+        </div>
+
+    </div>
+    <!-- /.row -->
+    <!-- Related Projects Row -->
+    <h3 class="my-4">Related Projects</h3>
+
+    <div class="row">
+
+        <div class="col-md-3 col-sm-6 mb-4">
+            <a href="#">
+                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+            </a>
+        </div>
+
+        <div class="col-md-3 col-sm-6 mb-4">
+            <a href="#">
+                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+            </a>
+        </div>
+
+        <div class="col-md-3 col-sm-6 mb-4">
+            <a href="#">
+                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+            </a>
+        </div>
+
+        <div class="col-md-3 col-sm-6 mb-4">
+            <a href="#">
+                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+            </a>
+        </div>
+
+    </div>
+    <!-- /.row -->
 
 </div>

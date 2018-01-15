@@ -1,4 +1,4 @@
-
+﻿
 ﻿
 body {
     margin: 0;
@@ -273,6 +273,11 @@ input[type="checkbox"].input-validation-error {
         height: 5px;
     }
 
+
+div .dl-horizontal dt {
+    text-align: left;
+}
+
 .box {
     padding: 50px 30px;
     background: #fff;
@@ -356,3 +361,4 @@ input[type="checkbox"].input-validation-error {
 .box-about{
     margin-bottom: 75px;
 }
+

@@ -121,6 +121,7 @@ namespace Trails4Health.Controllers
             }
             ViewData["SeasonID"] = new SelectList(_context.Seasons, "SeasonID", "SeasonName", VMTrail.SeasonID);
             ViewData["SlopeID"] = new SelectList(_context.Slopes, "SlopeID", "Type", VMTrail.SlopeID);
+            ViewData["StatusID"] = new SelectList(_context.Status, "StatusID", "StatusName");
             return View(VMTrail);
         }
 
@@ -205,7 +206,7 @@ namespace Trails4Health.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TrailID,Name,Duration,DistanceToTravel,StartLoc,EndLoc,IsActivated,SeasonID,SlopeID,Description")] Trail trail)
+        public async Task<IActionResult> Edit(int id, [Bind("TrailID,Name,Duration,DistanceToTravel,StartLoc,EndLoc,IsActivated,SeasonID,SlopeID,Description,TrailImage")] Trail trail)
         {
             if (id != trail.TrailID)
             {
