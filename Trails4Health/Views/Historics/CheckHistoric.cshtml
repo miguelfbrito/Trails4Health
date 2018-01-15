@@ -1,13 +1,11 @@
 @model IEnumerable<Trails4Health.Models.Historic>
-
 @{
     ViewData["Title"] = "Check History";
     Layout = "~/Views/Shared/_LayoutMembersArea.cshtml";
 }
 
-
 <div id="checkhistory">
-        
+
     @if (Model.Count() == 0)
     {
         <p>Não realizou nenhum percurso.</p>
@@ -20,32 +18,36 @@
             <div class="checkhistory-item">
                 <div class="checkhistory-item-top">
 
-
                     <a style="float:right; margin-left: 5px;" asp-action="HistoricInformation" asp-route-id="@item.HistoricID" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
                     <a style="float:right;" asp-action="AddInformation" asp-route-id="@item.HistoricID" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
-
                     <h5 style="font-weight:normal !important">@Html.DisplayFor(modelItem => item.Trail.Name)</h5> <!-- ir buscar nome do trilho pelo id-->
                     <p>@Html.DisplayFor(modelItem => item.RealizationDate)</p>
-
                 </div>
-
                 <div class="checkhistory-item-container">
                     <table class="table-container">
                         <tr>
                             <td>
-                                <img src="~/images/serra.jpg" style=" border:1px solid #021a40;" />
+                                @if (item.Trail.TrailImage != null)
+                                {
+                                    <div>
+                                        @{
+                                            var base64 = Convert.ToBase64String(item.Trail.TrailImage);
+                                            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                            <img src="@imgSrc" style=" border:1px solid #021a40; width: auto; height: 165px;" />
+                                        }
+                                    </div>
+
+                                    <!--<img src="@imgSrc" style="width:400px; height:auto; float:left" />-->
+                               }
+                              
                             </td>
                             <td>
                                 <p>Duração: @Html.DisplayFor(modelItem => item.TimeTaken) min</p>
                                 <p>Observações: @Html.DisplayFor(modelItem => item.Observations)</p>
                             </td>
-
                         </tr>
-
                     </table>
-
                 </div>
-
                 <!--
 
 
@@ -68,7 +70,6 @@
             </div>
 
 
-        }
-    }
-
+                                            }
+                                            }
 </div>

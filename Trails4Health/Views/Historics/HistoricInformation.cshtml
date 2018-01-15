@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-12">
                 
-            <h4>@Html.DisplayFor(model => model.Historic.Trail.Name)</h4> <!--Trail Name-->
+            <h4 class="titles" style="text-align:left;">@Html.DisplayFor(model => model.Historic.Trail.Name)</h4> <!--Trail Name-->
             <br />
 
             <p style="font-weight: bold; font-size: 14px;">Detalhes (Trilho vs Utilizador)</p>
@@ -17,22 +17,22 @@
 
             <div class="historic-information">
 
-                <div class="col-md-4">
-                    <div class="info-item">
-                        <img src="~/images/feedback.png" width="85" height="85" />
-                        <p>Agradável</p>
-                    </div>
-                </div>
+               @* <div class="col-md-4">
+        <div class="info-item">
+            <i class="icon-lg icon-color1"><img src="~/images/feedback.png" style="width:auto; height:85px; padding-top:15px;padding-left:6px;" /></i>
+            <p>Agradável</p>
+        </div>
+    </div>*@
 
                 <div class="col-md-4">
                     <div class="info-item">
-                        <img src="~/images/time.svg" width="85" height="85"  />
+                        <i class="icon-lg icon-color1"><img src="~/images/time.svg" style="width:auto; height:70px; padding-top:15px;padding-left:0px;" /></i>
                         <p>@Html.DisplayFor(model => model.Historic.TimeTaken) vs. @Html.DisplayFor(model => model.Historic.Trail.Duration) </p> <!--Time Tkane -->
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="info-item">
-                        <img src="~/images/difficulty.png" width="85" height="85" />
+                        <i class="icon-lg icon-color1"><img src="~/images/difficulty.png" style="width:auto; height:70px; padding-top:20px;padding-left:0px;" /></i>
                         <p> @*Html.DisplayFor(model => model.Historic.Trail.Difficulty.Level) *@vs. @Html.DisplayFor(model => model.Historic.Difficulty.Level)  </p> <!-- TODO: atualizar com dificuldade etapas-->
                     </div>
                 </div>
