@@ -8,40 +8,122 @@
 
 
 <div style="margin-top:30px">
-    <div class="container">
-        <div class="row">
-            <div class="coolContainer">
-                <h4 style="float:left">@Html.DisplayFor(model => model.trail.Name) </h4>
-                @foreach (var status in Model.statustrails)
-                {
-                    @if (status.EndDate == DateTime.MinValue)
-                    {
-                        if (status.Status.StatusName == "Aberto")
-                        {
-                            <h4 style="float:left;color:chartreuse">- @status.Status.StatusName</h4>
-                        }
-                        else
-                        {
-                            <h4 style="float:left;color:darkred">- @status.Status.StatusName</h4>
 
-                        }
+    <div class="row">
+        <div class="col-lg-6" >
+            <h4 style="float:left">@Html.DisplayFor(model => model.trail.Name) </h4>
+            @foreach (var status in Model.statustrails)
+            {
+                @if (status.EndDate == DateTime.MinValue)
+                {
+                    if (status.Status.StatusName == "Aberto")
+                    {
+                        <h4 style="float:left;color:chartreuse">- @status.Status.StatusName</h4>
+                    }
+                    else
+                    {
+                        <h4 style="float:left;color:darkred">- @status.Status.StatusName</h4>
+
                     }
                 }
+            }
+
+            @if (Model.trail.TrailImage != null)
+            {
+                <div>
+                    @{
+                        var base64 = Convert.ToBase64String(Model.trail.TrailImage);
+                        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                    }
+                </div>
+
+                <img src="@imgSrc" style="width:500px; height:300px; margin-top:20px;" />
+                        }
+            <div style="margin-top:15px">
+                <p style="font-size:15px;"><b>Informação do Trilho</b></p>
+                <p style="text-align:justify;width:500px">@Html.DisplayFor(model => model.trail.Description)</p>
+            </div>
+            <div>
+
             </div>
         </div>
-    </div>
 
-    @if (Model.trail.TrailImage != null)
-    {
-        <div>
-            @{
-                var base64 = Convert.ToBase64String(Model.trail.TrailImage);
-                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-            }
+        <div class="col-lg-6" style="margin-top:100px">
+            <h6>Informações</h6>
+            <dl class="dl-horizontal" style="margin-top:20px;">
+                <dt>
+                    Duracao:
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.trail.Duration) Min
+                </dd>
+                <dt>
+                    Distancia
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.trail.DistanceToTravel) Km
+                </dd>
+                <dt>
+                    Inicio:
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.trail.StartLoc)
+                </dd>
+                <dt>
+                    Fim:
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.trail.EndLoc)
+                </dd>
+                <dt>
+                    Epoca Aconselhada:
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.trail.Season.SeasonName)
+                </dd>
+                <dt>
+                    Desnivel:
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.trail.Slope.Type)
+                </dd>
+            </dl>
+            <h6>Historico de Estados do Trilho</h6>
+            <br />
+            <table width="500">
+                <thead>
+                    <tr>
+                        <th>Estado</th>
+                        <th>Data de Inicio</th>
+                        <th>Data de Fim</th>
+                        <th>Causa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var status in Model.statustrails)
+            {
+                        <tr>
+                            <td>@status.Status.StatusName</td>
+                            <td>@status.StartDate.ToString("dd/MM/yyyy")</td>
+                            @if (status.EndDate != DateTime.MinValue)
+                            {
+                                <td>@status.EndDate.ToString("dd/MM/yyyy")</td>
+                            }
+                            else
+                            {
+                                <td>Estado Por Alterar</td>
+                            }
+                            <td>@status.Reason</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+
         </div>
 
-        <img src="@imgSrc" style="width:500px; height:300px; margin-top:20px" />
-    }
+    </div>
+
 
 
 
