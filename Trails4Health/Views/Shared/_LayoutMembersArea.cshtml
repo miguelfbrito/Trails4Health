@@ -68,19 +68,25 @@
                                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                                     <ul class="nav navbar-nav navbar-right">
-                                        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                                        <li><a asp-controller="Home" asp-action="Index"><b>Home</b></a></li>
+
+                                        @if (ViewContext.RouteData.Values["action"].ToString() != "MemberArea")
+                                        {
+                                            <li><a asp-controller="Account" asp-action="MemberArea"><b>Painel de Utilizador</b></a></li>
+
+                                        }
 
                                         @if (User.IsInRole("Turista"))
                                         {
-                                            <li><a asp-controller="Historics" asp-action="CheckHistoric">Histórico</a></li>
+                                            <li><a asp-controller="Historics" asp-action="CheckHistoric"><b>Histórico</b></a></li>
                                         }
 
 
                                         @if (User.IsInRole("Professor"))
                                         {
-                                            <li><a asp-controller="Historics" asp-action="CheckHistoric">Histórico</a></li>
-                                            <li><a asp-controller="Trails1" asp-action="Index">Gerir Trilhos</a></li>
-                                            <li><a asp-controller="Stages" asp-action="Index">Gerir Etapas</a></li>
+                                            <li><a asp-controller="Historics" asp-action="CheckHistoric"><b>Histórico</b></a></li>
+                                            <li><a asp-controller="Trails1" asp-action="Index"><b>Gerir Trilhos</b></a></li>
+                                            <li><a asp-controller="Stages" asp-action="Index"><b>Gerir Etapas</b></a></li>
                                         }
                                     </ul>
                                 </div><!-- /.navbar-collapse -->

@@ -14,7 +14,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="single_banner_text wow zoomIn" data-wow-duration="1s">
                         <h2>Bem-vindo!</h2>
-                        <p>Aventure-se nos magníficos trilhos da Serra da Estrela.</p>
+                        <p style="font-weight:normal; font-size: 16pt;">Aventure-se nos magníficos trilhos da Serra da Estrela.</p>
 
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                         <div class="center">
                             <i class="icon-md icon-color1"><img src="~/images/icons/hiking.png" style="width:auto; height:55px; padding-top:10px;padding-left:2px;" /></i>
                             <h4>Caminhadas</h4>
-                            <p>Desfrute do melhor da natureza, encha os pulmões de ar puro, enquanto delicia os sentidos de forma tão especial </p>
+                            <p>Desfrute do melhor da natureza, encha os pulmões de ar puro, enquanto delicia os sentidos de forma tão especial a caminhar pelos melhores trilhos da Serra da Estrela.</p>
                         </div>
                     </div><!--/.col-md-4-->
                     <div class="col-md-4 col-sm-6">
@@ -155,12 +155,46 @@
                 if (item.TrailImage != null)
                 {
 
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 project wow animated animated4 fadeInLeft" id="project-@item.TrailID">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 project wow animated animated4 zoomIn" id="project-@item.TrailID">
                         <div class="project-hover">
-                            <h2>@item.Name</h2>
+                            <h5>@item.Name</h5>
+
+                        
+
 
                             <hr />
-                            <p>@item.Description</p>
+                            <div style="max-width:100%;">
+                                <p style="text-justify: auto; word-break: break-all;">
+
+                                    @{
+                                        string stringShort;
+                                        string s = item.Description;
+                                        if (item.Description != null)
+                                        {
+                                            stringShort = item.Description;
+
+
+                                            if(s.Length > 500)
+                                            {
+                                                stringShort = s.Substring(0, 500);
+                                                System.Diagnostics.Debug.WriteLine("STRINGG: " + stringShort);
+                                            } else
+                                            {
+                                                stringShort = s;
+                                                s = s + " (...) ";
+                                            }
+                                        }
+                                        else
+                                        {
+                                            stringShort = "";
+
+                                        }
+
+                                    }
+                                  
+                                    @stringShort
+                                </p>
+                            </div>
                             @{
                                 var base64 = Convert.ToBase64String(item.TrailImage);
                                 var imgSrc = String.Format("{0}data:image/png;base64,{1}{2}", "\"url('", base64, "')\";");
