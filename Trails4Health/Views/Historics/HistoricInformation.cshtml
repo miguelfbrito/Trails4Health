@@ -8,8 +8,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-
-            <h5>@Html.DisplayFor(model => model.Historic.Trail.Name)</h5> <!--Trail Name-->
+                
+            <h4>@Html.DisplayFor(model => model.Historic.Trail.Name)</h4> <!--Trail Name-->
             <br />
 
             <p style="font-weight: bold; font-size: 14px;">Detalhes (Trilho vs Utilizador)</p>
@@ -24,12 +24,9 @@
                     </div>
                 </div>
 
-                <script>
-                    $('#popoverData').popover();
-                </script>
                 <div class="col-md-4">
                     <div class="info-item">
-                        <img id="popoverData" data-content="Popover with data-trigger" rel="popover" data-placement="bottom" data-original-title="Title" data-trigger="hover" src="~/images/time.svg" width="85" height="85"  />
+                        <img src="~/images/time.svg" width="85" height="85"  />
                         <p>@Html.DisplayFor(model => model.Historic.TimeTaken) vs. @Html.DisplayFor(model => model.Historic.Trail.Duration) </p> <!--Time Tkane -->
                     </div>
                 </div>

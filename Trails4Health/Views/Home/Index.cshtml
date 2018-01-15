@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Trails4Health.Models.Trail>
+@model IEnumerable<Trails4Health.Models.Trail>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -119,28 +119,69 @@
 
 <section id="trilhos" class="features">
     <div class="container">
-        <div class="row">
-            <div class="container-trilhos">
-                @foreach (var item in Model)
+        <div class="container-fluid">
+            <div class="title-arch">Title<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pulvinar ex pulvinar est laoreet ullamcorper.</p></div>
+            @foreach (var item in Model)
+            {
+                if (item.TrailImage != null)
                 {
-                    @if (item.TrailImage != null)
-                    {
-                        <div class="col-md-4">
-                            <div class="trilho wow fadeIn" data-wow-duration="3s">
-                                @{
-                                    var base64 = Convert.ToBase64String(item.TrailImage);
-                                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-                                }
-                                <a asp-action="TrailInfo" asp-route-id="@item.TrailID"> <img src="@imgSrc" alt=""/></a>
-                                <h3 class="trilhos-text">@Html.DisplayFor(modelItem => item.Name)</h3>
-                            </div>
+                  
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 project wow animated animated4 fadeInLeft" id="project-@item.TrailID">
+                        <div class="project-hover">
+                            <h2>@item.Name</h2>
+
+                            <hr />
+                            <p>@item.Description</p>
+                            @{
+                                var base64 = Convert.ToBase64String(item.TrailImage);
+                                var imgSrc = String.Format("{0}data:image/png;base64,{1}{2}", "\"url('", base64, "')\";");
+                                System.Diagnostics.Debug.WriteLine(@imgSrc);
+                     }
+
+                            <script>document.getElementById("project-@item.TrailID").style.backgroundImage = @Html.Raw(@imgSrc)</script>
+                          <a asp-action="TrailInfo" asp-route-id="@item.TrailID"> Detalhes</a>
+                        
                         </div>
-                    }
+                    </div>
                 }
-            </div>
+              }
+            <div class="clearfix"></div>
         </div>
+
     </div>
 </section>
+
+
+<!--
+
+  </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 project project-2 wow animated animated3 fadeInLeft">
+                <div class="project-hover">
+                    <h2>TITLE</h2>
+                    <hr />
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pulvinar ex pulvinar est laoreet ullamcorper.</p>
+                    <a href="#">See Project</a>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 project project-3 wow animated animated2 fadeInLeft">
+                <div class="project-hover">
+                    <h2>TITLE</h2>
+                    <hr />
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pulvinar ex pulvinar est laoreet ullamcorper.</p>
+                    <a href="#">See Project</a>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 project project-4 wow animated fadeInLeft">
+                <div class="project-hover">
+                    <h2>TITLE</h2>
+                    <hr />
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pulvinar ex pulvinar est laoreet ullamcorper.</p>
+                    <a href="#">See Project</a>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+
+-->
 
 
 <section id="contacto" class="works">
