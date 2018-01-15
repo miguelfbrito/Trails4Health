@@ -8,7 +8,7 @@ using Trails4Health.Models;
 namespace Trails4Health.Migrations.ApplicationDb
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180113155150_initial2")]
+    [Migration("20180115205502_initial2")]
     partial class initial2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -198,9 +198,9 @@ namespace Trails4Health.Migrations.ApplicationDb
                     b.Property<string>("Observations")
                         .HasMaxLength(2000);
 
-                    b.Property<DateTime>("RealizationDate");
+                    b.Property<DateTime?>("RealizationDate");
 
-                    b.Property<int>("TimeTaken");
+                    b.Property<int?>("TimeTaken");
 
                     b.Property<int>("TouristID");
 
@@ -335,13 +335,16 @@ namespace Trails4Health.Migrations.ApplicationDb
                     b.Property<int>("TouristID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("Age");
-
                     b.Property<string>("CC");
+
+                    b.Property<DateTime?>("DateOfBirth");
 
                     b.Property<string>("Email");
 
-                    b.Property<string>("Name");
+                    b.Property<byte[]>("Image");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(50);
 
                     b.Property<string>("Phone");
 
@@ -356,6 +359,8 @@ namespace Trails4Health.Migrations.ApplicationDb
                 {
                     b.Property<int>("TrailID")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description");
 
                     b.Property<int>("DistanceToTravel");
 

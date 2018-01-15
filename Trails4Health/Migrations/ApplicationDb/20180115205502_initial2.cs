@@ -122,10 +122,11 @@ namespace Trails4Health.Migrations.ApplicationDb
                 {
                     TouristID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Age = table.Column<int>(nullable: false),
                     CC = table.Column<string>(nullable: true),
+                    DateOfBirth = table.Column<DateTime>(nullable: true),
                     Email = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
+                    Image = table.Column<byte[]>(nullable: true),
+                    Name = table.Column<string>(maxLength: 50, nullable: true),
                     Phone = table.Column<string>(nullable: true),
                     TipoUtilizador = table.Column<string>(nullable: true)
                 },
@@ -252,6 +253,7 @@ namespace Trails4Health.Migrations.ApplicationDb
                 {
                     TrailID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Description = table.Column<string>(nullable: true),
                     DistanceToTravel = table.Column<int>(nullable: false),
                     Duration = table.Column<int>(nullable: false),
                     EndLoc = table.Column<string>(maxLength: 30, nullable: false),
@@ -287,8 +289,8 @@ namespace Trails4Health.Migrations.ApplicationDb
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     DifficultyID = table.Column<int>(nullable: true),
                     Observations = table.Column<string>(maxLength: 2000, nullable: true),
-                    RealizationDate = table.Column<DateTime>(nullable: false),
-                    TimeTaken = table.Column<int>(nullable: false),
+                    RealizationDate = table.Column<DateTime>(nullable: true),
+                    TimeTaken = table.Column<int>(nullable: true),
                     TouristID = table.Column<int>(nullable: false),
                     TrailID = table.Column<int>(nullable: false)
                 },

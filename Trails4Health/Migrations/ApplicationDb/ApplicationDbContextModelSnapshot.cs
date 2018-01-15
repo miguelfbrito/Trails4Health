@@ -197,9 +197,9 @@ namespace Trails4Health.Migrations.ApplicationDb
                     b.Property<string>("Observations")
                         .HasMaxLength(2000);
 
-                    b.Property<DateTime>("RealizationDate");
+                    b.Property<DateTime?>("RealizationDate");
 
-                    b.Property<int>("TimeTaken");
+                    b.Property<int?>("TimeTaken");
 
                     b.Property<int>("TouristID");
 
@@ -336,11 +336,14 @@ namespace Trails4Health.Migrations.ApplicationDb
 
                     b.Property<string>("CC");
 
-                    b.Property<DateTime>("DateOfBirth");
+                    b.Property<DateTime?>("DateOfBirth");
 
                     b.Property<string>("Email");
 
-                    b.Property<string>("Name");
+                    b.Property<byte[]>("Image");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(50);
 
                     b.Property<string>("Phone");
 
@@ -355,6 +358,8 @@ namespace Trails4Health.Migrations.ApplicationDb
                 {
                     b.Property<int>("TrailID")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description");
 
                     b.Property<int>("DistanceToTravel");
 
