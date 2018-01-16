@@ -139,7 +139,7 @@ namespace Trails4Health.Controllers
                 }
                 return RedirectToAction("CheckHistoric");
             }
-            ViewData["DifficultyID"] = new SelectList(_context.Difficulties, "DifficultyID", "DifficultyID", historic.DifficultyID);
+            ViewData["DifficultyID"] = new SelectList(_context.Difficulties, "DifficultyID", "Level", historic.DifficultyID);
             ViewData["TouristID"] = new SelectList(_context.Tourists, "TouristID", "TouristID", historic.TouristID);
             ViewData["TrailID"] = new SelectList(_context.Trails, "TrailID", "EndLoc", historic.TrailID);
             return View(historic);
@@ -162,7 +162,7 @@ namespace Trails4Health.Controllers
             {
                 return NotFound();
             }
-
+            ViewData["DifficultyID"] = new SelectList(_context.Difficulties, "DifficultyID", "Level", historic.DifficultyID);
             return View(historic);
         }
 

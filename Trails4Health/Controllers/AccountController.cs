@@ -176,11 +176,14 @@ namespace Trails4Health.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register([Bind("Email,TipoUtilizador")] Tourist tourist, RegisterViewModel model, string returnUrl = null)
+        public async Task<IActionResult> Register( RegisterViewModel model, string returnUrl = null) 
         {
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
+
+                Tourist tourist = new Tourist { Email = model.Email, TipoUtilizador = model.TipoUtilizador };
+
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

@@ -12,6 +12,7 @@
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <input type="hidden" asp-for="TouristID" />
         <input type="hidden" asp-for="Email" />
+
         <div class="form-group">
             <label asp-for="Name" class="col-md-2 control-label">Nome:</label>
             <div class="col-md-10">
@@ -22,14 +23,14 @@
         <div class="form-group">
             <label asp-for="Phone" class="col-md-2 control-label">Telemóvel:</label>
             <div class="col-md-10">
-                <input asp-for="Phone" class="form-control" />
+                <input asp-for="Phone" class="form-control" placeholder="---------"/>
                 <span asp-validation-for="Phone" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="CC" class="col-md-2 control-label">Cartão Cidadão/BI:</label>
+            <label asp-for="CC" class="col-md-2 control-label">Cartão Cidadão:</label>
             <div class="col-md-10">
-                <input asp-for="CC" class="form-control" />
+                <input asp-for="CC" class="form-control" placeholder="-------- - ---" />
                 <span asp-validation-for="CC" class="text-danger"></span>
             </div>
         </div>

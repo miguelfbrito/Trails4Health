@@ -18,11 +18,13 @@ namespace Trails4Health.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         // TODO : reativar e corrigir o conflito
         //  [CheckDateRange(FirstDate = "01/01/1900", EndDate = "01/01/2012" )]
-        public DateTime? DateOfBirth { get; set; } 
+        public DateTime? DateOfBirth { get; set; }
 
+        [RegularExpression("^[0-9]{8}[ -]*[0-9][A-Z]{2}[0-9]$", ErrorMessage = "Formato inválido")]
+        [CheckCartaoCidadao]
         public String CC { get; set; }
 
-        [RegularExpression("^[92]{1}[1236]{1}[0-9]{1}[\\s|-]?[0-9]{3}[\\s|-]?[0-9]{3}", ErrorMessage = "Formato incorreto")]
+        [RegularExpression("^[92]{1}[1236]{1}[0-9]{1}[\\s|-]?[0-9]{3}[\\s|-]?[0-9]{3}", ErrorMessage = "Formato inválido")]
         public String Phone { get; set; }
 
         [EmailAddress]
