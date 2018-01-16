@@ -4,7 +4,7 @@ $(document).ready(function() {
 
 	$(window).load(function () {
 		$(".loaded").fadeOut();
-        $(".preloader").delay(400).fadeOut(500);
+        $(".preloader").delay(250).fadeOut(350);
 	});
 
 	  
@@ -137,7 +137,7 @@ $('.nav a').bind('click', function () {
         return false;
     });		
 
-		
+
 		
 });
 

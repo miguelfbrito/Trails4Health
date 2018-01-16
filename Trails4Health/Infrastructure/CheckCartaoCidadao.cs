@@ -15,7 +15,10 @@ namespace Trails4Health
             
             if(value != null)
             {
+
                 string id = value.ToString();
+                id = id.Trim();
+                id = id.Replace(" ", string.Empty);
                 if (id.Length >= 9)
                 {
                     int total = 0;

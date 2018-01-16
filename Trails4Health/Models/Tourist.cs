@@ -20,7 +20,7 @@ namespace Trails4Health.Models
         //  [CheckDateRange(FirstDate = "01/01/1900", EndDate = "01/01/2012" )]
         public DateTime? DateOfBirth { get; set; }
 
-        [RegularExpression("^[0-9]{8}[ -]*[0-9][A-Z]{2}[0-9]$", ErrorMessage = "Formato inválido")]
+        [RegularExpression("^[0-9]{8}[\\s]?[0-9]{1}[-|\\s]?[A-Z]{2}[0-9]{1}", ErrorMessage = "Formato inválido")]
         [CheckCartaoCidadao]
         public String CC { get; set; }
 
