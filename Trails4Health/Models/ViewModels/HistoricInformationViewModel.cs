@@ -9,5 +9,6 @@ namespace Trails4Health.Models.ViewModels
     {
         public Historic Historic { get; set; }
         public IEnumerable<Stage_Trail> Stages_Trail { get; set; }
+        public PagingInfo PagingInfo { get; set; }
     }
 }

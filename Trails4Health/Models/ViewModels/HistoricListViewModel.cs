@@ -11,5 +11,6 @@ namespace Trails4Health.Models.ViewModels
         public IEnumerable<Tourist> Tourist { get; set; }
         public PagingInfo PagingInfo { get; set; }
         public Historic Historic { get; set; }
+        public string currentUrl { get; set; }
     }
 }

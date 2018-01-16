@@ -373,3 +373,30 @@ div .dl-horizontal dt {
     padding-bottom: 15px;
     margin: 0 auto;
 }
+
+.pagination {
+    margin-bottom: 12px;
+    margin-top: 12vh;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+}
+
+.pagination a {
+    margin: auto;
+    color: black;
+    float: left;
+    padding: 10px 16px;
+    text-decoration: none;
+}
+
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 5px;
+}

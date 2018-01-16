@@ -21,13 +21,33 @@ namespace Trails4Health.Controllers
         {
             _context = context;
         }
-
+        public int pageSize = 4;
         // GET: Historics
-        public async Task<IActionResult> CheckHistoric()
+        public IActionResult CheckHistoric(int page = 1)
         {
+            string currentUrl = HttpContext.Request.QueryString.ToString();
 
-            var applicationDbContext = _context.Historics.Include(h => h.Tourist).Include(h => h.Trail).Where(h => h.Tourist.Email == User.Identity.Name).OrderByDescending(h => h.RealizationDate);
-            return View(await applicationDbContext.ToListAsync());
+            //    HistoricListViewModel historicListViewModel = new HistoricListViewModel();
+            //   historicListViewModel.Historics = _context.Historics.Include(h => h.Tourist).Include(h => h.Trail).Where(h => h.Tourist.Email == User.Identity.Name).OrderByDescending(h => h.RealizationDate);
+            return View(
+
+                new HistoricListViewModel
+                {
+                    Historics = _context.Historics.Include(h => h.Tourist).Include(h => h.Trail).OrderByDescending(h => h.RealizationDate).Where(h => h.Tourist.Email == User.Identity.Name).Skip(pageSize * (page - 1))
+                    .Take(pageSize),
+
+                    PagingInfo = new PagingInfo
+                    {
+                        CurrentPage = page,
+                        ItemsPerPage = pageSize,
+                        TotalItems = _context.Historics.Count()
+                    },
+
+                    currentUrl = currentUrl
+                }
+                
+                
+                );
         }
 
         public async Task<IActionResult> HistoricInformation(int? id)
@@ -262,6 +282,6 @@ namespace Trails4Health.Controllers
             return RedirectToAction("Index");
         }
 
-      
+
     }
 }
