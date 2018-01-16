@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Trails4Health.Models;
 using Microsoft.AspNetCore.Authorization;
+using Trails4Health.Models.ViewModels;
 
 namespace Trails4Health.Controllers
 {
@@ -24,6 +25,13 @@ namespace Trails4Health.Controllers
         // GET: Stages
         public async Task<IActionResult> Index()
         {
+            var applicationDbContext = _context.Stages.Include(s =>s.Difficulty);
+            return View(await applicationDbContext.ToListAsync());
+        }
+
+        //GET lista
+        public async Task<IActionResult> Lista()
+        {
             return View(await _context.Stages.ToListAsync());
         }
 
@@ -36,6 +44,7 @@ namespace Trails4Health.Controllers
             }
 
             var stage = await _context.Stages
+                .Include(s => s.Difficulty)
                 .SingleOrDefaultAsync(m => m.StageId == id);
             if (stage == null)
             {
@@ -48,6 +57,7 @@ namespace Trails4Health.Controllers
         // GET: Stages/Create
         public IActionResult Create()
         {
+            ViewData["DifficultyID"] = new SelectList(_context.Difficulties, "DifficultyID", "Level");
             return View();
         }
 
@@ -56,15 +66,29 @@ namespace Trails4Health.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StageId,StageName,StageStartLoc,StageEndLoc,IsActivated,Geolocalization,Distance,Duration,DifficultyID")] Stage stage)
+        public async Task<IActionResult> Create([Bind("StageId,StageName,StageStartLoc,StageEndLoc,IsActivated,Geolocalization,Distance,Duration,DifficultyID")] ViewModelStage VMStage)
         {
             if (ModelState.IsValid)
             {
+                Stage stage = new Stage
+                {
+                    StageName = VMStage.StageName,
+                    StageStartLoc = VMStage.StageStartLoc,
+                    StageEndLoc = VMStage.StageEndLoc,
+                    IsActivated = VMStage.IsActivated,
+                    Geolocalization = VMStage.Geolocalization,
+                    Distance = VMStage.Distance,
+                    Duration = VMStage.Duration,
+                    DifficultyID = VMStage.DifficultyID
+
+                };
                 _context.Add(stage);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(stage);
+            ViewData["DifficultyID"] = new SelectList(_context.Difficulties, "DifficultyID", "Level",VMStage.DifficultyID);
+
+            return View(VMStage);
         }
 
         // GET: Stages/Edit/5
@@ -80,6 +104,8 @@ namespace Trails4Health.Controllers
             {
                 return NotFound();
             }
+            ViewData["DifficultyID"] = new SelectList(_context.Difficulties, "DifficultyID", "Level");
+
             return View(stage);
         }
 
@@ -115,6 +141,8 @@ namespace Trails4Health.Controllers
                 }
                 return RedirectToAction("Index");
             }
+            ViewData["DifficultyID"] = new SelectList(_context.Difficulties, "DifficultyID", "Level");
+
             return View(stage);
         }
 
@@ -127,6 +155,7 @@ namespace Trails4Health.Controllers
             }
 
             var stage = await _context.Stages
+                .Include(s => s.Difficulty)
                 .SingleOrDefaultAsync(m => m.StageId == id);
             if (stage == null)
             {
@@ -142,7 +171,14 @@ namespace Trails4Health.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var stage = await _context.Stages.SingleOrDefaultAsync(m => m.StageId == id);
-            _context.Stages.Remove(stage);
+            if (stage.IsActivated == true)
+            {
+                stage.IsActivated = false;
+            }
+            else
+            {
+                stage.IsActivated = true;
+            }
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }

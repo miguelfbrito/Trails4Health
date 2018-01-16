@@ -23,6 +23,9 @@
                     Esta ativa?
                 </th>
                 <th>
+                    Dificuldade
+                </th>
+                <th>
                     Geolocalizacao
                 </th>
                 <th>
@@ -48,6 +51,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsActivated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Difficulty.Level)            
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Geolocalization)
@@ -76,5 +82,5 @@
     </tbody>
 </table>
 <p>
-    <a asp-action="Create" class="btn btn-primary">Create Nova Etapa</a>
+    <a asp-action="Create" class="btn btn-primary">Criar Nova Etapa</a>
 </p>

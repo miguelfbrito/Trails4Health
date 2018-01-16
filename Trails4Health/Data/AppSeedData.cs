@@ -227,8 +227,8 @@ namespace Trails4Health.Models
         {
 
             dbContext.Stages.AddRange(
-                new Stage { StageName = "Etapa Grande", Geolocalization = "G(13)", StageStartLoc = "Guarda", StageEndLoc = "Floresta", IsActivated = true, Distance = 5, Duration = 60, DifficultyID = 1 },
-                 new Stage { StageName = "Etapa Curta", Geolocalization = "G(15)", StageStartLoc = "Seia", StageEndLoc = "Torre", IsActivated = false, Distance = 10, Duration = 120, DifficultyID = 2 }
+                new Stage { StageName = "Etapa Grande", Geolocalization = "G.13", StageStartLoc = "Guarda", StageEndLoc = "Floresta", IsActivated = true, Distance = 5, Duration = 60, DifficultyID = 1 },
+                 new Stage { StageName = "Etapa Curta", Geolocalization = "G.15", StageStartLoc = "Seia", StageEndLoc = "Torre", IsActivated = false, Distance = 10, Duration = 120, DifficultyID = 2 }
                  );
         }
 

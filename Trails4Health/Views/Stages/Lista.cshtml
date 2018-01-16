@@ -1,0 +1,74 @@
+@model IEnumerable<Trails4Health.Models.Stage>
+
+    @{
+        ViewData["Title"] = "StagesList";
+        Layout = "~/Views/Shared/_LayoutMembersArea.cshtml";
+    }
+
+
+
+    <table class="table table-striped" style="margin-top:40px">
+        <thead>
+            <tr>
+                <th>
+                    Nome
+                </th>
+                <th>
+                    Localizacao de inicio
+                </th>
+                <th>
+                    Localizacao de fim
+                </th>
+                <th>
+                    Estado do Trilho
+                </th>
+                <th>
+                    Geolocalizacao
+                </th>
+                <th>
+                    Distancia
+                </th>
+                <th>
+                    Duracao
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StageName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StageStartLoc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StageEndLoc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsActivated)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Geolocalization)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Distance) km
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Duration) Min
+                    </td>
+                    <td>                        
+                        <input type="checkbox">
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <p>
+        <a asp-action="Index" class="btn btn-primary">Voltar a Etapas</a>
+    </p>
+    <p>
+        <a asp-action="Lista" class="btn btn-primary">Selecionar Etapas</a>
+    </p>
