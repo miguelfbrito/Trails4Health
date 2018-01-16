@@ -1,4 +1,4 @@
-@model Trails4Health.Models.ViewModels.HistoricListViewModel
+@model Trails4Health.Models.ViewModels.Tourist_TrailListViewModel
 @{
     ViewData["Title"] = "Check History";
     Layout = "~/Views/Shared/_LayoutMembersArea.cshtml";
@@ -6,20 +6,20 @@
 
 <div id="checkhistory">
 
-    @if (Model.Historics.Count() == 0)
+    @if (Model.Tourist_Trails.Count() == 0)
     {
         <p>Não realizou nenhum percurso.</p>
 
     }
     else
     {
-        @foreach (var item in Model.Historics)
+        @foreach (var item in Model.Tourist_Trails)
         {
             <div class="checkhistory-item">
                 <div class="checkhistory-item-top">
 
-                    <a style="float:right; margin-left: 5px;" asp-action="HistoricInformation" asp-route-id="@item.HistoricID" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-                    <a style="float:right;" asp-action="AddInformation" asp-route-id="@item.HistoricID" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                    <a style="float:right; margin-left: 5px;" asp-action="HistoricInformation" asp-route-id="@item.Tourist_TrailID" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                    <a style="float:right;" asp-action="AddInformation" asp-route-id="@item.Tourist_TrailID" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
                     <h5 style="font-weight:normal !important">@Html.DisplayFor(modelItem => item.Trail.Name)</h5> <!--  nome do trilho pelo id-->
                     <p>@Html.DisplayFor(modelItem => item.RealizationDate)</p>
                 </div>
@@ -63,7 +63,7 @@
                     }
                     else
                     {
-                        <a class="" id="paginacao-@p" href="/Historics/CheckHistoric/?page=@p">@p</a>
+                        <a class="" id="paginacao-@p" href="/Tourist_Trail/CheckHistoric/?page=@p">@p</a>
 
                     }
                 }

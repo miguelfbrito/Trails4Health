@@ -10,7 +10,7 @@ namespace Trails4Health.Models
         public static void EnsurePopulated(IServiceProvider appServices)
         {
             ApplicationDbContext dbContext = (ApplicationDbContext)appServices.GetService(typeof(ApplicationDbContext));
-            if (!dbContext.Historics.Any()) { 
+            if (!dbContext.Tourist_Trails.Any()) { 
             EnsureTrailsPopulated(dbContext);
             }
             dbContext.SaveChanges();
@@ -68,7 +68,7 @@ namespace Trails4Health.Models
             //   new StatusTrails { TrailID = 1, StatusID = 1, StartDate = new DateTime(2017, 05, 11), EndDate = new DateTime(2017, 05, 12), Reason = "Derrocada" },
             //   new StatusTrails { TrailID = 1, StatusID = 2, StartDate = new DateTime(2017, 05, 12), Reason = "Trilho Recomposto" }
             //  );
-       //     dbContext.Historics.AddRange(
+       //     dbContext.Tourist_Trails.AddRange(
        //   new Historic { TrailID = 1, TouristID = 1, TimeTaken = 120, Observations = "No observations", RealizationDate = "21/10/2017" },
        //   new Historic { TrailID = 2, TouristID = 1, TimeTaken = 75, Observations = "No observations", RealizationDate = "22/10/2017" },
        //   new Historic { TrailID = 3, TouristID = 1, TimeTaken = 180, Observations = "No observations", RealizationDate = "23/10/2017" },

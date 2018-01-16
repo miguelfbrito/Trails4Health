@@ -56,7 +56,7 @@ namespace Trails4Health.Models
         //Tabela Stage_Trail
         public ICollection<Stage_Trail> StagesTrails { get; set; }
 
-        public ICollection<Historic> Historics { get; set; }
+        public ICollection<Tourist_Trail> Historics { get; set; }
     }
 }
 

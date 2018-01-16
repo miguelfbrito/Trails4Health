@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 namespace Trails4Health.Models
 {
 
-    public class Historic
+    public class Tourist_Trail
     {
 
-        public int HistoricID { get; set; }
+        public int Tourist_TrailID { get; set; }
 
         [Range(30, 500, ErrorMessage = "Tempo limitado entre 30 e 500 minutos.")]
         public int? TimeTaken { get; set; }

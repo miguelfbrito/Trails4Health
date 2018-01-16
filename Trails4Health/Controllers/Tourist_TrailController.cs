@@ -13,34 +13,34 @@ namespace Trails4Health.Controllers
 {
     [RequireHttps]
     [Authorize(Roles = "Turista, Professor")]
-    public class HistoricsController : Controller
+    public class Tourist_TrailController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public HistoricsController(ApplicationDbContext context)
+        public Tourist_TrailController(ApplicationDbContext context)
         {
             _context = context;
         }
         public int pageSize = 4;
-        // GET: Historics
+        // GET: Tourist_Trails
         public IActionResult CheckHistoric(int page = 1)
         {
             string currentUrl = HttpContext.Request.QueryString.ToString();
 
             //    HistoricListViewModel historicListViewModel = new HistoricListViewModel();
-            //   historicListViewModel.Historics = _context.Historics.Include(h => h.Tourist).Include(h => h.Trail).Where(h => h.Tourist.Email == User.Identity.Name).OrderByDescending(h => h.RealizationDate);
+            //   historicListViewModel.Tourist_Trails = _context.Tourist_Trails.Include(h => h.Tourist).Include(h => h.Trail).Where(h => h.Tourist.Email == User.Identity.Name).OrderByDescending(h => h.RealizationDate);
             return View(
 
-                new HistoricListViewModel
+                new Tourist_TrailListViewModel
                 {
-                    Historics = _context.Historics.Include(h => h.Tourist).Include(h => h.Trail).OrderByDescending(h => h.RealizationDate).Where(h => h.Tourist.Email == User.Identity.Name).Skip(pageSize * (page - 1))
+                    Tourist_Trails = _context.Tourist_Trails.Include(h => h.Tourist).Include(h => h.Trail).OrderByDescending(h => h.RealizationDate).Where(h => h.Tourist.Email == User.Identity.Name).Skip(pageSize * (page - 1))
                     .Take(pageSize),
 
                     PagingInfo = new PagingInfo
                     {
                         CurrentPage = page,
                         ItemsPerPage = pageSize,
-                        TotalItems = _context.Historics.Count()
+                        TotalItems = _context.Tourist_Trails.Count()
                     },
 
                     currentUrl = currentUrl
@@ -57,23 +57,23 @@ namespace Trails4Health.Controllers
                 return NotFound();
             }
 
-            HistoricInformationViewModel hivm = new HistoricInformationViewModel();
+            Tourist_TrailInformationViewModel hivm = new Tourist_TrailInformationViewModel();
 
-            var historic = await _context.Historics
+            var tourist_trail = await _context.Tourist_Trails
                 .Include(h => h.Tourist)
                 .Include(h => h.Trail)
                 .Include(h => h.Difficulty)
             // TODO: rever    .Include(h => h.Trail.Difficulty)
                 .Include(h => h.Trail.StagesTrails)
-                .SingleAsync(m => m.HistoricID == id);
+                .SingleAsync(m => m.Tourist_TrailID == id);
 
-            hivm.Historic = historic;
+            hivm.Tourist_Trail = tourist_trail;
 
-            int historicTrailID = historic.TrailID;
+            int historicTrailID = tourist_trail.TrailID;
 
             var stages_trail = await _context.Stages_Trails
             .Include(h => h.Stage)
-            .Where(m => m.TrailID == historic.TrailID)
+            .Where(m => m.TrailID == tourist_trail.TrailID)
             .OrderByDescending(h => h.StageOrder)
             .ToListAsync();
 
@@ -81,7 +81,7 @@ namespace Trails4Health.Controllers
 
             hivm.Stages_Trail = stages_trail;
 
-            if (historic == null)
+            if (tourist_trail == null)
             {
                 return NotFound();
             }
@@ -97,7 +97,7 @@ namespace Trails4Health.Controllers
                 return NotFound();
             }
 
-            var historic = await _context.Historics.SingleOrDefaultAsync(m => m.HistoricID == id);
+            var historic = await _context.Tourist_Trails.SingleOrDefaultAsync(m => m.Tourist_TrailID == id);
 
 
             if (historic == null)
@@ -112,9 +112,9 @@ namespace Trails4Health.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddInformation(int id, [Bind("HistoricID,TimeTaken,Observations,RealizationDate,DifficultyID,TrailID,TouristID")] Historic historic)
+        public async Task<IActionResult> AddInformation(int id, [Bind("Tourist_TrailID,TimeTaken,Observations,RealizationDate,DifficultyID,TrailID,TouristID")] Tourist_Trail historic)
         {
-            if (id != historic.HistoricID)
+            if (id != historic.Tourist_TrailID)
             {
                 return NotFound();
             }
@@ -128,7 +128,7 @@ namespace Trails4Health.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!HistoricExist(historic.HistoricID))
+                    if (!HistoricExist(historic.Tourist_TrailID))
                     {
                         return NotFound();
                     }
@@ -146,7 +146,7 @@ namespace Trails4Health.Controllers
         }
 
 
-        // GET: Historics/Details/5
+        // GET: Tourist_Trails/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -154,7 +154,7 @@ namespace Trails4Health.Controllers
                 return NotFound();
             }
 
-            var historic = await _context.Historics
+            var historic = await _context.Tourist_Trails
                 .Include(h => h.Tourist)
                 .Include(h => h.Trail)
                 .SingleOrDefaultAsync(m => m.TouristID == id);
@@ -166,7 +166,7 @@ namespace Trails4Health.Controllers
             return View(historic);
         }
 
-        // GET: Historics/Create
+        // GET: Tourist_Trails/Create
         public IActionResult Create()
         {
             ViewData["TouristID"] = new SelectList(_context.Tourists, "TouristID", "TouristID");
@@ -176,13 +176,13 @@ namespace Trails4Health.Controllers
 
         private bool HistoricExist(int id)
         {
-            return _context.Historics.Any(e => e.HistoricID == id);
+            return _context.Tourist_Trails.Any(e => e.Tourist_TrailID == id);
         }
 
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("HistoricID,TimeTaken,Observations,RealizationDate,DifficultyID,TrailID,TouristID")] Historic historic)
+        public async Task<IActionResult> Create([Bind("Tourist_TrailID,TimeTaken,Observations,RealizationDate,DifficultyID,TrailID,TouristID")] Tourist_Trail historic)
         {
             if (ModelState.IsValid)
             {
@@ -196,7 +196,7 @@ namespace Trails4Health.Controllers
             return View(historic);
         }
 
-        // GET: Historics/Edit/5
+        // GET: Tourist_Trails/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -204,7 +204,7 @@ namespace Trails4Health.Controllers
                 return NotFound();
             }
 
-            var historic = await _context.Historics.SingleOrDefaultAsync(m => m.HistoricID == id);
+            var historic = await _context.Tourist_Trails.SingleOrDefaultAsync(m => m.Tourist_TrailID == id);
             if (historic == null)
             {
                 return NotFound();
@@ -214,12 +214,12 @@ namespace Trails4Health.Controllers
 
 
 
-        // POST: Historics/Edit/5
+        // POST: Tourist_Trails/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TimeTaken,Observations,RealizationDate,HistoricID")] Historic historic)
+        public async Task<IActionResult> Edit(int id, [Bind("Tourist_TrailID,TimeTaken,Observations,RealizationDate")] Tourist_Trail historic)
         {
             if (id != historic.TouristID)
             {
@@ -251,7 +251,7 @@ namespace Trails4Health.Controllers
             return View(historic);
         }
 
-        // GET: Historics/Delete/5
+        // GET: Tourist_Trails/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -259,7 +259,7 @@ namespace Trails4Health.Controllers
                 return NotFound();
             }
 
-            var historic = await _context.Historics
+            var historic = await _context.Tourist_Trails
                 .Include(h => h.Tourist)
                 .Include(h => h.Trail)
                 .SingleOrDefaultAsync(m => m.TouristID == id);
@@ -271,13 +271,13 @@ namespace Trails4Health.Controllers
             return View(historic);
         }
 
-        // POST: Historics/Delete/5
+        // POST: Tourist_Trails/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var historic = await _context.Historics.SingleOrDefaultAsync(m => m.TouristID == id);
-            _context.Historics.Remove(historic);
+            var historic = await _context.Tourist_Trails.SingleOrDefaultAsync(m => m.TouristID == id);
+            _context.Tourist_Trails.Remove(historic);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }

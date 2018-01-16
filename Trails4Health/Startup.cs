@@ -75,12 +75,6 @@ namespace Trails4Health
                 //options.User.RequireUniqueEmail = true;
             });
 
-            //      services.AddTransient<ITrailsRepository, EFTrailsRepository>();
-            //      services.AddTransient<ITouristRepository, EFTouristRepository>();
-            //      services.AddTransient<IHistoricRepository, EFHistoricRepository>();
-            //      services.AddTransient<ITrailsRepository, EFTrailsRepository>();
-            //      services.AddTransient<ITouristRepository, EFTouristRepository>();
-
             // Add application services.
             services.AddMvc();
             services.AddTransient<IEmailSender, AuthMessageSender>();

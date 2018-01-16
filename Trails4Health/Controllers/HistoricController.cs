@@ -12,10 +12,10 @@ namespace Trails4Health.Controllers
     public class HistoricController : Controller
     {
 
-        private IHistoricRepository repository;
+        private ITourist_TrailRepository repository;
 
         public int PageSize = 6;
-        public HistoricController(IHistoricRepository repository)
+        public HistoricController(ITourist_TrailRepository repository)
         {
             this.repository = repository;
         }
@@ -26,7 +26,7 @@ namespace Trails4Health.Controllers
             return View(
                 new HistoricListViewModel
                 {
-                    Historic = repository.Historics
+                    Historic = repository.Tourist_Trails
                         .OrderBy(p => p.RealizationDate)
                         .Skip(PageSize * (page - 1))
                         .Take(PageSize),
@@ -34,7 +34,7 @@ namespace Trails4Health.Controllers
                     {
                         CurrentPage = page,
                         ItemsPerPage = PageSize,
-                        TotalItems = repository.Historics.Count()
+                        TotalItems = repository.Tourist_Trails.Count()
                     }
                 }
             );
@@ -43,7 +43,7 @@ namespace Trails4Health.Controllers
         
         public ViewResult CheckHistoric()
         { 
-            return View(new HistoricListViewModel { Historics = repository.Historics });
+            return View(new Tourist_TrailListViewModel { Tourist_Trails = repository.Historics });
         }
 
         public ViewResult AddInformation()

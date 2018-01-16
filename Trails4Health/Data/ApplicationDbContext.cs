@@ -21,7 +21,7 @@ namespace Trails4Health.Models
         }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
-        public DbSet<Historic> Historics { get; set; }
+        public DbSet<Tourist_Trail> Tourist_Trails { get; set; }
         public DbSet<Tourist> Tourists { get; set; }
         public DbSet<Trail> Trails { get; set; }
         public DbSet<Difficulty> Difficulties { get; set; }
@@ -98,26 +98,26 @@ namespace Trails4Health.Models
             //-------------------------------------------------------------------------------------------
 
          //   modelBuilder.Entity<Historic>()
-           //    .HasOne(t => t.Trail).WithMany(h => h.Historics).IsRequired().OnDelete(Microsoft.EntityFrameworkCore.Metadata.DeleteBehavior.Restrict);
+           //    .HasOne(t => t.Trail).WithMany(h => h.Tourist_Trails).IsRequired().OnDelete(Microsoft.EntityFrameworkCore.Metadata.DeleteBehavior.Restrict);
 
             //modelBuilder.Entity<Historic>()
-              // .HasOne(t => t.Tourist).WithMany(h => h.Historics).IsRequired().OnDelete(Microsoft.EntityFrameworkCore.Metadata.DeleteBehavior.Restrict);
+              // .HasOne(t => t.Tourist).WithMany(h => h.Tourist_Trails).IsRequired().OnDelete(Microsoft.EntityFrameworkCore.Metadata.DeleteBehavior.Restrict);
 
                 
 
-           modelBuilder.Entity<Historic>().HasKey(h => h.HistoricID);
+           modelBuilder.Entity<Tourist_Trail>().HasKey(h => h.Tourist_TrailID);
 
-            modelBuilder.Entity<Historic>()
+            modelBuilder.Entity<Tourist_Trail>()
                  .HasOne(h => h.Trail)
                  .WithMany(t => t.Historics)
                  .HasForeignKey(h => h.TrailID);
 
-            modelBuilder.Entity<Historic>()
+            modelBuilder.Entity<Tourist_Trail>()
                  .HasOne(h => h.Tourist)
                  .WithMany(t => t.Historics)
                  .HasForeignKey(h => h.TouristID);
 
-            modelBuilder.Entity<Historic>()
+            modelBuilder.Entity<Tourist_Trail>()
                 .HasOne(h => h.Difficulty)
                 .WithMany(t => t.Historics)
                 .HasForeignKey(h => h.DifficultyID);

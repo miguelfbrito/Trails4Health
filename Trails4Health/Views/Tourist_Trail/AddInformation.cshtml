@@ -1,5 +1,5 @@
 
-@model Trails4Health.Models.Historic
+@model Trails4Health.Models.Tourist_Trail
 
 @{
     ViewData["Title"] = "Create";
@@ -11,7 +11,7 @@
 
 <form asp-action="AddInformation">
     <div class="form-horizontal">
-        <input type="hidden" asp-for="HistoricID" />
+        <input type="hidden" asp-for="Tourist_TrailID" />
         <input type="hidden" asp-for="TrailID" />
         <input type="hidden" asp-for="TouristID" />
         <div class="col-md-12">

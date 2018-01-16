@@ -33,7 +33,7 @@ namespace Trails4Health.Models
 
         public byte[] Image { get; set; }
 
-        public ICollection<Historic> Historics { get; set; }
+        public ICollection<Tourist_Trail> Historics { get; set; }
     }
 }
 
