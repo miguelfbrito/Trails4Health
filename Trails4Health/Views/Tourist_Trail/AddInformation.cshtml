@@ -2,7 +2,7 @@
 @model Trails4Health.Models.Tourist_Trail
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Adicionar Informação";
     Layout = "~/Views/Shared/_LayoutMembersArea.cshtml";
 }
 
@@ -15,10 +15,10 @@
         <input type="hidden" asp-for="TrailID" />
         <input type="hidden" asp-for="TouristID" />
         <div class="col-md-12">
-            <p>Preencha os campos de acordo com a sua experiência da realização do trilho.</p>
+            <h6 class="titles" style="margin-bottom: 25px;">Preencha os campos de acordo com a sua experiência de realização do trilho</h6>
         </div>
         <div class="form-group">
-            <label asp-for="Duration" class="col-md-2 control-label">Duração:</label>
+            <label asp-for="Duration" class="col-md-2 control-label">Duração (min):</label>
             <div class="col-md-10">
                 <input asp-for="Duration" class="form-control" />
                 <span asp-validation-for="Duration" class="text-danger"></span>
@@ -26,7 +26,7 @@
         </div>
 
         <div class="form-group">
-            <label asp-for="RealizationDate" class="col-md-2 control-label">Data:</label>
+            <label asp-for="RealizationDate" class="col-md-2 control-label">Data de Realização:</label>
             <div class="col-md-10">
                 <input asp-for="RealizationDate" type="date" class="form-control" value="@Model.RealizationDate.Value.ToString("yyyy-MM-dd")"/>
                 <span asp-validation-for="RealizationDate" class="text-danger"></span>
@@ -36,7 +36,9 @@
         <div class="form-group">
             <label asp-for="DifficultyID" class="col-md-2 control-label">Dificuldade:</label>
             <div class="col-md-10">
-                <select asp-for="DifficultyID" class="form-control" asp-items="ViewBag.DifficultyID"></select>
+                <select asp-for="DifficultyID" class="form-control" asp-items="ViewBag.DifficultyID">
+                    <option selected="selected">Seleccione a dificuldade</option>
+                </select>
             </div>
         </div>
 
