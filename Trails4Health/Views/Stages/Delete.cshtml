@@ -6,7 +6,15 @@
 }
 
     <div style="margin-top:40px">
-        <h3>Tem a certeza que pretende Desativar esta etapa?</h3>
+        @if (Model.IsActivated == true)
+        {
+            <h3>Tem a certeza que pretende Desativar esta etapa?</h3>
+        }
+        else
+        {
+            <h3>Tem a certeza que pretende Ativar esta etapa?</h3>
+        }
+        
     
     <dl class="dl-horizontal">
         <input type="hidden" asp-for="StageId" />
