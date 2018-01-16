@@ -81,19 +81,15 @@
                                         <li><a href="#home"><b>Home</b></a></li>
                                         <li><a href="#sobre"><b>Sobre</b></a></li>
                                         <li><a href="#trilhos"><b>Trilhos</b></a></li>
-                                        <li><a href="#contacto"><b>Contacto</b></a></li>
+                                        <li><a href="#contacto"><b>Contactos</b></a></li>
                                         @if (SignInManager.IsSignedIn(User))
                                         {
-                                        <!--    <li><a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Hello @UserManager.GetUserName(User)!</a></li>-->
                                             <li><a asp-controller="Account" asp-action="MemberArea"><b>Painel de Utilizador</b></a></li>
                                             <li>
                                                 <form asp-controller="Account" asp-action="Logout" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal" style="padding-top:13px;">
-                                                    <input type="image"  id="logoutBtn" src="~/images/logout.png" widht="20" height="20" />
+                                                    <input type="image" style="cursor: pointer;" id="logoutBtn" class="info-item" src="~/images/icons/logout_white.png" widht="20" height="20" />
                                                 </form>
                                             </li>
-
-                                            //asp-controller="Account" asp-action="Logout"
-                                            <!--<li><a asp-controller="Account" asp-action="Logout" id="logoutForm"><img src="~/images/logout.png" widht="18" height="18"/></a></li>-->
 
                                         }
                                         else

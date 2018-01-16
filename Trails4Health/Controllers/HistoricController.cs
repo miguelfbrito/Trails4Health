@@ -43,7 +43,7 @@ namespace Trails4Health.Controllers
         
         public ViewResult CheckHistoric()
         { 
-            return View(new HistoricListViewModel { Historic = repository.Historics });
+            return View(new HistoricListViewModel { Historics = repository.Historics });
         }
 
         public ViewResult AddInformation()

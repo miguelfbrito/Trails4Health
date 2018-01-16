@@ -272,7 +272,7 @@ a:hover {
 }
 
 .navbar-default .navbar-nav > li > a {
-    color: #777;
+    color: #e8ebef;
     text-transform: uppercase;
 }
 
@@ -281,7 +281,7 @@ a:hover {
 /* Banner section */
 
 .banner {
-    background: url(../images/bannerbg.jpg) no-repeat;
+    background: url(../images/bg_banner_2.jpg) no-repeat;
     position: relative;
     min-height: 100vh;
      /* remover maybe*/
@@ -300,18 +300,19 @@ a:hover {
 }
 
 .single_banner_text {
-    margin-top: 35%;
+   
+    margin-top: 33%;
 }
 
     .single_banner_text h2 {
-        color: dimgray;
+        color: #e8ebef;
         margin-bottom: 20px;
     }
 
     .single_banner_text p {
         margin-top: -15px;
         font-size: 14pt;
-        color: dimgray;
+        color: #e8ebef;
     }
 
 .apps_downlod {

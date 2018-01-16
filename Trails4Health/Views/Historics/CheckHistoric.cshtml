@@ -20,7 +20,7 @@
 
                     <a style="float:right; margin-left: 5px;" asp-action="HistoricInformation" asp-route-id="@item.HistoricID" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
                     <a style="float:right;" asp-action="AddInformation" asp-route-id="@item.HistoricID" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
-                    <h5 style="font-weight:normal !important">@Html.DisplayFor(modelItem => item.Trail.Name)</h5> <!-- ir buscar nome do trilho pelo id-->
+                    <h5 style="font-weight:normal !important">@Html.DisplayFor(modelItem => item.Trail.Name)</h5> <!-- nome do trilho pelo id-->
                     <p>@Html.DisplayFor(modelItem => item.RealizationDate)</p>
                 </div>
                 <div class="checkhistory-item-container">
@@ -36,10 +36,8 @@
                                             <img src="@imgSrc" style=" border:1px solid #021a40; width: auto; height: 165px;" />
                                         }
                                     </div>
+                                            }
 
-                                    <!--<img src="@imgSrc" style="width:400px; height:auto; float:left" />-->
-                               }
-                              
                             </td>
                             <td>
                                 <p>Duração: @Html.DisplayFor(modelItem => item.TimeTaken) min</p>
@@ -48,25 +46,7 @@
                         </tr>
                     </table>
                 </div>
-                <!--
 
-
-                        Trilho X-Y  Dia Realizacao
-                        Imagem  Observações
-                        Dificuldade
-
-
-
-
-                public int HistoricID { get; set; }
-                public int TouristID { get; set; }
-                public int TrailID{ get; set; }
-                public int DifficultyID { get; set; }
-                public int TimeTaken { get; set; }
-                public String Observations { get; set; }
-                public string RealizationDate { get; set; }
-
-                        -->
             </div>
 
 
