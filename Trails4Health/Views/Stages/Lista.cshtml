@@ -1,4 +1,4 @@
-@model IEnumerable<Trails4Health.Models.Stage>
+@model IEnumerable<Trails4Health.Models.ViewModels.ViewModelTrailStage>
 
     @{
         ViewData["Title"] = "StagesList";
@@ -14,13 +14,16 @@
                     Nome
                 </th>
                 <th>
-                    Localizacao de inicio
+                    Inicio
                 </th>
                 <th>
-                    Localizacao de fim
+                    Fim
                 </th>
                 <th>
-                    Estado do Trilho
+                    Esta ativa?
+                </th>
+                <th>
+                    Dificuldade
                 </th>
                 <th>
                     Geolocalizacao
@@ -37,9 +40,9 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
+                <tr>                    
                     <td>
-                        @Html.DisplayFor(modelItem => item.StageName)
+                        @Html.DisplayFor(model => model.stage.StageName)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.StageStartLoc)
@@ -49,6 +52,9 @@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.IsActivated)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Difficulty.Level)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Geolocalization)
@@ -70,5 +76,5 @@
         <a asp-action="Index" class="btn btn-primary">Voltar a Etapas</a>
     </p>
     <p>
-        <a asp-action="Lista" class="btn btn-primary">Selecionar Etapas</a>
+        <a asp-action="Select" class="btn btn-primary">Selecionar Etapas</a>
     </p>
