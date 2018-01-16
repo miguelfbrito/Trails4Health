@@ -40,7 +40,7 @@
 
                             </td>
                             <td>
-                                <p>Duração: @Html.DisplayFor(modelItem => item.TimeTaken) min</p>
+                                <p>Duração: @Html.DisplayFor(modelItem => item.Duration) min</p>
                                 <p>Observações: @Html.DisplayFor(modelItem => item.Observations)</p>
                             </td>
                         </tr>
@@ -59,7 +59,7 @@
                 {
                     if (@Model.currentUrl.ToString().Contains("?page=" + @p) || @Model.currentUrl.ToString() == "" && p == 1)
                     {
-                        <a class="active" id="paginacao-@p" href="/Historics/CheckHistoric/?page=@p">@p</a>
+                        <a class="active" id="paginacao-@p" href="/Tourist_Trail/CheckHistoric/?page=@p">@p</a>
                     }
                     else
                     {

@@ -112,7 +112,7 @@ namespace Trails4Health.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddInformation(int id, [Bind("Tourist_TrailID,TimeTaken,Observations,RealizationDate,DifficultyID,TrailID,TouristID")] Tourist_Trail historic)
+        public async Task<IActionResult> AddInformation(int id, [Bind("Tourist_TrailID,Duration,Observations,RealizationDate,DifficultyID,TrailID,TouristID")] Tourist_Trail historic)
         {
             if (id != historic.Tourist_TrailID)
             {
@@ -182,7 +182,7 @@ namespace Trails4Health.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Tourist_TrailID,TimeTaken,Observations,RealizationDate,DifficultyID,TrailID,TouristID")] Tourist_Trail historic)
+        public async Task<IActionResult> Create([Bind("Tourist_TrailID,Duration,Observations,RealizationDate,DifficultyID,TrailID,TouristID")] Tourist_Trail historic)
         {
             if (ModelState.IsValid)
             {
@@ -219,7 +219,7 @@ namespace Trails4Health.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Tourist_TrailID,TimeTaken,Observations,RealizationDate")] Tourist_Trail historic)
+        public async Task<IActionResult> Edit(int id, [Bind("Tourist_TrailID,Duration,Observations,RealizationDate")] Tourist_Trail historic)
         {
             if (id != historic.TouristID)
             {

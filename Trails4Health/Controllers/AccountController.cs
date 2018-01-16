@@ -105,7 +105,7 @@ namespace Trails4Health.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "Credenciais incorretas.");
                     return View(model);
                 }
             }

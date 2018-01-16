@@ -1,4 +1,4 @@
-@model Trails4Health.Models.Stage
+@model Trails4Health.Models.ViewModels.ViewModelStage
 
 @{
     ViewData["Title"] = "Create";
@@ -39,6 +39,14 @@
                     <input asp-for="IsActivated" class="checkbox"/>   
                 <span asp-validation-for="IsActivated" class="text-danger"></span>
              </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DifficultyID" class="col-md-2 control-label">Dificuldade:</label>
+            <div class="col-md-10">
+                <select asp-for="DifficultyID" class="form-control" asp-items="ViewBag.DifficultyID">
+                    <option>Escolha a Dificuldade</option>
+                </select>              
+            </div>            
         </div>
         <div class="form-group">
             <label asp-for="Geolocalization" class="col-md-2 control-label">Geolocalizacao</label>

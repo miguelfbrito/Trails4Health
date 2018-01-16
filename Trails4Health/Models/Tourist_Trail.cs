@@ -14,7 +14,7 @@ namespace Trails4Health.Models
         public int Tourist_TrailID { get; set; }
 
         [Range(30, 500, ErrorMessage = "Tempo limitado entre 30 e 500 minutos.")]
-        public int? TimeTaken { get; set; }
+        public int? Duration { get; set; }
 
         [StringLength(2000, MinimumLength = 10, ErrorMessage = "Tamanho limitado entre 10 e 2000 caracteres.")]
         public string Observations { get; set; }

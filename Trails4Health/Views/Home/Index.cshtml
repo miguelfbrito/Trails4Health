@@ -155,6 +155,8 @@
         </div>
     </section> End of Features Section*@
 
+
+
 <section id="trilhos" class="features">
     <div class="container " style="margin-top:-100px;">
         <div class="container-fluid">
@@ -163,59 +165,74 @@
                 <div class="hr-style"></div>
             </div>
 
-
-            @foreach (var item in Model)
-            {
-                if (item.TrailImage != null && item.IsActivated == true)
+            @{
+                var count = 0;
+                foreach (var item in Model)
                 {
+                    if (item.IsActivated == false)
+                    {
+                        count++;
+                    }
 
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 project wow animated animated4 zoomIn" id="project-@item.TrailID">
-                        <div class="project-hover">
-                            <h5>@item.Name</h5>
+                    if (item.TrailImage != null && item.IsActivated == true)
+                    {
+
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 project wow animated animated4 zoomIn" id="project-@item.TrailID">
+                            <div class="project-hover">
+                                <h5>@item.Name</h5>
 
 
 
 
-                            <hr />
-                            <div style="max-width:100%;">
-                                <p style="text-align: justify;">
+                                <hr />
+                                <div style="max-width:100%;">
+                                    <p style="text-align: justify;">
 
-                                    @{
-                                        string stringShort;
-                                        string s = item.Description;
-                                        if (item.Description != null)
-                                        {
-                                            stringShort = item.Description;
-
-                                            if (s.Length > 320)
+                                        @{
+                                            string stringShort;
+                                            string s = item.Description;
+                                            if (item.Description != null)
                                             {
-                                                stringShort = s.Substring(0, 320);
-                                                stringShort = String.Format("{0} {1}", stringShort, "(...)");
+                                                stringShort = item.Description;
+
+                                                if (s.Length > 320)
+                                                {
+                                                    stringShort = s.Substring(0, 320);
+                                                    stringShort = String.Format("{0} {1}", stringShort, "(...)");
+                                                }
                                             }
-                                        }
-                                        else
-                                        {
-                                            stringShort = "";
+                                            else
+                                            {
+                                                stringShort = "";
+
+                                            }
 
                                         }
-
-                                    }
-                                    @stringShort
-                                </p>
-                            </div>
-                            @{
-                                var base64 = Convert.ToBase64String(item.TrailImage);
-                                var imgSrc = String.Format("{0}data:image/png;base64,{1}{2}", "\"url('", base64, "')\";");
-                                System.Diagnostics.Debug.WriteLine(@imgSrc);
-                            }
-
-                            <script>document.getElementById("project-@item.TrailID").style.backgroundImage = @Html.Raw(@imgSrc)</script>
-                            <a asp-action="TrailInfo" asp-route-id="@item.TrailID"> Detalhes</a>
-
-                        </div>
-                    </div>
-                                    }
+                                        @stringShort
+                                    </p>
+                                </div>
+                                @{
+                                    var base64 = Convert.ToBase64String(item.TrailImage);
+                                    var imgSrc = String.Format("{0}data:image/png;base64,{1}{2}", "\"url('", base64, "')\";");
+                                    System.Diagnostics.Debug.WriteLine(@imgSrc);
                                 }
+
+                                <script>document.getElementById("project-@item.TrailID").style.backgroundImage = @Html.Raw(@imgSrc)</script>
+                                <a asp-action="TrailInfo" asp-route-id="@item.TrailID"> Detalhes</a>
+
+                            </div>
+                        </div>
+                                        }
+                                    }
+
+                                    if (Model.Count() == count)
+                                    {
+                                        <p style="text-align: center;">Não existem trilhos disponiveis de momento.</p>
+
+                                    }
+
+            }
+
             <div class="clearfix"></div>
         </div>
 
@@ -268,7 +285,7 @@
                 <p>paredesrui16@gmail.com</p>
                 <p>miguelfbrito11@gmail.com</p>
                 <p>miguelrp13@gmail.com</p>
-                
+
             </div>
 
         </div><!-- End of container -->
