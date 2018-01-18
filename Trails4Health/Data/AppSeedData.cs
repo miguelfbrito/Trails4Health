@@ -114,7 +114,7 @@ namespace Trails4Health.Models
         {
             dbContext.Seasons.AddRange(
                     new Season { SeasonName = "Primavera" },
-                     new Season { SeasonName = "Verao" },
+                     new Season { SeasonName = "Verão" },
                       new Season { SeasonName = "Outono" },
                        new Season { SeasonName = "Inverno" }
 
