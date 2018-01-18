@@ -291,7 +291,7 @@ namespace Trails4Health.Models
 "O percurso encontra-se dividido em várias etapas. Deve verificar e os detalhes do percurso de forma a verificar se é um trilho que deseja realizar de acordo com as suas condições físicas, interesse e disponibilidade. Existem ainda locais próprios para pernoitar." + '\n' +
 
 "É responsabilidade de todos, contribuir para a proteção, bem como assegurar a biodiversidade através da conservação deste habitat natural."
-                        }
+    }
 
       );
 
@@ -319,10 +319,11 @@ namespace Trails4Health.Models
 
         private static void EnsureStagesPopulated(ApplicationDbContext dbContext)
         {
-
             dbContext.Stages.AddRange(
-                new Stage { StageName = "Etapa Grande", Geolocalization = "G.13", StageStartLoc = "Guarda", StageEndLoc = "Floresta", IsActivated = true, Distance = 5, Duration = 60, DifficultyID = 1 },
-                 new Stage { StageName = "Etapa Curta", Geolocalization = "G.15", StageStartLoc = "Seia", StageEndLoc = "Torre", IsActivated = false, Distance = 10, Duration = 120, DifficultyID = 2 }
+                new Stage { StageName = "Etapa Gouveia", Geolocalization = "G.13", StageStartLoc = "Gouveia", StageEndLoc = "Vale do Rossim", IsActivated = true, Distance = 5, Duration = 45, DifficultyID = 1 },
+                 new Stage { StageName = "Etapa Vale do Rossim", Geolocalization = "G.14", StageStartLoc = "Vale do Rossim", StageEndLoc = "Lagoa Comprida", IsActivated = true, Distance = 10, Duration = 60, DifficultyID = 2 },
+                   new Stage { StageName = "Etapa Lagoa Comprida", Geolocalization = "G.15", StageStartLoc = "Lagoa Comprida", StageEndLoc = "Covão da Ametade", IsActivated = true, Distance = 10, Duration = 75, DifficultyID = 3 },
+                     new Stage { StageName = "Etapa Covão da Ametade", Geolocalization = "G.16", StageStartLoc = "Covão da Ametade", StageEndLoc = "Seia", IsActivated = true, Distance = 15, Duration = 90, DifficultyID = 3 }
                  );
         }
 
@@ -330,11 +331,14 @@ namespace Trails4Health.Models
         private static void EnsureStagesTrailsPopulated(ApplicationDbContext dbContext)
         {
             dbContext.Stages_Trails.AddRange(
-                new Stage_Trail { TrailID = 1, StageID = 1, Activated = true, StageOrder = 1, StageDifficulty = 5 },
-                new Stage_Trail { TrailID = 1, StageID = 2, Activated = true, StageOrder = 2, StageDifficulty = 7 },
-                new Stage_Trail { TrailID = 3, StageID = 1, Activated = true, StageOrder = 1, StageDifficulty = 3 },
-                 new Stage_Trail { TrailID = 3, StageID = 2, Activated = true, StageOrder = 2, StageDifficulty = 4 }
-
+                new Stage_Trail { TrailID = 1, StageID = 1, Activated = true, StageOrder = 1, StageDifficulty = 3 },
+                new Stage_Trail { TrailID = 1, StageID = 2, Activated = true, StageOrder = 2, StageDifficulty = 2 },
+                new Stage_Trail { TrailID = 3, StageID = 1, Activated = true, StageOrder = 1, StageDifficulty = 1 },
+                 new Stage_Trail { TrailID = 3, StageID = 2, Activated = true, StageOrder = 2, StageDifficulty = 2 },
+                 new Stage_Trail { TrailID = 6, StageID = 1, Activated = true, StageOrder = 1, StageDifficulty = 1 },
+                 new Stage_Trail { TrailID = 6, StageID = 2, Activated = true, StageOrder = 2, StageDifficulty = 3 },
+                 new Stage_Trail { TrailID = 6, StageID = 3, Activated = true, StageOrder = 3, StageDifficulty = 3 },
+                 new Stage_Trail { TrailID = 6, StageID = 4, Activated = true, StageOrder = 4, StageDifficulty = 4 }
                 );
         }
 
@@ -345,8 +349,20 @@ namespace Trails4Health.Models
      new Tourist_Trail { TrailID = 2, TouristID = 1, Duration = 120, DifficultyID = 1, Observations = "Dia bem passado,ainda conseguimos apanhar neve e realizar a loucura das crianças e tb dos adultos. contemplar a natureza e toda a envolvência de uma serra que necessita de apoios para servir o povo......e riqueza de património.", RealizationDate = new DateTime(2017, 11, 10) },
      new Tourist_Trail { TrailID = 3, TouristID = 1, Duration = 45, DifficultyID = 1, Observations = "Com neve e sem neve esta serra é lindíssima. A vista que se tem as quedas de água a natureza no seu melhor proporcionam momentos encantadores a quem visita esta serra... optimo para brincar na neve com as crianças. Recomendo fora das férias escolares onde todos decidem vir cá.", RealizationDate = new DateTime(2017, 5, 23) },
      new Tourist_Trail { TrailID = 4, TouristID = 1, Duration = 90, DifficultyID = 1, Observations = "Subir pela serra da estrela é, de fato uma experiência deslumbrante.Para uma viagem de 2 dias sugiro começar em Seiaonde você pode visitar o museu do pão e seguir até a pequena Manteigas no coração da serra, pernoitar em Manteigas e iniciar a segunda etapa di percurso em direção a CovilhãCaso tenha mais tempo, vale aproveitar alguns dias em Manteigas, há varias opções de trilhas e caminhadasPaisagem realmente deslumbrante!", RealizationDate = new DateTime(2017, 1, 29) },
-     new Tourist_Trail { TrailID = 5, TouristID = 1, Duration = 180, DifficultyID = 1, Observations = "Sem observações", RealizationDate = new DateTime(2018, 1, 2) },
-     new Tourist_Trail { TrailID = 6, TouristID = 1, Duration = 225, DifficultyID = 1, Observations = "Sem observações", RealizationDate = new DateTime(2018, 1, 15) },
+     new Tourist_Trail { TrailID = 5, TouristID = 1, Duration = 180, DifficultyID = 1, Observations = "Sem observações", RealizationDate = new DateTime(2018, 1, 3) },
+     new Tourist_Trail { TrailID = 6, TouristID = 1, Duration = 225, DifficultyID = 1, Observations = "O trajeto de Manteigas até a localidade de Torres, segue por uma estrada estreita porem com bom asfalto e proteção contra queda de pedras das encostas. É uma paisagem maravilhosa, que vai nos mostrando as faces e as encostas de várias formações rochosas daquela belíssima região de Portugal.Recomendo muito realizar esta viagem de carro próprio para que se possa fazer todas as paradas necessárias para contemplar aquela região. Antes de colocar o carro na estrada peça informações sobre o estado da estrada, principalmente em períodos sujeito a ocorrência de neve", RealizationDate = new DateTime(2018, 1, 15) },
+        new Tourist_Trail { TrailID = 1, TouristID = 1, Duration = 90, DifficultyID = 1, Observations = "O trajeto de Manteigas até a localidade de Torres, segue por uma estrada estreita porem com bom asfalto e proteção contra queda de pedras das encostas. É uma paisagem maravilhosa, que vai nos mostrando as faces e as encostas de várias formações rochosas daquela belíssima região de Portugal.Recomendo muito realizar esta viagem de carro próprio para que se possa fazer todas as paradas necessárias para contemplar aquela região. Antes de colocar o carro na estrada peça informações sobre o estado da estrada, principalmente em períodos sujeito a ocorrência de neve", RealizationDate = new DateTime(2017, 10, 17) },
+     new Tourist_Trail { TrailID = 2, TouristID = 1, Duration = 120, DifficultyID = 1, Observations = "Dia bem passado,ainda conseguimos apanhar neve e realizar a loucura das crianças e tb dos adultos. contemplar a natureza e toda a envolvência de uma serra que necessita de apoios para servir o povo......e riqueza de património.", RealizationDate = new DateTime(2017, 11, 5) },
+     new Tourist_Trail { TrailID = 3, TouristID = 1, Duration = 45, DifficultyID = 1, Observations = "Com neve e sem neve esta serra é lindíssima. A vista que se tem as quedas de água a natureza no seu melhor proporcionam momentos encantadores a quem visita esta serra... optimo para brincar na neve com as crianças. Recomendo fora das férias escolares onde todos decidem vir cá.", RealizationDate = new DateTime(2017, 5, 15) },
+     new Tourist_Trail { TrailID = 4, TouristID = 1, Duration = 90, DifficultyID = 1, Observations = "Subir pela serra da estrela é, de fato uma experiência deslumbrante.Para uma viagem de 2 dias sugiro começar em Seiaonde você pode visitar o museu do pão e seguir até a pequena Manteigas no coração da serra, pernoitar em Manteigas e iniciar a segunda etapa di percurso em direção a CovilhãCaso tenha mais tempo, vale aproveitar alguns dias em Manteigas, há varias opções de trilhas e caminhadasPaisagem realmente deslumbrante!", RealizationDate = new DateTime(2017, 1, 29) },
+     new Tourist_Trail { TrailID = 5, TouristID = 1, Duration = 180, DifficultyID = 1, Observations = "Sem observações", RealizationDate = new DateTime(2017, 4, 3) },
+     new Tourist_Trail { TrailID = 6, TouristID = 1, Duration = 225, DifficultyID = 1, Observations = "Sem observações", RealizationDate = new DateTime(2017, 5, 10) },
+        new Tourist_Trail { TrailID = 1, TouristID = 1, Duration = 90, DifficultyID = 1, Observations = "O trajeto de Manteigas até a localidade de Torres, segue por uma estrada estreita porem com bom asfalto e proteção contra queda de pedras das encostas. É uma paisagem maravilhosa, que vai nos mostrando as faces e as encostas de várias formações rochosas daquela belíssima região de Portugal.Recomendo muito realizar esta viagem de carro próprio para que se possa fazer todas as paradas necessárias para contemplar aquela região. Antes de colocar o carro na estrada peça informações sobre o estado da estrada, principalmente em períodos sujeito a ocorrência de neve", RealizationDate = new DateTime(2017, 10, 17) },
+     new Tourist_Trail { TrailID = 2, TouristID = 1, Duration = 120, DifficultyID = 1, Observations = "Dia bem passado,ainda conseguimos apanhar neve e realizar a loucura das crianças e tb dos adultos. contemplar a natureza e toda a envolvência de uma serra que necessita de apoios para servir o povo......e riqueza de património.", RealizationDate = new DateTime(2017, 11, 10) },
+     new Tourist_Trail { TrailID = 3, TouristID = 1, Duration = 45, DifficultyID = 1, Observations = "Com neve e sem neve esta serra é lindíssima. A vista que se tem as quedas de água a natureza no seu melhor proporcionam momentos encantadores a quem visita esta serra... optimo para brincar na neve com as crianças. Recomendo fora das férias escolares onde todos decidem vir cá.", RealizationDate = new DateTime(2017, 5, 23) },
+     new Tourist_Trail { TrailID = 4, TouristID = 1, Duration = 90, DifficultyID = 1, Observations = "Subir pela serra da estrela é, de fato uma experiência deslumbrante.Para uma viagem de 2 dias sugiro começar em Seiaonde você pode visitar o museu do pão e seguir até a pequena Manteigas no coração da serra, pernoitar em Manteigas e iniciar a segunda etapa di percurso em direção a CovilhãCaso tenha mais tempo, vale aproveitar alguns dias em Manteigas, há varias opções de trilhas e caminhadasPaisagem realmente deslumbrante!", RealizationDate = new DateTime(2017, 1, 29) },
+     new Tourist_Trail { TrailID = 5, TouristID = 1, Duration = 180, DifficultyID = 1, Observations = "Sem observações", RealizationDate = new DateTime(2017, 3, 12) },
+     new Tourist_Trail { TrailID = 6, TouristID = 1, Duration = 225, DifficultyID = 1, Observations = "Sem observações", RealizationDate = new DateTime(2017, 4, 13) },
     new Tourist_Trail { TrailID = 2, TouristID = 2, Duration = 75, DifficultyID = 2, Observations = "Com neve e sem neve esta serra é lindíssima. A vista que se tem as quedas de água a natureza no seu melhor proporcionam momentos encantadores a quem visita esta serra... optimo para brincar na neve com as crianças. Recomendo fora das férias escolares onde todos decidem vir cá.", RealizationDate = new DateTime(2017, 10, 19) },
     new Tourist_Trail { TrailID = 3, TouristID = 3, Duration = 180, DifficultyID = 3, Observations = "Com neve e sem neve esta serra é lindíssima. A vista que se tem as quedas de água a natureza no seu melhor proporcionam momentos encantadores a quem visita esta serra... optimo para brincar na neve com as crianças. Recomendo fora das férias escolares onde todos decidem vir cá.", RealizationDate = new DateTime(2017, 11, 17) },
     new Tourist_Trail { TrailID = 4, TouristID = 4, Duration = 200, DifficultyID = 2, Observations = "Com neve e sem neve esta serra é lindíssima. A vista que se tem as quedas de água a natureza no seu melhor proporcionam momentos encantadores a quem visita esta serra... optimo para brincar na neve com as crianças. Recomendo fora das férias escolares onde todos decidem vir cá.", RealizationDate = new DateTime(2017, 12, 9) },

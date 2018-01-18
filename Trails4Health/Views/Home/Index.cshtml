@@ -194,10 +194,10 @@
                                             if (item.Description != null)
                                             {
                                                 stringShort = item.Description;
-
-                                                if (s.Length > 320)
+                                                int maxLength = 290;
+                                                if (s.Length > maxLength)
                                                 {
-                                                    stringShort = s.Substring(0, 320);
+                                                    stringShort = s.Substring(0, maxLength);
                                                     stringShort = String.Format("{0} {1}", stringShort, "(...)");
                                                 }
                                             }
