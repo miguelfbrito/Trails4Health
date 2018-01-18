@@ -14,8 +14,9 @@ namespace Trails4Health.Models
         public DateTime StartDate { get; set; }
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime EndDate { get; set; }   
+        public DateTime EndDate { get; set; }
 
+        [StringLength(2000, MinimumLength = 0, ErrorMessage = "Causa Inválida - Não deve exceder os 2000 caracteres.")]
         public string Reason { get; set; }
 
 

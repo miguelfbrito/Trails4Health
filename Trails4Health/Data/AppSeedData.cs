@@ -135,7 +135,10 @@ namespace Trails4Health.Models
     new StatusTrails { TrailID = 1, StatusID = 1, StartDate = new DateTime(2017, 05, 11), EndDate = new DateTime(2017, 05, 12), Reason = "Trilho Recomposto" },
     new StatusTrails { TrailID = 1, StatusID = 2, StartDate = new DateTime(2017, 05, 12), Reason = "Derrocada" },
     new StatusTrails { TrailID = 2, StatusID = 1, StartDate = new DateTime(2017, 05, 11), Reason = "-" },
-     new StatusTrails { TrailID = 3, StatusID = 1, StartDate = new DateTime(2017, 05, 11), Reason = "-" }
+     new StatusTrails { TrailID = 3, StatusID = 1, StartDate = new DateTime(2017, 05, 11), Reason = "-" },
+     new StatusTrails { TrailID = 4, StatusID = 1, StartDate = new DateTime(2017, 05, 11), Reason = "-" },
+     new StatusTrails { TrailID = 5, StatusID = 1, StartDate = new DateTime(2017, 05, 11), Reason = "-" },
+     new StatusTrails { TrailID = 6, StatusID = 1, StartDate = new DateTime(2017, 05, 11), Reason = "-" }
 );
         }
 
