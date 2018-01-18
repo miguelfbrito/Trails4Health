@@ -20,28 +20,28 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Duration" class="col-md-2 control-label">Duracao(Min):</label>
+            <label asp-for="Duration" class="col-md-2 control-label">Duração(Min):</label>
             <div class="col-md-10">
                 <input asp-for="Duration" class="form-control" />
                 <span asp-validation-for="Duration" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="DistanceToTravel" class="col-md-2 control-label">Distancia(Km):</label>
+            <label asp-for="DistanceToTravel" class="col-md-2 control-label">Distância(Km):</label>
             <div class="col-md-10">
                 <input asp-for="DistanceToTravel" class="form-control" />
                 <span asp-validation-for="DistanceToTravel" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="StartLoc" class="col-md-2 control-label">Inicio:</label>
+            <label asp-for="StartLoc" class="col-md-2 control-label">Localização Inicial:</label>
             <div class="col-md-10">
                 <input asp-for="StartLoc" class="form-control" />
                 <span asp-validation-for="StartLoc" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="EndLoc" class="col-md-2 control-label">Fim:</label>
+            <label asp-for="EndLoc" class="col-md-2 control-label">Localização Final:</label>
             <div class="col-md-10">
                 <input asp-for="EndLoc" class="form-control" />
                 <span asp-validation-for="EndLoc" class="text-danger"></span>
@@ -56,7 +56,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="SlopeID" class="control-label col-md-2">Desnivel:</label>
+            <label asp-for="SlopeID" class="control-label col-md-2">Desnível:</label>
             <div class="col-md-10">
                 <select asp-for="SlopeID" class="form-control" asp-items="ViewBag.SlopeID"></select>
                 <span asp-validation-for="SlopeID" class="text-danger"></span>
@@ -64,7 +64,7 @@
         </div>
 
         <div class="form-group">
-            <label asp-for="IsActivated" class="col-md-2 control-label">Esta Ativo?:</label>
+            <label asp-for="IsActivated" class="col-md-2 control-label">Está Ativo?:</label>
             <div class="col-md-10">
                 <input asp-for="IsActivated" class="form-control" />
                 <span asp-validation-for="IsActivated" class="text-danger"></span>
@@ -72,9 +72,9 @@
         </div>
 
         <div class="form-group">
-            <label asp-for="Description" class="col-md-2 control-label">Descricao:</label>
+            <label asp-for="Description" class="col-md-2 control-label">Descrição:</label>
             <div class="col-md-10">
-                <textarea rows="4" cols="50" asp-for="Description" class="form-control"> Descri��o do trilho</textarea>
+                <textarea rows="4" cols="50" asp-for="Description" class="form-control"> Descrição do trilho</textarea>
 
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>

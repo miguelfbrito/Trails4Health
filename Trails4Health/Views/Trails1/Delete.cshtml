@@ -7,7 +7,15 @@
 
 
 <div style="margin-top:40px">
-    <h3>Tem a certeza que pretende Desativar este trilho?</h3>
+    @if (Model.IsActivated == true)
+    {
+        <h3>Tem a certeza que pretende Desativar este trilho?</h3>
+    }
+    else
+    {
+        <h3>Tem a certeza que pretende Ativar este trilho?</h3>
+    }
+    
     <hr />
     <dl class="dl-horizontal">
         <input type="hidden" asp-for="TrailID" />
@@ -18,25 +26,25 @@
             @Html.DisplayFor(model => model.Name)
         </dd>
         <dt>
-            Duracao:
+            Duração:
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Duration)
+            @Html.DisplayFor(model => model.Duration) Min
         </dd>
         <dt>
-            Distancia:
+            Distância:
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.DistanceToTravel)
+            @Html.DisplayFor(model => model.DistanceToTravel) Km
         </dd>
         <dt>
-            Inicio:
+           Localização Inicial:
         </dt>
         <dd>
             @Html.DisplayFor(model => model.StartLoc)
         </dd>
         <dt>
-            Fim:
+            Localização Final:
         </dt>
         <dd>
             @Html.DisplayFor(model => model.EndLoc)
@@ -45,16 +53,16 @@
             Epoca Aconselhada:
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Season.SeasonID)
+            @Html.DisplayFor(model => model.Season.SeasonName)
         </dd>
         <dt>
-            Desnivel:
+            Desnível:
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Slope.SlopeID)
+            @Html.DisplayFor(model => model.Slope.Type)
         </dd>
         <dt>
-            Esta Ativo?:
+            Está Ativo?:
         </dt>
         <dd>
             @Html.DisplayFor(model => model.IsActivated)
