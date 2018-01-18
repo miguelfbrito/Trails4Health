@@ -44,12 +44,8 @@
                     </a>
                 </div>
 
-               
-
             </form>
-        </div>
 
-        <div>
             @{
                 var loginProviders = SignInManager.GetExternalAuthenticationSchemes().ToList();
                 if (loginProviders.Count == 0)
@@ -75,8 +71,8 @@
                     </form>
                 }
             }
-        </div>
 
+        </div>
 
 
         <div class="col-md-4">

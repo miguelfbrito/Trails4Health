@@ -73,7 +73,7 @@ namespace Trails4Health.Models
 
 
             await PopulateAccount("joao@gmail.com", "Professor", userManager, UsersdbContext);
-            await PopulateAccount("carlos@gmail.com", "Professor", userManager, UsersdbContext);
+            await PopulateAccount("carlos@gmail.com", "Turista", userManager, UsersdbContext);
             await PopulateAccount("rute@gmail.com", "Professor", userManager, UsersdbContext);
             await PopulateAccount("miguel@gmail.com","Turista",  userManager, UsersdbContext);
             await PopulateAccount("carlos@gmail.com", "Turista", userManager, UsersdbContext);

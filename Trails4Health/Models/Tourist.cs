@@ -17,7 +17,7 @@ namespace Trails4Health.Models
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         // TODO : reativar e corrigir o conflito
-        //  [CheckDateRange(FirstDate = "01/01/1900", EndDate = "01/01/2012" )]
+        [CheckDateRange(FirstDate = "01/01/1900", EndDate = "18/01/2012" )]
         public DateTime? DateOfBirth { get; set; }
 
         [RegularExpression("^[0-9]{8}[\\s]?[0-9]{1}[-|\\s]?[A-Z]{2}[0-9]{1}", ErrorMessage = "Formato inválido")]

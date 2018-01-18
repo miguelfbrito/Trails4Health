@@ -187,35 +187,6 @@ namespace Trails4Health.Migrations.ApplicationDb
                     b.ToTable("Difficulties");
                 });
 
-            modelBuilder.Entity("Trails4Health.Models.Historic", b =>
-                {
-                    b.Property<int>("HistoricID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("DifficultyID");
-
-                    b.Property<string>("Observations")
-                        .HasMaxLength(2000);
-
-                    b.Property<DateTime?>("RealizationDate");
-
-                    b.Property<int?>("TimeTaken");
-
-                    b.Property<int>("TouristID");
-
-                    b.Property<int>("TrailID");
-
-                    b.HasKey("HistoricID");
-
-                    b.HasIndex("DifficultyID");
-
-                    b.HasIndex("TouristID");
-
-                    b.HasIndex("TrailID");
-
-                    b.ToTable("Historics");
-                });
-
             modelBuilder.Entity("Trails4Health.Models.Season", b =>
                 {
                     b.Property<int>("SeasonID")
@@ -312,7 +283,8 @@ namespace Trails4Health.Migrations.ApplicationDb
 
                     b.Property<DateTime>("EndDate");
 
-                    b.Property<string>("Reason");
+                    b.Property<string>("Reason")
+                        .HasMaxLength(2000);
 
                     b.Property<DateTime>("StartDate");
 
@@ -354,12 +326,43 @@ namespace Trails4Health.Migrations.ApplicationDb
                     b.ToTable("Tourists");
                 });
 
+            modelBuilder.Entity("Trails4Health.Models.Tourist_Trail", b =>
+                {
+                    b.Property<int>("Tourist_TrailID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("DifficultyID");
+
+                    b.Property<int?>("Duration");
+
+                    b.Property<string>("Observations")
+                        .HasMaxLength(2000);
+
+                    b.Property<DateTime?>("RealizationDate");
+
+                    b.Property<int>("TouristID");
+
+                    b.Property<int>("TrailID");
+
+                    b.HasKey("Tourist_TrailID");
+
+                    b.HasIndex("DifficultyID");
+
+                    b.HasIndex("TouristID");
+
+                    b.HasIndex("TrailID");
+
+                    b.ToTable("Tourist_Trails");
+                });
+
             modelBuilder.Entity("Trails4Health.Models.Trail", b =>
                 {
                     b.Property<int>("TrailID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Description");
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(5000);
 
                     b.Property<int>("DistanceToTravel");
 
@@ -373,7 +376,7 @@ namespace Trails4Health.Migrations.ApplicationDb
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(30);
+                        .HasMaxLength(50);
 
                     b.Property<int>("SeasonID");
 
@@ -381,9 +384,10 @@ namespace Trails4Health.Migrations.ApplicationDb
 
                     b.Property<string>("StartLoc")
                         .IsRequired()
-                        .HasMaxLength(30);
+                        .HasMaxLength(50);
 
-                    b.Property<byte[]>("TrailImage");
+                    b.Property<byte[]>("TrailImage")
+                        .IsRequired();
 
                     b.HasKey("TrailID");
 
@@ -431,23 +435,6 @@ namespace Trails4Health.Migrations.ApplicationDb
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Trails4Health.Models.Historic", b =>
-                {
-                    b.HasOne("Trails4Health.Models.Difficulty", "Difficulty")
-                        .WithMany("Historics")
-                        .HasForeignKey("DifficultyID");
-
-                    b.HasOne("Trails4Health.Models.Tourist", "Tourist")
-                        .WithMany("Historics")
-                        .HasForeignKey("TouristID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Trails4Health.Models.Trail", "Trail")
-                        .WithMany("Historics")
-                        .HasForeignKey("TrailID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("Trails4Health.Models.Stage", b =>
                 {
                     b.HasOne("Trails4Health.Models.Difficulty", "Difficulty")
@@ -478,6 +465,23 @@ namespace Trails4Health.Migrations.ApplicationDb
 
                     b.HasOne("Trails4Health.Models.Trail", "Trail")
                         .WithMany("StatusTrails")
+                        .HasForeignKey("TrailID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Trails4Health.Models.Tourist_Trail", b =>
+                {
+                    b.HasOne("Trails4Health.Models.Difficulty", "Difficulty")
+                        .WithMany("Historics")
+                        .HasForeignKey("DifficultyID");
+
+                    b.HasOne("Trails4Health.Models.Tourist", "Tourist")
+                        .WithMany("Historics")
+                        .HasForeignKey("TouristID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Trails4Health.Models.Trail", "Trail")
+                        .WithMany("Historics")
                         .HasForeignKey("TrailID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
