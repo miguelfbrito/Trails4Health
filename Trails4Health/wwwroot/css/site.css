@@ -188,7 +188,7 @@ input[type="checkbox"].input-validation-error {
     }
 
 .loginBtn--google {
-    /*font-family: "Roboto", Roboto, arial, sans-serif;*/
+    font-family: "Roboto", Roboto, arial, sans-serif;
     background: #DD4B39;
 }
 

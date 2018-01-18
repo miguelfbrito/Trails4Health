@@ -65,7 +65,8 @@ PRE LOADER
 }
 
 p {
-    font: normal 14px "Lato", arial, sans-serif;
+    font: normal 15px "Roboto", arial, sans-serif;
+    line-height: 20px;
 }
 
 a {
