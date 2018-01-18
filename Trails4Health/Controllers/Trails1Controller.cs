@@ -157,7 +157,7 @@ namespace Trails4Health.Controllers
                 .Include(lastStatus => lastStatus.Trail)
                 .SingleOrDefaultAsync(lastStatus => lastStatus.TrailID == id && lastStatus.EndDate==DateTime.MinValue);
 
-                lastStatusTrail.EndDate = newStatus.StartDate;
+                lastStatusTrail.EndDate = DateTime.Now;
 
                 //if (lastStatusTrail.Count() > 0)
                 //{
@@ -170,7 +170,7 @@ namespace Trails4Health.Controllers
                 {
                     StatusID = newStatus.StatusID,
                     TrailID = id,
-                    StartDate = newStatus.StartDate,
+                    StartDate = DateTime.Now,
                     EndDate = newStatus.EndDate,
                     Reason = newStatus.Reason
                 };
