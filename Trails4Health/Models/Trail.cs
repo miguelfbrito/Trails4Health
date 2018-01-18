@@ -14,7 +14,7 @@ namespace Trails4Health.Models
         public int TrailID { get; set; }
 
         [StringLength(50, MinimumLength = 3, ErrorMessage = "Nome Invalido - Menos de 3 caracteres ou mais de 50.")]
-        [RegularExpression(@"[a-zA-Z0-9\s\\._\\-]{3,}", ErrorMessage = "Nome Inválido - Contém caracteres inválidos")]
+        [RegularExpression(@"[a-zA-Z0-9záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\s\\._\\-]{3,}", ErrorMessage = "Nome Inválido - Contém caracteres inválidos")]
         [Required(ErrorMessage = "Por favor introduza o nome do trilho")]
         public string Name { get; set; }
         [Range(5, 6000, ErrorMessage = "O valor da Duração so pode ser entre 30 e 6000")]
@@ -24,11 +24,11 @@ namespace Trails4Health.Models
         [Required(ErrorMessage = "Por favor introduza a distância a percorrer")]
         public int DistanceToTravel { get; set; }
         [StringLength(50, MinimumLength = 3, ErrorMessage = "Localização de Inicio Invalida - Menos de 3 caracteres ou mais de 50.")]
-        [RegularExpression(@"[a-zA-Z\s\\._\\-]{3,}", ErrorMessage = "Localizacao de Inicio Inválida - Contém caracteres inválidos")]
+        [RegularExpression(@"[a-zA-ZzáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\s\\._\\-]{3,}", ErrorMessage = "Localizacao de Inicio Inválida - Contém caracteres inválidos")]
         [Required(ErrorMessage = "Por favor introduza a localização inicial do trilho")]
         public string StartLoc { get; set; }
         [StringLength(30, MinimumLength = 3, ErrorMessage = "Localização de Fim Inválida - Menos de 3 caracteres ou mais de 30.")]
-        [RegularExpression(@"[a-zA-Z\s\\._\\-]{3,}", ErrorMessage = "Localizacao de Fim Inválida - Contém caracteres inválidos")]
+        [RegularExpression(@"[a-zA-ZzáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\s\\._\\-]{3,}", ErrorMessage = "Localizacao de Fim Inválida - Contém caracteres inválidos")]
         [Required(ErrorMessage = "Por favor introduza a localização final do trilho")]
         public string EndLoc { get; set; }
 
