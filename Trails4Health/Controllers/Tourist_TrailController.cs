@@ -40,7 +40,7 @@ namespace Trails4Health.Controllers
                     {
                         CurrentPage = page,
                         ItemsPerPage = pageSize,
-                        TotalItems = _context.Tourist_Trails.Count()
+                        TotalItems = _context.Tourist_Trails.Where(h => h.Tourist.Email == User.Identity.Name).Count()
                     },
 
                     currentUrl = currentUrl

@@ -56,7 +56,7 @@
         <div class="pagination">
             @{
                 var numPages = Model.PagingInfo.TotalPages;
-                for (int @p = 1; p < numPages; p++)
+                for (int @p = 1; p <= numPages; p++)
                 {
                     if (@Model.currentUrl.ToString().Contains("?page=" + @p) || @Model.currentUrl.ToString() == "" && p == 1)
                     {
